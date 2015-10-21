@@ -1,0 +1,28 @@
+#import "OPGLProgram.h"
+
+// Base classes
+#import "OPGPUImageContext.h"
+#import "OPGPUImageOutput.h"
+#import "OPGPUImageView.h"
+#import "OPGPUImageVideoCamera.h"
+#import "OPGPUImageMovie.h"
+#import "OPGPUImagePicture.h"
+#import "OPGPUImageRawDataInput.h"
+#import "OPGPUImageRawDataOutput.h"
+#import "OPGPUImageMovieWriter.h"
+#import "OPGPUImageFilterPipeline.h"
+#import "OPGPUImageTextureOutput.h"
+#import "OPGPUImageFilterGroup.h"
+#import "OPGPUImageTextureInput.h"
+#import "OPGPUImageBuffer.h"
+
+// Filters
+#import "OPGPUImageFilter.h"
+#import "OPGPUImageTwoInputFilter.h"
+#import "OPGPUImageSepiaFilter.h"
+#import "OPGPUImageSaturationFilter.h"
+#import "OPGPUImageContrastFilter.h"
+#import "OPGPUImageBrightnessFilter.h"
+#import "OPGPUImageGrayscaleFilter.h"
+#import "OPGPUImageAlphaBlendFilter.h"
+#import "OPGPUImageToneCurveFilter.h"

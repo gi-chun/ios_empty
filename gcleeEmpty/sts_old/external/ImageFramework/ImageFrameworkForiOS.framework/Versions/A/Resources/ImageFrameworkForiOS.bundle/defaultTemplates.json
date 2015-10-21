@@ -1,0 +1,2344 @@
+{
+    "ErrorCode": 0,
+    "ErrorMessage": "Success",
+    "TemplateList": [
+        {
+            "Id": 1,
+            "Title": "df_pa2_frame1",
+            "ThumbnailImage": "df_pa2_thumb1_80_80.png",
+            "BackgroundImage": null,
+            "Width": 800,
+            "Height": 800,
+            "AspectRatioType": 1,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame1_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa2_f1_rt1_400_800.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame1_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 400,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa2_f1_rt1_400_800.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 2,
+            "Title": "df_pa2_frame2",
+            "ThumbnailImage": "df_pa2_thumb2_80_80.png",
+            "BackgroundImage": null,
+            "Width": 800,
+            "Height": 800,
+            "AspectRatioType": 1,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame2_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa2_f2_rt1_800_400.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame2_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 400,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa2_f2_rt1_800_400.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 3,
+            "Title": "df_pa2_frame3",
+            "ThumbnailImage": "df_pa2_thumb3_60_80.png",
+            "BackgroundImage": null,
+            "Width": 600,
+            "Height": 800,
+            "AspectRatioType": 2,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame3_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa2_f3_rt1_600_400.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame3_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 400,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa2_f3_rt1_600_400.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 4,
+            "Title": "df_pa2_frame4",
+            "ThumbnailImage": "df_pa2_thumb4_80_60.png",
+            "BackgroundImage": null,
+            "Width": 800,
+            "Height": 600,
+            "AspectRatioType": 3,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame4_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa2_f4_rt1_400_600.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame4_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 400,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa2_f4_rt1_400_600.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 5,
+            "Title": "df_pa3_frame1",
+            "ThumbnailImage": "df_pa3_thumb1_80_80.png",
+            "BackgroundImage": null,
+            "Width": 800,
+            "Height": 800,
+            "AspectRatioType": 1,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame1_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa3_f1_rt1_400_800.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame1_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 400,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa3_f1_rt2_400_400.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame1_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 400,
+                    "CoordinateY": 400,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa3_f1_rt2_400_400.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 6,
+            "Title": "df_pa3_frame2",
+            "ThumbnailImage": "df_pa3_thumb2_80_80.png",
+            "BackgroundImage": null,
+            "Width": 800,
+            "Height": 800,
+            "AspectRatioType": 1,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame2_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa3_f2_rt1_800_400.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame2_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 400,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa3_f2_rt2_400_400.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame2_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 400,
+                    "CoordinateY": 400,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa3_f2_rt2_400_400.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 7,
+            "Title": "df_pa3_frame3",
+            "ThumbnailImage": "df_pa3_thumb3_60_80.png",
+            "BackgroundImage": null,
+            "Width": 675,
+            "Height": 900,
+            "AspectRatioType": 2,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame3_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa3_f3_rt1_675_300.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame3_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 300,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa3_f3_rt1_675_300.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame3_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 600,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa3_f3_rt1_675_300.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 8,
+            "Title": "df_pa3_frame4",
+            "ThumbnailImage": "df_pa3_thumb4_60_80.png",
+            "BackgroundImage": null,
+            "Width": 600,
+            "Height": 800,
+            "AspectRatioType": 2,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame4_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa3_f4_rt1_600_400.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame4_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 400,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa3_f4_rt2_400_400.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame4_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 400,
+                    "CoordinateY": 400,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa3_f4_rt3_200_400.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 9,
+            "Title": "df_pa3_frame5",
+            "ThumbnailImage": "df_pa3_thumb5_80_60.png",
+            "BackgroundImage": null,
+            "Width": 900,
+            "Height": 675,
+            "AspectRatioType": 3,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame5_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa3_f5_rt1_300_675.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame5_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 300,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa3_f5_rt1_300_675.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame5_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 600,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa3_f5_rt1_300_675.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 10,
+            "Title": "df_pa4_frame1",
+            "ThumbnailImage": "df_pa4_thumb1_80_80.png",
+            "BackgroundImage": null,
+            "Width": 840,
+            "Height": 840,
+            "AspectRatioType": 1,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame1_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f1_rt1_420_280.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame1_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f1_rt2_420_840.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame1_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f1_rt1_420_280.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame1_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f1_rt1_420_280.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 11,
+            "Title": "df_pa4_frame2",
+            "ThumbnailImage": "df_pa4_thumb2_80_80.png",
+            "BackgroundImage": null,
+            "Width": 840,
+            "Height": 840,
+            "AspectRatioType": 1,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame2_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f2_rt1_840_280.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame2_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f2_rt2_420_560.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame2_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f2_rt3_420_280.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame2_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f2_rt3_420_280.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 12,
+            "Title": "df_pa4_frame3",
+            "ThumbnailImage": "df_pa4_thumb3_80_80.png",
+            "BackgroundImage": null,
+            "Width": 840,
+            "Height": 840,
+            "AspectRatioType": 1,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame3_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f3_rt1_560_420.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame3_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 560,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f3_rt2_280_420.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame3_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 420,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f3_rt2_280_420.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame3_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 280,
+                    "CoordinateY": 420,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f3_rt1_560_420.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 13,
+            "Title": "df_pa4_frame4",
+            "ThumbnailImage": "df_pa4_thumb4_60_80.png",
+            "BackgroundImage": null,
+            "Width": 630,
+            "Height": 840,
+            "AspectRatioType": 2,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame4_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f4_rt1_315_280.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame4_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 315,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f4_rt2_315_560.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame4_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f4_rt1_315_280.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame4_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f4_rt3_630_280.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 14,
+            "Title": "df_pa4_frame5",
+            "ThumbnailImage": "df_pa4_thumb5_60_80.png",
+            "BackgroundImage": null,
+            "Width": 630,
+            "Height": 840,
+            "AspectRatioType": 2,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame5_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f5_rt1_420_420.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame5_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f5_rt2_210_420.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame5_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 420,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f5_rt2_210_420.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame5_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 210,
+                    "CoordinateY": 420,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f5_rt1_420_420.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 15,
+            "Title": "df_pa4_frame6",
+            "ThumbnailImage": "df_pa4_thumb6_80_60.png",
+            "BackgroundImage": null,
+            "Width": 840,
+            "Height": 630,
+            "AspectRatioType": 3,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame6_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f6_rt1_280_315.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame6_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 280,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f6_rt1_280_315.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame6_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 560,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f6_rt1_280_315.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame6_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 315,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa4_f6_rt2_840_315.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 16,
+            "Title": "df_pa5_frame1",
+            "ThumbnailImage": "df_pa5_thumb1_80_80.png",
+            "BackgroundImage": null,
+            "Width": 840,
+            "Height": 840,
+            "AspectRatioType": 1,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame1_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f1_rt1_420_420.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame1_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 420,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f1_rt1_420_420.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame1_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f1_rt2_420_280.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame1_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f1_rt2_420_280.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame1_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f1_rt2_420_280.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 17,
+            "Title": "df_pa5_frame2",
+            "ThumbnailImage": "df_pa5_thumb2_80_80.png",
+            "BackgroundImage": null,
+            "Width": 840,
+            "Height": 840,
+            "AspectRatioType": 1,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame2_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f2_rt1_280_420.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame2_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 420,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f2_rt1_280_420.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame2_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 280,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f2_rt2_560_560.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame2_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 280,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f2_rt3_280_280.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame2_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 560,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f2_rt3_280_280.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 18,
+            "Title": "df_pa5_frame3",
+            "ThumbnailImage": "df_pa5_thumb3_60_80.png",
+            "BackgroundImage": null,
+            "Width": 630,
+            "Height": 840,
+            "AspectRatioType": 2,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame3_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f3_rt1_630_280.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame3_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f3_rt2_210_280.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame3_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 210,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f3_rt2_210_280.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame3_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f3_rt2_210_280.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame3_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f3_rt1_630_280.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 19,
+            "Title": "df_pa5_frame4",
+            "ThumbnailImage": "df_pa5_thumb4_60_80.png",
+            "BackgroundImage": null,
+            "Width": 630,
+            "Height": 840,
+            "AspectRatioType": 2,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame4_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f4_rt1_315_280.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame4_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 315,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f4_rt1_315_280.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame4_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f4_rt2_630_280.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame4_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f4_rt1_315_280.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame4_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 315,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f4_rt1_315_280.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 20,
+            "Title": "df_pa5_frame5",
+            "ThumbnailImage": "df_pa5_thumb5_80_60.png",
+            "BackgroundImage": null,
+            "Width": 840,
+            "Height": 630,
+            "AspectRatioType": 3,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame5_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f5_rt1_420_315.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame5_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f5_rt1_420_315.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame5_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 315,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f5_rt2_280_315.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame5_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 280,
+                    "CoordinateY": 315,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f5_rt2_280_315.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame5_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 560,
+                    "CoordinateY": 315,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa5_f5_rt2_280_315.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 21,
+            "Title": "df_pa6_frame1",
+            "ThumbnailImage": "df_pa6_thumb1_80_80.png",
+            "BackgroundImage": null,
+            "Width": 840,
+            "Height": 840,
+            "AspectRatioType": 1,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame1_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f1_rt1_280_420.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame1_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 280,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f1_rt1_280_420.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame1_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 560,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f1_rt1_280_420.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame1_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 420,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f1_rt1_280_420.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame1_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 280,
+                    "CoordinateY": 420,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f1_rt1_280_420.svg"
+                },
+                {
+                    "Id": 6,
+                    "Title": "frame1_rect6",
+                    "Scale": 1,
+                    "CoordinateX": 560,
+                    "CoordinateY": 420,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f1_rt1_280_420.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 22,
+            "Title": "df_pa6_frame2",
+            "ThumbnailImage": "df_pa6_thumb2_80_80.png",
+            "BackgroundImage": null,
+            "Width": 840,
+            "Height": 840,
+            "AspectRatioType": 1,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame2_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f2_rt1_280_280.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame2_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f2_rt1_280_280.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame2_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 280,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f2_rt1_560_560.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame2_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f2_rt1_280_280.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame2_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 280,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f2_rt1_280_280.svg"
+                },
+                {
+                    "Id": 6,
+                    "Title": "frame2_rect6",
+                    "Scale": 1,
+                    "CoordinateX": 560,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f2_rt1_280_280.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 23,
+            "Title": "df_pa6_frame3",
+            "ThumbnailImage": "df_pa6_thumb3_60_80.png",
+            "BackgroundImage": null,
+            "Width": 630,
+            "Height": 840,
+            "AspectRatioType": 2,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame3_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f3_rt1_315_280.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame3_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 315,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f3_rt1_315_280.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame3_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f3_rt1_315_280.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame3_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 315,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f3_rt1_315_280.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame3_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f3_rt1_315_280.svg"
+                },
+                {
+                    "Id": 6,
+                    "Title": "frame3_rect6",
+                    "Scale": 1,
+                    "CoordinateX": 315,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f3_rt1_315_280.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 24,
+            "Title": "df_pa6_frame4",
+            "ThumbnailImage": "df_pa6_thumb4_60_80.png",
+            "BackgroundImage": null,
+            "Width": 630,
+            "Height": 840,
+            "AspectRatioType": 2,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame4_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f4_rt1_210_420.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame4_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 210,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f4_rt1_210_420.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame4_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f4_rt1_210_420.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame4_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 420,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f4_rt1_210_420.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame4_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 210,
+                    "CoordinateY": 420,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f4_rt1_210_420.svg"
+                },
+                {
+                    "Id": 6,
+                    "Title": "frame4_rect6",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 420,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f4_rt1_210_420.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 25,
+            "Title": "df_pa6_frame5",
+            "ThumbnailImage": "df_pa6_thumb5_60_80.png",
+            "BackgroundImage": null,
+            "Width": 630,
+            "Height": 840,
+            "AspectRatioType": 2,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame5_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f5_rt1_210_560.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame5_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 210,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f5_rt1_210_560.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame5_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f5_rt2_420_280.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame5_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f5_rt3_210_280.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame5_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f5_rt3_210_280.svg"
+                },
+                {
+                    "Id": 6,
+                    "Title": "frame5_rect6",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f5_rt3_210_280.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 26,
+            "Title": "df_pa6_frame6",
+            "ThumbnailImage": "df_pa6_thumb6_80_60.png",
+            "BackgroundImage": null,
+            "Width": 840,
+            "Height": 630,
+            "AspectRatioType": 3,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame6_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f6_rt1_280_210.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame6_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 210,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f6_rt1_280_210.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame6_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 420,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f6_rt1_280_210.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame6_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 280,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f6_rt2_280_315.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame6_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 280,
+                    "CoordinateY": 315,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f6_rt2_280_315.svg"
+                },
+                {
+                    "Id": 6,
+                    "Title": "frame6_rect6",
+                    "Scale": 1,
+                    "CoordinateX": 560,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa6_f6_rt3_280_630.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 27,
+            "Title": "df_pa7_frame1",
+            "ThumbnailImage": "df_pa7_thumb1_80_80.png",
+            "BackgroundImage": null,
+            "Width": 840,
+            "Height": 840,
+            "AspectRatioType": 1,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame1_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f1_rt1_280_280.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame1_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 280,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f1_rt1_280_280.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame1_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 560,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f1_rt1_280_280.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame1_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f1_rt2_420_280.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame1_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f1_rt2_420_280.svg"
+                },
+                {
+                    "Id": 6,
+                    "Title": "frame1_rect6",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f1_rt2_420_280.svg"
+                },
+                {
+                    "Id": 7,
+                    "Title": "frame1_rect7",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f1_rt2_420_280.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 28,
+            "Title": "df_pa7_frame2",
+            "ThumbnailImage": "df_pa7_thumb2_60_80.png",
+            "BackgroundImage": null,
+            "Width": 630,
+            "Height": 840,
+            "AspectRatioType": 2,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame2_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f2_rt1_315_280.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame2_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 315,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f2_rt1_315_280.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame2_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f2_rt1_315_280.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame2_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 315,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f2_rt1_315_280.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame2_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f2_rt2_210_280.svg"
+                },
+                {
+                    "Id": 6,
+                    "Title": "frame2_rect6",
+                    "Scale": 1,
+                    "CoordinateX": 210,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f2_rt2_210_280.svg"
+                },
+                {
+                    "Id": 7,
+                    "Title": "frame2_rect7",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f2_rt2_210_280.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 29,
+            "Title": "df_pa7_frame3",
+            "ThumbnailImage": "df_pa7_thumb3_60_80.png",
+            "BackgroundImage": null,
+            "Width": 630,
+            "Height": 840,
+            "AspectRatioType": 2,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame3_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f3_rt1_315_280.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame3_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 315,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f3_rt1_315_280.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame3_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f3_rt2_210_280.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame3_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 210,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f3_rt2_210_280.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame3_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f3_rt2_210_280.svg"
+                },
+                {
+                    "Id": 6,
+                    "Title": "frame3_rect6",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f3_rt1_315_280.svg"
+                },
+                {
+                    "Id": 7,
+                    "Title": "frame3_rect7",
+                    "Scale": 1,
+                    "CoordinateX": 315,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f3_rt1_315_280.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 30,
+            "Title": "df_pa7_frame4",
+            "ThumbnailImage": "df_pa7_thumb4_80_60.png",
+            "BackgroundImage": null,
+            "Width": 840,
+            "Height": 630,
+            "AspectRatioType": 3,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame4_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f4_rt1_280_315.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame4_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 280,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f4_rt1_280_315.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame4_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 315,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f4_rt1_280_315.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame4_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 280,
+                    "CoordinateY": 315,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f4_rt1_280_315.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame4_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 560,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f4_rt2_280_210.svg"
+                },
+                {
+                    "Id": 6,
+                    "Title": "frame4_rect6",
+                    "Scale": 1,
+                    "CoordinateX": 560,
+                    "CoordinateY": 210,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f4_rt2_280_210.svg"
+                },
+                {
+                    "Id": 7,
+                    "Title": "frame4_rect7",
+                    "Scale": 1,
+                    "CoordinateX": 560,
+                    "CoordinateY": 420,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa7_f4_rt2_280_210.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 31,
+            "Title": "df_pa8_frame1",
+            "ThumbnailImage": "df_pa8_thumb1_60_80.png",
+            "BackgroundImage": null,
+            "Width": 630,
+            "Height": 840,
+            "AspectRatioType": 2,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame1_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f1_rt1_210_280.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame1_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 210,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f1_rt1_210_280.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame1_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f1_rt1_210_280.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame1_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f1_rt2_315_280.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame1_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 315,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f1_rt2_315_280.svg"
+                },
+                {
+                    "Id": 6,
+                    "Title": "frame1_rect6",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f1_rt1_210_280.svg"
+                },
+                {
+                    "Id": 7,
+                    "Title": "frame1_rect7",
+                    "Scale": 1,
+                    "CoordinateX": 210,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f1_rt1_210_280.svg"
+                },
+                {
+                    "Id": 8,
+                    "Title": "frame1_rect8",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f1_rt1_210_280.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 32,
+            "Title": "df_pa8_frame2",
+            "ThumbnailImage": "df_pa8_thumb2_80_60.png",
+            "BackgroundImage": null,
+            "Width": 840,
+            "Height": 630,
+            "AspectRatioType": 3,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame2_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f2_rt1_210_315.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame2_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 210,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f2_rt1_210_315.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame2_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f2_rt1_210_315.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame2_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 630,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f2_rt1_210_315.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame2_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 315,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f2_rt1_210_315.svg"
+                },
+                {
+                    "Id": 6,
+                    "Title": "frame2_rect6",
+                    "Scale": 1,
+                    "CoordinateX": 210,
+                    "CoordinateY": 315,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f2_rt1_210_315.svg"
+                },
+                {
+                    "Id": 7,
+                    "Title": "frame2_rect7",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 315,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f2_rt1_210_315.svg"
+                },
+                {
+                    "Id": 8,
+                    "Title": "frame2_rect8",
+                    "Scale": 1,
+                    "CoordinateX": 630,
+                    "CoordinateY": 315,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f2_rt1_210_315.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 33,
+            "Title": "df_pa8_frame3",
+            "ThumbnailImage": "df_pa8_thumb3_80_60.png",
+            "BackgroundImage": null,
+            "Width": 880,
+            "Height": 660,
+            "AspectRatioType": 3,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame3_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f3_rt1_440_495.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame3_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 440,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f3_rt2_440_165.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame3_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 440,
+                    "CoordinateY": 165,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f3_rt2_440_165.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame3_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 440,
+                    "CoordinateY": 330,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f3_rt2_440_165.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame3_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 495,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f3_rt3_220_165.svg"
+                },
+                {
+                    "Id": 6,
+                    "Title": "frame3_rect6",
+                    "Scale": 1,
+                    "CoordinateX": 220,
+                    "CoordinateY": 495,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f3_rt3_220_165.svg"
+                },
+                {
+                    "Id": 7,
+                    "Title": "frame3_rect7",
+                    "Scale": 1,
+                    "CoordinateX": 440,
+                    "CoordinateY": 495,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f3_rt3_220_165.svg"
+                },
+                {
+                    "Id": 8,
+                    "Title": "frame3_rect8",
+                    "Scale": 1,
+                    "CoordinateX": 660,
+                    "CoordinateY": 495,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa8_f3_rt3_220_165.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 34,
+            "Title": "df_pa9_frame1",
+            "ThumbnailImage": "df_pa9_thumb1_80_80.png",
+            "BackgroundImage": null,
+            "Width": 840,
+            "Height": 840,
+            "AspectRatioType": 1,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame1_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f1_rt1_280_280.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame1_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 280,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f1_rt1_280_280.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame1_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 560,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f1_rt1_280_280.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame1_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f1_rt1_280_280.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame1_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 280,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f1_rt1_280_280.svg"
+                },
+                {
+                    "Id": 6,
+                    "Title": "frame1_rect6",
+                    "Scale": 1,
+                    "CoordinateX": 560,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f1_rt1_280_280.svg"
+                },
+                {
+                    "Id": 7,
+                    "Title": "frame1_rect7",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f1_rt1_280_280.svg"
+                },
+                {
+                    "Id": 8,
+                    "Title": "frame1_rect8",
+                    "Scale": 1,
+                    "CoordinateX": 280,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f1_rt1_280_280.svg"
+                },
+                {
+                    "Id": 9,
+                    "Title": "frame1_rect9",
+                    "Scale": 1,
+                    "CoordinateX": 560,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f1_rt1_280_280.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 35,
+            "Title": "df_pa9_frame2",
+            "ThumbnailImage": "df_pa9_thumb2_60_80.png",
+            "BackgroundImage": null,
+            "Width": 630,
+            "Height": 840,
+            "AspectRatioType": 2,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame2_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f2_rt1_210_280.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame2_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 210,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f2_rt1_210_280.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame2_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f2_rt1_210_280.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame2_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f2_rt1_210_280.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame2_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 210,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f2_rt1_210_280.svg"
+                },
+                {
+                    "Id": 6,
+                    "Title": "frame2_rect6",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 280,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f2_rt1_210_280.svg"
+                },
+                {
+                    "Id": 7,
+                    "Title": "frame2_rect7",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f2_rt1_210_280.svg"
+                },
+                {
+                    "Id": 8,
+                    "Title": "frame2_rect8",
+                    "Scale": 1,
+                    "CoordinateX": 210,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f2_rt1_210_280.svg"
+                },
+                {
+                    "Id": 9,
+                    "Title": "frame2_rect9",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 560,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f2_rt1_210_280.svg"
+                }
+            ],
+            "Stickers": []
+        },
+        {
+            "Id": 36,
+            "Title": "df_pa9_frame3",
+            "ThumbnailImage": "df_pa9_thumb3_60_80.png",
+            "BackgroundImage": null,
+            "Width": 630,
+            "Height": 840,
+            "AspectRatioType": 2,
+            "TemplateType": 1,
+            "Frames": [
+                {
+                    "Id": 1,
+                    "Title": "frame3_rect1",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f3_rt1_210_210.svg"
+                },
+                {
+                    "Id": 2,
+                    "Title": "frame3_rect2",
+                    "Scale": 1,
+                    "CoordinateX": 210,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f3_rt1_210_210.svg"
+                },
+                {
+                    "Id": 3,
+                    "Title": "frame3_rect3",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 0,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f3_rt1_210_210.svg"
+                },
+                {
+                    "Id": 4,
+                    "Title": "frame3_rect4",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 210,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f3_rt2_420_420.svg"
+                },
+                {
+                    "Id": 5,
+                    "Title": "frame3_rect5",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 210,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f3_rt1_210_210.svg"
+                },
+                {
+                    "Id": 6,
+                    "Title": "frame3_rect6",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 420,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f3_rt1_210_210.svg"
+                },
+                {
+                    "Id": 7,
+                    "Title": "frame3_rect7",
+                    "Scale": 1,
+                    "CoordinateX": 0,
+                    "CoordinateY": 630,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f3_rt1_210_210.svg"
+                },
+                {
+                    "Id": 8,
+                    "Title": "frame3_rect8",
+                    "Scale": 1,
+                    "CoordinateX": 210,
+                    "CoordinateY": 630,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f3_rt1_210_210.svg"
+                },
+                {
+                    "Id": 9,
+                    "Title": "frame3_rect9",
+                    "Scale": 1,
+                    "CoordinateX": 420,
+                    "CoordinateY": 630,
+                    "Rotation": 0,
+                    "FrameImage": null,
+                    "SVG": "df_pa9_f3_rt1_210_210.svg"
+                }
+            ],
+            "Stickers": []
+        }
+    ]
+}
