@@ -10,11 +10,12 @@
 #import "mainViewController.h"
 
 @class mainViewController;
+#define IsAtLeastiOSVersion(X) ([[[UIDevice currentDevice] systemVersion] compare:X options:NSNumericSearch] != NSOrderedAscending)
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) mainViewController *mainViewController;
+//@property (strong, nonatomic) mainViewController *mainViewController;
 
 @end
 
