@@ -70,6 +70,8 @@
     //                                                 name:ReloadHomeNotification
     //                                               object:nil];
     
+    [self initNavigation:1];
+    
 }
 
 - (void)touchMenuButton
@@ -88,6 +90,143 @@
     
     [self.navigationController.navigationBar addSubview:[self navigationBarView:1]];
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+}
+
+- (NavigationBarView *)navigationBarView:(NSInteger)navigationType
+{
+    if (navigationBarView) {
+        [navigationBarView removeFromSuperview];
+    }
+    
+    CGFloat screenWidth  = [[UIScreen mainScreen] bounds].size.width;
+    CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
+    
+    navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 44) type:navigationType];
+    [navigationBarView setDelegate:self];
+    
+    return navigationBarView;
+}
+
+#pragma mark - CPNavigationBarViewDelegate
+
+- (void)didTouchBackButton
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)didTouchMenuButton
+{
+    //[self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
+
+- (void)didTouchBasketButton
+{
+//    NSString *cartUrl = [[CPCommonInfo sharedInfo] urlInfo][@"cart"];
+//    [self openWebViewControllerWithUrl:cartUrl animated:NO];
+}
+
+- (void)didTouchLogoButton
+{
+//    [self initNavigation:1];
+    
+//    [self reloadHomeTab];
+//    
+//    //모든 화면의 스크롤을 위로 끌어올린다.
+//    if (contentsView) {
+//        for (NSInteger i=0; i<contentsView.numberOfItems; i++) {
+//            UIView *scrollSubview = [contentsView itemViewAtIndex:i];
+//            
+//            for (UIView *subview in scrollSubview.subviews) {
+//                //gclee
+//                if ([subview isKindOfClass:[CPHomeView class]]
+//                    || [subview isKindOfClass:[CPBestView class]]
+//                    || [subview isKindOfClass:[CPShockingDealView class]]
+//                    || [subview isKindOfClass:[CPMartView class]]
+//                    || [subview isKindOfClass:[CPMartView class]]
+//                    || [subview isKindOfClass:[CPBrandView class]]
+//                    || [subview isKindOfClass:[CPBrandView class]]
+//                    || [subview isKindOfClass:[CPTalkView class]]
+//                    || [subview isKindOfClass:[CPTrendView class]]
+//                    || [subview isKindOfClass:[CPCurationView class]]
+//                    || [subview isKindOfClass:[CPEventView class]]
+//                    || [subview isKindOfClass:[CPHiddenView class]]) {
+//                    
+//                    if ([subview respondsToSelector:@selector(goToTopScroll)]) {
+//                        [subview performSelector:@selector(goToTopScroll) withObject:nil afterDelay:0.3f];
+//                    }
+//                    break;
+//                }
+//            }
+//        }
+//    }
+//    
+//    isEnalbeLogoButton = NO;
+//    
+//    if ([[CPCommonInfo sharedInfo] currentNavigationType] == CPNavigationTypeMart) {
+//        //AccessLog - 로고 in 마트
+//        [[AccessLog sharedInstance] sendAccessLogWithCode:@"MAMART0002"];
+//    }
+//    else {
+//        //AccessLog - 로고
+//        [[AccessLog sharedInstance] sendAccessLogWithCode:@"AGA0100"];
+//    }
+}
+
+- (void)didTouchMartButton
+{
+    [self.navigationController.navigationBar addSubview:[self navigationBarView:1]];
+    
+//    NSString *martUrl = [[CPCommonInfo sharedInfo] urlInfo][@"mart"];
+//    
+//    [self openWebViewControllerWithUrl:martUrl animated:NO];
+}
+
+- (void)didTouchMyInfoButton
+{
+    //[self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
+}
+
+- (void)didTouchSearchButton:(NSString *)keywordUrl;
+{
+//    if (keywordUrl) {
+//        [self openWebViewControllerWithUrl:keywordUrl animated:YES];
+//    }
+}
+
+- (void)didTouchSearchButtonWithKeyword:(NSString *)keyword
+{
+//    CPProductListViewController *viewConroller = [[CPProductListViewController alloc] initWithKeyword:keyword referrer:subWebViewUrl];
+//    [self.navigationController pushViewController:viewConroller animated:YES];
+}
+
+- (void)didTouchMartSearchButton
+{
+//    CPMartSearchViewController *viewController = [[CPMartSearchViewController alloc] init];
+//    [viewController setDelegate:self];
+//    //    [self.navigationController pushViewController:viewController animated:NO];
+//    //    [self.navigationController setNavigationBarHidden:YES];
+//    [self presentViewController:viewController animated:NO completion:nil];
+}
+
+- (void)searchTextFieldShouldBeginEditing:(NSString *)keyword keywordUrl:(NSString *)keywordUrl
+{
+//    CPSearchViewController *viewController = [[CPSearchViewController alloc] init];
+//    [viewController setDelegate:self];
+//    
+//    //    if ([SYSTEM_VERSION intValue] < 7) {
+//    //        [viewController setWantsFullScreenLayout:YES];
+//    //    }
+//    
+//    //    viewController.defaultUrl = keywordUrl;
+//    //    viewController.isSearchText = isSearchText;
+//    //
+//    //    if (isSearchText) {
+//    //        viewController.defaultText = keyword;
+//    //    }
+//    
+//    //    [self.navigationController pushViewController:viewController animated:NO];
+//    //    [self.navigationController setNavigationBarHidden:YES];
+//    [self presentViewController:viewController animated:NO completion:nil];
 }
 
 /*
