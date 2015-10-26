@@ -17,6 +17,7 @@
 		288E45D91BD719640041AE50 /* gcleeEmptyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 288E45D81BD719640041AE50 /* gcleeEmptyTests.m */; };
 		288E45E51BD776D60041AE50 /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 288E45E41BD776D60041AE50 /* mainViewController.m */; };
 		28F7C0421BDDFB7000C53B86 /* secondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F7C0411BDDFB7000C53B86 /* secondViewController.m */; };
+		28F7C0451BDE0FB000C53B86 /* NavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F7C0441BDE0FB000C53B86 /* NavigationBarView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		288E45E41BD776D60041AE50 /* mainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainViewController.m; sourceTree = "<group>"; };
 		28F7C0401BDDFB7000C53B86 /* secondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = secondViewController.h; sourceTree = "<group>"; };
 		28F7C0411BDDFB7000C53B86 /* secondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = secondViewController.m; sourceTree = "<group>"; };
+		28F7C0431BDE0FB000C53B86 /* NavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarView.h; sourceTree = "<group>"; };
+		28F7C0441BDE0FB000C53B86 /* NavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,8 @@
 			children = (
 				288E45E31BD776D60041AE50 /* mainViewController.h */,
 				288E45E41BD776D60041AE50 /* mainViewController.m */,
+				28F7C0431BDE0FB000C53B86 /* NavigationBarView.h */,
+				28F7C0441BDE0FB000C53B86 /* NavigationBarView.m */,
 				28F7C0401BDDFB7000C53B86 /* secondViewController.h */,
 				28F7C0411BDDFB7000C53B86 /* secondViewController.m */,
 				288E45BD1BD719640041AE50 /* gcleeEmpty */,
@@ -241,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28F7C0421BDDFB7000C53B86 /* secondViewController.m in Sources */,
+				28F7C0451BDE0FB000C53B86 /* NavigationBarView.m in Sources */,
 				288E45E51BD776D60041AE50 /* mainViewController.m in Sources */,
 				288E45C31BD719640041AE50 /* AppDelegate.m in Sources */,
 				288E45C01BD719640041AE50 /* main.m in Sources */,
