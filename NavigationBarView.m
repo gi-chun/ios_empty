@@ -195,12 +195,15 @@
 //            [self addSubview:searchButton];
 //        }
 //        else if (type == CPNavigationTypeMartBack) {
+        CGFloat screenWidth  = [[UIScreen mainScreen] bounds].size.width;
+        CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
+        
             CGFloat margin = 2;
-            if (kScreenBoundsWidth > 320) {
+            if (screenWidth > 320) {
                 margin = 10;
             }
             
-            UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, 44)];
+            UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 44)];
             [backgroundImageView setImage:[UIImage imageNamed:@"gnb_bgcolor.png"]];
             [self addSubview:backgroundImageView];
             
@@ -239,7 +242,7 @@
             [self addSubview:myInfoButton];
             
             UIButton *basketButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [basketButton setFrame:CGRectMake(kScreenBoundsWidth-(76+margin), 4, 36, 36)];
+            [basketButton setFrame:CGRectMake(screenWidth-(76+margin), 4, 36, 36)];
             [basketButton setBackgroundImage:[UIImage imageNamed:@"gnb_btn_cart_nor.png"] forState:UIControlStateNormal];
             [basketButton setBackgroundImage:[UIImage imageNamed:@"gnb_btn_cart_press.png"] forState:UIControlStateHighlighted];
             [basketButton addTarget:self action:@selector(touchBasketButton) forControlEvents:UIControlEventTouchUpInside];
