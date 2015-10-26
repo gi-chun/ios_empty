@@ -10,7 +10,9 @@
 #import "NavigationBarView.h"
 
 @interface secondViewController () <NavigationBarViewDelegate>
-
+{
+    NavigationBarView *navigationBarView;
+}
 @end
 
 @implementation secondViewController
