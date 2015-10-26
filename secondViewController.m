@@ -7,8 +7,9 @@
 //
 
 #import "secondViewController.h"
+#import "NavigationBarView.h"
 
-@interface secondViewController ()
+@interface secondViewController () <NavigationBarViewDelegate>
 
 @end
 
@@ -73,6 +74,18 @@
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"ok ^^"                                             delegate:self cancelButtonTitle:@"닫기" otherButtonTitles:nil, nil];
     [alert show];
+}
+
+- (void)initNavigation:(NSInteger)navigationType
+{
+    for (UIView *subView in self.navigationController.navigationBar.subviews) {
+        if ([subView isKindOfClass:[NavigationBarView class]]) {
+            [subView removeFromSuperview];
+        }
+    }
+    
+    [self.navigationController.navigationBar addSubview:[self navigationBarView:1]];
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
 }
 
 /*
