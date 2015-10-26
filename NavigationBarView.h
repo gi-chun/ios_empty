@@ -8,19 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol CPNavigationBarViewDelegate;
+@protocol NavigationBarViewDelegate;
 
 @interface NavigationBarView : UIView
 
-@property (nonatomic, weak) id<CPNavigationBarViewDelegate> delegate;
+@property (nonatomic, weak) id<NavigationBarViewDelegate> delegate;
 
-- (id)initWithFrame:(CGRect)frame type:(CPNavigationType)type;
+- (id)initWithFrame:(CGRect)frame type:(NSInteger)type;
 - (void)setSearchTextField:(NSString *)keyword;
 - (NSString *)getSearchTextField;
 
 @end
 
-@protocol CPNavigationBarViewDelegate <NSObject>
+@protocol NavigationBarViewDelegate <NSObject>
 @optional
 - (void)didTouchMenuButton;
 - (void)didTouchBackButton;
