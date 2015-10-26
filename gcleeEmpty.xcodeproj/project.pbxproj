@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		282CB3161BDA2600000FF5C0 /* icon_navi_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 282CB3141BDA2600000FF5C0 /* icon_navi_home.png */; };
+		282CB3171BDA2600000FF5C0 /* icon_navi_home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 282CB3151BDA2600000FF5C0 /* icon_navi_home@2x.png */; };
+		282CB31A1BDA2626000FF5C0 /* icon_main_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 282CB3181BDA2626000FF5C0 /* icon_main_login.png */; };
+		282CB31B1BDA2626000FF5C0 /* icon_main_login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 282CB3191BDA2626000FF5C0 /* icon_main_login@2x.png */; };
 		288E45C01BD719640041AE50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 288E45BF1BD719640041AE50 /* main.m */; };
 		288E45C31BD719640041AE50 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 288E45C21BD719640041AE50 /* AppDelegate.m */; };
 		288E45CB1BD719640041AE50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 288E45CA1BD719640041AE50 /* Assets.xcassets */; };
 		288E45D91BD719640041AE50 /* gcleeEmptyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 288E45D81BD719640041AE50 /* gcleeEmptyTests.m */; };
-		288E45E51BD776D60041AE50 /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 288E45E41BD776D60041AE50 /* mainViewController.m */; settings = {ASSET_TAGS = (); }; };
+		288E45E51BD776D60041AE50 /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 288E45E41BD776D60041AE50 /* mainViewController.m */; };
+		28F7C0421BDDFB7000C53B86 /* secondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F7C0411BDDFB7000C53B86 /* secondViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +30,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		282CB3141BDA2600000FF5C0 /* icon_navi_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_navi_home.png; sourceTree = "<group>"; };
+		282CB3151BDA2600000FF5C0 /* icon_navi_home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_navi_home@2x.png"; sourceTree = "<group>"; };
+		282CB3181BDA2626000FF5C0 /* icon_main_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_main_login.png; sourceTree = "<group>"; };
+		282CB3191BDA2626000FF5C0 /* icon_main_login@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_main_login@2x.png"; sourceTree = "<group>"; };
 		288E45BB1BD719640041AE50 /* gcleeEmpty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gcleeEmpty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		288E45BF1BD719640041AE50 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		288E45C11BD719640041AE50 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -36,6 +45,8 @@
 		288E45DA1BD719640041AE50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		288E45E31BD776D60041AE50 /* mainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainViewController.h; sourceTree = "<group>"; };
 		288E45E41BD776D60041AE50 /* mainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainViewController.m; sourceTree = "<group>"; };
+		28F7C0401BDDFB7000C53B86 /* secondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = secondViewController.h; sourceTree = "<group>"; };
+		28F7C0411BDDFB7000C53B86 /* secondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = secondViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,11 +67,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		282CB3121BDA252B000FF5C0 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				282CB3131BDA2537000FF5C0 /* Images */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		282CB3131BDA2537000FF5C0 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				282CB3181BDA2626000FF5C0 /* icon_main_login.png */,
+				282CB3191BDA2626000FF5C0 /* icon_main_login@2x.png */,
+				282CB3141BDA2600000FF5C0 /* icon_navi_home.png */,
+				282CB3151BDA2600000FF5C0 /* icon_navi_home@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		288E45B21BD719640041AE50 = {
 			isa = PBXGroup;
 			children = (
 				288E45E31BD776D60041AE50 /* mainViewController.h */,
 				288E45E41BD776D60041AE50 /* mainViewController.m */,
+				28F7C0401BDDFB7000C53B86 /* secondViewController.h */,
+				28F7C0411BDDFB7000C53B86 /* secondViewController.m */,
 				288E45BD1BD719640041AE50 /* gcleeEmpty */,
 				288E45D71BD719640041AE50 /* gcleeEmptyTests */,
 				288E45BC1BD719640041AE50 /* Products */,
@@ -91,6 +123,7 @@
 		288E45BE1BD719640041AE50 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				282CB3121BDA252B000FF5C0 /* Resource */,
 				288E45BF1BD719640041AE50 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -185,7 +218,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				282CB3171BDA2600000FF5C0 /* icon_navi_home@2x.png in Resources */,
 				288E45CB1BD719640041AE50 /* Assets.xcassets in Resources */,
+				282CB3161BDA2600000FF5C0 /* icon_navi_home.png in Resources */,
+				282CB31B1BDA2626000FF5C0 /* icon_main_login@2x.png in Resources */,
+				282CB31A1BDA2626000FF5C0 /* icon_main_login.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28F7C0421BDDFB7000C53B86 /* secondViewController.m in Sources */,
 				288E45E51BD776D60041AE50 /* mainViewController.m in Sources */,
 				288E45C31BD719640041AE50 /* AppDelegate.m in Sources */,
 				288E45C01BD719640041AE50 /* main.m in Sources */,
