@@ -21,6 +21,7 @@
 		28EDAC281BDF6ED800024EF9 /* HttpError.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EDAC231BDF6ED800024EF9 /* HttpError.m */; };
 		28EDAC291BDF6ED800024EF9 /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EDAC251BDF6ED800024EF9 /* HttpRequest.m */; };
 		28EDAC2A1BDF6ED800024EF9 /* HttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EDAC271BDF6ED800024EF9 /* HttpResponse.m */; };
+		28EDAC301BDF709400024EF9 /* ToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EDAC2F1BDF709400024EF9 /* ToolBarView.m */; };
 		28F7C0421BDDFB7000C53B86 /* secondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F7C0411BDDFB7000C53B86 /* secondViewController.m */; };
 		28F7C0451BDE0FB000C53B86 /* NavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F7C0441BDE0FB000C53B86 /* NavigationBarView.m */; };
 		28F7C0481BDE189900C53B86 /* bg_notice_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 28F7C0461BDE189900C53B86 /* bg_notice_bar.png */; };
@@ -69,6 +70,8 @@
 		28EDAC251BDF6ED800024EF9 /* HttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequest.m; sourceTree = "<group>"; };
 		28EDAC261BDF6ED800024EF9 /* HttpResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpResponse.h; sourceTree = "<group>"; };
 		28EDAC271BDF6ED800024EF9 /* HttpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpResponse.m; sourceTree = "<group>"; };
+		28EDAC2E1BDF709400024EF9 /* ToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolBarView.h; sourceTree = "<group>"; };
+		28EDAC2F1BDF709400024EF9 /* ToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolBarView.m; sourceTree = "<group>"; };
 		28F7C0401BDDFB7000C53B86 /* secondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = secondViewController.h; sourceTree = "<group>"; };
 		28F7C0411BDDFB7000C53B86 /* secondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = secondViewController.m; sourceTree = "<group>"; };
 		28F7C0431BDE0FB000C53B86 /* NavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarView.h; sourceTree = "<group>"; };
@@ -136,6 +139,8 @@
 				28EDAC231BDF6ED800024EF9 /* HttpError.m */,
 				28EDAC241BDF6ED800024EF9 /* HttpRequest.h */,
 				28EDAC251BDF6ED800024EF9 /* HttpRequest.m */,
+				28EDAC2E1BDF709400024EF9 /* ToolBarView.h */,
+				28EDAC2F1BDF709400024EF9 /* ToolBarView.m */,
 				28EDAC261BDF6ED800024EF9 /* HttpResponse.h */,
 				28EDAC271BDF6ED800024EF9 /* HttpResponse.m */,
 				28EDAC1D1BDF694100024EF9 /* WebView.m */,
@@ -304,6 +309,7 @@
 			files = (
 				28EDAC281BDF6ED800024EF9 /* HttpError.m in Sources */,
 				28EDAC291BDF6ED800024EF9 /* HttpRequest.m in Sources */,
+				28EDAC301BDF709400024EF9 /* ToolBarView.m in Sources */,
 				28EDAC2A1BDF6ED800024EF9 /* HttpResponse.m in Sources */,
 				28F7C0421BDDFB7000C53B86 /* secondViewController.m in Sources */,
 				28EDAC211BDF694100024EF9 /* WebViewController.m in Sources */,
