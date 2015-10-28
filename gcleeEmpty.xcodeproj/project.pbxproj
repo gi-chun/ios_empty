@@ -13,6 +13,7 @@
 		282CB31B1BDA2626000FF5C0 /* icon_main_login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 282CB3191BDA2626000FF5C0 /* icon_main_login@2x.png */; };
 		2886A8D41BE082C8001B7657 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 2886A8D21BE082C8001B7657 /* Config.m */; };
 		2886A8D51BE082C8001B7657 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2886A8D31BE082C8001B7657 /* Config.plist */; };
+		2886A8D91BE09E8C001B7657 /* CPLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2886A8D81BE09E8C001B7657 /* CPLoadingView.m */; };
 		288E45C01BD719640041AE50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 288E45BF1BD719640041AE50 /* main.m */; };
 		288E45C31BD719640041AE50 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 288E45C21BD719640041AE50 /* AppDelegate.m */; };
 		288E45CB1BD719640041AE50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 288E45CA1BD719640041AE50 /* Assets.xcassets */; };
@@ -55,6 +56,8 @@
 		2886A8D21BE082C8001B7657 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
 		2886A8D31BE082C8001B7657 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		2886A8D61BE09119001B7657 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		2886A8D71BE09E8B001B7657 /* CPLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPLoadingView.h; sourceTree = "<group>"; };
+		2886A8D81BE09E8C001B7657 /* CPLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPLoadingView.m; sourceTree = "<group>"; };
 		288E45BB1BD719640041AE50 /* gcleeEmpty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gcleeEmpty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		288E45BF1BD719640041AE50 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		288E45C11BD719640041AE50 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -148,6 +151,8 @@
 				2886A8D21BE082C8001B7657 /* Config.m */,
 				2886A8D31BE082C8001B7657 /* Config.plist */,
 				28EDAC251BDF6ED800024EF9 /* HttpRequest.m */,
+				2886A8D71BE09E8B001B7657 /* CPLoadingView.h */,
+				2886A8D81BE09E8C001B7657 /* CPLoadingView.m */,
 				28EDAC2E1BDF709400024EF9 /* ToolBarView.h */,
 				28EDAC2F1BDF709400024EF9 /* ToolBarView.m */,
 				28EDAC261BDF6ED800024EF9 /* HttpResponse.h */,
@@ -320,6 +325,7 @@
 			files = (
 				28EDAC281BDF6ED800024EF9 /* HttpError.m in Sources */,
 				2886A8D41BE082C8001B7657 /* Config.m in Sources */,
+				2886A8D91BE09E8C001B7657 /* CPLoadingView.m in Sources */,
 				28EDAC291BDF6ED800024EF9 /* HttpRequest.m in Sources */,
 				28EDAC301BDF709400024EF9 /* ToolBarView.m in Sources */,
 				28EDAC2A1BDF6ED800024EF9 /* HttpResponse.m in Sources */,

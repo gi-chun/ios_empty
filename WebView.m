@@ -9,7 +9,7 @@
 #import "ToolBarView.h"
 //#import "CPCommonInfo.h"
 //#import "CPProductOption.h"
-//#import "CPLoadingView.h"
+#import "CPLoadingView.h"
 //#import "CPErrorView.h"
 //#import "SBJSON.h"
 //#import "RegexKitLite.h"
@@ -36,7 +36,7 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
     
 //    UIButton *toggleButton;
 
-    //CPLoadingView *loadingView;
+    CPLoadingView *loadingView;
     
     UIScrollView *currentScrollView;
     //PullToRefreshView *pull;
@@ -262,8 +262,8 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 	
 	UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
 	btn.frame = _refusedPushAgreeView.bounds;
-	[btn setImage:[UIImage imageWithColor:UIColorFromRGBA(0x000000, 0.3) width:btn.frame.size.width height:btn.frame.size.height] forState:UIControlStateHighlighted];
-	[btn addTarget:self action:@selector(onClickRefusedPushAgreeButton:) forControlEvents:UIControlEventTouchUpInside];
+	[btn setImage:[UIImage imageWithColor:UIColorFromRGB(0x000000) width:btn.frame.size.width height:btn.frame.size.height] forState:UIControlStateHighlighted];
+    [btn addTarget:self action:@selector(onClickRefusedPushAgreeButton:) forControlEvents:UIControlEventTouchUpInside];
 	[_refusedPushAgreeView addSubview:btn];
 	
 	[_refusedPushAgreeView setHidden:YES];
