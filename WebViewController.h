@@ -1,14 +1,13 @@
 //
-//  CPWebViewController.h
-//  11st
+//  WebViewController.h
 //
-//  Created by spearhead on 2015. 5. 19..
-//  Copyright (c) 2015년 Commerce Planet. All rights reserved.
+//  Created by gclee on 2015. 10. 28..
+//  Copyright (c) 2015년 gclee. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@class CPWebView;
+@class WebView;
 
 typedef enum {
     CPWebviewControllerFullScreenModeNone,
@@ -16,9 +15,9 @@ typedef enum {
     CPWebviewControllerFullScreenModeOff
 } CPWebviewControllerFullScreenMode;
 
-@interface CPWebViewController : UIViewController
+@interface WebViewController : UIViewController
 
-@property (nonatomic, strong) CPWebView *webView;
+@property (nonatomic, strong) WebView *webView;
 
 - (id)initWithUrl:(NSString *)url;
 - (id)initWithUrl:(NSString *)url isPop:(BOOL)isPop;

@@ -1,81 +1,69 @@
 //
-//  CPWebViewController.m
-//  11st
+//  WebViewController.m
 //
-//  Created by spearhead on 2015. 5. 19..
-//  Copyright (c) 2015년 Commerce Planet. All rights reserved.
+//  Created by gclee on 2015. 10. 28..
+//  Copyright (c) 2015년 gclee. All rights reserved.
 //
 
-#import "CPWebViewController.h"
-#import "CPMartSearchViewController.h"
-#import "CPSearchViewController.h"
-#import "CPPopupViewController.h"
-#import "CPContactViewController.h"
-#import "CPShareViewController.h"
-#import "CPSnapshotViewController.h"
-#import "CPSnapshotListViewController.h"
-#import "CPProductListViewController.h"
-#import "PhotoReviewController.h"
-#import "SetupController.h"
-#import "SetupNotifyController.h"
-#import "SetupOtpController.h"
-#import "CPWebView.h"
-#import "CPPopupBrowserView.h"
-#import "CPNavigationBarView.h"
-#import "CPVideoPopupView.h"
-#import "CPVideoInfo.h"
-#import "CPSchemeManager.h"
-#import "CPWebView.h"
-#import "CPCommonInfo.h"
-#import "CPNavigationBarView.h"
-#import "CPMartSearchViewController.h"
-#import "CPMenuViewController.h"
-#import "CPDeveloperInfo.h"
-#import "CPCategoryMainViewController.h"
-#import "CPCategoryDetailViewController.h"
-#import "CPProductListViewController.h"
-#import "CPProductViewController.h"
-#import "CPHomeViewController.h"
-
-#import "Modules.h"
-#import "UIViewController+MMDrawerController.h"
-#import "AccessLog.h"
-#import "RegexKitLite.h"
-#import "ShakeModule.h"
-#import "ImageViewer.h"
-#import "ActionSheet.h"
-#import "ShakeModule.h"
-#import "SBJSON.h"
-#import "NSString+SBJSON.h"
-#import "LocalNotification.h"
-
-#import <MediaPlayer/MediaPlayer.h>
-
-@interface CPWebViewController () <CPWebViewDelegate,
-                                   CPSchemeManagerDelegate,
-                                   CPNavigationBarViewDelegate,
-                                   CPSearchViewControllerDelegate,
-                                   CPMartSearchViewControllerDelegate,
-                                   CPPopupViewControllerDelegate,
-                                   CPContactViewControllerDelegate,
-                                   CPPopupBrowserViewDelegate,
-                                   CPVideoPopupViewDelegate,
-                                   SetupControllerDelegate,
-                                   ShakeModuleDelegate>
+#import "WebViewController.h"
+//#import "CPMartSearchViewController.h"
+//#import "CPSearchViewController.h"
+//#import "CPPopupViewController.h"
+//#import "CPContactViewController.h"
+//#import "CPShareViewController.h"
+//#import "CPSnapshotViewController.h"
+//#import "CPSnapshotListViewController.h"
+//#import "CPProductListViewController.h"
+//#import "PhotoReviewController.h"
+//#import "SetupController.h"
+//#import "SetupNotifyController.h"
+//#import "SetupOtpController.h"
+//#import "CPWebView.h"
+//#import "CPPopupBrowserView.h"
+//#import "CPNavigationBarView.h"
+//#import "CPVideoPopupView.h"
+//#import "CPVideoInfo.h"
+//#import "CPSchemeManager.h"
+#import "WebView.h"
+//#import "CPCommonInfo.h"
+#import "NavigationBarView.h"
+//#import "CPMartSearchViewController.h"
+//#import "CPMenuViewController.h"
+//#import "CPDeveloperInfo.h"
+//#import "CPCategoryMainViewController.h"
+//#import "CPCategoryDetailViewController.h"
+//#import "CPProductListViewController.h"
+//#import "CPProductViewController.h"
+//#import "CPHomeViewController.h"
+//
+//#import "Modules.h"
+//#import "UIViewController+MMDrawerController.h"
+//#import "AccessLog.h"
+//#import "RegexKitLite.h"
+//#import "ShakeModule.h"
+//#import "ImageViewer.h"
+//#import "ActionSheet.h"
+//#import "ShakeModule.h"
+//#import "SBJSON.h"
+//#import "NSString+SBJSON.h"
+//#import "LocalNotification.h"
+//
+//#import <MediaPlayer/MediaPlayer.h>
+@interface WebViewController () <WebViewDelegate>
 {
     NSString *webViewUrl;
     NSURLRequest *webViewRequest;
     
     BOOL isSearchText;
     
-    CPPopupBrowserView *popUpBrowserView;
+    //CPPopupBrowserView *popUpBrowserView;
     
     NSString *zoomViewerScheme;
     
-    ShakeModule *shakeModule;
+    //ShakeModule *shakeModule;
     
-    CPNavigationBarView *navigationBarView;
-    CPWebviewControllerFullScreenMode fullScreenMode;
+    NavigationBarView *navigationBarView;
+    //CPWebviewControllerFullScreenMode fullScreenMode;
     
     BOOL isSkipParent;
     BOOL isIgnore;
@@ -86,7 +74,7 @@
 
 @end
 
-@implementation CPWebViewController
+@implementation WebViewController
 
 - (id)initWithUrl:(NSString *)url
 {
@@ -109,7 +97,7 @@
 - (id)initWithUrl:(NSString *)url isPop:(BOOL)isPop isIgnore:(BOOL)ignore
 {
     if (self = [self initWithUrl:url]) {
-        isSkipParent = isPop; //백버튼을 눌렀을때 CPWebViewController 패스
+        isSkipParent = isPop; //백버튼을 눌렀을때 WebViewController 패스
         isIgnore = ignore; //상품상세 url이 들어왔을 경우 무한루프 방지
     }
     
@@ -119,7 +107,7 @@
 - (id)initWithUrl:(NSString *)url isPop:(BOOL)isPop isIgnore:(BOOL)ignore isProduct:(BOOL)product
 {
     if (self = [self initWithUrl:url]) {
-        isSkipParent = isPop; //백버튼을 눌렀을때 CPWebViewController 패스
+        isSkipParent = isPop; //백버튼을 눌렀을때 WebViewController 패스
         isIgnore = ignore; //상품상세 url이 들어왔을 경우 무한루프 방지
         isProduct = product; //상품상세 native에서 들어왔을 경우 웹뷰내에 상품상세url이 호출되면 navigation pop (ex. 주문에서 history back)
     }
@@ -147,7 +135,7 @@
     
     // Navigation : viewDidLoad에서 한번, viewDidAppear에서 한번 더 한다.
     [self.navigationItem setHidesBackButton:YES];
-    [self.navigationController.navigationBar addSubview:[self navigationBarView:[[CPCommonInfo sharedInfo] currentNavigationType]]];
+    [self.navigationController.navigationBar addSubview:[self navigationBarView:1]];
 
     // Layout
     [self initLayout];
@@ -228,9 +216,9 @@
     }
 }
 
-- (CPNavigationBarView *)navigationBarView:(CPNavigationType)navigationType
+- (NavigationBarView *)navigationBarView:(NSInteger)navigationType
 {
-    navigationBarView = [[CPNavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, 44) type:navigationType];
+    navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, 44) type:navigationType];
     [navigationBarView setDelegate:self];
 
     

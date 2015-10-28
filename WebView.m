@@ -6,7 +6,7 @@
 //
 
 #import "WebView.h"
-//#import "CPToolBarView.h"
+#import "ToolBarView.h"
 //#import "CPCommonInfo.h"
 //#import "CPProductOption.h"
 //#import "CPLoadingView.h"
@@ -25,28 +25,24 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 
 @interface WebView () <UIWebViewDelegate,
                         UIScrollViewDelegate,
-                        CPToolBarViewDelegate,
-						CPProductOptionDelegate,
-                        CPErrorViewDelegate,
-                        PullToRefreshViewDelegate,
-						HttpRequestDelegate>
+                        ToolBarViewDelegate>
 {
-    CPToolBarView *toolBarView;
+    ToolBarView *toolBarView;
     
-	CPProductOption	*productView;
+	//CPProductOption	*productView;
     
     CGFloat buttonWidth;
     CGFloat buttonHeight;
     
 //    UIButton *toggleButton;
 
-    CPLoadingView *loadingView;
+    //CPLoadingView *loadingView;
     
     UIScrollView *currentScrollView;
-    PullToRefreshView *pull;
+    //PullToRefreshView *pull;
     BOOL isPullToRefresh;
     
-    CPErrorView *errorView;
+    //CPErrorView *errorView;
     
     BOOL isSubWebView;
 	BOOL isToolBarAnimation;
@@ -105,13 +101,13 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
                 }
             }
             
-            pull = [[PullToRefreshView alloc] initWithScrollView:currentScrollView];
-            [pull setDelegate:self];
-            [currentScrollView addSubview:pull];
+//            pull = [[PullToRefreshView alloc] initWithScrollView:currentScrollView];
+//            [pull setDelegate:self];
+//            [currentScrollView addSubview:pull];
         }
         
         // 툴바
-        toolBarView = [[CPToolBarView alloc] initWithFrame:CGRectZero toolbarType:CPToolbarTypeWeb];
+        toolBarView = [[ToolBarView alloc] initWithFrame:CGRectZero toolbarType:1];
         [toolBarView setDelegate:self];
         [toolBarView setHidden:YES];
         [self addSubview:toolBarView];
@@ -135,7 +131,7 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
         [_zoomViewerButton setImage:[UIImage imageNamed:@"icon_zoomviewer_selected.png"] forState:UIControlStateHighlighted];
         [_zoomViewerButton addTarget:self action:@selector(touchZoomViewerButton) forControlEvents:UIControlEventTouchUpInside];
         [_zoomViewerButton setHidden:YES];
-        [_zoomViewerButton setAccessibilityLabel:@"상품 확대보기" Hint:@"상품 확대보기로 이동합니다"];
+        //[_zoomViewerButton setAccessibilityLabel:@"상품 확대보기" Hint:@"상품 확대보기로 이동합니다"];
         [self addSubview:_zoomViewerButton];
         
         // 바로마트버튼
