@@ -17,6 +17,13 @@
 		2886A8E01BE0B8DF001B7657 /* CPBaseImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2886A8DB1BE0B8DF001B7657 /* CPBaseImageView.m */; };
 		2886A8E11BE0B8DF001B7657 /* CPBlurImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2886A8DD1BE0B8DF001B7657 /* CPBlurImageView.m */; };
 		2886A8E21BE0B8DF001B7657 /* CPThumbnailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2886A8DF1BE0B8DF001B7657 /* CPThumbnailView.m */; };
+		2886A8EE1BE0BBDC001B7657 /* UIImage_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2886A8E41BE0BBDC001B7657 /* UIImage_Extensions.m */; };
+		2886A8EF1BE0BBDC001B7657 /* UIImage+ImageRenderToColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2886A8E61BE0BBDC001B7657 /* UIImage+ImageRenderToColor.m */; };
+		2886A8F01BE0BBDC001B7657 /* UIImage+ImageWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2886A8E81BE0BBDC001B7657 /* UIImage+ImageWithColor.m */; };
+		2886A8F11BE0BBDC001B7657 /* UIImageExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2886A8EA1BE0BBDC001B7657 /* UIImageExt.m */; };
+		2886A8F21BE0BBDC001B7657 /* UIViewController+ConfigureTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2886A8EB1BE0BBDC001B7657 /* UIViewController+ConfigureTableView.m */; };
+		2886A8F31BE0BBDC001B7657 /* UIViewController+PiShowBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2886A8EC1BE0BBDC001B7657 /* UIViewController+PiShowBanner.m */; };
+		2886A8F41BE0BBDC001B7657 /* UIViewController+SwipeRightToPop.m in Sources */ = {isa = PBXBuildFile; fileRef = 2886A8ED1BE0BBDC001B7657 /* UIViewController+SwipeRightToPop.m */; };
 		288E45C01BD719640041AE50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 288E45BF1BD719640041AE50 /* main.m */; };
 		288E45C31BD719640041AE50 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 288E45C21BD719640041AE50 /* AppDelegate.m */; };
 		288E45CB1BD719640041AE50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 288E45CA1BD719640041AE50 /* Assets.xcassets */; };
@@ -67,6 +74,17 @@
 		2886A8DD1BE0B8DF001B7657 /* CPBlurImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPBlurImageView.m; sourceTree = "<group>"; };
 		2886A8DE1BE0B8DF001B7657 /* CPThumbnailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPThumbnailView.h; sourceTree = "<group>"; };
 		2886A8DF1BE0B8DF001B7657 /* CPThumbnailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPThumbnailView.m; sourceTree = "<group>"; };
+		2886A8E31BE0BBDC001B7657 /* UIImage_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImage_Extensions.h; sourceTree = "<group>"; };
+		2886A8E41BE0BBDC001B7657 /* UIImage_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImage_Extensions.m; sourceTree = "<group>"; };
+		2886A8E51BE0BBDC001B7657 /* UIImage+ImageRenderToColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageRenderToColor.h"; sourceTree = "<group>"; };
+		2886A8E61BE0BBDC001B7657 /* UIImage+ImageRenderToColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageRenderToColor.m"; sourceTree = "<group>"; };
+		2886A8E71BE0BBDC001B7657 /* UIImage+ImageWithColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithColor.h"; sourceTree = "<group>"; };
+		2886A8E81BE0BBDC001B7657 /* UIImage+ImageWithColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithColor.m"; sourceTree = "<group>"; };
+		2886A8E91BE0BBDC001B7657 /* UIImageExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageExt.h; sourceTree = "<group>"; };
+		2886A8EA1BE0BBDC001B7657 /* UIImageExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageExt.m; sourceTree = "<group>"; };
+		2886A8EB1BE0BBDC001B7657 /* UIViewController+ConfigureTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ConfigureTableView.m"; sourceTree = "<group>"; };
+		2886A8EC1BE0BBDC001B7657 /* UIViewController+PiShowBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PiShowBanner.m"; sourceTree = "<group>"; };
+		2886A8ED1BE0BBDC001B7657 /* UIViewController+SwipeRightToPop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SwipeRightToPop.m"; sourceTree = "<group>"; };
 		288E45BB1BD719640041AE50 /* gcleeEmpty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gcleeEmpty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		288E45BF1BD719640041AE50 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		288E45C11BD719640041AE50 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -163,6 +181,17 @@
 				2886A8DC1BE0B8DF001B7657 /* CPBlurImageView.h */,
 				2886A8DD1BE0B8DF001B7657 /* CPBlurImageView.m */,
 				2886A8DE1BE0B8DF001B7657 /* CPThumbnailView.h */,
+				2886A8E31BE0BBDC001B7657 /* UIImage_Extensions.h */,
+				2886A8E41BE0BBDC001B7657 /* UIImage_Extensions.m */,
+				2886A8E51BE0BBDC001B7657 /* UIImage+ImageRenderToColor.h */,
+				2886A8E61BE0BBDC001B7657 /* UIImage+ImageRenderToColor.m */,
+				2886A8E71BE0BBDC001B7657 /* UIImage+ImageWithColor.h */,
+				2886A8E81BE0BBDC001B7657 /* UIImage+ImageWithColor.m */,
+				2886A8E91BE0BBDC001B7657 /* UIImageExt.h */,
+				2886A8EA1BE0BBDC001B7657 /* UIImageExt.m */,
+				2886A8EB1BE0BBDC001B7657 /* UIViewController+ConfigureTableView.m */,
+				2886A8EC1BE0BBDC001B7657 /* UIViewController+PiShowBanner.m */,
+				2886A8ED1BE0BBDC001B7657 /* UIViewController+SwipeRightToPop.m */,
 				2886A8DF1BE0B8DF001B7657 /* CPThumbnailView.m */,
 				2886A8D31BE082C8001B7657 /* Config.plist */,
 				28EDAC251BDF6ED800024EF9 /* HttpRequest.m */,
@@ -343,16 +372,23 @@
 				2886A8D91BE09E8C001B7657 /* CPLoadingView.m in Sources */,
 				28EDAC291BDF6ED800024EF9 /* HttpRequest.m in Sources */,
 				28EDAC301BDF709400024EF9 /* ToolBarView.m in Sources */,
+				2886A8F01BE0BBDC001B7657 /* UIImage+ImageWithColor.m in Sources */,
 				2886A8E11BE0B8DF001B7657 /* CPBlurImageView.m in Sources */,
 				28EDAC2A1BDF6ED800024EF9 /* HttpResponse.m in Sources */,
 				28F7C0421BDDFB7000C53B86 /* secondViewController.m in Sources */,
+				2886A8F11BE0BBDC001B7657 /* UIImageExt.m in Sources */,
 				28EDAC211BDF694100024EF9 /* WebViewController.m in Sources */,
 				28F7C0451BDE0FB000C53B86 /* NavigationBarView.m in Sources */,
 				288E45E51BD776D60041AE50 /* mainViewController.m in Sources */,
+				2886A8F41BE0BBDC001B7657 /* UIViewController+SwipeRightToPop.m in Sources */,
 				28EDAC201BDF694100024EF9 /* WebView.m in Sources */,
+				2886A8F31BE0BBDC001B7657 /* UIViewController+PiShowBanner.m in Sources */,
+				2886A8EF1BE0BBDC001B7657 /* UIImage+ImageRenderToColor.m in Sources */,
 				288E45C31BD719640041AE50 /* AppDelegate.m in Sources */,
 				2886A8E01BE0B8DF001B7657 /* CPBaseImageView.m in Sources */,
 				2886A8E21BE0B8DF001B7657 /* CPThumbnailView.m in Sources */,
+				2886A8EE1BE0BBDC001B7657 /* UIImage_Extensions.m in Sources */,
+				2886A8F21BE0BBDC001B7657 /* UIViewController+ConfigureTableView.m in Sources */,
 				288E45C01BD719640041AE50 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

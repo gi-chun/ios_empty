@@ -7,6 +7,7 @@
 
 #import "WebView.h"
 #import "ToolBarView.h"
+#import "UIImage+ImageWithColor.h"
 //#import "CPCommonInfo.h"
 //#import "CPProductOption.h"
 #import "CPLoadingView.h"
@@ -260,14 +261,15 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 	textLabel.textAlignment = NSTextAlignmentLeft;
 	[_refusedPushAgreeView addSubview:textLabel];
 	
-	UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-	btn.frame = _refusedPushAgreeView.bounds;
-	[btn setImage:[UIImage imageWithColor:UIColorFromRGB(0x000000) width:btn.frame.size.width height:btn.frame.size.height] forState:UIControlStateHighlighted];
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = _refusedPushAgreeView.bounds;
+    //    [btn setImage:[UIImage imageWithColor:UIColorFromRGB(0x000000) width:btn.frame.size.width height:btn.frame.size.height] forState:UIControlStateHighlighted];
+    [btn setImage:[UIImage imageWithColor:UIColorFromRGB(0x000000) size:btn.frame.size] forState:UIControlStateHighlighted];
     [btn addTarget:self action:@selector(onClickRefusedPushAgreeButton:) forControlEvents:UIControlEventTouchUpInside];
-	[_refusedPushAgreeView addSubview:btn];
-	
-	[_refusedPushAgreeView setHidden:YES];
-	[_refusedPushAgreeView setAlpha:0.f];
+    [_refusedPushAgreeView addSubview:btn];
+    
+    [_refusedPushAgreeView setHidden:YES];
+    [_refusedPushAgreeView setAlpha:0.f];
 }
 
 - (void)updateFrame
@@ -288,17 +290,17 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 
 - (void)setForwardButton:(BOOL)enable
 {
-    UIButton *forwardButton = (UIButton *)[toolBarView viewWithTag:CPToolBarButtonTypeForward];
+    UIButton *forwardButton = (UIButton *)[toolBarView viewWithTag:1];
     [toolBarView setButtonProperties:forwardButton enable:enable];
 }
 
 #pragma mark - PullToRefreshViewDelegate
 
--(void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view
-{
-    isPullToRefresh = YES;
-    [self reload];
-}
+//-(void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view
+//{
+//    isPullToRefresh = YES;
+//    [self reload];
+//}
 
 #pragma mark - UIWebViewDelegate
 
@@ -325,7 +327,8 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
     if ([self isMatchedUrl:url]) {
         //네비게이션 바 세팅
         if ([self.delegate respondsToSelector:@selector(initNavigation:)] && [self isNeedLoadingUrl:url]) {
-            [self.delegate initNavigation:[Modules isMatchedGNBUrl:url]];
+            //[self.delegate initNavigation:[Modules isMatchedGNBUrl:url]];
+            [self.delegate initNavigation:1];
         }
         
         if ([self.delegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:)]) {
@@ -333,7 +336,8 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
             BOOL isShouldLoad = [self.delegate webView:self shouldStartLoadWithRequest:request];
             
             if (isShouldLoad) {
-                BOOL isHomeMenu = [CPCommonInfo isHomeMenuUrl:url];
+                //BOOL isHomeMenu = [CPCommonInfo isHomeMenuUrl:url];
+                BOOL isHomeMenu = true;
                 
                 if (!loadingView.isAnimating && !isHomeMenu && !isPullToRefresh && [self isNeedLoadingUrl:url]) {
                     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -361,52 +365,54 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
     //이벤트탭 혜택존 http://m.11st.co.kr/MW/PerInfor/benefitMemberShop.tmall#type=0
     //정규표현식으로 변경
     
-    if ([url.lowercaseString isMatchedByRegex:@"#[a-z]+"]) {
-        return NO;
-    }
+//    if ([url.lowercaseString isMatchedByRegex:@"#[a-z]+"]) {
+//        return NO;
+//    }
     
     return YES;
 }
 
 - (BOOL)isMatchedUrl:(NSString *)url
 {
-    if ([url isMatchedByRegex:@"/a.st?"] || [url isMatchedByRegex:@"/app.st?"]) {
-        return NO;
-    }
-    
-    if ([url isMatchedByRegex:@"/api.recopick.com"]) {
-        return NO;
-    }
-    
-    if ([url isMatchedByRegex:@"http://11st.kr/html/common/googleAd/ifrm_ga.html"]) {
-        return NO;
-    }
-    
-//    if ([url.lowercaseString isMatchedByRegex:@"#[a-z]+"]) {
-//        //#dummyArea 장바구니 옵션변경
-//        //#s_filter 검색
-//        //#complete 주문완료후 뒤로가기 버튼
-//        //#sec 이벤트
-//        //정규표현식으로 변경
-//        //        NSLog(@"isMatchedByRegex url : %@", url);        
+//    if ([url isMatchedByRegex:@"/a.st?"] || [url isMatchedByRegex:@"/app.st?"]) {
 //        return NO;
 //    }
-    
-    if ([url isMatchedByRegex:@"^(https?|mailto|mecard|geo|smsto):.*"]) {
-        return YES;
-    }
-    
-    return NO;
+//    
+//    if ([url isMatchedByRegex:@"/api.recopick.com"]) {
+//        return NO;
+//    }
+//    
+//    if ([url isMatchedByRegex:@"http://11st.kr/html/common/googleAd/ifrm_ga.html"]) {
+//        return NO;
+//    }
+//    
+////    if ([url.lowercaseString isMatchedByRegex:@"#[a-z]+"]) {
+////        //#dummyArea 장바구니 옵션변경
+////        //#s_filter 검색
+////        //#complete 주문완료후 뒤로가기 버튼
+////        //#sec 이벤트
+////        //정규표현식으로 변경
+////        //        NSLog(@"isMatchedByRegex url : %@", url);        
+////        return NO;
+////    }
+//    
+//    if ([url isMatchedByRegex:@"^(https?|mailto|mecard|geo|smsto):.*"]) {
+//        return YES;
+//    }
+//    
+//    return NO;
+    return YES;
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webview
 {
 	[self hideRefusedPushAgreeView];
 	
-	AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-	[app addRefusedPushAgreeCount:webview.request.URL.absoluteString];
+//	AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//	[app addRefusedPushAgreeCount:webview.request.URL.absoluteString];
 	
-    UIButton *reloadButton = (UIButton *)[toolBarView viewWithTag:CPToolBarButtonTypeReload];
+    //UIButton *reloadButton = (UIButton *)[toolBarView viewWithTag:CPToolBarButtonTypeReload];
+    UIButton *reloadButton = (UIButton *)[toolBarView viewWithTag:2];
     [toolBarView setReloadButtonProperties:reloadButton isReload:YES];
     
 //    NSLog(@"webViewDidStartLoad:%@", webview.request.URL.absoluteString);
@@ -425,12 +431,12 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 //    UIButton *backButton = (UIButton *)[toolBarView viewWithTag:CPToolBarButtonTypeBack];
 //    [toolBarView setButtonProperties:backButton enable:[self.webView canGoBack]];
     
-    UIButton *forwardButton = (UIButton *)[toolBarView viewWithTag:CPToolBarButtonTypeForward];
+    UIButton *forwardButton = (UIButton *)[toolBarView viewWithTag:1];
     if (self.currentSubWebViewIndx == self.maxSubWebViewIndx) {
         [toolBarView setButtonProperties:forwardButton enable:[self.webView canGoForward]];
     }
     
-    UIButton *reloadButton = (UIButton *)[toolBarView viewWithTag:CPToolBarButtonTypeReload];
+    UIButton *reloadButton = (UIButton *)[toolBarView viewWithTag:2];
     [toolBarView setReloadButtonProperties:reloadButton isReload:NO];
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -440,12 +446,13 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 //    NSLog(@"webViewDidFinishLoad:%@", url);
     
     // pullToRefresh finish
-    [pull finishedLoading];
+    //[pull finishedLoading];
     isPullToRefresh = NO;
     
-    if ([Modules isMatchedProductUrl:url]) {
-        self.isProductDidLoad = NO;
-    }
+//    if ([Modules isMatchedProductUrl:url]) {
+//        self.isProductDidLoad = NO;
+//    }
+    self.isProductDidLoad = NO;
     
     self.isExistsSubWebView = YES;
     
@@ -633,10 +640,10 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 {
     [self.webView.scrollView setContentOffset:CGPointZero animated:YES];
     
-    if ([self.webView.request.URL.absoluteString hasPrefix:@"http://m.11st.co.kr/MW/Search/searchProduct.tmall"]) {
-        //AccessLog - 검색창 탑 버튼
-        [[AccessLog sharedInstance] sendAccessLogWithCode:@"ASRPF01"];
-    }
+//    if ([self.webView.request.URL.absoluteString hasPrefix:@"http://m.11st.co.kr/MW/Search/searchProduct.tmall"]) {
+//        //AccessLog - 검색창 탑 버튼
+//        [[AccessLog sharedInstance] sendAccessLogWithCode:@"ASRPF01"];
+//    }
 }
 
 - (void)touchZoomViewerButton
@@ -648,15 +655,15 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 
 - (void)touchBaroMartButton
 {
-    SBJSON *parser = [[SBJSON alloc] init];
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *script = [userDefaults objectForKey:@"offeringMapScript"];
-    NSDictionary *mapScript = script ? [parser objectWithString:script] : nil;
-    
-    if (mapScript) {
-        [self execute:[mapScript objectForKey:@"script"]];
-    }
+//    SBJSON *parser = [[SBJSON alloc] init];
+//    
+//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//    NSString *script = [userDefaults objectForKey:@"offeringMapScript"];
+//    NSDictionary *mapScript = script ? [parser objectWithString:script] : nil;
+//    
+//    if (mapScript) {
+//        [self execute:[mapScript objectForKey:@"script"]];
+//    }
 }
 
 //- (void)touchToggleButton
@@ -746,7 +753,7 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 - (void)didTouchToolBarButton:(UIButton *)button buttonInfo:(NSDictionary *)buttonInfo
 {
     switch (button.tag) {
-        case CPToolBarButtonTypeBack:
+        case 1:
             if ([button isEnabled]) {
                 //히스토리가 없을 경우 홈으로
                 if ([self.webView canGoBack]) {
@@ -763,7 +770,7 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
                 }
             }
             break;
-        case CPToolBarButtonTypeForward:
+        case 2:
             if ([button isEnabled]) {
                 if (self.currentSubWebViewIndx < self.maxSubWebViewIndx && ![self.webView canGoForward]) {
                     if ([self.delegate respondsToSelector:@selector(didTouchToolBarButton:)]) {
@@ -776,7 +783,7 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
                         
                         //웹페이지 내부링크(#)가 포함된 URL은 canGoForward가 YES 인데 히스토리 스택에는 없기 때문에 이동이 안된다(iOS bug?)
                         if (self.currentSubWebViewIndx == self.maxSubWebViewIndx) {
-                            UIButton *forwardButton = (UIButton *)[toolBarView viewWithTag:CPToolBarButtonTypeForward];
+                            UIButton *forwardButton = (UIButton *)[toolBarView viewWithTag:2];
                             [toolBarView setButtonProperties:forwardButton enable:NO];
                         }
                     }
@@ -788,7 +795,7 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
                 }
             }
             break;
-        case CPToolBarButtonTypeReload:
+        case 3:
         {
             if ([self.webView isLoading]) {
                 [self.webView stopLoading];
@@ -808,10 +815,10 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
             }
             break;
         }
-        case CPToolBarButtonTypeTop:
+        case 4:
             [self touchTopButton];
             break;
-		case CPToolBarButtonTypeHome:
+		case 5:
         default:
             if ([self.delegate respondsToSelector:@selector(didTouchToolBarButton:)]) {
                 [self.delegate didTouchToolBarButton:button];
@@ -840,7 +847,7 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 
 - (void)didTouchRetryButton
 {
-    [errorView removeFromSuperview];
+    //[errorView removeFromSuperview];
     
     [self reload];
 }
@@ -864,51 +871,51 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 	
 	CGRect viewFrame = [self frame];
 	
-	productView = [[CPProductOption alloc] initWithToolbarView:toolBarView parentView:self];
-	[productView setExecuteWebView:self];
-	[self addSubview:productView];
-	productView.alpha = 0.f;
-	
-	//상단에 보여줄 옵션 안내문구
-	if (NO == [[NSUserDefaults standardUserDefaults] boolForKey:@"drawerGuideView"])
-	{
-		UIImage *imgProductOptionGuide = [UIImage imageNamed:@"option_balloon"];
-		UIImageView *guideView = [[UIImageView alloc] initWithFrame:CGRectMake((viewFrame.size.width/2)-(imgProductOptionGuide.size.width/2) ,
-																			   productView.frame.origin.y - imgProductOptionGuide.size.height,
-																			   imgProductOptionGuide.size.width,
-																			   imgProductOptionGuide.size.height)];
-		guideView.image = imgProductOptionGuide;
-		[self addSubview:guideView];
-		guideView.alpha = 0.f;
-		
-		[productView setGuideView:guideView];
-		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"drawerGuideView"];
-	}
+//	productView = [[CPProductOption alloc] initWithToolbarView:toolBarView parentView:self];
+//	[productView setExecuteWebView:self];
+//	[self addSubview:productView];
+//	productView.alpha = 0.f;
+//	
+//	//상단에 보여줄 옵션 안내문구
+//	if (NO == [[NSUserDefaults standardUserDefaults] boolForKey:@"drawerGuideView"])
+//	{
+//		UIImage *imgProductOptionGuide = [UIImage imageNamed:@"option_balloon"];
+//		UIImageView *guideView = [[UIImageView alloc] initWithFrame:CGRectMake((viewFrame.size.width/2)-(imgProductOptionGuide.size.width/2) ,
+//																			   productView.frame.origin.y - imgProductOptionGuide.size.height,
+//																			   imgProductOptionGuide.size.width,
+//																			   imgProductOptionGuide.size.height)];
+//		guideView.image = imgProductOptionGuide;
+//		[self addSubview:guideView];
+//		guideView.alpha = 0.f;
+//		
+//		[productView setGuideView:guideView];
+//		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"drawerGuideView"];
+//	}
 	
 	//툴바를 항상 앞으로 놓는다.
 	[self bringSubviewToFront:toolBarView];
 
 	//에니메이션
-	[UIView animateWithDuration:0.5f animations:^{
-		productView.alpha = 1.f;
-	} completion:^(BOOL finished) {
-	}];
+//	[UIView animateWithDuration:0.5f animations:^{
+//		productView.alpha = 1.f;
+//	} completion:^(BOOL finished) {
+//	}];
 }
 
 - (void)closeProductOption
 {
-	if (productView) {
-		[productView closeDrawer];
-	}
+//	if (productView) {
+//		[productView closeDrawer];
+//	}
 }
 
 - (void)destoryProductOption
 {
-	for (UIView *view in self.subviews) {
-		if ([view isKindOfClass:[CPProductOption class]]) {
-			[view removeFromSuperview];
-		}
-	}
+//	for (UIView *view in self.subviews) {
+//		if ([view isKindOfClass:[CPProductOption class]]) {
+//			[view removeFromSuperview];
+//		}
+//	}
 }
 
 #pragma mark - Override Methods
@@ -940,8 +947,8 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 #pragma mark - refusedPushAgreeView Methods.
 - (void)showRefusedPushAgreeView
 {
-	AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-	if (![app enableRefusedRushAgree]) return;
+//	AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//	if (![app enableRefusedRushAgree]) return;
 	
 	if (_refusedPushAgreeView.alpha > 0.f) return;
 	
@@ -966,85 +973,85 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 
 - (void)onClickRefusedPushAgreeButton:(id)sender
 {
-	AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-	[app disableRefusedPushAgreeView];
-	
-	[self hideRefusedPushAgreeView];
-	
-	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	NSString *pushKey = [userDefaults objectForKey:@"pushKey"];
-	NSString *pushKeyEncoded = pushKey ? [pushKey stringByAddingPercentEscapesUsingEncoding:DEFAULT_ENCODING] : @"";
-	
-	NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
-	postData[@"osName"] = @"iOS";
-	postData[@"mode"] = @"update";
-	postData[@"osTypCd"] = @"01";
-	postData[@"appId"] = APP_KIND_CD;
-	postData[@"pushKey"] = pushKeyEncoded;
-	postData[@"osVersion"] = SYSTEM_VERSION;
-	postData[@"deviceId"] = DEVICE_ID;
-	postData[@"appVersion"] = [APP_VERSION stringByReplacingOccurrencesOfString:@"." withString:@""];
-	postData[@"groups"] = @"{\"groups\":[{\"groupId\":\"02\",\"items\":[{\"itemId\":\"0201\",\"value\":\"false\",\"dataType\":\"bool\",\"name\":\"NOTI_SHP_EVT_BNFT_INST_YN\"}]}]}";
-	
-	
-	_requestType = RequestNotifyTypeRefusedPushAgree;
-	
-	HttpRequest *request = [[HttpRequest alloc] initWithSynchronous:NO];
-	[request setDelegate:self];
-	[request setTimeout:10];
-	[request setEncoding:DEFAULT_ENCODING];
-	[request sendPost:ALARM_PREFERENCE_URL body:postData];
+//	AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//	[app disableRefusedPushAgreeView];
+//	
+//	[self hideRefusedPushAgreeView];
+//	
+//	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//	NSString *pushKey = [userDefaults objectForKey:@"pushKey"];
+//	NSString *pushKeyEncoded = pushKey ? [pushKey stringByAddingPercentEscapesUsingEncoding:DEFAULT_ENCODING] : @"";
+//	
+//	NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+//	postData[@"osName"] = @"iOS";
+//	postData[@"mode"] = @"update";
+//	postData[@"osTypCd"] = @"01";
+//	postData[@"appId"] = APP_KIND_CD;
+//	postData[@"pushKey"] = pushKeyEncoded;
+//	postData[@"osVersion"] = SYSTEM_VERSION;
+//	postData[@"deviceId"] = DEVICE_ID;
+//	postData[@"appVersion"] = [APP_VERSION stringByReplacingOccurrencesOfString:@"." withString:@""];
+//	postData[@"groups"] = @"{\"groups\":[{\"groupId\":\"02\",\"items\":[{\"itemId\":\"0201\",\"value\":\"false\",\"dataType\":\"bool\",\"name\":\"NOTI_SHP_EVT_BNFT_INST_YN\"}]}]}";
+//	
+//	
+//	_requestType = RequestNotifyTypeRefusedPushAgree;
+//	
+//	HttpRequest *request = [[HttpRequest alloc] initWithSynchronous:NO];
+//	[request setDelegate:self];
+//	[request setTimeout:10];
+//	[request setEncoding:DEFAULT_ENCODING];
+//	[request sendPost:ALARM_PREFERENCE_URL body:postData];
 }
 
 - (void)request:(HttpRequest *)request didSuccessWithReceiveData:(NSString *)data
 {
-	SBJSON *json = [[SBJSON alloc] init];
-	NSDictionary *jsonData = data ? [json objectWithString:data] : nil;
-	if (jsonData == nil)
-	{
-		[self showAlertRequestError:NSLocalizedString(@"BadReceivedDataError", nil)];
-		return;
-	}
-	
-	NSInteger errorCode = [jsonData[@"errCode"] intValue];
-	if (errorCode != 0)
-	{
-		[self showAlertRequestError:jsonData[@"errMsg"]];
-		return;
-	}
-	
-	if (_requestType == RequestNotifyTypeRefusedPushAgree)
-	{
-		NSDictionary *pushAgreeInfoDict = jsonData[@"pushAgreeInfo"];
-		
-		if (pushAgreeInfoDict) {
-			NSString *strTitle	= [pushAgreeInfoDict objectForKey:@"title"];
-			NSString *strSender = [pushAgreeInfoDict objectForKey:@"sender"];
-			NSString *strDate	= [pushAgreeInfoDict objectForKey:@"date"];
-			NSString *strText	= [pushAgreeInfoDict objectForKey:@"text"];
-			NSString *strDesc	= [pushAgreeInfoDict objectForKey:@"desc1"];
-			
-			strDate = [strDate stringByReplacingOccurrencesOfString:@"2. 수신 일시: 수신일시 :" withString:@"2. 수신일시 :"];
-			strText = [strText stringByReplacingOccurrencesOfString:@"{{result}}" withString:([self parsePushEnable:jsonData] ? @"허용" : @"거부")];
-			
-			NSString *alertMsg = [NSString stringWithFormat:@"%@\n%@\n%@\n\n%@", strSender, strDate, strText, strDesc];
-			
-			[UIAlertView showWithTitle:strTitle
-							   message:alertMsg
-					 cancelButtonTitle:nil
-					 otherButtonTitles:@[ NSLocalizedString(@"Confirm", nil) ]
-							  tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {}];
-		}
-	}
+//	SBJSON *json = [[SBJSON alloc] init];
+//	NSDictionary *jsonData = data ? [json objectWithString:data] : nil;
+//	if (jsonData == nil)
+//	{
+//		[self showAlertRequestError:NSLocalizedString(@"BadReceivedDataError", nil)];
+//		return;
+//	}
+//	
+//	NSInteger errorCode = [jsonData[@"errCode"] intValue];
+//	if (errorCode != 0)
+//	{
+//		[self showAlertRequestError:jsonData[@"errMsg"]];
+//		return;
+//	}
+//	
+//	if (_requestType == RequestNotifyTypeRefusedPushAgree)
+//	{
+//		NSDictionary *pushAgreeInfoDict = jsonData[@"pushAgreeInfo"];
+//		
+//		if (pushAgreeInfoDict) {
+//			NSString *strTitle	= [pushAgreeInfoDict objectForKey:@"title"];
+//			NSString *strSender = [pushAgreeInfoDict objectForKey:@"sender"];
+//			NSString *strDate	= [pushAgreeInfoDict objectForKey:@"date"];
+//			NSString *strText	= [pushAgreeInfoDict objectForKey:@"text"];
+//			NSString *strDesc	= [pushAgreeInfoDict objectForKey:@"desc1"];
+//			
+//			strDate = [strDate stringByReplacingOccurrencesOfString:@"2. 수신 일시: 수신일시 :" withString:@"2. 수신일시 :"];
+//			strText = [strText stringByReplacingOccurrencesOfString:@"{{result}}" withString:([self parsePushEnable:jsonData] ? @"허용" : @"거부")];
+//			
+//			NSString *alertMsg = [NSString stringWithFormat:@"%@\n%@\n%@\n\n%@", strSender, strDate, strText, strDesc];
+//			
+//			[UIAlertView showWithTitle:strTitle
+//							   message:alertMsg
+//					 cancelButtonTitle:nil
+//					 otherButtonTitles:@[ NSLocalizedString(@"Confirm", nil) ]
+//							  tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {}];
+//		}
+//	}
 }
 
 - (void)showAlertRequestError:(NSString *)errorMessage
 {
-	[UIAlertView showWithTitle:NSLocalizedString(@"AlertTitle", nil)
-					   message:errorMessage
-			 cancelButtonTitle:nil
-			 otherButtonTitles:@[ NSLocalizedString(@"Confirm", nil) ]
-					  tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {}];
+//	[UIAlertView showWithTitle:NSLocalizedString(@"AlertTitle", nil)
+//					   message:errorMessage
+//			 cancelButtonTitle:nil
+//			 otherButtonTitles:@[ NSLocalizedString(@"Confirm", nil) ]
+//					  tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {}];
 }
 
 - (BOOL)parsePushEnable:(NSDictionary *)response
