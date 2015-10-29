@@ -58,17 +58,17 @@
             [toolbarButton setImage:[UIImage imageNamed:toolbar[@"imageNormal"]] forState:UIControlStateNormal];
             [toolbarButton setImage:[UIImage imageNamed:toolbar[@"imageHighlighted"]] forState:UIControlStateHighlighted];
 			
-            if (i == CPToolBarButtonTypeForward) {
+            if (i == 2) {
                 [toolbarButton setImage:[UIImage imageNamed:toolbar[@"imageDisabled"]] forState:UIControlStateDisabled];
             }
             
             [toolbarButton addTarget:self action:@selector(touchToolbar:) forControlEvents:UIControlEventTouchUpInside];
             [toolbarButton setTag:i];
-            [toolbarButton setAccessibilityLabel:toolbar[@"accessibility"] Hint:@""];
+            //[toolbarButton setAccessibilityLabel:toolbar[@"accessibility"] Hint:@""];
             [self addSubview:toolbarButton];
             
             //백버튼은 홈으로 이동하기 위해 활성화 시켜놓음
-            if (i == CPToolBarButtonTypeForward) {
+            if (i == 2) {
                 [self setButtonProperties:toolbarButton enable:NO];
             }
         }
@@ -77,18 +77,18 @@
         [lineView setBackgroundColor:UIColorFromRGB(0xd3d3d6)];
         [self addSubview:lineView];
         
-        // 더보기 팝오버메뉴
-        CGFloat popOverHeight = kScreenBoundsHeight-(kToolBarHeight+kNavigationHeight);
-        popOverView = [[CPPopOverView alloc] initWithFrame:CGRectMake(0, -popOverHeight, kScreenBoundsWidth, popOverHeight) toolbarType:toolbarType];
-        [popOverView setDelegate:self];
-        [popOverView setHidden:YES];
-        [self addSubview:popOverView];
-        
-        // 즐겨찾기 팝오버메뉴
-        snapshotPopOverView = [[CPSnapshotPopOverView alloc] initWithFrame:CGRectMake(0, -popOverHeight, kScreenBoundsWidth, popOverHeight) toolbarType:toolbarType];
-        [snapshotPopOverView setDelegate:self];
-        [snapshotPopOverView setHidden:YES];
-        [self addSubview:snapshotPopOverView];
+//        // 더보기 팝오버메뉴
+//        CGFloat popOverHeight = kScreenBoundsHeight-(kToolBarHeight+kNavigationHeight);
+//        popOverView = [[CPPopOverView alloc] initWithFrame:CGRectMake(0, -popOverHeight, kScreenBoundsWidth, popOverHeight) toolbarType:toolbarType];
+//        [popOverView setDelegate:self];
+//        [popOverView setHidden:YES];
+//        [self addSubview:popOverView];
+//        
+//        // 즐겨찾기 팝오버메뉴
+//        snapshotPopOverView = [[CPSnapshotPopOverView alloc] initWithFrame:CGRectMake(0, -popOverHeight, kScreenBoundsWidth, popOverHeight) toolbarType:toolbarType];
+//        [snapshotPopOverView setDelegate:self];
+//        [snapshotPopOverView setHidden:YES];
+//        [self addSubview:snapshotPopOverView];
     }
     return self;
 }
@@ -117,7 +117,7 @@
 {
 	for (UIButton *button in self.subviews) {
 		if ([button isKindOfClass:[UIButton class]]) {
-			if (button.tag == CPToolBarButtonTypeToggle) {
+			if (button.tag == 1) {
 				[self touchToolbar:button];
 			}
 		}
@@ -126,9 +126,9 @@
 
 - (void)setHiddenPopover:(BOOL)hidden
 {
-    [popOverView setHidden:hidden];
-    
-    [snapshotPopOverView setHidden:hidden];
+//    [popOverView setHidden:hidden];
+//    
+//    [snapshotPopOverView setHidden:hidden];
 }
 
 #pragma mark - Selectors
@@ -138,32 +138,20 @@
     UIButton *button = (UIButton *)sender;
     NSDictionary *buttonInfo = toolbarItems[button.tag];
     
-    if (![popOverView isHidden] && button.tag != CPToolBarButtonTypeMore) {
-        [popOverView setHidden:YES];
-    }
-    
-    if (![snapshotPopOverView isHidden] && button.tag != CPToolBarButtonTypeSnapshot) {
-        [snapshotPopOverView setHidden:YES];
-    }
+//    if (![popOverView isHidden] && button.tag != CPToolBarButtonTypeMore) {
+//        [popOverView setHidden:YES];
+//    }
+//    
+//    if (![snapshotPopOverView isHidden] && button.tag != CPToolBarButtonTypeSnapshot) {
+//        [snapshotPopOverView setHidden:YES];
+//    }
     
     switch (button.tag) {
-        case CPToolBarButtonTypeSnapshot:
-            if ([snapshotPopOverView isHidden]) {
-                [self bringSubviewToFront:snapshotPopOverView];
-            }
-            [snapshotPopOverView setHidden:![snapshotPopOverView isHidden]];
-            break;
-        case CPToolBarButtonTypeMore:
-            if ([popOverView isHidden]) {
-                [self bringSubviewToFront:popOverView];
-            }
-            [popOverView setHidden:![popOverView isHidden]];
-            break;
-        case CPToolBarButtonTypeBack:
-        case CPToolBarButtonTypeForward:
-        case CPToolBarButtonTypeReload:
-        case CPToolBarButtonTypeTop:
-        case CPToolBarButtonTypeHome:
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
         default:
             if ([self.delegate respondsToSelector:@selector(didTouchToolBarButton:buttonInfo:)]) {
                 [self.delegate didTouchToolBarButton:button buttonInfo:buttonInfo];
@@ -172,7 +160,7 @@
     }
     
     //AccessLog - 툴바
-    [[AccessLog sharedInstance] sendAccessLogWithCode:buttonInfo[@"ac"]];
+    //[[AccessLog sharedInstance] sendAccessLogWithCode:buttonInfo[@"ac"]];
 }
 
 #pragma mark - CPSnapshotPopOverViewDelegate
@@ -181,7 +169,7 @@
 {
     if ([self.delegate respondsToSelector:@selector(didTouchSnapshotPopOverButton:buttonInfo:)]) {
         [self.delegate didTouchSnapshotPopOverButton:button buttonInfo:buttonInfo];
-        [snapshotPopOverView setHidden:YES];
+        //[snapshotPopOverView setHidden:YES];
     }
 }
 
@@ -191,7 +179,7 @@
 {
     if ([self.delegate respondsToSelector:@selector(didTouchPopOverButton:buttonInfo:)]) {
         [self.delegate didTouchPopOverButton:button buttonInfo:buttonInfo];
-        [popOverView setHidden:YES];
+        //[popOverView setHidden:YES];
     }
 }
 

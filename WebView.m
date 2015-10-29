@@ -482,7 +482,8 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 - (void)loadRequest:(NSURLRequest *)request
 {
     //호출된 이전 리퀘스트의 캐쉬를 지우고 새로운 리퀘스트를 만듬
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7")) {
+    if ([SYSTEM_VERSION intValue] > 6.5) {
+    //if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7")) {
         if (request) {
             [[NSURLCache sharedURLCache] removeCachedResponseForRequest:request];
             [[NSURLCache sharedURLCache] removeAllCachedResponses];
@@ -752,6 +753,7 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 
 - (void)didTouchToolBarButton:(UIButton *)button buttonInfo:(NSDictionary *)buttonInfo
 {
+    
     switch (button.tag) {
         case 1:
             if ([button isEnabled]) {
@@ -804,14 +806,15 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
                 [toolBarView setReloadButtonProperties:button isReload:NO];
             }
             else {
-                if (!nilCheck([self url])) {
-//                    NSLog(@"%@", [self url]);
-                    [self.webView reload];
-                }
-                else {
-//                    NSLog(@"empty: %@", reloadUrl);
-                    [self open:reloadUrl];
-                }
+//                if (!nilCheck([self url])) {
+////                    NSLog(@"%@", [self url]);
+//                    [self.webView reload];
+//                }
+//                else {
+////                    NSLog(@"empty: %@", reloadUrl);
+//                    [self open:reloadUrl];
+//                }
+                [self open:reloadUrl];
             }
             break;
         }

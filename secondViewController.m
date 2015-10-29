@@ -8,6 +8,7 @@
 
 #import "secondViewController.h"
 #import "NavigationBarView.h"
+#import "WebViewController.h"
 
 @interface secondViewController () <NavigationBarViewDelegate>
 {
@@ -78,6 +79,13 @@
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"ok ^^"                                             delegate:self cancelButtonTitle:@"닫기" otherButtonTitles:nil, nil];
     [alert show];
+    
+    secondViewController *seconViewCtl = [[secondViewController alloc] init];
+    [self.navigationController pushViewController:seconViewCtl animated:YES];
+    
+    NSString *url = @"http://m.naver.com";
+    WebViewController *viewControlelr = [[WebViewController alloc] initWithUrl:url];
+    [self.navigationController pushViewController:viewControlelr animated:YES];
 }
 
 - (void)initNavigation:(NSInteger)navigationType
