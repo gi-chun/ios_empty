@@ -25,6 +25,25 @@
     [self loadContentsView];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self loadContentsView];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -79,9 +98,6 @@
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"ok ^^"                                             delegate:self cancelButtonTitle:@"닫기" otherButtonTitles:nil, nil];
     [alert show];
-    
-    secondViewController *seconViewCtl = [[secondViewController alloc] init];
-    [self.navigationController pushViewController:seconViewCtl animated:YES];
     
     NSString *url = @"http://m.naver.com";
     WebViewController *viewControlelr = [[WebViewController alloc] initWithUrl:url];

@@ -305,6 +305,11 @@
 
 #pragma mark - CPNavigationBarViewDelegate
 
+- (void)didTouchBackButton
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)didTouchMenuButton
 {
 //    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
