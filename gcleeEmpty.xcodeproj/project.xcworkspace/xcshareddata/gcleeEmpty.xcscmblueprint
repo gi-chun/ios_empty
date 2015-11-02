@@ -1,0 +1,32 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "6342230F6DC956809DE1650F0B00261BC7BDB8B1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "6076005d-6c09-4436-b4a1-6553b680c6d0++178" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "6076005d-6c09-4436-b4a1-6553b680c6d0++178" : 0,
+    "6342230F6DC956809DE1650F0B00261BC7BDB8B1" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "530C4D8D-F45B-4C9D-81EA-B82F93BBECF7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "6076005d-6c09-4436-b4a1-6553b680c6d0++178" : "emptyPrj\/gcleeEmpty\/sts_old\/external\/JSTokenField\/",
+    "6342230F6DC956809DE1650F0B00261BC7BDB8B1" : "emptyPrj\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "gcleeEmpty",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "gcleeEmpty.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/10.18.131.31\/iphone.cymera",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6076005d-6c09-4436-b4a1-6553b680c6d0++178"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/gi-chun\/ios_empty.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6342230F6DC956809DE1650F0B00261BC7BDB8B1"
+    }
+  ]
+}

@@ -9,7 +9,7 @@
 #import "CPHomeHeaderView.h"
 #import "CPHomeHeaderBillBannerListView.h"
 #import "CPHomeDynamicServiceListView.h"
-#import "AccessLog.h"
+//#import "AccessLog.h"
 
 @interface CPHomeHeaderView () <	CPHomeHeaderBillBannerListViewDelegate,
 									CPHomeDynamicServiceListViewDelegate >
