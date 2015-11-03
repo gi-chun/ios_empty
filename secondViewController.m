@@ -10,6 +10,7 @@
 #import "NavigationBarView.h"
 #import "WebViewController.h"
 #import "UIViewController+MMDrawerController.h"
+#import "MYViewController.h"
 
 @interface secondViewController () <NavigationBarViewDelegate>
 {
@@ -24,11 +25,13 @@
     // Do any additional setup after loading the view.
     
     [self loadContentsView];
+   
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     [self loadContentsView];
 }
 
