@@ -9,6 +9,7 @@
 #import "secondViewController.h"
 #import "NavigationBarView.h"
 #import "WebViewController.h"
+#import "UIViewController+MMDrawerController.h"
 
 @interface secondViewController () <NavigationBarViewDelegate>
 {
@@ -135,7 +136,8 @@
 
 - (void)didTouchBackButton
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
 - (void)didTouchMenuButton

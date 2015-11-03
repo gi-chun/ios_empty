@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "mainViewController.h"
+#import "secondViewController.h"
+#import "MMDrawerController.h"
 
-@class mainViewController;
+//@class mainViewController;
 #define IsAtLeastiOSVersion(X) ([[[UIDevice currentDevice] systemVersion] compare:X options:NSNumericSearch] != NSOrderedAscending)
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic,strong) MMDrawerController * drawerController;
 //@property (strong, nonatomic) mainViewController *mainViewController;
 
 @end

@@ -11,6 +11,15 @@
 		282CB3171BDA2600000FF5C0 /* icon_navi_home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 282CB3151BDA2600000FF5C0 /* icon_navi_home@2x.png */; };
 		282CB31A1BDA2626000FF5C0 /* icon_main_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 282CB3181BDA2626000FF5C0 /* icon_main_login.png */; };
 		282CB31B1BDA2626000FF5C0 /* icon_main_login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 282CB3191BDA2626000FF5C0 /* icon_main_login@2x.png */; };
+		287F92E31BE748EF007E82AD /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F92DB1BE748EF007E82AD /* MMDrawerBarButtonItem.m */; };
+		287F92E41BE748EF007E82AD /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F92DD1BE748EF007E82AD /* MMDrawerController.m */; };
+		287F92E51BE748EF007E82AD /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F92E01BE748EF007E82AD /* MMDrawerVisualState.m */; };
+		287F92E61BE748EF007E82AD /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F92E21BE748EF007E82AD /* UIViewController+MMDrawerController.m */; };
+		287F92EA1BE74A39007E82AD /* MMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F92E91BE74A39007E82AD /* MMNavigationController.m */; };
+		287F92EC1BE74E18007E82AD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287F92EB1BE74E18007E82AD /* QuartzCore.framework */; };
+		287F92EE1BE74E32007E82AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287F92ED1BE74E32007E82AD /* Foundation.framework */; };
+		287F92F01BE74E48007E82AD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287F92EF1BE74E48007E82AD /* CoreGraphics.framework */; };
+		287F92F31BE76166007E82AD /* MMExampleDrawerVisualStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F92F21BE76165007E82AD /* MMExampleDrawerVisualStateManager.m */; };
 		2886A8D41BE082C8001B7657 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 2886A8D21BE082C8001B7657 /* Config.m */; };
 		2886A8D51BE082C8001B7657 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2886A8D31BE082C8001B7657 /* Config.plist */; };
 		2886A8D91BE09E8C001B7657 /* CPLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2886A8D81BE09E8C001B7657 /* CPLoadingView.m */; };
@@ -59,6 +68,22 @@
 		282CB3151BDA2600000FF5C0 /* icon_navi_home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_navi_home@2x.png"; sourceTree = "<group>"; };
 		282CB3181BDA2626000FF5C0 /* icon_main_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_main_login.png; sourceTree = "<group>"; };
 		282CB3191BDA2626000FF5C0 /* icon_main_login@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_main_login@2x.png"; sourceTree = "<group>"; };
+		287F92DA1BE748EF007E82AD /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerBarButtonItem.h; sourceTree = "<group>"; };
+		287F92DB1BE748EF007E82AD /* MMDrawerBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerBarButtonItem.m; sourceTree = "<group>"; };
+		287F92DC1BE748EF007E82AD /* MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerController.h; sourceTree = "<group>"; };
+		287F92DD1BE748EF007E82AD /* MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerController.m; sourceTree = "<group>"; };
+		287F92DE1BE748EF007E82AD /* MMDrawerController+Subclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMDrawerController+Subclass.h"; sourceTree = "<group>"; };
+		287F92DF1BE748EF007E82AD /* MMDrawerVisualState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerVisualState.h; sourceTree = "<group>"; };
+		287F92E01BE748EF007E82AD /* MMDrawerVisualState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerVisualState.m; sourceTree = "<group>"; };
+		287F92E11BE748EF007E82AD /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
+		287F92E21BE748EF007E82AD /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
+		287F92E81BE74A39007E82AD /* MMNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMNavigationController.h; sourceTree = "<group>"; };
+		287F92E91BE74A39007E82AD /* MMNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMNavigationController.m; sourceTree = "<group>"; };
+		287F92EB1BE74E18007E82AD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		287F92ED1BE74E32007E82AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		287F92EF1BE74E48007E82AD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		287F92F11BE76165007E82AD /* MMExampleDrawerVisualStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMExampleDrawerVisualStateManager.h; sourceTree = "<group>"; };
+		287F92F21BE76165007E82AD /* MMExampleDrawerVisualStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMExampleDrawerVisualStateManager.m; sourceTree = "<group>"; };
 		2886A8D11BE082C8001B7657 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		2886A8D21BE082C8001B7657 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
 		2886A8D31BE082C8001B7657 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
@@ -120,6 +145,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				287F92F01BE74E48007E82AD /* CoreGraphics.framework in Frameworks */,
+				287F92EE1BE74E32007E82AD /* Foundation.framework in Frameworks */,
+				287F92EC1BE74E18007E82AD /* QuartzCore.framework in Frameworks */,
 				28B9443E1BE1BBDB00EE1572 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,10 +189,38 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		288E45B21BD719640041AE50 = {
+		287F92D71BE74747007E82AD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				287F92EF1BE74E48007E82AD /* CoreGraphics.framework */,
+				287F92ED1BE74E32007E82AD /* Foundation.framework */,
+				287F92EB1BE74E18007E82AD /* QuartzCore.framework */,
 				28B9443D1BE1BBDB00EE1572 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		287F92D81BE747CB007E82AD /* MMDrawerController */ = {
+			isa = PBXGroup;
+			children = (
+				287F92DA1BE748EF007E82AD /* MMDrawerBarButtonItem.h */,
+				287F92DB1BE748EF007E82AD /* MMDrawerBarButtonItem.m */,
+				287F92F11BE76165007E82AD /* MMExampleDrawerVisualStateManager.h */,
+				287F92F21BE76165007E82AD /* MMExampleDrawerVisualStateManager.m */,
+				287F92DC1BE748EF007E82AD /* MMDrawerController.h */,
+				287F92DD1BE748EF007E82AD /* MMDrawerController.m */,
+				287F92DE1BE748EF007E82AD /* MMDrawerController+Subclass.h */,
+				287F92DF1BE748EF007E82AD /* MMDrawerVisualState.h */,
+				287F92E01BE748EF007E82AD /* MMDrawerVisualState.m */,
+				287F92E11BE748EF007E82AD /* UIViewController+MMDrawerController.h */,
+				287F92E21BE748EF007E82AD /* UIViewController+MMDrawerController.m */,
+			);
+			name = MMDrawerController;
+			sourceTree = "<group>";
+		};
+		287F92D91BE747F4007E82AD /* Classes */ = {
+			isa = PBXGroup;
+			children = (
 				28EDAC1C1BDF694100024EF9 /* WebView.h */,
 				28EDAC221BDF6ED800024EF9 /* HttpError.h */,
 				28EDAC231BDF6ED800024EF9 /* HttpError.m */,
@@ -200,6 +256,26 @@
 				28F7C0441BDE0FB000C53B86 /* NavigationBarView.m */,
 				28F7C0401BDDFB7000C53B86 /* secondViewController.h */,
 				28F7C0411BDDFB7000C53B86 /* secondViewController.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		287F92E71BE7491C007E82AD /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				287F92E81BE74A39007E82AD /* MMNavigationController.h */,
+				287F92E91BE74A39007E82AD /* MMNavigationController.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		288E45B21BD719640041AE50 = {
+			isa = PBXGroup;
+			children = (
+				287F92E71BE7491C007E82AD /* Main */,
+				287F92D91BE747F4007E82AD /* Classes */,
+				287F92D81BE747CB007E82AD /* MMDrawerController */,
+				287F92D71BE74747007E82AD /* Frameworks */,
 				288E45BD1BD719640041AE50 /* gcleeEmpty */,
 				288E45D71BD719640041AE50 /* gcleeEmptyTests */,
 				288E45BC1BD719640041AE50 /* Products */,
@@ -359,12 +435,14 @@
 			files = (
 				28EDAC281BDF6ED800024EF9 /* HttpError.m in Sources */,
 				2886A8D41BE082C8001B7657 /* Config.m in Sources */,
+				287F92E51BE748EF007E82AD /* MMDrawerVisualState.m in Sources */,
 				2886A8D91BE09E8C001B7657 /* CPLoadingView.m in Sources */,
 				28EDAC291BDF6ED800024EF9 /* HttpRequest.m in Sources */,
 				28EDAC301BDF709400024EF9 /* ToolBarView.m in Sources */,
 				2886A8F01BE0BBDC001B7657 /* UIImage+ImageWithColor.m in Sources */,
 				2886A8E11BE0B8DF001B7657 /* CPBlurImageView.m in Sources */,
 				28EDAC2A1BDF6ED800024EF9 /* HttpResponse.m in Sources */,
+				287F92EA1BE74A39007E82AD /* MMNavigationController.m in Sources */,
 				28F7C0421BDDFB7000C53B86 /* secondViewController.m in Sources */,
 				28EDAC211BDF694100024EF9 /* WebViewController.m in Sources */,
 				28F7C0451BDE0FB000C53B86 /* NavigationBarView.m in Sources */,
@@ -373,7 +451,11 @@
 				2886A8EF1BE0BBDC001B7657 /* UIImage+ImageRenderToColor.m in Sources */,
 				288E45C31BD719640041AE50 /* AppDelegate.m in Sources */,
 				2886A8E01BE0B8DF001B7657 /* CPBaseImageView.m in Sources */,
+				287F92E61BE748EF007E82AD /* UIViewController+MMDrawerController.m in Sources */,
+				287F92F31BE76166007E82AD /* MMExampleDrawerVisualStateManager.m in Sources */,
+				287F92E41BE748EF007E82AD /* MMDrawerController.m in Sources */,
 				2886A8E21BE0B8DF001B7657 /* CPThumbnailView.m in Sources */,
+				287F92E31BE748EF007E82AD /* MMDrawerBarButtonItem.m in Sources */,
 				2886A8EE1BE0BBDC001B7657 /* UIImage_Extensions.m in Sources */,
 				288E45C01BD719640041AE50 /* main.m in Sources */,
 			);

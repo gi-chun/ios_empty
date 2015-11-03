@@ -7,48 +7,105 @@
 //
 
 #import "AppDelegate.h"
+#import "MMExampleDrawerVisualStateManager.h"
 
 @interface AppDelegate ()
 {
     UINavigationController  *_navigation;
+    
 }
 @end
 
 @implementation AppDelegate
 
+-(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
+    
+    UIViewController * leftSideDrawerViewController = [[mainViewController alloc] init];
+    
+    UIViewController * centerViewController = [[secondViewController alloc] init];
+    
+//    UIViewController * rightSideDrawerViewController = [[MMExampleRightSideDrawerViewController alloc] init];
+    
+//    UINavigationController * navigationController = [[MMNavigationController alloc] initWithRootViewController:centerViewController];
+    
+    UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:centerViewController];
+    [navigationController setRestorationIdentifier:@"MMExampleCenterNavigationControllerRestorationKey"];
+    
+//    UINavigationController * rightSideNavController = [[UINavigationController alloc] initWithRootViewController:rightSideDrawerViewController];
+//    [rightSideNavController setRestorationIdentifier:@"MMExampleRightNavigationControllerRestorationKey"];
+    
+    UINavigationController * leftSideNavController = [[UINavigationController alloc] initWithRootViewController:leftSideDrawerViewController];
+    [leftSideNavController setRestorationIdentifier:@"MMExampleLeftNavigationControllerRestorationKey"];
+    self.drawerController = [[MMDrawerController alloc]
+                             initWithCenterViewController:navigationController
+                             leftDrawerViewController:leftSideNavController
+                             rightDrawerViewController:nil];
+    [self.drawerController setShowsShadow:NO];
+    [self.drawerController setRestorationIdentifier:@"MMDrawer"];
+    [self.drawerController setMaximumRightDrawerWidth:200.0];
+    [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    
+    [self.drawerController
+     setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
+         MMDrawerControllerDrawerVisualStateBlock block;
+         block = [[MMExampleDrawerVisualStateManager sharedManager]
+                  drawerVisualStateBlockForDrawerSide:drawerSide];
+         if(block){
+             block(drawerController, drawerSide, percentVisible);
+         }
+     }];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    UIColor * tintColor = [UIColor colorWithRed:29.0/255.0
+                                          green:173.0/255.0
+                                           blue:234.0/255.0
+                                          alpha:1.0];
+    [self.window setTintColor:tintColor];
+    [self.window setRootViewController:self.drawerController];
+    
+    return YES;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    //////////////////////////////////////////////////////////////////////////////
     // 앱의 푸쉬 수신여부 설정
-    if (IsAtLeastiOSVersion(@"8.0")) {
-        UIUserNotificationType types = UIUserNotificationTypeBadge |
-        UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
-        
-        UIUserNotificationSettings *mySettings =
-        [UIUserNotificationSettings settingsForTypes:types categories:nil];
-        
-        [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
-        
-    }else{
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-    }
+//    if (IsAtLeastiOSVersion(@"8.0")) {
+//        UIUserNotificationType types = UIUserNotificationTypeBadge |
+//        UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+//        
+//        UIUserNotificationSettings *mySettings =
+//        [UIUserNotificationSettings settingsForTypes:types categories:nil];
+//        
+//        [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+//        [[UIApplication sharedApplication] registerForRemoteNotifications];
+//        
+//    }else{
+//        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+//    }
     
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor magentaColor];
-    [self.window makeKeyAndVisible];
+    
+     //////////////////////////////////////////////////////////////////////////////
+    
+    
+//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    self.window.backgroundColor = [UIColor magentaColor];
+//    [self.window makeKeyAndVisible];
     
 //    SplashViewController *splashVC = [[SplashViewController alloc] initWithNibName:NibName(@"SplashViewController") bundle:nil];
 //    _navigation = [[UINavigationController alloc] initWithRootViewController:splashVC];
-    mainViewController *mainViewCnr = [[mainViewController alloc] init];
-    _navigation = [[UINavigationController alloc] initWithRootViewController:mainViewCnr];
-    [_navigation setNavigationBarHidden:YES];
     
-    self.window.rootViewController = _navigation;
-    [self.window makeKeyAndVisible];
-//    self.window.rootViewController = self.mainViewController;
+//    mainViewController *mainViewCnr = [[mainViewController alloc] init];
+//    _navigation = [[UINavigationController alloc] initWithRootViewController:mainViewCnr];
+//    [_navigation setNavigationBarHidden:YES];
+//    
+//    self.window.rootViewController = _navigation;
 //    [self.window makeKeyAndVisible];
+
+    //    self.window.rootViewController = self.mainViewController;
+    [self.window makeKeyAndVisible];
     
     return YES;
 }
