@@ -1,9 +1,5 @@
 //
 //  CPIndicatorView.m
-//  11st
-//
-//  Created by spearhead on 2014. 9. 25..
-//  Copyright (c) 2014년 Commerce Planet. All rights reserved.
 //
 
 #import "CPIndicatorView.h"

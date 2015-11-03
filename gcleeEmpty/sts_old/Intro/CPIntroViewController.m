@@ -1,10 +1,5 @@
 //
 //  CPIntroViewController.m
-//  11st
-//
-//  Created by spearhead on 2014. 9. 24..
-//  Copyright (c) 2014년 Commerce Planet. All rights reserved.
-//
 
 #import "CPIntroViewController.h"
 #import "QBAnimationSequence.h"
