@@ -80,6 +80,8 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
         _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame))];
         [_webView setDelegate:self];
         [_webView setScalesPageToFit:YES];
+        [_webView setContentMode:UIViewContentModeScaleAspectFit];
+        
         [_webView setClipsToBounds:YES];
         [_webView setAllowsInlineMediaPlayback:YES];
         [_webView setMediaPlaybackRequiresUserAction:NO];
@@ -93,57 +95,59 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
         }
 		
         // 메인탭에만 pullToRefresh를 허용
-        if (!isSubWebView) {
-            // get webview's scrollview for PullToRefresh
-            for (UIView* subView in _webView.subviews) {
-                if ([subView isKindOfClass:[UIScrollView class]]) {
-                    currentScrollView = (UIScrollView *)subView;
-                    currentScrollView.delegate = (id) self;
-                }
-            }
-            
-//            pull = [[PullToRefreshView alloc] initWithScrollView:currentScrollView];
-//            [pull setDelegate:self];
-//            [currentScrollView addSubview:pull];
-        }
+//        if (!isSubWebView) {
+//            // get webview's scrollview for PullToRefresh
+//            for (UIView* subView in _webView.subviews) {
+//                if ([subView isKindOfClass:[UIScrollView class]]) {
+//                    currentScrollView = (UIScrollView *)subView;
+//                    currentScrollView.delegate = (id) self;
+//                }
+//            }
+//            
+////            pull = [[PullToRefreshView alloc] initWithScrollView:currentScrollView];
+////            [pull setDelegate:self];
+////            [currentScrollView addSubview:pull];
+//        }
         
         // 툴바
-        toolBarView = [[ToolBarView alloc] initWithFrame:CGRectZero toolbarType:1];
-        [toolBarView setDelegate:self];
-        [toolBarView setHidden:YES];
-        [self addSubview:toolBarView];
+//        toolBarView = [[ToolBarView alloc] initWithFrame:CGRectZero toolbarType:1];
+//        [toolBarView setDelegate:self];
+//        [toolBarView setHidden:YES];
+//        [self addSubview:toolBarView];
 
         buttonWidth = kScreenBoundsWidth / 7;
         buttonHeight = kToolBarHeight;
         
         // 탑버튼
-//        _topButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [_topButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight(frame)-(buttonHeight*2), buttonWidth, buttonHeight)];
-//        [_topButton setImage:[UIImage imageNamed:@"btn_top.png"] forState:UIControlStateNormal];
-//        [_topButton addTarget:self action:@selector(touchTopButton) forControlEvents:UIControlEventTouchUpInside];
-//        [_topButton setHidden:YES];
-//        [_topButton setAccessibilityLabel:@"위로" Hint:@"화면을 위로 이동합니다"];
-//        [self addSubview:_topButton];
+        _topButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        [_topButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight(frame)-(buttonHeight*2-30), buttonWidth, buttonHeight)];
+        
+        [_topButton setImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateNormal];
+        [_topButton addTarget:self action:@selector(touchTopButton) forControlEvents:UIControlEventTouchUpInside];
+        [_topButton setHidden:YES];
+        //[_topButton setAccessibilityLabel:@"위로" Hint:@"화면을 위로 이동합니다"];
+        [self addSubview:_topButton];
         
         // 상품 확대보기 버튼
-        _zoomViewerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_zoomViewerButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight(frame)-(buttonHeight*2)-40, buttonWidth, buttonHeight)];
-        [_zoomViewerButton setImage:[UIImage imageNamed:@"icon_zoomviewer_nor.png"] forState:UIControlStateNormal];
-        [_zoomViewerButton setImage:[UIImage imageNamed:@"icon_zoomviewer_selected.png"] forState:UIControlStateHighlighted];
-        [_zoomViewerButton addTarget:self action:@selector(touchZoomViewerButton) forControlEvents:UIControlEventTouchUpInside];
-        [_zoomViewerButton setHidden:YES];
-        //[_zoomViewerButton setAccessibilityLabel:@"상품 확대보기" Hint:@"상품 확대보기로 이동합니다"];
-        [self addSubview:_zoomViewerButton];
+//        _zoomViewerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [_zoomViewerButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight(frame)-(buttonHeight*2)-40, buttonWidth, buttonHeight)];
+//        [_zoomViewerButton setImage:[UIImage imageNamed:@"icon_zoomviewer_nor.png"] forState:UIControlStateNormal];
+//        [_zoomViewerButton setImage:[UIImage imageNamed:@"icon_zoomviewer_selected.png"] forState:UIControlStateHighlighted];
+//        [_zoomViewerButton addTarget:self action:@selector(touchZoomViewerButton) forControlEvents:UIControlEventTouchUpInside];
+//        [_zoomViewerButton setHidden:YES];
+//        //[_zoomViewerButton setAccessibilityLabel:@"상품 확대보기" Hint:@"상품 확대보기로 이동합니다"];
+//        [self addSubview:_zoomViewerButton];
         
         // 바로마트버튼
-//        _baroMartButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [_baroMartButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight(frame)-(buttonHeight*2), buttonWidth, buttonHeight)];
-//        [_baroMartButton setImage:[UIImage imageNamed:@"offering_btn_bottom_view.png"] forState:UIControlStateNormal];
-//        [_baroMartButton setImage:[UIImage imageNamed:@"offering_btn_bottom_view.png"] forState:UIControlStateHighlighted];
-//        [_baroMartButton addTarget:self action:@selector(touchBaroMartButton) forControlEvents:UIControlEventTouchUpInside];
-//        [_baroMartButton setHidden:YES];
-//        [_baroMartButton setAccessibilityLabel:@"바로마트" Hint:@"바로마트로 이동합니다"];
-//        [self addSubview:_baroMartButton];
+        _preButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_preButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight(frame)-(buttonHeight*2), buttonWidth, buttonHeight)];
+        [_preButton setImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateNormal];
+        [_preButton setImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateHighlighted];
+        [_preButton addTarget:self action:@selector(touchpreButton) forControlEvents:UIControlEventTouchUpInside];
+        [_preButton setHidden:YES];
+        //[_preButton setAccessibilityLabel:@"바로마트" Hint:@"바로마트로 이동합니다"];
+        [self addSubview:_preButton];
         
 //        // 토글버튼
 //        toggleButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -204,7 +208,7 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 //    }
     
     self.topButton = nil;
-    self.baroMartButton = nil;
+    self.preButton = nil;
     self.zoomViewerButton = nil;
     
     [self stopLoadingAnimation];
@@ -216,7 +220,7 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
     
 //    self.webView = nil;
 //    self.topButton = nil;
-//    self.baroMartButton = nil;
+//    self.preButton = nil;
 //    self.zoomViewerButton = nil;
 //    
 //    [self stopLoadingAnimation];
@@ -310,7 +314,7 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 //    NSLog(@"shouldStartLoadWithRequest %@", url);
     
     //웹뷰에 노출되는 버튼은 일단 숨김
-    [self.baroMartButton setHidden:YES];
+    [self.preButton setHidden:YES];
     
     //URL끝에 #이 들어가면 Request를 취소
     if ([url hasSuffix:@"#"]) {
@@ -424,9 +428,26 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 //        return;
 //    }
     
+    CGSize contentSize = self.webView.scrollView.contentSize;
+    CGSize viewSize = self.frame.size;
+    
+    float sfactor = viewSize.width / contentSize.width;
+    
+    self.webView.scrollView.minimumZoomScale = sfactor;
+    self.webView.scrollView.maximumZoomScale = sfactor;
+    self.webView.scrollView.zoomScale = sfactor;
+    
     if ([self.delegate respondsToSelector:@selector(webViewDidFinishLoad:)]) {
         [self.delegate webViewDidFinishLoad:self];
     }
+    
+//    @implementation UIWebView (Resize)
+//    
+//    - (void)sizeViewPortToFitWidth {
+//        [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.querySelector('meta[name=viewport]').setAttribute('content', 'width=%d;', false); ", (int)self.frame.size.width]];
+//    }
+//    
+//    @end
     
 //    UIButton *backButton = (UIButton *)[toolBarView viewWithTag:CPToolBarButtonTypeBack];
 //    [toolBarView setButtonProperties:backButton enable:[self.webView canGoBack]];
@@ -539,29 +560,29 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
     if (isHidden) {
 //        NSLog(@"setHiddenToolBarView:%@, %@", NSStringFromCGRect(self.frame), NSStringFromCGRect(self.bounds));
         [self.webView setFrame:self.bounds];
-        [self.topButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight(self.frame)-(buttonHeight), buttonWidth, buttonHeight)];
-		
-		[_refusedPushAgreeView setFrame:CGRectMake(10, CGRectGetHeight(self.frame)-31,
-												   _refusedPushAgreeView.frame.size.width, _refusedPushAgreeView.frame.size.height)];
+//        [self.topButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight(self.frame)-(buttonHeight), buttonWidth, buttonHeight)];
+//		
+//		[_refusedPushAgreeView setFrame:CGRectMake(10, CGRectGetHeight(self.frame)-31,
+//												   _refusedPushAgreeView.frame.size.width, _refusedPushAgreeView.frame.size.height)];
     }
     else {
         
         NSLog(@"self.frame : %@", NSStringFromCGRect(self.frame));
         [self.webView setFrame:CGRectMake(0, 0, CGRectGetMaxX(self.frame), CGRectGetHeight(self.frame)-kToolBarHeight)];
         //            NSLog(@"self.webView.frame : %@", NSStringFromCGRect(self.webView.frame));
-        [toolBarView setFrame:CGRectMake(0, CGRectGetMaxY(self.webView.frame), CGRectGetWidth(self.frame), kToolBarHeight)];
-        [self.topButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight(self.frame)-(buttonHeight*2), buttonWidth, buttonHeight)];
-        
-        [_refusedPushAgreeView setFrame:CGRectMake(10, CGRectGetHeight(self.frame)-31-kToolBarHeight,
-                                                   _refusedPushAgreeView.frame.size.width, _refusedPushAgreeView.frame.size.height)];
+//        [toolBarView setFrame:CGRectMake(0, CGRectGetMaxY(self.webView.frame), CGRectGetWidth(self.frame), kToolBarHeight)];
+//        [self.topButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight(self.frame)-(buttonHeight*2), buttonWidth, buttonHeight)];
+//        
+//        [_refusedPushAgreeView setFrame:CGRectMake(10, CGRectGetHeight(self.frame)-31-kToolBarHeight,
+//                                                   _refusedPushAgreeView.frame.size.width, _refusedPushAgreeView.frame.size.height)];
     }
     
     [toolBarView setHidden:isHidden];
 }
 
-- (void)setHiddenBaroMartButton:(BOOL)isHidden
+- (void)setHiddenpreButton:(BOOL)isHidden
 {
-    [self.baroMartButton setHidden:isHidden];
+    [self.preButton setHidden:isHidden];
     
     if (isHidden) {
         [self.topButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight(self.frame)-(buttonHeight*2), buttonWidth, buttonHeight)];
@@ -654,7 +675,7 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
     }
 }
 
-- (void)touchBaroMartButton
+- (void)touchpreButton
 {
 //    SBJSON *parser = [[SBJSON alloc] init];
 //    
@@ -731,22 +752,22 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
     static NSInteger lastContentOffset = 0;
     static BOOL isScrollingToUp = NO;
     if (lastContentOffset > contentOffset) {
-        if (contentOffset < 50) {
+        //if (contentOffset < 50) {
+        if (contentOffset < 30) {
             [UIView animateWithDuration:0.5f animations:^{
-//                [self.topButton setHidden:YES];
+                [self.topButton setHidden:YES];
             }];
         }
         isScrollingToUp = NO;
     }
     else if (lastContentOffset < contentOffset) {
         if (NO == isScrollingToUp) {
-//            [self.topButton setHidden:NO];
+            [self.topButton setHidden:NO];
         }
         isScrollingToUp = YES;
     }
     
     lastContentOffset = scrollView.contentOffset.y;
-
 }
 
 #pragma mark - CPToolBarViewDelegate

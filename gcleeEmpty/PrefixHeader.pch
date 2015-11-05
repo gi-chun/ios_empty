@@ -17,7 +17,7 @@
 #define    SYSTEM_VERSION  [[UIDevice currentDevice]systemVersion]
 
 #define    kScreenBoundsHeight   [UIScreen mainScreen].bounds.size.height
-#define    kScreenBoundsWidth   [UIScreen mainScreen].bounds.size.height
+#define    kScreenBoundsWidth   [UIScreen mainScreen].bounds.size.width
 #define    kToolBarHeight 50.0f
 #define    kNavigationHeight 50.0f
 #define    STATUSBAR_HEIGHT 30.0f

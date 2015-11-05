@@ -203,7 +203,7 @@
 {
     self.webView = [[WebView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight) isSub:YES];
     [self.webView setDelegate:self];
-    [self.webView setHiddenToolBarView:NO];
+    [self.webView setHiddenToolBarView:YES];
     [self.view addSubview:self.webView];
     
     if (webViewRequest) {
@@ -330,7 +330,7 @@
 {
     //NSString *cartUrl = [[CPCommonInfo sharedInfo] urlInfo][@"cart"];
     
-    NSString *cartUrl = @"http://www.daum.net";
+    NSString *cartUrl = @"http://m.naver.com";
     [self openWebView:cartUrl request:nil];
 }
 

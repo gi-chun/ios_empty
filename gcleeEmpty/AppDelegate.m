@@ -26,7 +26,8 @@
     [_window makeKeyAndVisible];
     
     //MYViewController *introductionView = [[MYViewController alloc] init];
-    _introductionView = [[MYViewController alloc] init];
+    self.introductionView = [[MYViewController alloc] init];
+    self.introductionView.delegate = self;
     
 //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 //    UIColor * tintColor = [UIColor colorWithRed:29.0/255.0
@@ -40,43 +41,7 @@
     [self.window setRootViewController:self.introductionView];
     ///////////////////////////////////////////////////////////////////////////////////////////
     
-    UIViewController * leftSideDrawerViewController = [[mainViewController alloc] init];
     
-    UIViewController * centerViewController = [[secondViewController alloc] init];
-    
-//    UIViewController * rightSideDrawerViewController = [[MMExampleRightSideDrawerViewController alloc] init];
-    
-//    UINavigationController * navigationController = [[MMNavigationController alloc] initWithRootViewController:centerViewController];
-    
-    UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:centerViewController];
-    [navigationController setRestorationIdentifier:@"MMExampleCenterNavigationControllerRestorationKey"];
-    
-//    UINavigationController * rightSideNavController = [[UINavigationController alloc] initWithRootViewController:rightSideDrawerViewController];
-//    [rightSideNavController setRestorationIdentifier:@"MMExampleRightNavigationControllerRestorationKey"];
-    
-    UINavigationController * leftSideNavController = [[UINavigationController alloc] initWithRootViewController:leftSideDrawerViewController];
-    [leftSideNavController setRestorationIdentifier:@"MMExampleLeftNavigationControllerRestorationKey"];
-    self.drawerController = [[MMDrawerController alloc]
-                             initWithCenterViewController:navigationController
-                             leftDrawerViewController:leftSideNavController
-                             rightDrawerViewController:nil];
-    [self.drawerController setShowsShadow:NO];
-    [self.drawerController setRestorationIdentifier:@"MMDrawer"];
-    [self.drawerController setMaximumRightDrawerWidth:200.0];
-    [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-    [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-    
-    [self.drawerController
-     setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
-         MMDrawerControllerDrawerVisualStateBlock block;
-         block = [[MMExampleDrawerVisualStateManager sharedManager]
-                  drawerVisualStateBlockForDrawerSide:drawerSide];
-         if(block){
-             block(drawerController, drawerSide, percentVisible);
-         }
-     }];
-    
-    [self.window setRootViewController:self.drawerController];
     
     return YES;
 }
@@ -223,6 +188,51 @@
 //        [self pushAction];
 //    }
 }
+
+#pragma mark - Intro
+- (void)didFinishIntro
+{
+    NSLog(@"finish intro ");
+    
+    UIViewController * leftSideDrawerViewController = [[mainViewController alloc] init];
+    
+    UIViewController * centerViewController = [[secondViewController alloc] init];
+    
+    //    UIViewController * rightSideDrawerViewController = [[MMExampleRightSideDrawerViewController alloc] init];
+    
+    //    UINavigationController * navigationController = [[MMNavigationController alloc] initWithRootViewController:centerViewController];
+    
+    UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:centerViewController];
+    [navigationController setRestorationIdentifier:@"MMExampleCenterNavigationControllerRestorationKey"];
+    
+    //    UINavigationController * rightSideNavController = [[UINavigationController alloc] initWithRootViewController:rightSideDrawerViewController];
+    //    [rightSideNavController setRestorationIdentifier:@"MMExampleRightNavigationControllerRestorationKey"];
+    
+    UINavigationController * leftSideNavController = [[UINavigationController alloc] initWithRootViewController:leftSideDrawerViewController];
+    [leftSideNavController setRestorationIdentifier:@"MMExampleLeftNavigationControllerRestorationKey"];
+    self.drawerController = [[MMDrawerController alloc]
+                             initWithCenterViewController:navigationController
+                             leftDrawerViewController:leftSideNavController
+                             rightDrawerViewController:nil];
+    [self.drawerController setShowsShadow:NO];
+    [self.drawerController setRestorationIdentifier:@"MMDrawer"];
+    [self.drawerController setMaximumRightDrawerWidth:200.0];
+    [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    
+    [self.drawerController
+     setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
+         MMDrawerControllerDrawerVisualStateBlock block;
+         block = [[MMExampleDrawerVisualStateManager sharedManager]
+                  drawerVisualStateBlockForDrawerSide:drawerSide];
+         if(block){
+             block(drawerController, drawerSide, percentVisible);
+         }
+     }];
+    
+    [self.window setRootViewController:self.drawerController];
+}
+
 
 
 @end

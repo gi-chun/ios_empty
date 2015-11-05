@@ -15,7 +15,7 @@
 //@class mainViewController;
 #define IsAtLeastiOSVersion(X) ([[[UIDevice currentDevice] systemVersion] compare:X options:NSNumericSearch] != NSOrderedAscending)
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, MYViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic,strong) MMDrawerController * drawerController;

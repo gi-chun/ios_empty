@@ -189,15 +189,21 @@
     if (self.LanguageDirection == MYLanguageDirectionLeftToRight) {
         self.CurrentPanelIndex = scrollView.contentOffset.x/self.MasterScrollView.frame.size.width;
         
+//        if(self.CurrentPanelIndex == 2){
+//            return;
+//        }
+        
         //Trigger the finish if you are at the end
         if (self.CurrentPanelIndex == (Panels.count)) {
             //Trigger the panel didDisappear appear method in the
             if ([Panels[self.PageControl.currentPage] respondsToSelector:@selector(panelDidDisappear)]) {
                 [Panels[self.PageControl.currentPage] panelDidDisappear];
             }
+            
             if ([(id)delegate respondsToSelector:@selector(introduction:didFinishWithType:)]) {
                 [delegate introduction:self didFinishWithType:MYFinishTypeSwipeOut];
             }
+            
             [self removeFromSuperview];
         }
         else {

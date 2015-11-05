@@ -88,6 +88,14 @@
 
 -(void)introduction:(MYBlurIntroductionView *)introductionView didFinishWithType:(MYFinishType)finishType {
     NSLog(@"Introduction did finish");
+    
+    if(self.delegate){
+        
+        if ([self.delegate respondsToSelector:@selector(didFinishIntro)]) {
+            [self.delegate didFinishIntro];
+        }
+        
+    }
 }
 
 @end

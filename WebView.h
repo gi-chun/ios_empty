@@ -14,7 +14,7 @@
 @property (nonatomic, weak) id<WebViewDelegate> delegate;
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) UIButton *topButton;
-@property (nonatomic, strong) UIButton *baroMartButton;
+@property (nonatomic, strong) UIButton *preButton;
 @property (nonatomic, strong) UIButton *zoomViewerButton;
 @property (nonatomic) BOOL isProductDidLoad;
 @property (nonatomic) BOOL isExistsSubWebView;
@@ -35,7 +35,7 @@
 
 //- (BOOL)toggleButtonHiddenStatus;
 - (void)setHiddenToolBarView:(BOOL)isHidden;
-- (void)setHiddenBaroMartButton:(BOOL)isHidden;
+- (void)setHiddenpreButton:(BOOL)isHidden;
 
 - (NSString *)url;
 - (void)reload;

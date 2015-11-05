@@ -9,6 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "MYBlurIntroductionView.h"
 
+@protocol MYViewControllerDelegate;
+
 @interface MYViewController : UIViewController <MYIntroductionDelegate>
 
+@property (nonatomic, weak) id<MYViewControllerDelegate> delegate;
+
 @end
+
+@protocol MYViewControllerDelegate <NSObject>
+@optional
+- (void)didFinishIntro;
+@end
+

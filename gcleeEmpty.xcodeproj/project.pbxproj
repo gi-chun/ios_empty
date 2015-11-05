@@ -11,6 +11,8 @@
 		282CB3171BDA2600000FF5C0 /* icon_navi_home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 282CB3151BDA2600000FF5C0 /* icon_navi_home@2x.png */; };
 		282CB31A1BDA2626000FF5C0 /* icon_main_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 282CB3181BDA2626000FF5C0 /* icon_main_login.png */; };
 		282CB31B1BDA2626000FF5C0 /* icon_main_login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 282CB3191BDA2626000FF5C0 /* icon_main_login@2x.png */; };
+		286052A01BEB212900F838E6 /* leftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860529F1BEB212900F838E6 /* leftMenuViewController.m */; };
+		286052A31BEB22A900F838E6 /* leftMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 286052A21BEB22A900F838E6 /* leftMenuView.m */; };
 		287F92E31BE748EF007E82AD /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F92DB1BE748EF007E82AD /* MMDrawerBarButtonItem.m */; };
 		287F92E41BE748EF007E82AD /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F92DD1BE748EF007E82AD /* MMDrawerController.m */; };
 		287F92E51BE748EF007E82AD /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F92E01BE748EF007E82AD /* MMDrawerVisualState.m */; };
@@ -73,6 +75,10 @@
 		282CB3151BDA2600000FF5C0 /* icon_navi_home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_navi_home@2x.png"; sourceTree = "<group>"; };
 		282CB3181BDA2626000FF5C0 /* icon_main_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_main_login.png; sourceTree = "<group>"; };
 		282CB3191BDA2626000FF5C0 /* icon_main_login@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_main_login@2x.png"; sourceTree = "<group>"; };
+		2860529E1BEB212800F838E6 /* leftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = leftMenuViewController.h; sourceTree = "<group>"; };
+		2860529F1BEB212900F838E6 /* leftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = leftMenuViewController.m; sourceTree = "<group>"; };
+		286052A11BEB22A900F838E6 /* leftMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = leftMenuView.h; sourceTree = "<group>"; };
+		286052A21BEB22A900F838E6 /* leftMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = leftMenuView.m; sourceTree = "<group>"; };
 		287F92DA1BE748EF007E82AD /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerBarButtonItem.h; sourceTree = "<group>"; };
 		287F92DB1BE748EF007E82AD /* MMDrawerBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerBarButtonItem.m; sourceTree = "<group>"; };
 		287F92DC1BE748EF007E82AD /* MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerController.h; sourceTree = "<group>"; };
@@ -266,6 +272,10 @@
 				28EDAC1E1BDF694100024EF9 /* WebViewController.h */,
 				28EDAC1F1BDF694100024EF9 /* WebViewController.m */,
 				288E45E31BD776D60041AE50 /* mainViewController.h */,
+				2860529E1BEB212800F838E6 /* leftMenuViewController.h */,
+				2860529F1BEB212900F838E6 /* leftMenuViewController.m */,
+				286052A11BEB22A900F838E6 /* leftMenuView.h */,
+				286052A21BEB22A900F838E6 /* leftMenuView.m */,
 				288E45E41BD776D60041AE50 /* mainViewController.m */,
 				28F7C0431BDE0FB000C53B86 /* NavigationBarView.h */,
 				28F7C0441BDE0FB000C53B86 /* NavigationBarView.m */,
@@ -469,6 +479,7 @@
 				28D11E931BE86B04005B3024 /* MYViewController.m in Sources */,
 				287F92E51BE748EF007E82AD /* MMDrawerVisualState.m in Sources */,
 				28D11E991BE86B3A005B3024 /* MYIntroductionPanel.m in Sources */,
+				286052A01BEB212900F838E6 /* leftMenuViewController.m in Sources */,
 				2886A8D91BE09E8C001B7657 /* CPLoadingView.m in Sources */,
 				28EDAC291BDF6ED800024EF9 /* HttpRequest.m in Sources */,
 				28EDAC301BDF709400024EF9 /* ToolBarView.m in Sources */,
@@ -477,6 +488,7 @@
 				28EDAC2A1BDF6ED800024EF9 /* HttpResponse.m in Sources */,
 				287F92EA1BE74A39007E82AD /* MMNavigationController.m in Sources */,
 				28F7C0421BDDFB7000C53B86 /* secondViewController.m in Sources */,
+				286052A31BEB22A900F838E6 /* leftMenuView.m in Sources */,
 				28EDAC211BDF694100024EF9 /* WebViewController.m in Sources */,
 				28F7C0451BDE0FB000C53B86 /* NavigationBarView.m in Sources */,
 				288E45E51BD776D60041AE50 /* mainViewController.m in Sources */,
@@ -600,6 +612,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: jay yeob hwang (79TU4H533J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jay yeob hwang (79TU4H533J)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/sts_old/external/ImageFramework",
@@ -634,6 +648,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shinhan Bank CO.,LTD";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/sts_old/external/ImageFramework",
