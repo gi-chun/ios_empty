@@ -36,6 +36,94 @@
 #pragma mark - Build MYBlurIntroductionView
 
 -(void)buildIntro{
+    
+    //gclee
+//    NSString *url_Img1 = @"http://opensum.in/app_test_f1";
+//    NSString *url_Img2 = @"45djx96.jpg";
+//    
+//    NSString *url_Img_FULL = [url_Img1 stringByAppendingPathComponent:url_Img2];
+//    
+//    NSLog(@"Show url_Img_FULL: %@",url_Img_FULL);
+//    view_Image.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url_Img_FULL]]];
+    
+    //////////////////////////////////////////////
+//    NSString *imgURL = @"imagUrl";
+//    
+//    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imgURL]];
+//    
+//    [YourImgView setImage:[UIImage imageWithData:data]];
+    
+    //////////////////////////////////////////////
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        NSString *imgURL = @"imagUrl";
+//        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imgURL]];
+//        
+//        //set your image on main thread.
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [YourImgView setImage:[UIImage imageWithData:data]];
+//        });    
+//    });
+    
+    ////////////////////////////////////////////////////
+//    NSData *imageUrl = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"Your image URL Here"]];
+//    [UIImage imageWithData:imageUrl];
+    
+    ///////////////////////////////////////////////////////
+     //ImageViewname.image = [UIImage imageNamed:@"test.png"];
+    
+    /////////////////////////////////////////////////////////
+    // https request
+//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//    
+//    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+//    
+//#pragma mark NSURLConnection delegate
+//    
+    
+//    - (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
+//    
+//    {
+//        
+//        return [protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];
+//        
+//    }
+//    
+//    
+//    
+//    - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+//    
+//    {
+//        
+//        if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust])
+//            
+//            //if ([trustedHosts containsObject:challenge.protectionSpace.host])
+//            
+//            [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
+//        
+//        [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
+//        
+//    }
+    
+    
+    //////////////////////
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:loginURL]];
+//    
+//    //set HTTP Method
+//    [request setHTTPMethod:@"POST"];
+//    
+//    //Implement request_body for send request here username and password set into the body.
+//    NSString *request_body = [NSString stringWithFormat:@"Username=%@&Password=%@",[Username stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], [Password stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+//    //set request body into HTTPBody.
+//    [request setHTTPBody:[request_body dataUsingEncoding:NSUTF8StringEncoding]];
+//    
+//    //set request url to the NSURLConnection
+//    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+//    
+//    
+//    if(theConnection) //get the response and retain it
+
+    //end gclee
+    
     //Create Stock Panel with header
 //    UIView *headerView = [[NSBundle mainBundle] loadNibNamed:@"TestHeader" owner:nil options:nil][0];
 //    MYIntroductionPanel *panel1 = [[MYIntroductionPanel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) title:@"Welcome to MYBlurIntroductionView" description:@"MYBlurIntroductionView is a powerful platform for building app introductions and tutorials. Built on the MYIntroductionView core, this revamped version has been reengineered for beauty and greater developer control." image:[UIImage imageNamed:@"HeaderImage.png"] header:headerView];

@@ -7,8 +7,13 @@
 //
 
 #import "leftMenuView.h"
+#import "leftMenuItemView.h"
 
-#define HEADER_HEIGHT       64
+const static CGFloat HEADER_HEIGHT =      64;
+const static CGFloat LOGO_HEIGHT   =      68;
+const static CGFloat LOGIN_HEIGHT  =      196;
+const static CGFloat MENU_HEIGHT   =      68;
+const static CGFloat AD_HEIGHT     =      68;
 
 @interface leftMenuView ()
 {
@@ -85,6 +90,84 @@
     [self removeErrorView];
     [self removeContents];
     
+    /*
+    UIView *logoView;
+    UIView *loginView;
+    UIView *loginResultView;
+    UIView *aDView;
+     */
+    //logoView
+    logoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, LOGO_HEIGHT)];
+    
+//    UIButton* closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [closeButton setFrame:CGRectMake(kScreenBoundsWidth-50+10, 10, 50, 50)];
+//    [closeButton setBackgroundColor:[UIColor clearColor]];
+//    [closeButton setBackgroundImage:[UIImage imageNamed:@"btn_top.png"] forState:UIControlStateHighlighted];
+//    [closeButton setImage:[UIImage imageNamed:@"btn_top.png"] forState:UIControlStateNormal];
+//    [closeButton addTarget:self action:@selector(onCloseButton) forControlEvents:UIControlEventTouchUpInside];
+//    [logoView addSubview:closeButton];
+    /*
+     UIButton *bannerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+     [bannerButton setFrame:CGRectMake(0, 0, kScreenBoundsWidth, 60)];
+     [bannerButton setBackgroundColor:[UIColor clearColor]];
+     [bannerButton setBackgroundImage:[UIImage imageWithColor:UIColorFromRGB(0x000000)] forState:UIControlStateHighlighted];
+     [bannerButton setAlpha:0.3];
+     [bannerButton addTarget:self action:@selector(touchBanner) forControlEvents:UIControlEventTouchUpInside];
+     [self addSubview:bannerButton];
+     
+     lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, 1)];
+     [lineView setBackgroundColor:UIColorFromRGB(0xdbdbe1)];
+     [self addSubview:lineView];
+     */
+    //logo
+    UIImageView *logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, kScreenBoundsWidth-20, LOGO_HEIGHT)];
+    logoImageView.contentMode = UIViewContentModeScaleAspectFit;
+    [logoImageView setImage:[UIImage imageNamed:@"btn_top.png"]];
+    [logoView addSubview:logoImageView];
+    
+    //login view
+    loginView = [[UIView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(logoView.frame)+10, kScreenBoundsWidth, LOGIN_HEIGHT)];
+    UILabel* loginDesc = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(loginView.frame)+10, CGRectGetMinY(loginView.frame)+10, kScreenBoundsWidth-20, LOGIN_HEIGHT/3)];
+    [loginDesc setText:@"로그인을 하시면 Sunny Club의 다양한 서비스를 이용하실 수 있습니다."];
+    [loginView addSubview:loginDesc];
+    
+    UIButton* loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [loginButton setFrame:CGRectMake(kScreenBoundsWidth-20, CGRectGetMaxY(loginDesc.frame), 50, 50)];
+    [loginButton setBackgroundColor:[UIColor clearColor]];
+    [loginButton setBackgroundImage:[UIImage imageNamed:@"btn_top.png"] forState:UIControlStateHighlighted];
+    [loginButton setImage:[UIImage imageNamed:@"btn_top.png"] forState:UIControlStateNormal];
+    [loginButton addTarget:self action:@selector(onLoginButton) forControlEvents:UIControlEventTouchUpInside];
+    [loginView addSubview:loginButton];
+    
+    leftMenuItemView *menuItemView1 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(loginView.frame)+10, kScreenBoundsWidth-20, MENU_HEIGHT) title:@"SUNNY CLUB"];
+    [logoView addSubview:menuItemView1];
+    
+    leftMenuItemView *menuItemView2 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(loginView.frame)+10, kScreenBoundsWidth-20, MENU_HEIGHT) title:@"SUNNY BANK"];
+    [logoView addSubview:menuItemView2];
+    
+    leftMenuItemView *menuItemView3 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(loginView.frame)+10, kScreenBoundsWidth-20, MENU_HEIGHT) title:@"SUNNY EVENT"];
+    [logoView addSubview:menuItemView3];
+    
+    leftMenuItemView *menuItemView4 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(loginView.frame)+10, kScreenBoundsWidth-20, MENU_HEIGHT) title:@"SETTING"];
+    [logoView addSubview:menuItemView4];
+    
+    //ADView
+    UIImageView *adImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, kScreenBoundsWidth-20, AD_HEIGHT)];
+    adImageView.contentMode = UIViewContentModeScaleAspectFit;
+    [adImageView setImage:[UIImage imageNamed:@"btn_top.png"]];
+    [logoView addSubview:adImageView];
+
+
+//    self.PanelDescriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(kLeftRightMargins, runningYOffset, frame.size.width - 2*kLeftRightMargins, panelDescriptionHeight)];
+//    self.PanelDescriptionLabel.numberOfLines = 0;
+//    self.PanelDescriptionLabel.text = self.PanelDescription;
+//    self.PanelDescriptionLabel.font = kDescriptionFont;
+//    self.PanelDescriptionLabel.textColor = kDescriptionTextColor;
+//    self.PanelDescriptionLabel.alpha = 0;
+//    self.PanelDescriptionLabel.backgroundColor = [UIColor clearColor];
+//    [self addSubview:self.PanelDescriptionLabel];
+    
+    
     //topScrollButton
 //    CGFloat buttonWidth = kScreenBoundsWidth / 7;
 //    CGFloat buttonHeight = kToolBarHeight;
@@ -97,7 +180,7 @@
 //    [_topScrollButton setHidden:YES];
 //    [self addSubview:_topScrollButton];
     
-    logoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, 54)];
+    
     //[logoView addSubview:_headerMenuView];
 }
 
@@ -117,6 +200,17 @@
 //        if (!_topScrollButton.hidden)	[_topScrollButton removeFromSuperview];
 //        _topScrollButton = nil;
 //    }
+}
+
+#pragma mark - click
+- (void)onCloseButton
+{
+    
+}
+
+- (void)onLoginButton
+{
+    
 }
 
 #pragma mark - UICollectionViewDataSource

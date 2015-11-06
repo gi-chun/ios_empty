@@ -37,6 +37,7 @@
 		288E45D91BD719640041AE50 /* gcleeEmptyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 288E45D81BD719640041AE50 /* gcleeEmptyTests.m */; };
 		288E45E51BD776D60041AE50 /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 288E45E41BD776D60041AE50 /* mainViewController.m */; };
 		28B9443E1BE1BBDB00EE1572 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B9443D1BE1BBDB00EE1572 /* UIKit.framework */; };
+		28C56A551BEC627A001BBCE1 /* leftMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C56A541BEC627A001BBCE1 /* leftMenuItemView.m */; };
 		28D11E931BE86B04005B3024 /* MYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D11E921BE86B04005B3024 /* MYViewController.m */; };
 		28D11E981BE86B3A005B3024 /* MYBlurIntroductionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D11E951BE86B3A005B3024 /* MYBlurIntroductionView.m */; };
 		28D11E991BE86B3A005B3024 /* MYIntroductionPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D11E971BE86B3A005B3024 /* MYIntroductionPanel.m */; };
@@ -125,6 +126,8 @@
 		288E45E31BD776D60041AE50 /* mainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainViewController.h; sourceTree = "<group>"; };
 		288E45E41BD776D60041AE50 /* mainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainViewController.m; sourceTree = "<group>"; };
 		28B9443D1BE1BBDB00EE1572 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		28C56A531BEC627A001BBCE1 /* leftMenuItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = leftMenuItemView.h; sourceTree = "<group>"; };
+		28C56A541BEC627A001BBCE1 /* leftMenuItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = leftMenuItemView.m; sourceTree = "<group>"; };
 		28D11E911BE86B04005B3024 /* MYViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYViewController.h; sourceTree = "<group>"; };
 		28D11E921BE86B04005B3024 /* MYViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYViewController.m; sourceTree = "<group>"; };
 		28D11E941BE86B3A005B3024 /* MYBlurIntroductionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYBlurIntroductionView.h; sourceTree = "<group>"; };
@@ -275,6 +278,8 @@
 				2860529E1BEB212800F838E6 /* leftMenuViewController.h */,
 				2860529F1BEB212900F838E6 /* leftMenuViewController.m */,
 				286052A11BEB22A900F838E6 /* leftMenuView.h */,
+				28C56A531BEC627A001BBCE1 /* leftMenuItemView.h */,
+				28C56A541BEC627A001BBCE1 /* leftMenuItemView.m */,
 				286052A21BEB22A900F838E6 /* leftMenuView.m */,
 				288E45E41BD776D60041AE50 /* mainViewController.m */,
 				28F7C0431BDE0FB000C53B86 /* NavigationBarView.h */,
@@ -410,6 +415,7 @@
 				TargetAttributes = {
 					288E45BA1BD719640041AE50 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = DCNF47QQ3A;
 					};
 					288E45D31BD719640041AE50 = {
 						CreatedOnToolsVersion = 7.0;
@@ -487,6 +493,7 @@
 				2886A8E11BE0B8DF001B7657 /* CPBlurImageView.m in Sources */,
 				28EDAC2A1BDF6ED800024EF9 /* HttpResponse.m in Sources */,
 				287F92EA1BE74A39007E82AD /* MMNavigationController.m in Sources */,
+				28C56A551BEC627A001BBCE1 /* leftMenuItemView.m in Sources */,
 				28F7C0421BDDFB7000C53B86 /* secondViewController.m in Sources */,
 				286052A31BEB22A900F838E6 /* leftMenuView.m in Sources */,
 				28EDAC211BDF694100024EF9 /* WebViewController.m in Sources */,
@@ -612,8 +619,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: jay yeob hwang (79TU4H533J)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jay yeob hwang (79TU4H533J)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/sts_old/external/ImageFramework",
@@ -640,6 +647,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lee.kichoon.gcleeEmpty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
@@ -648,7 +656,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shinhan Bank CO.,LTD";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/sts_old/external/ImageFramework",
@@ -675,6 +684,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lee.kichoon.gcleeEmpty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;

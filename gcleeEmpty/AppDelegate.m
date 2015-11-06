@@ -195,7 +195,6 @@
     NSLog(@"finish intro ");
     
     UIViewController * leftSideDrawerViewController = [[mainViewController alloc] init];
-    
     UIViewController * centerViewController = [[secondViewController alloc] init];
     
     //    UIViewController * rightSideDrawerViewController = [[MMExampleRightSideDrawerViewController alloc] init];

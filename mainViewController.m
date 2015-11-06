@@ -8,6 +8,7 @@
 
 #import "mainViewController.h"
 #import "secondViewController.h"
+#import "leftMenuView.h"
 
 @interface mainViewController ()
 
@@ -62,34 +63,16 @@
     
     [self.view setBackgroundColor:[UIColor blueColor]];
     
-    UIButton *menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [menuButton setFrame:CGRectMake([[UIScreen mainScreen] bounds].size.width/2, [[UIScreen mainScreen] bounds].size.height/2, 36, 36)];
-    [menuButton setBackgroundImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateNormal];
-    [menuButton setBackgroundImage:[UIImage imageNamed:@"icon_navi_login.png"] forState:UIControlStateHighlighted];
-    [menuButton addTarget:self action:@selector(touchMenuButton) forControlEvents:UIControlEventTouchUpInside];
-    //[menuButton setAccessibilityLabel:@"메뉴" Hint:@"왼쪽 메뉴로 이동합니다"];
-    [self.view addSubview:menuButton];
+    leftMenuView* menuView = [[leftMenuView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight)];
+    [self.view addSubview:menuView];
     
-//    self.logoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [self.logoButton setFrame:CGRectMake(CGRectGetMaxX(menuButton.frame)+10, 4, 54, 36)];
-//    [self.logoButton setBackgroundImage:[UIImage imageNamed:@"btn_logo_nor.png"] forState:UIControlStateNormal];
-//    [self.logoButton setBackgroundImage:[UIImage imageNamed:@"btn_logo_press.png"] forState:UIControlStateHighlighted];
-//    [self.logoButton addTarget:self action:@selector(touchLogoButton) forControlEvents:UIControlEventTouchUpInside];
-//    [self.logoButton setAccessibilityLabel:@"로고" Hint:@"홈으로 이동합니다"];
-//    [self addSubview:self.logoButton];
-    
-//    UIImage *searchImage = [UIImage imageNamed:@"gnb_search_bg.png"];
-//    searchImage = [searchImage resizableImageWithCapInsets:UIEdgeInsetsMake(searchImage.size.height / 2, searchImage.size.width / 2, searchImage.size.height / 2, searchImage.size.width / 2)];
-//    
-//    UIImageView *searchBackgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.logoButton.frame)+6, 4, kScreenBoundsWidth-206, 36)];
-//    [searchBackgroundImageView setImage:searchImage];
-//    [searchBackgroundImageView setUserInteractionEnabled:YES];
-//    [self addSubview:searchBackgroundImageView];
-//    
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(reloadHomeTab)
-//                                                 name:ReloadHomeNotification
-//                                               object:nil];
+//    UIButton *menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [menuButton setFrame:CGRectMake([[UIScreen mainScreen] bounds].size.width/2, [[UIScreen mainScreen] bounds].size.height/2, 36, 36)];
+//    [menuButton setBackgroundImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateNormal];
+//    [menuButton setBackgroundImage:[UIImage imageNamed:@"icon_navi_login.png"] forState:UIControlStateHighlighted];
+//    [menuButton addTarget:self action:@selector(touchMenuButton) forControlEvents:UIControlEventTouchUpInside];
+//    //[menuButton setAccessibilityLabel:@"메뉴" Hint:@"왼쪽 메뉴로 이동합니다"];
+//    [self.view addSubview:menuButton];
 
 }
 /*
