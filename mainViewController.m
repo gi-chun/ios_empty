@@ -63,7 +63,9 @@
     
     [self.view setBackgroundColor:[UIColor blueColor]];
     
-    leftMenuView* menuView = [[leftMenuView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight)];
+    //150.0
+//    leftMenuView* menuView = [[leftMenuView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth-150.0, kScreenBoundsHeight)];
+    leftMenuView* menuView = [[leftMenuView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:menuView];
     
 //    UIButton *menuButton = [UIButton buttonWithType:UIButtonTypeCustom];

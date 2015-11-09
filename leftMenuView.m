@@ -9,11 +9,11 @@
 #import "leftMenuView.h"
 #import "leftMenuItemView.h"
 
-const static CGFloat HEADER_HEIGHT =      64;
-const static CGFloat LOGO_HEIGHT   =      68;
-const static CGFloat LOGIN_HEIGHT  =      196;
-const static CGFloat MENU_HEIGHT   =      68;
-const static CGFloat AD_HEIGHT     =      68;
+const static CGFloat HEADER_HEIGHT =      40;
+const static CGFloat LOGO_HEIGHT   =      40;
+const static CGFloat LOGIN_HEIGHT  =      120;
+const static CGFloat MENU_HEIGHT   =      40;
+const static CGFloat AD_HEIGHT     =      40;
 
 @interface leftMenuView ()
 {
@@ -119,43 +119,49 @@ const static CGFloat AD_HEIGHT     =      68;
      [lineView setBackgroundColor:UIColorFromRGB(0xdbdbe1)];
      [self addSubview:lineView];
      */
+    CGFloat meWidth = self.frame.size.width;
+    CGFloat meHeight = self.frame.size.height;
+    
     //logo
-    UIImageView *logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, kScreenBoundsWidth-20, LOGO_HEIGHT)];
+    UIImageView *logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, meWidth, LOGO_HEIGHT)];
     logoImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [logoImageView setImage:[UIImage imageNamed:@"btn_top.png"]];
+    [logoImageView setImage:[UIImage imageNamed:@"icon_navi_home.png"]];
     [logoView addSubview:logoImageView];
+    [self addSubview:logoView];
     
     //login view
-    loginView = [[UIView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(logoView.frame)+10, kScreenBoundsWidth, LOGIN_HEIGHT)];
+    loginView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(logoView.frame)+10, meWidth, LOGIN_HEIGHT)];
     UILabel* loginDesc = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(loginView.frame)+10, CGRectGetMinY(loginView.frame)+10, kScreenBoundsWidth-20, LOGIN_HEIGHT/3)];
     [loginDesc setText:@"로그인을 하시면 Sunny Club의 다양한 서비스를 이용하실 수 있습니다."];
     [loginView addSubview:loginDesc];
     
     UIButton* loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [loginButton setFrame:CGRectMake(kScreenBoundsWidth-20, CGRectGetMaxY(loginDesc.frame), 50, 50)];
+    [loginButton setFrame:CGRectMake(10, CGRectGetMaxY(loginDesc.frame), meWidth-20, 50)];
     [loginButton setBackgroundColor:[UIColor clearColor]];
-    [loginButton setBackgroundImage:[UIImage imageNamed:@"btn_top.png"] forState:UIControlStateHighlighted];
-    [loginButton setImage:[UIImage imageNamed:@"btn_top.png"] forState:UIControlStateNormal];
+    [loginButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
+    [loginButton setImage:[UIImage imageNamed:@"bg_notice_bar.png"] forState:UIControlStateNormal];
     [loginButton addTarget:self action:@selector(onLoginButton) forControlEvents:UIControlEventTouchUpInside];
     [loginView addSubview:loginButton];
+    [self addSubview:loginView];
     
-    leftMenuItemView *menuItemView1 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(loginView.frame)+10, kScreenBoundsWidth-20, MENU_HEIGHT) title:@"SUNNY CLUB"];
-    [logoView addSubview:menuItemView1];
+    leftMenuItemView *menuItemView1 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(loginView.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY CLUB"];
+    [self addSubview:menuItemView1];
     
-    leftMenuItemView *menuItemView2 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(loginView.frame)+10, kScreenBoundsWidth-20, MENU_HEIGHT) title:@"SUNNY BANK"];
-    [logoView addSubview:menuItemView2];
+    leftMenuItemView *menuItemView2 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(menuItemView1.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY BANK"];
+    [self addSubview:menuItemView2];
     
-    leftMenuItemView *menuItemView3 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(loginView.frame)+10, kScreenBoundsWidth-20, MENU_HEIGHT) title:@"SUNNY EVENT"];
-    [logoView addSubview:menuItemView3];
+    leftMenuItemView *menuItemView3 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(menuItemView2.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY EVENT"];
+    [self addSubview:menuItemView3];
     
-    leftMenuItemView *menuItemView4 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(loginView.frame)+10, kScreenBoundsWidth-20, MENU_HEIGHT) title:@"SETTING"];
-    [logoView addSubview:menuItemView4];
+    leftMenuItemView *menuItemView4 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(menuItemView3.frame)+10, meWidth, MENU_HEIGHT) title:@"SETTING"];
+    [self addSubview:menuItemView4];
     
     //ADView
-    UIImageView *adImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, kScreenBoundsWidth-20, AD_HEIGHT)];
+    UIImageView *adImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, meWidth, AD_HEIGHT)];
     adImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [adImageView setImage:[UIImage imageNamed:@"btn_top.png"]];
+    [adImageView setImage:[UIImage imageNamed:@"icon_navi_home.png"]];
     [logoView addSubview:adImageView];
+    [self addSubview:logoView];
 
 
 //    self.PanelDescriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(kLeftRightMargins, runningYOffset, frame.size.width - 2*kLeftRightMargins, panelDescriptionHeight)];

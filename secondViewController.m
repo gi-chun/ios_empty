@@ -103,7 +103,8 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"ok ^^"                                             delegate:self cancelButtonTitle:@"닫기" otherButtonTitles:nil, nil];
     [alert show];
     
-    NSString *url = @"http://m.naver.com";
+    //NSString *url = @"http://m.naver.com";
+    NSString *url = @"https://vntst.shinhanglobal.com/sunny/index3.jsp";
     WebViewController *viewControlelr = [[WebViewController alloc] initWithUrl:url];
     [self.navigationController pushViewController:viewControlelr animated:YES];
 }

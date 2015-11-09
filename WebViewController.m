@@ -330,7 +330,8 @@
 {
     //NSString *cartUrl = [[CPCommonInfo sharedInfo] urlInfo][@"cart"];
     
-    NSString *cartUrl = @"http://m.naver.com";
+    //NSString *cartUrl = @"http://m.naver.com";
+    NSString *cartUrl = @"https://vntst.shinhanglobal.com/sunny/index3.jsp";
     [self openWebView:cartUrl request:nil];
 }
 

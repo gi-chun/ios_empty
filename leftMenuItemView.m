@@ -8,9 +8,9 @@
 
 #import "leftMenuItemView.h"
 
-const static CGFloat ICON_HEIGHT     =     68;
-const static CGFloat ICON_WIDTH      =    136;
-const static CGFloat LABEL_WIDTH     =    136;
+const static CGFloat ICON_HEIGHT     =     50;
+const static CGFloat ICON_WIDTH      =    50;
+const static CGFloat LABEL_WIDTH     =    100;
 
 @interface leftMenuItemView ()
 {
@@ -56,9 +56,9 @@ const static CGFloat LABEL_WIDTH     =    136;
     [self removeContents];
     
     //icon
-    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, ICON_WIDTH, ICON_HEIGHT)];
+    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ICON_WIDTH, ICON_HEIGHT)];
     iconImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [iconImageView setImage:[UIImage imageNamed:@"btn_top.png"]];
+    [iconImageView setImage:[UIImage imageNamed:@"icon_navi_home.png"]];
     [self addSubview:iconImageView];
     
     //label
