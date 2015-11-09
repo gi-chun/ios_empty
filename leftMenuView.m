@@ -157,7 +157,7 @@ const static CGFloat AD_HEIGHT     =      40;
     [self addSubview:menuItemView4];
     
     //ADView
-    UIImageView *adImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, meWidth, AD_HEIGHT)];
+    UIImageView *adImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, meHeight-AD_HEIGHT, meWidth, AD_HEIGHT)];
     adImageView.contentMode = UIViewContentModeScaleAspectFit;
     [adImageView setImage:[UIImage imageNamed:@"icon_navi_home.png"]];
     [logoView addSubview:adImageView];

@@ -55,6 +55,10 @@ const static CGFloat LABEL_WIDTH     =    100;
 {
     [self removeContents];
     
+    CGFloat meWidth = self.frame.size.width;
+    CGFloat meHeight = self.frame.size.height;
+    CGFloat meY = self.bounds.origin.y;
+    
     //icon
     UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ICON_WIDTH, ICON_HEIGHT)];
     iconImageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -62,9 +66,28 @@ const static CGFloat LABEL_WIDTH     =    100;
     [self addSubview:iconImageView];
     
     //label
-    UILabel* labelMenu = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame)+10, CGRectGetMinY(iconImageView.frame), ICON_HEIGHT, LABEL_WIDTH)];
-    [labelMenu setText:_title];
+    UILabel* labelMenu = [[UILabel alloc] initWithFrame:CGRectMake(60, self.bounds.origin.y, 50, 100)];
     [self addSubview:labelMenu];
+    
+    [labelMenu setBackgroundColor:[UIColor clearColor]];
+    [labelMenu setTextColor:UIColorFromRGB(0x8c6239)];
+    [labelMenu setFont:[UIFont systemFontOfSize:13]];
+    //[labelMenu setFont:[UIFont fontWithName:@"Helvetica-Bold" size:13]];
+    //setFont:[UIFont systemFontOfSize:15]];
+    [labelMenu setShadowColor:[UIColor whiteColor]];
+    [labelMenu setShadowOffset:CGSizeMake(0,2)];
+    [labelMenu setTextAlignment:NSTextAlignmentLeft];
+    [labelMenu setText:_title];
+    
+    //button
+    UIButton* emptyButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [emptyButton setFrame:[self bounds]];
+    [emptyButton setBackgroundColor:[UIColor clearColor]];
+    //emptyButton.backgroundColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:0.5];
+    [emptyButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
+    [emptyButton addTarget:self action:@selector(onClickButton) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:emptyButton];
+    
 }
 
 - (void)removeContents
@@ -73,6 +96,11 @@ const static CGFloat LABEL_WIDTH     =    100;
     //        if (!_topScrollButton.hidden)	[_topScrollButton removeFromSuperview];
     //        _topScrollButton = nil;
     //    }
+}
+
+- (void)onClickButton
+{
+    
 }
 
 /*
