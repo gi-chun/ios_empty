@@ -105,11 +105,16 @@ const static CGFloat AD_HEIGHT     =      40;
      [lineView setBackgroundColor:UIColorFromRGB(0xdbdbe1)];
      [self addSubview:lineView];
      */
+    
+    ////150
     CGFloat meWidth = self.frame.size.width;
     CGFloat meHeight = self.frame.size.height;
     
+    NSLog(@"left size %f", meWidth);
+    meWidth = meWidth - 60;
+    
     //logo
-    UIImageView *logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, meWidth, LOGO_HEIGHT)];
+    UIImageView *logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, meWidth, LOGO_HEIGHT)];
     [logoImageView setBackgroundColor:UIColorFromRGB(0xa9a9a9)];
     logoImageView.contentMode = UIViewContentModeScaleAspectFit;
     [logoImageView setImage:[UIImage imageNamed:@"icon_navi_home.png"]];
@@ -117,7 +122,7 @@ const static CGFloat AD_HEIGHT     =      40;
     [self addSubview:logoView];
     
     //login view
-    loginView = [[leftLoginView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(logoView.frame)+10, meWidth, LOGIN_HEIGHT) title:@"로그인을 하시면 Sunny Club의 다양한 서비스를 이용하실 수 있습니다."];
+    loginView = [[leftLoginView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(logoView.frame)+10, meWidth, LOGIN_HEIGHT) title:@"로그인을 하시면 Sunny Club의 다양한 서비스를 이용하실 수 있습니다."];
 //    [loginView setBackgroundColor:UIColorFromRGB(0xa9a9a9)];
 //    UITextField* loginDesc = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(logoView.frame), kScreenBoundsWidth-10, 20)];
 //    [loginDesc setBackgroundColor:[UIColor clearColor]];
@@ -140,16 +145,16 @@ const static CGFloat AD_HEIGHT     =      40;
 //    [loginView addSubview:loginButton];
     [self addSubview:loginView];
     
-    leftMenuItemView *menuItemView1 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(loginView.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY CLUB"];
+    leftMenuItemView *menuItemView1 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(loginView.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY CLUB"];
     [self addSubview:menuItemView1];
     
-    leftMenuItemView *menuItemView2 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(menuItemView1.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY BANK"];
+    leftMenuItemView *menuItemView2 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView1.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY BANK"];
     [self addSubview:menuItemView2];
     
-    leftMenuItemView *menuItemView3 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(menuItemView2.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY EVENT"];
+    leftMenuItemView *menuItemView3 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView2.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY EVENT"];
     [self addSubview:menuItemView3];
     
-    leftMenuItemView *menuItemView4 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(menuItemView3.frame)+10, meWidth, MENU_HEIGHT) title:@"SETTING"];
+    leftMenuItemView *menuItemView4 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView3.frame)+10, meWidth, MENU_HEIGHT) title:@"SETTING"];
     [self addSubview:menuItemView4];
     
     //ADView

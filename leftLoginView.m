@@ -51,6 +51,7 @@
 {
     [self removeContents];
     
+    //150
     CGFloat meWidth = self.frame.size.width;
     CGFloat meHeight = self.frame.size.height;
     CGFloat meY = self.bounds.origin.y;
@@ -70,7 +71,7 @@
     
     //label
     // 100, 26
-    UILabel* labelMenu = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, meWidth, 26*2)];
+    UILabel* labelMenu = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, meWidth-10, 26*2)];
     [labelMenu setBackgroundColor:[UIColor clearColor]];
     [labelMenu setTextColor:UIColorFromRGB(0x8c6239)];
     [labelMenu setFont:[UIFont systemFontOfSize:15]];
@@ -86,18 +87,22 @@
     
     //button
     UIButton* emptyButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [emptyButton setFrame:CGRectMake(20, CGRectGetMaxY(labelMenu.frame)+10, meWidth-50, 26*2)];
-    [emptyButton setBackgroundColor:[UIColor clearColor]];
-    [emptyButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
-    [emptyButton setImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateNormal];
+    [emptyButton setFrame:CGRectMake(20, CGRectGetMaxY(labelMenu.frame)+10, meWidth-40, 26*2)];
+    [emptyButton setBackgroundColor:[UIColor clearColor]]; //icon_main_login, btn_login_save.png
+    [emptyButton setBackgroundImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateHighlighted];
+    [emptyButton setBackgroundImage:[UIImage imageNamed:@"icon_main_login.png"] forState:UIControlStateNormal];
+    //[emptyButton setImage:[UIImage imageNamed:@"icon_main_login.png"] forState:UIControlStateNormal];
     [emptyButton addTarget:self action:@selector(onClickButton) forControlEvents:UIControlEventTouchUpInside];
     [emptyButton setTitle:@"로그인" forState:UIControlStateNormal];
-    [emptyButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18]];
-    emptyButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    [emptyButton.titleLabel setFont:[UIFont boldSystemFontOfSize:15]];
     
-    CGFloat spacing = 20; // the amount of spacing to appear between image and title
-    emptyButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, spacing);
-    emptyButton.titleEdgeInsets = UIEdgeInsetsMake(0, spacing, 0, 0);
+    emptyButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+//    
+//    CGFloat spacing = 20; // the amount of spacing to appear between image and title
+//    emptyButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, spacing);
+//    emptyButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+//    [emptyButton setContentEdgeInsets:UIEdgeInsetsMake(26, 0, 0, 0)];
+    
     [self addSubview:emptyButton];
     
 }
