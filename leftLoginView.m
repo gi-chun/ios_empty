@@ -1,18 +1,14 @@
 //
-//  leftMenuItemView.m
+//  leftLoginView.m
 //  gcleeEmpty
 //
-//  Created by gclee on 2015. 11. 6..
+//  Created by gclee on 2015. 11. 10..
 //  Copyright © 2015년 gclee. All rights reserved.
 //
 
-#import "leftMenuItemView.h"
+#import "leftLoginView.h"
 
-const static CGFloat ICON_HEIGHT     =     50;
-const static CGFloat ICON_WIDTH      =    50;
-const static CGFloat LABEL_WIDTH     =    100;
-
-@interface leftMenuItemView ()
+@interface leftLoginView ()
 {
     //NSDictionary *_item;
     //NSMutableDictionary *_AreaItem;
@@ -20,7 +16,7 @@ const static CGFloat LABEL_WIDTH     =    100;
 }
 @end
 
-@implementation leftMenuItemView
+@implementation leftLoginView
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -67,34 +63,41 @@ const static CGFloat LABEL_WIDTH     =    100;
      */
     
     //icon
-    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ICON_WIDTH, [self bounds].size.height)];
-    iconImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [iconImageView setImage:[UIImage imageNamed:@"icon_navi_home.png"]];
-    [self addSubview:iconImageView];
+//    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ICON_WIDTH, [self bounds].size.height)];
+//    iconImageView.contentMode = UIViewContentModeScaleAspectFit;
+//    [iconImageView setImage:[UIImage imageNamed:@"icon_navi_home.png"]];
+//    [self addSubview:iconImageView];
     
     //label
     // 100, 26
-    UILabel* labelMenu = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame)+10, 8, 100, 26)];
+    UILabel* labelMenu = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, meWidth, 26*2)];
     [labelMenu setBackgroundColor:[UIColor clearColor]];
     [labelMenu setTextColor:UIColorFromRGB(0x8c6239)];
-    [labelMenu setFont:[UIFont systemFontOfSize:13]];
+    [labelMenu setFont:[UIFont systemFontOfSize:15]];
     //[labelMenu setFont:[UIFont fontWithName:@"Helvetica-Bold" size:13]];
     //setFont:[UIFont systemFontOfSize:15]];
-//    [labelMenu setShadowColor:[UIColor whiteColor]];
-//    [labelMenu setShadowOffset:CGSizeMake(0,2)];
+    //    [labelMenu setShadowColor:[UIColor whiteColor]];
+    //    [labelMenu setShadowOffset:CGSizeMake(0,2)];
     [labelMenu setTextAlignment:NSTextAlignmentLeft];
-    //[labelMenu setNumberOfLines:0];
+    [labelMenu setNumberOfLines:0];
     //[labelMenu sizeToFit];
     [labelMenu setText:_title];
     [self addSubview:labelMenu];
     
     //button
     UIButton* emptyButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [emptyButton setFrame:[self bounds]];
+    [emptyButton setFrame:CGRectMake(20, CGRectGetMaxY(labelMenu.frame)+10, meWidth-50, 26*2)];
     [emptyButton setBackgroundColor:[UIColor clearColor]];
-    //emptyButton.backgroundColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:0.5];
     [emptyButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
+    [emptyButton setImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateNormal];
     [emptyButton addTarget:self action:@selector(onClickButton) forControlEvents:UIControlEventTouchUpInside];
+    [emptyButton setTitle:@"로그인" forState:UIControlStateNormal];
+    [emptyButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18]];
+    emptyButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    
+    CGFloat spacing = 20; // the amount of spacing to appear between image and title
+    emptyButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, spacing);
+    emptyButton.titleEdgeInsets = UIEdgeInsetsMake(0, spacing, 0, 0);
     [self addSubview:emptyButton];
     
 }
@@ -115,10 +118,9 @@ const static CGFloat LABEL_WIDTH     =    100;
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRec)rect {
+- (void)drawRect:(CGRect)rect {
     // Drawing code
 }
 */
 
 @end
-

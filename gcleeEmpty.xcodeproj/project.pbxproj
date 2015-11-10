@@ -11,6 +11,7 @@
 		282CB3171BDA2600000FF5C0 /* icon_navi_home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 282CB3151BDA2600000FF5C0 /* icon_navi_home@2x.png */; };
 		282CB31A1BDA2626000FF5C0 /* icon_main_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 282CB3181BDA2626000FF5C0 /* icon_main_login.png */; };
 		282CB31B1BDA2626000FF5C0 /* icon_main_login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 282CB3191BDA2626000FF5C0 /* icon_main_login@2x.png */; };
+		2853A1E11BF1779800B8F70E /* leftLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2853A1E01BF1779800B8F70E /* leftLoginView.m */; };
 		286052A01BEB212900F838E6 /* leftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860529F1BEB212900F838E6 /* leftMenuViewController.m */; };
 		286052A31BEB22A900F838E6 /* leftMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 286052A21BEB22A900F838E6 /* leftMenuView.m */; };
 		287F92E31BE748EF007E82AD /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F92DB1BE748EF007E82AD /* MMDrawerBarButtonItem.m */; };
@@ -38,6 +39,7 @@
 		288E45E51BD776D60041AE50 /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 288E45E41BD776D60041AE50 /* mainViewController.m */; };
 		28B9443E1BE1BBDB00EE1572 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B9443D1BE1BBDB00EE1572 /* UIKit.framework */; };
 		28C56A551BEC627A001BBCE1 /* leftMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C56A541BEC627A001BBCE1 /* leftMenuItemView.m */; };
+		28D089901BF0714B002B5B05 /* Toronto_ON.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28D0898F1BF0714B002B5B05 /* Toronto_ON.jpg */; };
 		28D11E931BE86B04005B3024 /* MYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D11E921BE86B04005B3024 /* MYViewController.m */; };
 		28D11E981BE86B3A005B3024 /* MYBlurIntroductionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D11E951BE86B3A005B3024 /* MYBlurIntroductionView.m */; };
 		28D11E991BE86B3A005B3024 /* MYIntroductionPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D11E971BE86B3A005B3024 /* MYIntroductionPanel.m */; };
@@ -76,6 +78,8 @@
 		282CB3151BDA2600000FF5C0 /* icon_navi_home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_navi_home@2x.png"; sourceTree = "<group>"; };
 		282CB3181BDA2626000FF5C0 /* icon_main_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_main_login.png; sourceTree = "<group>"; };
 		282CB3191BDA2626000FF5C0 /* icon_main_login@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_main_login@2x.png"; sourceTree = "<group>"; };
+		2853A1DF1BF1779800B8F70E /* leftLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = leftLoginView.h; sourceTree = "<group>"; };
+		2853A1E01BF1779800B8F70E /* leftLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = leftLoginView.m; sourceTree = "<group>"; };
 		2860529E1BEB212800F838E6 /* leftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = leftMenuViewController.h; sourceTree = "<group>"; };
 		2860529F1BEB212900F838E6 /* leftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = leftMenuViewController.m; sourceTree = "<group>"; };
 		286052A11BEB22A900F838E6 /* leftMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = leftMenuView.h; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 		28B9443D1BE1BBDB00EE1572 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		28C56A531BEC627A001BBCE1 /* leftMenuItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = leftMenuItemView.h; sourceTree = "<group>"; };
 		28C56A541BEC627A001BBCE1 /* leftMenuItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = leftMenuItemView.m; sourceTree = "<group>"; };
+		28D0898F1BF0714B002B5B05 /* Toronto_ON.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Toronto_ON.jpg; sourceTree = "<group>"; };
 		28D11E911BE86B04005B3024 /* MYViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYViewController.h; sourceTree = "<group>"; };
 		28D11E921BE86B04005B3024 /* MYViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYViewController.m; sourceTree = "<group>"; };
 		28D11E941BE86B3A005B3024 /* MYBlurIntroductionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYBlurIntroductionView.h; sourceTree = "<group>"; };
@@ -201,6 +206,7 @@
 				28F7C04B1BDE18B000C53B86 /* btn_setting_back@2x.png */,
 				28D11E9A1BE86C16005B3024 /* ForkImage.png */,
 				28D11E9B1BE86C16005B3024 /* Toronto, ON.jpg */,
+				28D0898F1BF0714B002B5B05 /* Toronto_ON.jpg */,
 				28F7C0521BDE18FE00C53B86 /* btn_login_save.png */,
 				28F7C0531BDE18FE00C53B86 /* btn_login_save@2x.png */,
 				28F7C04E1BDE18BF00C53B86 /* btn_setting_menu.png */,
@@ -280,6 +286,8 @@
 				286052A11BEB22A900F838E6 /* leftMenuView.h */,
 				28C56A531BEC627A001BBCE1 /* leftMenuItemView.h */,
 				28C56A541BEC627A001BBCE1 /* leftMenuItemView.m */,
+				2853A1DF1BF1779800B8F70E /* leftLoginView.h */,
+				2853A1E01BF1779800B8F70E /* leftLoginView.m */,
 				286052A21BEB22A900F838E6 /* leftMenuView.m */,
 				288E45E41BD776D60041AE50 /* mainViewController.m */,
 				28F7C0431BDE0FB000C53B86 /* NavigationBarView.h */,
@@ -456,6 +464,7 @@
 				288E45CB1BD719640041AE50 /* Assets.xcassets in Resources */,
 				2886A8D51BE082C8001B7657 /* Config.plist in Resources */,
 				28F7C0501BDE18BF00C53B86 /* btn_setting_menu.png in Resources */,
+				28D089901BF0714B002B5B05 /* Toronto_ON.jpg in Resources */,
 				28F7C0491BDE189900C53B86 /* bg_notice_bar@2x.png in Resources */,
 				282CB3161BDA2600000FF5C0 /* icon_navi_home.png in Resources */,
 				282CB31B1BDA2626000FF5C0 /* icon_main_login@2x.png in Resources */,
@@ -489,6 +498,7 @@
 				2886A8D91BE09E8C001B7657 /* CPLoadingView.m in Sources */,
 				28EDAC291BDF6ED800024EF9 /* HttpRequest.m in Sources */,
 				28EDAC301BDF709400024EF9 /* ToolBarView.m in Sources */,
+				2853A1E11BF1779800B8F70E /* leftLoginView.m in Sources */,
 				2886A8F01BE0BBDC001B7657 /* UIImage+ImageWithColor.m in Sources */,
 				2886A8E11BE0B8DF001B7657 /* CPBlurImageView.m in Sources */,
 				28EDAC2A1BDF6ED800024EF9 /* HttpResponse.m in Sources */,

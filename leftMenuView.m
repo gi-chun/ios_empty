@@ -8,6 +8,7 @@
 
 #import "leftMenuView.h"
 #import "leftMenuItemView.h"
+#import "leftLoginView.h"
 
 const static CGFloat HEADER_HEIGHT =      40;
 const static CGFloat LOGO_HEIGHT   =      40;
@@ -98,23 +99,8 @@ const static CGFloat AD_HEIGHT     =      40;
      */
     //logoView
     logoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, LOGO_HEIGHT)];
-    
-//    UIButton* closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [closeButton setFrame:CGRectMake(kScreenBoundsWidth-50+10, 10, 50, 50)];
-//    [closeButton setBackgroundColor:[UIColor clearColor]];
-//    [closeButton setBackgroundImage:[UIImage imageNamed:@"btn_top.png"] forState:UIControlStateHighlighted];
-//    [closeButton setImage:[UIImage imageNamed:@"btn_top.png"] forState:UIControlStateNormal];
-//    [closeButton addTarget:self action:@selector(onCloseButton) forControlEvents:UIControlEventTouchUpInside];
-//    [logoView addSubview:closeButton];
+
     /*
-     UIButton *bannerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-     [bannerButton setFrame:CGRectMake(0, 0, kScreenBoundsWidth, 60)];
-     [bannerButton setBackgroundColor:[UIColor clearColor]];
-     [bannerButton setBackgroundImage:[UIImage imageWithColor:UIColorFromRGB(0x000000)] forState:UIControlStateHighlighted];
-     [bannerButton setAlpha:0.3];
-     [bannerButton addTarget:self action:@selector(touchBanner) forControlEvents:UIControlEventTouchUpInside];
-     [self addSubview:bannerButton];
-     
      lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, 1)];
      [lineView setBackgroundColor:UIColorFromRGB(0xdbdbe1)];
      [self addSubview:lineView];
@@ -124,24 +110,34 @@ const static CGFloat AD_HEIGHT     =      40;
     
     //logo
     UIImageView *logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, meWidth, LOGO_HEIGHT)];
+    [logoImageView setBackgroundColor:UIColorFromRGB(0xa9a9a9)];
     logoImageView.contentMode = UIViewContentModeScaleAspectFit;
     [logoImageView setImage:[UIImage imageNamed:@"icon_navi_home.png"]];
     [logoView addSubview:logoImageView];
     [self addSubview:logoView];
     
     //login view
-    loginView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(logoView.frame)+10, meWidth, LOGIN_HEIGHT)];
-    UILabel* loginDesc = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(loginView.frame)+10, CGRectGetMinY(loginView.frame)+10, kScreenBoundsWidth-20, LOGIN_HEIGHT/3)];
-    [loginDesc setText:@"로그인을 하시면 Sunny Club의 다양한 서비스를 이용하실 수 있습니다."];
-    [loginView addSubview:loginDesc];
-    
-    UIButton* loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [loginButton setFrame:CGRectMake(10, CGRectGetMaxY(loginDesc.frame), meWidth-20, 50)];
-    [loginButton setBackgroundColor:[UIColor clearColor]];
-    [loginButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
-    [loginButton setImage:[UIImage imageNamed:@"bg_notice_bar.png"] forState:UIControlStateNormal];
-    [loginButton addTarget:self action:@selector(onLoginButton) forControlEvents:UIControlEventTouchUpInside];
-    [loginView addSubview:loginButton];
+    loginView = [[leftLoginView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(logoView.frame)+10, meWidth, LOGIN_HEIGHT) title:@"로그인을 하시면 Sunny Club의 다양한 서비스를 이용하실 수 있습니다."];
+//    [loginView setBackgroundColor:UIColorFromRGB(0xa9a9a9)];
+//    UITextField* loginDesc = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(logoView.frame), kScreenBoundsWidth-10, 20)];
+//    [loginDesc setBackgroundColor:[UIColor clearColor]];
+//    [loginDesc setTextColor:UIColorFromRGB(0x8c6239)];
+//    [loginDesc setFont:[UIFont systemFontOfSize:13]];
+//    [loginDesc setText:@"로그인을 하시면 Sunny Club의 다양한 서비스를 이용하실 수 있습니다."];
+//    loginDesc.textAlignment = NSTextAlignmentLeft;
+//    loginDesc.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
+//    loginDesc.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//    loginDesc.userInteractionEnabled = NO; // Don't allow interaction
+//    //[loginDesc sizeToFit];
+//    [loginView addSubview:loginDesc];
+//    
+//    UIButton* loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [loginButton setFrame:CGRectMake(10, CGRectGetMaxY(loginDesc.frame), meWidth-50, 50)];
+//    [loginButton setBackgroundColor:[UIColor clearColor]];
+//    [loginButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
+//    [loginButton setImage:[UIImage imageNamed:@"bg_notice_bar.png"] forState:UIControlStateNormal];
+//    [loginButton addTarget:self action:@selector(onLoginButton) forControlEvents:UIControlEventTouchUpInside];
+//    [loginView addSubview:loginButton];
     [self addSubview:loginView];
     
     leftMenuItemView *menuItemView1 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(loginView.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY CLUB"];
@@ -162,6 +158,15 @@ const static CGFloat AD_HEIGHT     =      40;
     [adImageView setImage:[UIImage imageNamed:@"icon_navi_home.png"]];
     [logoView addSubview:adImageView];
     [self addSubview:logoView];
+    
+    //AD emptybutton
+    UIButton* emptyButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [emptyButton setFrame:CGRectMake(0, meHeight-AD_HEIGHT, meWidth, AD_HEIGHT)];
+    [emptyButton setBackgroundColor:[UIColor clearColor]];
+    //emptyButton.backgroundColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:0.5];
+    [emptyButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
+    [emptyButton addTarget:self action:@selector(onClickADButton) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:emptyButton];
 
 
 //    self.PanelDescriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(kLeftRightMargins, runningYOffset, frame.size.width - 2*kLeftRightMargins, panelDescriptionHeight)];
@@ -311,6 +316,11 @@ const static CGFloat AD_HEIGHT     =      40;
     //        [_loadingView stopAnimation];
     //        [_loadingView setHidden:YES];
     //    }
+}
+
+- (void) onClickADButton
+{
+    
 }
 
 @end

@@ -166,10 +166,12 @@
     //You can edit introduction view properties right from the delegate method!
     //If it is the first panel, change the color to green!
     if (panelIndex == 0) {
+        introductionView.BackgroundImageView.image = [UIImage imageNamed:@"Toronto, ON.jpg"];
         [introductionView setBackgroundColor:[UIColor colorWithRed:90.0f/255.0f green:175.0f/255.0f blue:113.0f/255.0f alpha:0.65]];
     }
     //If it is the second panel, change the color to blue!
     else if (panelIndex == 1){
+        introductionView.BackgroundImageView.image = [UIImage imageNamed:@"Toronto_ON.jpg"];
         [introductionView setBackgroundColor:[UIColor colorWithRed:50.0f/255.0f green:79.0f/255.0f blue:133.0f/255.0f alpha:0.65]];
     }
 }
