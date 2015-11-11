@@ -1,9 +1,9 @@
 //
 //  CPRESTClient.m
-//  11st
 //
-//  Created by spearhead on 2015. 3. 5..
-//  Copyright (c) 2015년 Commerce Planet. All rights reserved.
+//
+//  Created by gclee on 2015. 3. 5..
+//  Copyright (c) 2015년 . All rights reserved.
 //
 
 #import "CPRESTClient.h"
