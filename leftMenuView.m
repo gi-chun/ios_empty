@@ -46,6 +46,10 @@ const static CGFloat AD_HEIGHT     =      40+10;
 
         [self showContents];
         
+        //NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:[JSONstring dataUsingEncoding:NSUTF8StringEncoding] options: NSJSONReadingMutableContainers error:&error];
+        
+
+        
         //LoadingView
 //        _loadingView = [[CPLoadingView alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.frame)/2-40,
 //                                                                       CGRectGetHeight(self.frame)/2-40,
