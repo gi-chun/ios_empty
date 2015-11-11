@@ -26,7 +26,8 @@ const static CGFloat LABEL_WIDTH     =    100;
 {
     if (self = [super initWithFrame:frame])
     {
-        [self setBackgroundColor:UIColorFromRGB(0xe3e3e8)];
+        //[self setBackgroundColor:UIColorFromRGB(0xe3e3e8)];
+        [self setBackgroundColor:[UIColor clearColor]];
         
         [self showContents];
         
@@ -38,7 +39,8 @@ const static CGFloat LABEL_WIDTH     =    100;
 {
     if (self = [super initWithFrame:frame])
     {
-        [self setBackgroundColor:UIColorFromRGB(0xa9a9a9)];
+        //[self setBackgroundColor:UIColorFromRGB(0xa9a9a9)];
+        [self setBackgroundColor:[UIColor clearColor]];
         
         _title = title;
         
@@ -106,6 +108,8 @@ const static CGFloat LABEL_WIDTH     =    100;
     //[emptyButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
     [emptyButton setImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateNormal];
     [emptyButton setImage:[UIImage imageNamed:@"btn_setting_menu.png"] forState:UIControlStateHighlighted];
+    [emptyButton setBackgroundImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateHighlighted];
+    [emptyButton setBackgroundImage:[UIImage imageNamed:@"icon_main_login.png"] forState:UIControlStateNormal];
     [emptyButton addTarget:self action:@selector(onClickButton) forControlEvents:UIControlEventTouchUpInside];
     [emptyButton setTitle:_title forState:UIControlStateNormal];
     [emptyButton setTitle:_title forState:UIControlStateHighlighted];
@@ -113,23 +117,9 @@ const static CGFloat LABEL_WIDTH     =    100;
     [emptyButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     [self addSubview:emptyButton];
     
-    //CGSize buttonSize = emptyButton.frame.size;
-    //NSString *buttonTitle = emptyButton.titleLabel.text;
-    //CGSize titleSize = [buttonTitle sizeWithAttributes:@{ NSFontAttributeName : [UIFont boldSystemFontOfSize:15] }];
-    
     UIImage *buttonImage = emptyButton.imageView.image;
-    //CGSize buttonImageSize = buttonImage.size;
-    
-    //CGFloat offsetBetweenImageAndText = 10; //vertical space between image and text
-    //    [emptyButton setImageEdgeInsets:UIEdgeInsetsMake((buttonSize.height - (titleSize.height + buttonImageSize.height)) / 2 - offsetBetweenImageAndText,
-//                                                (buttonSize.width - buttonImageSize.width) / 2,
-//                                                0,0)];
     [emptyButton setImageEdgeInsets:UIEdgeInsetsMake(0,10,0,0)];
-//    [emptyButton setTitleEdgeInsets:UIEdgeInsetsMake((buttonSize.height - (titleSize.height + buttonImageSize.height)) / 2 + buttonImageSize.height + offsetBetweenImageAndText,
-//                                                titleSize.width + [emptyButton imageEdgeInsets].left > buttonSize.width ? -buttonImage.size.width  +  (buttonSize.width - titleSize.width) / 2 : (buttonSize.width - titleSize.width) / 2 - buttonImage.size.width,
-//                                                0,0)];
     [emptyButton setTitleEdgeInsets:UIEdgeInsetsMake(0, buttonImage.size.width + 10, 0, 0)];
-                                                     
     
 }
 

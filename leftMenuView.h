@@ -8,12 +8,14 @@
 
 
 #import <UIKit/UIKit.h>
+#import "MYBlurIntroductionView.h"
 
 @protocol leftMenuViewDelegate;
 
-@interface leftMenuView : UIView
+@interface leftMenuView : UIView <UIScrollViewDelegate>
 
 @property (nonatomic, weak) id <leftMenuViewDelegate> delegate;
+@property (retain, nonatomic) UIScrollView *menuItemScrollView;
 
 - (void)setInfo:(NSDictionary *)info;
 - (void)reloadData;

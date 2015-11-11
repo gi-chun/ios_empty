@@ -10,11 +10,10 @@
 #import "leftMenuItemView.h"
 #import "leftLoginView.h"
 
-const static CGFloat HEADER_HEIGHT =      40;
-const static CGFloat LOGO_HEIGHT   =      40;
-const static CGFloat LOGIN_HEIGHT  =      120;
-const static CGFloat MENU_HEIGHT   =      40;
-const static CGFloat AD_HEIGHT     =      40;
+const static CGFloat LOGO_HEIGHT   =      40+10;
+const static CGFloat LOGIN_HEIGHT  =      120+10;
+const static CGFloat MENU_HEIGHT   =      40+10;
+const static CGFloat AD_HEIGHT     =      40+10;
 
 @interface leftMenuView ()
 {
@@ -42,8 +41,9 @@ const static CGFloat AD_HEIGHT     =      40;
 {
     if (self = [super initWithFrame:frame])
     {
-        [self setBackgroundColor:UIColorFromRGB(0xe3e3e8)];
-        
+        [self setBackgroundColor:[UIColor colorWithRed:90.0f/255.0f green:175.0f/255.0f blue:113.0f/255.0f alpha:0.65]];
+        //self.menuItemScrollView.delegate = self;
+
         [self showContents];
         
         //LoadingView
@@ -110,8 +110,21 @@ const static CGFloat AD_HEIGHT     =      40;
     CGFloat meWidth = self.frame.size.width;
     CGFloat meHeight = self.frame.size.height;
     
-    NSLog(@"left size %f", meWidth);
-    meWidth = meWidth - 60;
+    NSLog(@"left width %f", meWidth);
+    NSLog(@"left heigth %f", meHeight);
+    
+    NSInteger isLowHeigth = 0;
+    if( meWidth == 320 && meHeight == 480){
+        isLowHeigth = 1;
+    }
+    
+    if( meWidth > 320){
+        meWidth = meWidth - 115;
+    }else{
+        meWidth = meWidth - 60;
+    }
+    
+     NSLog(@"after left size %f", meWidth);
     
     //logo
     UIImageView *logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, meWidth, LOGO_HEIGHT)];
@@ -145,17 +158,45 @@ const static CGFloat AD_HEIGHT     =      40;
 //    [loginView addSubview:loginButton];
     [self addSubview:loginView];
     
-    leftMenuItemView *menuItemView1 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(loginView.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY CLUB"];
-    [self addSubview:menuItemView1];
-    
-    leftMenuItemView *menuItemView2 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView1.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY BANK"];
-    [self addSubview:menuItemView2];
-    
-    leftMenuItemView *menuItemView3 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView2.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY EVENT"];
-    [self addSubview:menuItemView3];
-    
-    leftMenuItemView *menuItemView4 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView3.frame)+10, meWidth, MENU_HEIGHT) title:@"SETTING"];
-    [self addSubview:menuItemView4];
+    if(isLowHeigth == 1){
+        //menuItem Scroll View
+        self.menuItemScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(loginView.frame)+10, meWidth, (MENU_HEIGHT+10)*4)];
+        self.menuItemScrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        self.menuItemScrollView.pagingEnabled = YES;
+        self.menuItemScrollView.delegate = self;
+        self.menuItemScrollView.showsHorizontalScrollIndicator = NO;
+        self.menuItemScrollView.showsVerticalScrollIndicator = YES;
+        [self addSubview:self.menuItemScrollView];
+        
+        leftMenuItemView *menuItemView1 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(loginView.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY CLUB"];
+        [self.menuItemScrollView addSubview:menuItemView1];
+        
+        leftMenuItemView *menuItemView2 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView1.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY BANK"];
+        [self.menuItemScrollView addSubview:menuItemView2];
+        
+        leftMenuItemView *menuItemView3 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView2.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY EVENT"];
+        [self.menuItemScrollView addSubview:menuItemView3];
+        
+        leftMenuItemView *menuItemView4 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView3.frame)+10, meWidth, MENU_HEIGHT) title:@"SETTING"];
+        [self.menuItemScrollView addSubview:menuItemView4];
+        
+        //[self.menuItemScrollView setContentSize:CGSizeMake(meWidth, (MENU_HEIGHT+10)*4)];
+        [self.menuItemScrollView setContentSize:CGSizeMake(meWidth, ((MENU_HEIGHT+10)*4)+50)];
+        [self.menuItemScrollView setContentOffset:CGPointMake(0,((MENU_HEIGHT+10)*4)+50)];
+    }else{
+        leftMenuItemView *menuItemView1 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(loginView.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY CLUB"];
+        [self addSubview:menuItemView1];
+        
+        leftMenuItemView *menuItemView2 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView1.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY BANK"];
+        [self addSubview:menuItemView2];
+        
+        leftMenuItemView *menuItemView3 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView2.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY EVENT"];
+        [self addSubview:menuItemView3];
+        
+        leftMenuItemView *menuItemView4 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView3.frame)+10, meWidth, MENU_HEIGHT) title:@"SETTING"];
+        [self addSubview:menuItemView4];
+        
+    }
     
     //ADView
     UIImageView *adImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, meHeight-AD_HEIGHT, meWidth, AD_HEIGHT)];

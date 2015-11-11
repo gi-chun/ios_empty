@@ -22,7 +22,8 @@
 {
     if (self = [super initWithFrame:frame])
     {
-        [self setBackgroundColor:UIColorFromRGB(0xe3e3e8)];
+        //[self setBackgroundColor:UIColorFromRGB(0xe3e3e8)];
+        [self setBackgroundColor:[UIColor clearColor]];
         
         [self showContents];
         
@@ -34,7 +35,8 @@
 {
     if (self = [super initWithFrame:frame])
     {
-        [self setBackgroundColor:UIColorFromRGB(0xa9a9a9)];
+        //[self setBackgroundColor:UIColorFromRGB(0xa9a9a9)];
+        [self setBackgroundColor:[UIColor clearColor]];
         
         _title = title;
         
