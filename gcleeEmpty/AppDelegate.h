@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "mainViewController.h"
-#import "secondViewController.h"
+#import "leftViewController.h"
+#import "WebViewController.h"
 #import "MMDrawerController.h"
 #import "MYViewController.h"
 
@@ -19,7 +19,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic,strong) MMDrawerController * drawerController;
-//@property (strong, nonatomic) mainViewController *mainViewController;
+@property (strong, nonatomic) WebViewController *homeWebViewController;
 @property (nonatomic, strong) MYViewController *introductionView;
 
 @end

@@ -10,6 +10,7 @@
 #import "leftMenuItemView.h"
 #import "leftLoginView.h"
 #import "AFHTTPRequestOperationManager.h"
+#import "SBJson.h"
 
 const static CGFloat LOGO_HEIGHT   =      40+10;
 const static CGFloat LOGIN_HEIGHT  =      120+10;
@@ -386,21 +387,25 @@ const static CGFloat AD_HEIGHT     =      40+10;
         
         NSLog(@"JSON: %@", responseObject);
         
-        NSData* jsonData = (NSData*)responseObject;
         
-        NSError *jsonError = nil;
-        id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&jsonError];
+        NSString *responseData = (NSString*) responseObject;
+        NSArray *jsonArray = (NSArray *)responseData;
+        NSLog(@"Response ==> %@", responseData);
         
-        if ([jsonObject isKindOfClass:[NSArray class]]) {
-            NSLog(@"its an array!");
-            NSArray *jsonArray = (NSArray *)jsonObject;
-            NSLog(@"jsonArray - %@",jsonArray);
-        }
-        else {
-            NSLog(@"its probably a dictionary");
-            NSDictionary *jsonDictionary = (NSDictionary *)jsonObject;
-            NSLog(@"jsonDictionary - %@",jsonDictionary);
-        }
+        //json
+//        SBJsonParser *jsonParser = [SBJsonParser new];
+//        NSDictionary *jsonData = (NSDictionary *) [jsonParser objectWithString:responseData error:nil];
+//        NSLog(@"%@",jsonData);
+//        NSInteger success = [(NSNumber *) [jsonData objectForKey:@"result"] integerValue];
+//        NSLog(@"%d",success);
+        
+        //to json
+        SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+        
+        //NSString *jsonString = [jsonWriter stringWithObject:myDictionary];
+        NSString *jsonString = [jsonWriter stringWithObject:jsonArray];
+        NSLog(@"jsonString ==> %@", jsonString);
+        
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         

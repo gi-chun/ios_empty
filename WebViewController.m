@@ -27,6 +27,7 @@
 #import "WebView.h"
 //#import "CPCommonInfo.h"
 #import "NavigationBarView.h"
+#import "UIViewController+MMDrawerController.h"
 //#import "CPMartSearchViewController.h"
 //#import "CPMenuViewController.h"
 //#import "CPDeveloperInfo.h"
@@ -75,6 +76,11 @@
 @end
 
 @implementation WebViewController
+
+- (void)setUrl:(NSString *)url
+{
+    webViewUrl = url;
+}
 
 - (id)initWithUrl:(NSString *)url
 {
@@ -218,7 +224,7 @@
 
 - (NavigationBarView *)navigationBarView:(NSInteger)navigationType
 {
-    navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, 44) type:navigationType];
+    navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, 120) type:navigationType];
     [navigationBarView setDelegate:self];
 
     
@@ -307,7 +313,8 @@
 
 - (void)didTouchBackButton
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
 - (void)didTouchMenuButton

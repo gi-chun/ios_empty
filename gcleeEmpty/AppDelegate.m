@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MMExampleDrawerVisualStateManager.h"
+#import "defines.h"
 
 @interface AppDelegate ()
 {
@@ -194,8 +195,12 @@
 {
     NSLog(@"finish intro ");
     
-    UIViewController * leftSideDrawerViewController = [[mainViewController alloc] init];
-    UIViewController * centerViewController = [[secondViewController alloc] init];
+    UIViewController * leftSideDrawerViewController = [[leftViewController alloc] init];
+//    _homeWebViewController = [[WebViewController alloc] init];
+//    [_homeWebViewController setUrl:SUNNY_CLUB_URL];
+    UIViewController * centerViewController = [[WebViewController alloc] init];
+    _homeWebViewController = (WebViewController*)centerViewController;
+    [_homeWebViewController setUrl:SUNNY_CLUB_URL];
     
     //    UIViewController * rightSideDrawerViewController = [[MMExampleRightSideDrawerViewController alloc] init];
     

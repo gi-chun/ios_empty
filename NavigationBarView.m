@@ -30,59 +30,60 @@
             margin = 10;
         }
         
-        UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 44)];
-        [backgroundImageView setImage:[UIImage imageNamed:@"bg_notice_bar.png"]];
+        UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 120)];
+        [backgroundImageView setImage:[UIImage imageNamed:@"gnb_back.png"]];
         [self addSubview:backgroundImageView];
         
         // left button
         UIButton *menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [menuButton setFrame:CGRectMake(4, 4, 34, 34)];
-        [menuButton setBackgroundImage:[UIImage imageNamed:@"btn_setting_back.png"] forState:UIControlStateNormal];
-        [menuButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
+        [menuButton setFrame:CGRectMake(4, 4, 62, 57)];
+        [menuButton setBackgroundImage:[UIImage imageNamed:@"total_menu_btn.png"] forState:UIControlStateNormal];
+        [menuButton setBackgroundImage:[UIImage imageNamed:@"total_menu_btn_press.png"] forState:UIControlStateHighlighted];
         [menuButton addTarget:self action:@selector(touchBackButton) forControlEvents:UIControlEventTouchUpInside];
         //[menuButton setAccessibilityLabel:@"백버튼" Hint:@"뒤로 이동합니다"];
         [self addSubview:menuButton];
         
-        UIButton *logoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [logoButton setFrame:CGRectMake(CGRectGetMaxX(menuButton.frame)+margin, 4, 54, 36)];
-        [logoButton setBackgroundImage:[UIImage imageNamed:@"icon_main_login.png"] forState:UIControlStateNormal];
-        [logoButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
-        [logoButton addTarget:self action:@selector(touchLogoButton) forControlEvents:UIControlEventTouchUpInside];
-        //[logoButton setAccessibilityLabel:@"로고" Hint:@"홈으로 이동합니다"];
-        [self addSubview:logoButton];
+//        UIButton *logoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [logoButton setFrame:CGRectMake(CGRectGetMaxX(menuButton.frame)+margin, 4, 54, 36)];
+//        [logoButton setBackgroundImage:[UIImage imageNamed:@"icon_main_login.png"] forState:UIControlStateNormal];
+//        [logoButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
+//        [logoButton addTarget:self action:@selector(touchLogoButton) forControlEvents:UIControlEventTouchUpInside];
+//        //[logoButton setAccessibilityLabel:@"로고" Hint:@"홈으로 이동합니다"];
+//        [self addSubview:logoButton];
         
-        UIButton *titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [titleButton setFrame:CGRectMake(CGRectGetMaxX(logoButton.frame)+margin, 4, 120, 36)];
-        [titleButton setImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateNormal];
-        [titleButton setImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
-        [titleButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
-        [titleButton addTarget:self action:@selector(touchMartButton) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:titleButton];
+//        UIButton *titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [titleButton setFrame:CGRectMake(CGRectGetMaxX(logoButton.frame)+margin, 4, 120, 36)];
+//        [titleButton setImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateNormal];
+//        [titleButton setImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
+//        [titleButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+//        [titleButton addTarget:self action:@selector(touchMartButton) forControlEvents:UIControlEventTouchUpInside];
+//        [self addSubview:titleButton];
         
-        // right button
+        // search
         UIButton *myInfoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [myInfoButton setFrame:CGRectMake(screenWidth-40, 4, 36, 36)];
-        [myInfoButton setBackgroundImage:[UIImage imageNamed:@"btn_setting_back.png"] forState:UIControlStateNormal];
-        [myInfoButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
+        [myInfoButton setFrame:CGRectMake(screenWidth-40, 4, 92, 40)];
+        [myInfoButton setBackgroundImage:[UIImage imageNamed:@"top_tap_logo.png"] forState:UIControlStateNormal];
+        [myInfoButton setBackgroundImage:[UIImage imageNamed:@"top_tap_logo_press.png"] forState:UIControlStateHighlighted];
         [myInfoButton addTarget:self action:@selector(touchMyInfoButton) forControlEvents:UIControlEventTouchUpInside];
         //[myInfoButton setAccessibilityLabel:@"내정보" Hint:@"내정보로 이동합니다"];
         [self addSubview:myInfoButton];
         
+        //sunny bank
         UIButton *basketButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [basketButton setFrame:CGRectMake(screenWidth-(76+margin), 4, 36, 36)];
-        [basketButton setBackgroundImage:[UIImage imageNamed:@"icon_main_login.png"] forState:UIControlStateNormal];
-        [basketButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
+        [basketButton setFrame:CGRectMake(screenWidth-(76+margin), 4, 62, 57)];
+        [basketButton setBackgroundImage:[UIImage imageNamed:@"Search_icon.png"] forState:UIControlStateNormal];
+        [basketButton setBackgroundImage:[UIImage imageNamed:@"Search_icon_press.png"] forState:UIControlStateHighlighted];
         [basketButton addTarget:self action:@selector(touchBasketButton) forControlEvents:UIControlEventTouchUpInside];
         //[basketButton setAccessibilityLabel:@"장바구니" Hint:@"장바구니로 이동합니다"];
         [self addSubview:basketButton];
         
-        UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [searchButton setFrame:CGRectMake(screenWidth-(112+margin+margin), 4, 36, 36)];
-        [searchButton setImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateNormal];
-        [searchButton setImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
-        [searchButton addTarget:self action:@selector(touchMartSearchButton) forControlEvents:UIControlEventTouchUpInside];
-        //[searchButton setAccessibilityLabel:@"검색" Hint:@"검색을 시작합니다"];
-        [self addSubview:searchButton];
+//        UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [searchButton setFrame:CGRectMake(screenWidth-(112+margin+margin), 4, 36, 36)];
+//        [searchButton setImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateNormal];
+//        [searchButton setImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
+//        [searchButton addTarget:self action:@selector(touchMartSearchButton) forControlEvents:UIControlEventTouchUpInside];
+//        //[searchButton setAccessibilityLabel:@"검색" Hint:@"검색을 시작합니다"];
+//        [self addSubview:searchButton];
         
     }
     
