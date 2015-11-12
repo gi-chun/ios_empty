@@ -104,7 +104,10 @@
     [alert show];
     
     //NSString *url = @"http://m.naver.com";
-    NSString *url = @"https://vntst.shinhanglobal.com/sunny/index3.jsp";
+    //NSString *url = @"https://vntst.shinhanglobal.com/sunny/index3.jsp";
+    NSString *url = @"https://vntst.shinhanglobal.com/sunny/faq_test2.jsp";
+    //NSString *url = @"https://vntst.shinhanglobal.com/sunny/faq_test.jsp";
+    
     WebViewController *viewControlelr = [[WebViewController alloc] initWithUrl:url];
     [self.navigationController pushViewController:viewControlelr animated:YES];
 }

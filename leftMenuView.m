@@ -9,6 +9,7 @@
 #import "leftMenuView.h"
 #import "leftMenuItemView.h"
 #import "leftLoginView.h"
+#import "AFHTTPRequestOperationManager.h"
 
 const static CGFloat LOGO_HEIGHT   =      40+10;
 const static CGFloat LOGIN_HEIGHT  =      120+10;
@@ -217,6 +218,8 @@ const static CGFloat AD_HEIGHT     =      40+10;
     [emptyButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
     [emptyButton addTarget:self action:@selector(onClickADButton) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:emptyButton];
+    
+    [self loginProcess];
 
 
 //    self.PanelDescriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(kLeftRightMargins, runningYOffset, frame.size.width - 2*kLeftRightMargins, panelDescriptionHeight)];
@@ -371,6 +374,40 @@ const static CGFloat AD_HEIGHT     =      40+10;
 - (void) onClickADButton
 {
     
+}
+
+#pragma mark - UICollectionViewDataSource
+- (void) loginProcess
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    //manager.securityPolicy.allowInvalidCertificates = YES;
+    NSDictionary *parameters = @{@"foo": @"bar"};
+    [manager POST:@"https://httpbin.org/post" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"JSON: %@", responseObject);
+        
+        NSData* jsonData = (NSData*)responseObject;
+        
+        NSError *jsonError = nil;
+        id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&jsonError];
+        
+        if ([jsonObject isKindOfClass:[NSArray class]]) {
+            NSLog(@"its an array!");
+            NSArray *jsonArray = (NSArray *)jsonObject;
+            NSLog(@"jsonArray - %@",jsonArray);
+        }
+        else {
+            NSLog(@"its probably a dictionary");
+            NSDictionary *jsonDictionary = (NSDictionary *)jsonObject;
+            NSLog(@"jsonDictionary - %@",jsonDictionary);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+    }];
+
 }
 
 @end
