@@ -91,6 +91,7 @@
 		2853A1E11BF1779800B8F70E /* leftLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2853A1E01BF1779800B8F70E /* leftLoginView.m */; };
 		286052A01BEB212900F838E6 /* leftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860529F1BEB212900F838E6 /* leftMenuViewController.m */; };
 		286052A31BEB22A900F838E6 /* leftMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 286052A21BEB22A900F838E6 /* leftMenuView.m */; };
+		2869060F1BF5A0A300166C9F /* testView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2869060E1BF5A0A200166C9F /* testView.xib */; };
 		287F92E31BE748EF007E82AD /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F92DB1BE748EF007E82AD /* MMDrawerBarButtonItem.m */; };
 		287F92E41BE748EF007E82AD /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F92DD1BE748EF007E82AD /* MMDrawerController.m */; };
 		287F92E51BE748EF007E82AD /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F92E01BE748EF007E82AD /* MMDrawerVisualState.m */; };
@@ -263,6 +264,7 @@
 		2860529F1BEB212900F838E6 /* leftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = leftMenuViewController.m; sourceTree = "<group>"; };
 		286052A11BEB22A900F838E6 /* leftMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = leftMenuView.h; sourceTree = "<group>"; };
 		286052A21BEB22A900F838E6 /* leftMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = leftMenuView.m; sourceTree = "<group>"; };
+		2869060E1BF5A0A200166C9F /* testView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = testView.xib; sourceTree = "<group>"; };
 		287F92DA1BE748EF007E82AD /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerBarButtonItem.h; sourceTree = "<group>"; };
 		287F92DB1BE748EF007E82AD /* MMDrawerBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerBarButtonItem.m; sourceTree = "<group>"; };
 		287F92DC1BE748EF007E82AD /* MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerController.h; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 				28351D751BF47F6B009145E6 /* total_menu_btn@2x.png */,
 				28351D761BF47F6B009145E6 /* total_menu_btn@3x.png */,
 				28351D771BF47F6B009145E6 /* total_menu_btn_press@1x.png */,
+				2869060E1BF5A0A200166C9F /* testView.xib */,
 				28351D781BF47F6B009145E6 /* total_menu_btn_press@2x.png */,
 				28351D791BF47F6B009145E6 /* total_menu_btn_press@3x.png */,
 				28351D7A1BF47F6B009145E6 /* tuto_test01@1x.png */,
@@ -783,6 +786,7 @@
 				28351D8C1BF47F6B009145E6 /* bottom_top_btn_press@1x.png in Resources */,
 				28351DA21BF47F6B009145E6 /* top_list_btn_press@2x.png in Resources */,
 				28351D9E1BF47F6B009145E6 /* top_back_btn_press@1x.png in Resources */,
+				2869060F1BF5A0A300166C9F /* testView.xib in Resources */,
 				28351D9D1BF47F6B009145E6 /* top_back_btn@3x.png in Resources */,
 				28351DB41BF47F6B009145E6 /* tuto_test01@2x.png in Resources */,
 				28351D3B1BF44B4E009145E6 /* tuto_test02@1x.png in Resources */,

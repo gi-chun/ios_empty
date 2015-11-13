@@ -153,6 +153,13 @@
     MYBlurIntroductionView *introductionView = [[MYBlurIntroductionView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     introductionView.delegate = self;
     introductionView.BackgroundImageView.image = [UIImage imageNamed:@"tuto_test01.png"];
+    
+    CGSize imageSize = introductionView.BackgroundImageView.image.size;
+    
+    NSLog(@"***** image size per device width:%f height:%f ", imageSize.width, imageSize.height);
+    NSLog(@"***** screen size per device width:%f height:%f ", kScreenBoundsWidth, kScreenBoundsHeight);
+    
+    
     //[UIImage imageNamed:@"bg_loading.png"]];
     
 //    [introductionView setBackgroundColor:[UIColor colorWithRed:90.0f/255.0f green:175.0f/255.0f blue:113.0f/255.0f alpha:0.65]];

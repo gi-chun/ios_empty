@@ -77,7 +77,11 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame))];
+        
+        CGFloat marginY = (kScreenBoundsWidth > 320)?0:10;
+        
+        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame)-(kToolBarHeight-marginY))];
+        //_webView = [[UIWebView alloc] initWithFrame:frame];
         [_webView setDelegate:self];
         [_webView setScalesPageToFit:YES];
         [_webView setContentMode:UIViewContentModeScaleAspectFit];
@@ -110,10 +114,10 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 //        }
         
         // 툴바
-//        toolBarView = [[ToolBarView alloc] initWithFrame:CGRectZero toolbarType:1];
-//        [toolBarView setDelegate:self];
-//        [toolBarView setHidden:YES];
-//        [self addSubview:toolBarView];
+        toolBarView = [[ToolBarView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(frame)-(kToolBarHeight-marginY), CGRectGetWidth(frame), kToolBarHeight-marginY) toolbarType:1];
+        [toolBarView setDelegate:self];
+        [toolBarView setHidden:NO];
+        [self addSubview:toolBarView];
 
         buttonWidth = kScreenBoundsWidth / 7;
         buttonHeight = kToolBarHeight;
@@ -416,8 +420,9 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 //	[app addRefusedPushAgreeCount:webview.request.URL.absoluteString];
 	
     //UIButton *reloadButton = (UIButton *)[toolBarView viewWithTag:CPToolBarButtonTypeReload];
-    UIButton *reloadButton = (UIButton *)[toolBarView viewWithTag:2];
-    [toolBarView setReloadButtonProperties:reloadButton isReload:YES];
+    //gclee
+    //UIButton *reloadButton = (UIButton *)[toolBarView viewWithTag:2];
+    //[toolBarView setReloadButtonProperties:reloadButton isReload:YES];
     
 //    NSLog(@"webViewDidStartLoad:%@", webview.request.URL.absoluteString);
 }
@@ -452,10 +457,11 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 //    UIButton *backButton = (UIButton *)[toolBarView viewWithTag:CPToolBarButtonTypeBack];
 //    [toolBarView setButtonProperties:backButton enable:[self.webView canGoBack]];
     
-    UIButton *forwardButton = (UIButton *)[toolBarView viewWithTag:1];
-    if (self.currentSubWebViewIndx == self.maxSubWebViewIndx) {
-        [toolBarView setButtonProperties:forwardButton enable:[self.webView canGoForward]];
-    }
+    //gclee
+    //UIButton *forwardButton = (UIButton *)[toolBarView viewWithTag:1];
+//    if (self.currentSubWebViewIndx == self.maxSubWebViewIndx) {
+//        [toolBarView setButtonProperties:forwardButton enable:[self.webView canGoForward]];
+//    }
     
     UIButton *reloadButton = (UIButton *)[toolBarView viewWithTag:2];
     [toolBarView setReloadButtonProperties:reloadButton isReload:NO];
@@ -559,7 +565,11 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 {
     if (isHidden) {
 //        NSLog(@"setHiddenToolBarView:%@, %@", NSStringFromCGRect(self.frame), NSStringFromCGRect(self.bounds));
-        [self.webView setFrame:self.bounds];
+        
+        
+        // -- [self.webView setFrame:self.bounds];
+        
+        
 //        [self.topButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight(self.frame)-(buttonHeight), buttonWidth, buttonHeight)];
 //		
 //		[_refusedPushAgreeView setFrame:CGRectMake(10, CGRectGetHeight(self.frame)-31,
@@ -568,11 +578,16 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
     else {
         
         NSLog(@"self.frame : %@", NSStringFromCGRect(self.frame));
-        [self.webView setFrame:CGRectMake(0, 0, CGRectGetMaxX(self.frame), CGRectGetHeight(self.frame)-kToolBarHeight)];
-        //            NSLog(@"self.webView.frame : %@", NSStringFromCGRect(self.webView.frame));
+//        [self.webView setFrame:CGRectMake(0, 0, CGRectGetMaxX(self.frame), CGRectGetHeight(self.frame)-kToolBarHeight)];
+//                    NSLog(@"self.webView.frame : %@", NSStringFromCGRect(self.webView.frame));
+        
+        // -- [self.webView setFrame:self.bounds];
+        
+        
 //        [toolBarView setFrame:CGRectMake(0, CGRectGetMaxY(self.webView.frame), CGRectGetWidth(self.frame), kToolBarHeight)];
+        
 //        [self.topButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight(self.frame)-(buttonHeight*2), buttonWidth, buttonHeight)];
-//        
+//
 //        [_refusedPushAgreeView setFrame:CGRectMake(10, CGRectGetHeight(self.frame)-31-kToolBarHeight,
 //                                                   _refusedPushAgreeView.frame.size.width, _refusedPushAgreeView.frame.size.height)];
     }
@@ -806,8 +821,9 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
                         
                         //웹페이지 내부링크(#)가 포함된 URL은 canGoForward가 YES 인데 히스토리 스택에는 없기 때문에 이동이 안된다(iOS bug?)
                         if (self.currentSubWebViewIndx == self.maxSubWebViewIndx) {
-                            UIButton *forwardButton = (UIButton *)[toolBarView viewWithTag:2];
-                            [toolBarView setButtonProperties:forwardButton enable:NO];
+                            //gclee
+//                            UIButton *forwardButton = (UIButton *)[toolBarView viewWithTag:2];
+//                            [toolBarView setButtonProperties:forwardButton enable:NO];
                         }
                     }
                     else {

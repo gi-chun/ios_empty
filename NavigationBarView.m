@@ -25,20 +25,21 @@
         CGFloat screenWidth  = [[UIScreen mainScreen] bounds].size.width;
         CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
         
-        CGFloat margin = 2;
-        if (screenWidth > 320) {
-            margin = 10;
-        }
+        CGFloat marginX = (screenWidth > 320)?0:10;
         
-        UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 120)];
+        UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 60)];
         [backgroundImageView setImage:[UIImage imageNamed:@"gnb_back.png"]];
-        [self addSubview:backgroundImageView];
+        [backgroundImageView setFrame:CGRectMake(0, 0, screenWidth, 60)];
+        backgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
+                [self addSubview:backgroundImageView];
         
         // left button
         UIButton *menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [menuButton setFrame:CGRectMake(4, 4, 62, 57)];
+        [menuButton setFrame:CGRectMake(13, 13, 31, 31)];
         [menuButton setBackgroundImage:[UIImage imageNamed:@"total_menu_btn.png"] forState:UIControlStateNormal];
         [menuButton setBackgroundImage:[UIImage imageNamed:@"total_menu_btn_press.png"] forState:UIControlStateHighlighted];
+        [menuButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
+        [menuButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
         [menuButton addTarget:self action:@selector(touchBackButton) forControlEvents:UIControlEventTouchUpInside];
         //[menuButton setAccessibilityLabel:@"백버튼" Hint:@"뒤로 이동합니다"];
         [self addSubview:menuButton];
@@ -59,18 +60,18 @@
 //        [titleButton addTarget:self action:@selector(touchMartButton) forControlEvents:UIControlEventTouchUpInside];
 //        [self addSubview:titleButton];
         
-        // search
+        // sunny bank
         UIButton *myInfoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [myInfoButton setFrame:CGRectMake(screenWidth-40, 4, 92, 40)];
+        [myInfoButton setFrame:CGRectMake(screenWidth-72+marginX, 13, 46, 20)];
         [myInfoButton setBackgroundImage:[UIImage imageNamed:@"top_tap_logo.png"] forState:UIControlStateNormal];
         [myInfoButton setBackgroundImage:[UIImage imageNamed:@"top_tap_logo_press.png"] forState:UIControlStateHighlighted];
         [myInfoButton addTarget:self action:@selector(touchMyInfoButton) forControlEvents:UIControlEventTouchUpInside];
         //[myInfoButton setAccessibilityLabel:@"내정보" Hint:@"내정보로 이동합니다"];
         [self addSubview:myInfoButton];
         
-        //sunny bank
+        //search
         UIButton *basketButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [basketButton setFrame:CGRectMake(screenWidth-(76+margin), 4, 62, 57)];
+        [basketButton setFrame:CGRectMake(screenWidth-(72+31+31)+marginX, 13, 31, 28)];
         [basketButton setBackgroundImage:[UIImage imageNamed:@"Search_icon.png"] forState:UIControlStateNormal];
         [basketButton setBackgroundImage:[UIImage imageNamed:@"Search_icon_press.png"] forState:UIControlStateHighlighted];
         [basketButton addTarget:self action:@selector(touchBasketButton) forControlEvents:UIControlEventTouchUpInside];

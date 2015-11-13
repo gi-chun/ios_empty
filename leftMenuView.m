@@ -220,7 +220,7 @@ const static CGFloat AD_HEIGHT     =      40+10;
     [emptyButton addTarget:self action:@selector(onClickADButton) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:emptyButton];
     
-    [self loginProcess];
+    //[self loginProcess];
 
 
 //    self.PanelDescriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(kLeftRightMargins, runningYOffset, frame.size.width - 2*kLeftRightMargins, panelDescriptionHeight)];
@@ -382,9 +382,13 @@ const static CGFloat AD_HEIGHT     =      40+10;
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     //manager.securityPolicy.allowInvalidCertificates = YES;
-    NSDictionary *parameters = @{@"foo": @"bar"};
-    [manager POST:@"https://httpbin.org/post" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
+    //NSDictionary *parameters = @{@"foo": @"bar"};
+    NSDictionary *parameters = @{@"plainJSON": @"{test}"};
+    
+    [manager POST:@"http://httpbin.org/post" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+//    [manager POST:@"https://vntst.shinhanglobal.com/sunny/jsp/callSunnyJsonTaskService.jsp" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        
         NSLog(@"JSON: %@", responseObject);
         
         

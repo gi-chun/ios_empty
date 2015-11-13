@@ -30,52 +30,88 @@
     if (self) {
         // Initialization code
         
-        [self setBackgroundColor:[UIColor blueColor]];
+        //[self setBackgroundColor:[UIColor clearColor]];
+        [self setBackgroundColor:UIColorFromRGB(0xe3e3e8)];
         
-        NSString *plistPath = @"subToolbar";
-        NSString *path = [[NSBundle mainBundle] pathForResource:plistPath ofType:@"plist"];
+        UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:frame];
+        [backgroundImageView setImage:[UIImage imageNamed:@"bottom_banner.png"]];
         
-        toolbarItems = [NSArray arrayWithContentsOfFile:path];
+        backgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
+        [backgroundImageView setFrame:CGRectMake(0, 0, kScreenBoundsWidth, kToolBarHeight)];
+        [self addSubview:backgroundImageView];
         
-//        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(count == %i)", _cutCount];
-//        _filteredFrameItems= [frameItems filteredArrayUsingPredicate:predicate];
-//        NSLog(@"toolbarItems:%@", toolbarItems);
+        UIButton *prevButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [prevButton setFrame:CGRectMake(13, 23, 41, 41)];
+        [prevButton setImage:[UIImage imageNamed:@"bottom_back_btn.png"] forState:UIControlStateNormal];
+        [prevButton setImage:[UIImage imageNamed:@"bottom_back_btn_press.png"] forState:UIControlStateHighlighted];
+        [prevButton addTarget:self action:@selector(touchToolbar:) forControlEvents:UIControlEventTouchUpInside];
+        [prevButton setTag:1];
+        [self addSubview:prevButton];
         
-        CGFloat buttonWidth = kScreenBoundsWidth / 7;
-        CGFloat buttonHeight = kToolBarHeight;
+        UIButton *adButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [adButton setFrame:CGRectMake(13+31+10, 5, 320, 50)];
+        [adButton setBackgroundColor:[UIColor clearColor]];
+        [adButton addTarget:self action:@selector(touchToolbar:) forControlEvents:UIControlEventTouchUpInside];
+        [adButton setTag:2];
+        [self addSubview:adButton];
         
-        for (NSInteger i = 0; i < toolbarItems.count; i++) {
-            NSDictionary *toolbar = toolbarItems[i];
-
-            CGRect kToolbarImageViewFrame = CGRectMake(0, 0, buttonWidth, buttonHeight);
-            CGRect toolbarImageViewFrame = CGRectMake(kToolbarImageViewFrame.origin.x + (buttonWidth * i),
-                                                        kToolbarImageViewFrame.origin.y,
-                                                        kToolbarImageViewFrame.size.width,
-                                                        kToolbarImageViewFrame.size.height);
-            
-            UIButton *toolbarButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [toolbarButton setFrame:toolbarImageViewFrame];
-            [toolbarButton setImage:[UIImage imageNamed:toolbar[@"imageNormal"]] forState:UIControlStateNormal];
-            [toolbarButton setImage:[UIImage imageNamed:toolbar[@"imageHighlighted"]] forState:UIControlStateHighlighted];
-			
-            if (i == 2) {
-                [toolbarButton setImage:[UIImage imageNamed:toolbar[@"imageDisabled"]] forState:UIControlStateDisabled];
-            }
-            
-            [toolbarButton addTarget:self action:@selector(touchToolbar:) forControlEvents:UIControlEventTouchUpInside];
-            [toolbarButton setTag:i];
-            //[toolbarButton setAccessibilityLabel:toolbar[@"accessibility"] Hint:@""];
-            [self addSubview:toolbarButton];
-            
-            //백버튼은 홈으로 이동하기 위해 활성화 시켜놓음
-            if (i == 2) {
-                [self setButtonProperties:toolbarButton enable:NO];
-            }
-        }
+        UIButton *topButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [topButton setFrame:CGRectMake(kScreenBoundsWidth-31-13, 23, 41, 41)];
+        [topButton setImage:[UIImage imageNamed:@"bottom_top_btn.png"] forState:UIControlStateNormal];
+        [topButton setImage:[UIImage imageNamed:@"bottom_top_btn_press.png"] forState:UIControlStateHighlighted];
+        [topButton addTarget:self action:@selector(touchToolbar:) forControlEvents:UIControlEventTouchUpInside];
+        [topButton setTag:3];
+        [self addSubview:topButton];
         
-        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, 1)];
-        [lineView setBackgroundColor:UIColorFromRGB(0xd3d3d6)];
-        [self addSubview:lineView];
+        
+        
+        
+        
+        
+//        NSString *plistPath = @"subToolbar";
+//        NSString *path = [[NSBundle mainBundle] pathForResource:plistPath ofType:@"plist"];
+//        
+//        toolbarItems = [NSArray arrayWithContentsOfFile:path];
+//        
+////        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(count == %i)", _cutCount];
+////        _filteredFrameItems= [frameItems filteredArrayUsingPredicate:predicate];
+////        NSLog(@"toolbarItems:%@", toolbarItems);
+//        
+//        CGFloat buttonWidth = kScreenBoundsWidth / 7;
+//        CGFloat buttonHeight = kToolBarHeight;
+//        
+//        for (NSInteger i = 0; i < toolbarItems.count; i++) {
+//            NSDictionary *toolbar = toolbarItems[i];
+//
+//            CGRect kToolbarImageViewFrame = CGRectMake(0, 0, buttonWidth, buttonHeight);
+//            CGRect toolbarImageViewFrame = CGRectMake(kToolbarImageViewFrame.origin.x + (buttonWidth * i),
+//                                                        kToolbarImageViewFrame.origin.y,
+//                                                        kToolbarImageViewFrame.size.width,
+//                                                        kToolbarImageViewFrame.size.height);
+//            
+//            UIButton *toolbarButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//            [toolbarButton setFrame:toolbarImageViewFrame];
+//            [toolbarButton setImage:[UIImage imageNamed:toolbar[@"imageNormal"]] forState:UIControlStateNormal];
+//            [toolbarButton setImage:[UIImage imageNamed:toolbar[@"imageHighlighted"]] forState:UIControlStateHighlighted];
+//			
+//            if (i == 2) {
+//                [toolbarButton setImage:[UIImage imageNamed:toolbar[@"imageDisabled"]] forState:UIControlStateDisabled];
+//            }
+//            
+//            [toolbarButton addTarget:self action:@selector(touchToolbar:) forControlEvents:UIControlEventTouchUpInside];
+//            [toolbarButton setTag:i];
+//            //[toolbarButton setAccessibilityLabel:toolbar[@"accessibility"] Hint:@""];
+//            [self addSubview:toolbarButton];
+//            
+//            //백버튼은 홈으로 이동하기 위해 활성화 시켜놓음
+//            if (i == 2) {
+//                [self setButtonProperties:toolbarButton enable:NO];
+//            }
+//        }
+//        
+//        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, 1)];
+//        [lineView setBackgroundColor:UIColorFromRGB(0xd3d3d6)];
+//        [self addSubview:lineView];
         
 //        // 더보기 팝오버메뉴
 //        CGFloat popOverHeight = kScreenBoundsHeight-(kToolBarHeight+kNavigationHeight);
@@ -135,32 +171,30 @@
 
 - (void)touchToolbar:(id)sender
 {
-    UIButton *button = (UIButton *)sender;
-    NSDictionary *buttonInfo = toolbarItems[button.tag];
-    
-//    if (![popOverView isHidden] && button.tag != CPToolBarButtonTypeMore) {
-//        [popOverView setHidden:YES];
-//    }
+//    UIButton *button = (UIButton *)sender;
+//    NSDictionary *buttonInfo = toolbarItems[button.tag];
 //    
-//    if (![snapshotPopOverView isHidden] && button.tag != CPToolBarButtonTypeSnapshot) {
-//        [snapshotPopOverView setHidden:YES];
+////    if (![popOverView isHidden] && button.tag != CPToolBarButtonTypeMore) {
+////        [popOverView setHidden:YES];
+////    }
+////    
+////    if (![snapshotPopOverView isHidden] && button.tag != CPToolBarButtonTypeSnapshot) {
+////        [snapshotPopOverView setHidden:YES];
+////    }
+//    
+//    switch (button.tag) {
+//        case 1:
+//        case 2:
+//        case 3:
+//        case 4:
+//        case 5:
+//        default:
+//            if ([self.delegate respondsToSelector:@selector(didTouchToolBarButton:buttonInfo:)]) {
+//                [self.delegate didTouchToolBarButton:button buttonInfo:buttonInfo];
+//            }
+//            break;
 //    }
     
-    switch (button.tag) {
-        case 1:
-        case 2:
-        case 3:
-        case 4:
-        case 5:
-        default:
-            if ([self.delegate respondsToSelector:@selector(didTouchToolBarButton:buttonInfo:)]) {
-                [self.delegate didTouchToolBarButton:button buttonInfo:buttonInfo];
-            }
-            break;
-    }
-    
-    //AccessLog - 툴바
-    //[[AccessLog sharedInstance] sendAccessLogWithCode:buttonInfo[@"ac"]];
 }
 
 #pragma mark - CPSnapshotPopOverViewDelegate

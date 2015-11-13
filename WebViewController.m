@@ -207,9 +207,9 @@
 
 - (void)initLayout
 {
-    self.webView = [[WebView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight) isSub:YES];
+    self.webView = [[WebView alloc] initWithFrame:CGRectMake(0, 10, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight-5) isSub:YES];
     [self.webView setDelegate:self];
-    [self.webView setHiddenToolBarView:YES];
+    [self.webView setHiddenToolBarView:NO];
     [self.view addSubview:self.webView];
     
     if (webViewRequest) {
@@ -224,7 +224,7 @@
 
 - (NavigationBarView *)navigationBarView:(NSInteger)navigationType
 {
-    navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, 120) type:navigationType];
+    navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType];
     [navigationBarView setDelegate:self];
 
     
@@ -248,15 +248,15 @@
         [self.navigationController setNavigationBarHidden:YES];
         
         if ([SYSTEM_VERSION intValue] > 6) {
-            webViewFrame = CGRectMake(0, STATUSBAR_HEIGHT, kScreenBoundsWidth, kScreenBoundsHeight-STATUSBAR_HEIGHT);
+            webViewFrame = CGRectMake(0, 10, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight);
         }
         else {
-            webViewFrame = CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-STATUSBAR_HEIGHT);
+            webViewFrame = CGRectMake(0, 10, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight);
         }
     }
     else {
         [self.navigationController setNavigationBarHidden:NO];
-        webViewFrame = CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-64);
+        webViewFrame = CGRectMake(0, 10, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight);
     }
     
     if (self.webView) {
@@ -517,7 +517,7 @@
     //각 상황별 히든처리를 하면 안되는 경우가 있어서 조정한다.
     if (!self.webView) {
         //메인탭의 웹뷰일 경우 툴바 안보이도록 고정
-        [webView setHiddenToolBarView:YES];
+        [webView setHiddenToolBarView:NO];
     }
     //서브웹뷰일 경우
     else {
