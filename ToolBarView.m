@@ -30,18 +30,21 @@
     if (self) {
         // Initialization code
         
-        //[self setBackgroundColor:[UIColor clearColor]];
-        [self setBackgroundColor:UIColorFromRGB(0xe3e3e8)];
+        CGFloat marginY = (kScreenBoundsWidth > 320)?0:5;
+        CGFloat marginBY = (kScreenBoundsWidth > 320)?0:5;
         
-        UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:frame];
+        //[self setBackgroundColor:[UIColor clearColor]];
+        [self setBackgroundColor:UIColorFromRGB(0xffffff)];
+        
+        
+        UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, -marginY, kScreenBoundsWidth, kToolBarHeight)];
         [backgroundImageView setImage:[UIImage imageNamed:@"bottom_banner.png"]];
         
         backgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
-        [backgroundImageView setFrame:CGRectMake(0, 0, kScreenBoundsWidth, kToolBarHeight)];
         [self addSubview:backgroundImageView];
         
         UIButton *prevButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [prevButton setFrame:CGRectMake(13, 23, 41, 41)];
+        [prevButton setFrame:CGRectMake(13, 20-marginBY, 41, 41)];
         [prevButton setImage:[UIImage imageNamed:@"bottom_back_btn.png"] forState:UIControlStateNormal];
         [prevButton setImage:[UIImage imageNamed:@"bottom_back_btn_press.png"] forState:UIControlStateHighlighted];
         [prevButton addTarget:self action:@selector(touchToolbar:) forControlEvents:UIControlEventTouchUpInside];
@@ -56,7 +59,7 @@
         [self addSubview:adButton];
         
         UIButton *topButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [topButton setFrame:CGRectMake(kScreenBoundsWidth-31-13, 23, 41, 41)];
+        [topButton setFrame:CGRectMake(kScreenBoundsWidth-31-13, 20-marginBY, 41, 41)];
         [topButton setImage:[UIImage imageNamed:@"bottom_top_btn.png"] forState:UIControlStateNormal];
         [topButton setImage:[UIImage imageNamed:@"bottom_top_btn_press.png"] forState:UIControlStateHighlighted];
         [topButton addTarget:self action:@selector(touchToolbar:) forControlEvents:UIControlEventTouchUpInside];

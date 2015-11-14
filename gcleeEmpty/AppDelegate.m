@@ -218,7 +218,7 @@
                              initWithCenterViewController:navigationController
                              leftDrawerViewController:leftSideNavController
                              rightDrawerViewController:nil];
-    [self.drawerController setShowsShadow:NO];
+    [self.drawerController setShowsShadow:YES];
     [self.drawerController setRestorationIdentifier:@"MMDrawer"];
     [self.drawerController setMaximumRightDrawerWidth:150.0];
     [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
