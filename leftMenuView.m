@@ -125,6 +125,15 @@ const static CGFloat AD_HEIGHT     =      45;
     [logoImageView setImage:[UIImage imageNamed:@"total_menu_logo_img.png"]];
     [logoView addSubview:logoImageView];
     
+    //login button
+    UIButton* closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [closeBtn setFrame:CGRectMake(kScreenBoundsWidth - (20+10+35), 10, 15, 15)];
+    [closeBtn setBackgroundColor:[UIColor clearColor]]; //icon_main_login, btn_login_save.png
+    [closeBtn setBackgroundImage:[UIImage imageNamed:@"total_menu_close_btn.png"] forState:UIControlStateHighlighted];
+    [closeBtn setBackgroundImage:[UIImage imageNamed:@"total_menu_close_btn.png"] forState:UIControlStateNormal];
+    [closeBtn addTarget:self action:@selector(onClickClose) forControlEvents:UIControlEventTouchUpInside];
+    [logoView addSubview:closeBtn];
+    
     [self addSubview:logoView];
     
     //login view
@@ -171,20 +180,23 @@ const static CGFloat AD_HEIGHT     =      45;
     [self addSubview:menuItemView4];
     
     //ADView
-//    UIImageView *adImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, meHeight-AD_HEIGHT, meWidth, AD_HEIGHT)];
-//    adImageView.contentMode = UIViewContentModeScaleAspectFit;
-//    [adImageView setImage:[UIImage imageNamed:@"icon_navi_home.png"]];
-//    [logoView addSubview:adImageView];
-//    [self addSubview:logoView];
-//    
-//    //AD emptybutton
-//    UIButton* emptyButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [emptyButton setFrame:CGRectMake(0, meHeight-AD_HEIGHT, meWidth, AD_HEIGHT)];
-//    [emptyButton setBackgroundColor:[UIColor clearColor]];
-//    //emptyButton.backgroundColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:0.5];
-//    [emptyButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
-//    [emptyButton addTarget:self action:@selector(onClickADButton) forControlEvents:UIControlEventTouchUpInside];
-//    [self addSubview:emptyButton];
+    UIView* ADView = [[UIView alloc] initWithFrame:CGRectMake(0,kScreenBoundsHeight-AD_HEIGHT, kScreenBoundsWidth, AD_HEIGHT)];
+    [ADView setBackgroundColor:UIColorFromRGB(0x3B98DE)];
+    
+    UIImageView *adImageView = [[UIImageView alloc] initWithFrame:ADView.bounds];
+     [adImageView setImage:[UIImage imageNamed:@"bottom_banner.png"]];
+    adImageView.contentMode = UIViewContentModeScaleAspectFit;
+    [ADView addSubview:adImageView];
+    
+    //AD emptybutton
+    UIButton* emptyButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [emptyButton setFrame:ADView.bounds];
+    //[emptyButton setBackgroundColor:[UIColor clearColor]];
+    [emptyButton setBackgroundImage:[UIImage imageNamed:@"total_menu_back_btn_press.png"] forState:UIControlStateHighlighted];
+    [emptyButton addTarget:self action:@selector(onClickADButton) forControlEvents:UIControlEventTouchUpInside];
+    [ADView addSubview:emptyButton];
+    [self addSubview:ADView];
+    
     
     //[self loginProcess];
 
@@ -339,6 +351,13 @@ const static CGFloat AD_HEIGHT     =      45;
 }
 
 - (void) onClickADButton
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"test"
+                                                                                     delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+                                      [alert show];
+}
+
+- (void) onClickClose
 {
     
 }

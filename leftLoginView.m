@@ -15,6 +15,7 @@
     NSString * _title;
     UILabel* labelMenu;
     UILabel* labelMailId;
+    UILabel* labelId;
     UILabel* labelCardNumber;
     UIImageView *cardImageView;
     UIImageView *idImageView;
@@ -74,6 +75,9 @@
      const static CGFloat LABEL_WIDTH     =    100;
      */
     
+    CGFloat marginX = (kScreenBoundsWidth > 320)?30:0;
+    CGFloat labelMarginX = (kScreenBoundsWidth > 320)?2:0;
+    
     //label
     // 100, 26
     labelMenu = [[UILabel alloc] initWithFrame:CGRectMake(10, 24, meWidth-(35+30), 60)]; //94/2
@@ -109,17 +113,28 @@
     
     //////////////////////////////////////////////////////////////////////////////////////////
     // id image
-    idImageView = [[UIImageView alloc] initWithFrame:CGRectMake(14, 15, 12, 13)];
+    idImageView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 8, 12, 13)];
     //[idImageView setBackgroundColor:UIColorFromRGB(0x105921)];
     idImageView.contentMode = UIViewContentModeScaleAspectFit;
     [idImageView setImage:[UIImage imageNamed:@"total_menu_email_icon.png"]];
     [self addSubview:idImageView];
     
+    //id label
+    labelId = [[UILabel alloc] initWithFrame:CGRectMake(35, 2, meWidth-55, 20) ];
+    [labelId setBackgroundColor:[UIColor clearColor]];
+    [labelId setTextColor:UIColorFromRGB(0xffffff)];
+    [labelId setFont:[UIFont systemFontOfSize:15]];
+    [labelId setTextAlignment:NSTextAlignmentLeft];
+    [labelId setNumberOfLines:0];
+    _stringId = @"springgclee";
+    [labelId setText:_stringId];
+    [self addSubview:labelId];
+    
     //mail id label
-    labelMailId = [[UILabel alloc] initWithFrame:CGRectMake(35, 0, meWidth-65, 40) ];
+    labelMailId = [[UILabel alloc] initWithFrame:CGRectMake(35, 16, meWidth-55, 20) ];
     [labelMailId setBackgroundColor:[UIColor clearColor]];
     [labelMailId setTextColor:UIColorFromRGB(0xffffff)];
-    [labelMailId setFont:[UIFont systemFontOfSize:15]];
+    [labelMailId setFont:[UIFont systemFontOfSize:13]];
     [labelMailId setTextAlignment:NSTextAlignmentLeft];
     [labelMailId setNumberOfLines:0];
     _mailId = @"springgclee@gmail.com";
@@ -127,14 +142,14 @@
     [self addSubview:labelMailId];
     
     // card image
-    cardImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 36, meWidth-50, 135)];
+    cardImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0-marginX, 36, meWidth-40, 135)];
     //[cardImageView setBackgroundColor:UIColorFromRGB(0x105921)];
     cardImageView.contentMode = UIViewContentModeScaleAspectFit;
     [cardImageView setImage:[UIImage imageNamed:@"total_menu_card_img.png"]];
     [self addSubview:cardImageView];
     
     //card number label
-    labelCardNumber = [[UILabel alloc] initWithFrame:CGRectMake(15, 30, meWidth-65, 40) ];
+    labelCardNumber = [[UILabel alloc] initWithFrame:CGRectMake(100-labelMarginX, 100+10, meWidth-65, 40) ];
     [labelCardNumber setBackgroundColor:[UIColor clearColor]];
     [labelCardNumber setTextColor:UIColorFromRGB(0xffffff)];
     [labelCardNumber setFont:[UIFont systemFontOfSize:15]];

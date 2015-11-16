@@ -59,6 +59,64 @@ const static CGFloat LABEL_WIDTH     =    100;
 {
     [self removeContents];
     
+    CGFloat marginX = (kScreenBoundsWidth > 320)?15:0;
+    
+//    if(_viewType == 5){
+//        
+//        labelMenu = [[UILabel alloc] initWithFrame:CGRectMake(10, 24, meWidth-(35+30), 60)]; //94/2
+//        [labelMenu setBackgroundColor:[UIColor clearColor]];
+//        [labelMenu setTextColor:UIColorFromRGB(0xffffff)];
+//        [labelMenu setFont:[UIFont systemFontOfSize:15]];
+//        //[labelMenu setFont:[UIFont fontWithName:@"Helvetica-Bold" size:13]];
+//        //setFont:[UIFont systemFontOfSize:15]];
+//        //    [labelMenu setShadowColor:[UIColor whiteColor]];
+//        //    [labelMenu setShadowOffset:CGSizeMake(0,2)];
+//        [labelMenu setTextAlignment:NSTextAlignmentLeft];
+//        [labelMenu setNumberOfLines:0];
+//        //[labelMenu sizeToFit];
+//        [labelMenu setText:_title];
+//        [self addSubview:labelMenu];
+//        
+//        //button
+//        UIButton* famAppButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [famAppButton setFrame:[self bounds]];
+//        [famAppButton setBackgroundColor:[UIColor clearColor]];
+//        
+//        UIImage *scaledImg = [self getScaledImage:[UIImage imageNamed:@"shinhanvn.png"] insideButton:famAppButton];
+//        [famAppButton setBackgroundImage:scaledImg forState:UIControlStateHighlighted];
+////        UIImage *scaledImg_ = [self getScaledImage:[UIImage imageNamed:@"shinhavn.png"] insideButton:famAppButton];
+//        
+//        [famAppButton addTarget:self action:@selector(onClickButton) forControlEvents:UIControlEventTouchUpInside];
+//        [famAppButton setTitle:_title forState:UIControlStateNormal];
+//        [famAppButton setTitle:_title forState:UIControlStateHighlighted];
+//        [famAppButton.titleLabel setFont:[UIFont boldSystemFontOfSize:15]];
+//        [famAppButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//        [famAppButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+//        [famAppButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+//        [self addSubview:famAppButton];
+//        [famAppButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 70+marginX, 0, 0)];
+//        
+//        //button
+//        UIButton* famAppButton2 = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [famAppButton2 setFrame:[self bounds]];
+//        [famAppButton2 setBackgroundColor:[UIColor clearColor]];
+//        
+//        UIImage *scaledImg2 = [self getScaledImage:[UIImage imageNamed:@"shinhanvn.png"] insideButton:famAppButton2];
+//        [famAppButton setBackgroundImage:scaledImg2 forState:UIControlStateHighlighted];
+//        //        UIImage *scaledImg_ = [self getScaledImage:[UIImage imageNamed:@"shinhavn.png"] insideButton:famAppButton];
+//        
+//        [famAppButton2 addTarget:self action:@selector(onClickButton) forControlEvents:UIControlEventTouchUpInside];
+//        [famAppButton2 setTitle:_title forState:UIControlStateNormal];
+//        [famAppButton2 setTitle:_title forState:UIControlStateHighlighted];
+//        [famAppButton2.titleLabel setFont:[UIFont boldSystemFontOfSize:15]];
+//        [famAppButton2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//        [famAppButton2 setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+//        [famAppButton2 setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+//        [self addSubview:famAppButton2];
+//        [famAppButton2 setTitleEdgeInsets:UIEdgeInsetsMake(0, 70+marginX, 0, 0)];
+//        
+//    }
+    
 //    CGFloat meWidth = self.frame.size.width;
 //    CGFloat meHeight = self.frame.size.height;
 //    CGFloat meY = self.bounds.origin.y;
@@ -165,7 +223,7 @@ const static CGFloat LABEL_WIDTH     =    100;
     
     //UIImage *buttonImage = emptyButton.imageView.image;
     //[emptyButton setImageEdgeInsets:UIEdgeInsetsMake(0,10,0,0)];
-    [emptyButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 70, 0, 0)];
+    [emptyButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 70+marginX, 0, 0)];
     
 }
 
