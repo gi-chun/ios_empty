@@ -15,7 +15,7 @@
 const static CGFloat LOGO_HEIGHT   =      43;
 const static CGFloat LOGIN_HEIGHT  =      180; //360/2
 const static CGFloat MENU_HEIGHT   =      45;
-const static CGFloat AD_HEIGHT     =      45;
+const static CGFloat AD_HEIGHT     =      50;
 
 @interface leftMenuView ()
 {
@@ -27,7 +27,7 @@ const static CGFloat AD_HEIGHT     =      45;
     //NSMutableDictionary *_AreaItem;
     
     UIView *logoView;
-    UIView *loginView;
+    leftLoginView *loginView;
     UIView *loginResultView;
     UIView *aDView;
 }
@@ -125,19 +125,21 @@ const static CGFloat AD_HEIGHT     =      45;
     [logoImageView setImage:[UIImage imageNamed:@"total_menu_logo_img.png"]];
     [logoView addSubview:logoImageView];
     
-    //login button
+    //close button
     UIButton* closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [closeBtn setFrame:CGRectMake(kScreenBoundsWidth - (20+10+35), 10, 15, 15)];
+    [closeBtn setFrame:CGRectMake(kScreenBoundsWidth - (35+35), 10, 15, 15)];
     [closeBtn setBackgroundColor:[UIColor clearColor]]; //icon_main_login, btn_login_save.png
     [closeBtn setBackgroundImage:[UIImage imageNamed:@"total_menu_close_btn.png"] forState:UIControlStateHighlighted];
     [closeBtn setBackgroundImage:[UIImage imageNamed:@"total_menu_close_btn.png"] forState:UIControlStateNormal];
-    [closeBtn addTarget:self action:@selector(onClickClose) forControlEvents:UIControlEventTouchUpInside];
+    [closeBtn addTarget:self action:@selector(didTouchCloseBtn) forControlEvents:UIControlEventTouchUpInside];
     [logoView addSubview:closeBtn];
     
     [self addSubview:logoView];
     
     //login view
     loginView = [[leftLoginView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(logoView.frame), meWidth, LOGIN_HEIGHT) title:@"로그인을 하시면 Sunny Club의 다양한 서비스를 이용하실 수 있습니다."];
+     [loginView setDelegate:self];
+    
     [self addSubview:loginView];
     
 //    if(isLowHeigth == 1){
@@ -169,22 +171,26 @@ const static CGFloat AD_HEIGHT     =      45;
     
     leftMenuItemView *menuItemView1 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(loginView.frame)+5, meWidth, MENU_HEIGHT) title:@"Sunny CLUB" viewType:1];
     [self addSubview:menuItemView1];
+    [menuItemView1 setDelegate:self];
     
     leftMenuItemView *menuItemView2 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(menuItemView1.frame), meWidth, MENU_HEIGHT) title:@"Sunny BANK" viewType:2];
     [self addSubview:menuItemView2];
+    [menuItemView2 setDelegate:self];
     
     leftMenuItemView *menuItemView3 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(menuItemView2.frame), meWidth, MENU_HEIGHT) title:@"Event / 공지" viewType:3];
     [self addSubview:menuItemView3];
+    [menuItemView3 setDelegate:self];
     
     leftMenuItemView *menuItemView4 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(menuItemView3.frame), meWidth, MENU_HEIGHT) title:@"설정" viewType:4];
     [self addSubview:menuItemView4];
+    [menuItemView4 setDelegate:self];
     
     //ADView
-    UIView* ADView = [[UIView alloc] initWithFrame:CGRectMake(0,kScreenBoundsHeight-AD_HEIGHT, kScreenBoundsWidth, AD_HEIGHT)];
+    UIView* ADView = [[UIView alloc] initWithFrame:CGRectMake(-40,kScreenBoundsHeight-AD_HEIGHT, kScreenBoundsWidth+40, AD_HEIGHT)];
     [ADView setBackgroundColor:UIColorFromRGB(0x3B98DE)];
     
     UIImageView *adImageView = [[UIImageView alloc] initWithFrame:ADView.bounds];
-     [adImageView setImage:[UIImage imageNamed:@"bottom_banner.png"]];
+     [adImageView setImage:[UIImage imageNamed:@"ad_test.png"]];
     adImageView.contentMode = UIViewContentModeScaleAspectFit;
     [ADView addSubview:adImageView];
     
@@ -192,8 +198,8 @@ const static CGFloat AD_HEIGHT     =      45;
     UIButton* emptyButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [emptyButton setFrame:ADView.bounds];
     //[emptyButton setBackgroundColor:[UIColor clearColor]];
-    [emptyButton setBackgroundImage:[UIImage imageNamed:@"total_menu_back_btn_press.png"] forState:UIControlStateHighlighted];
-    [emptyButton addTarget:self action:@selector(onClickADButton) forControlEvents:UIControlEventTouchUpInside];
+    [emptyButton setBackgroundImage:[UIImage imageNamed:@"ad_press_test.png"] forState:UIControlStateHighlighted];
+    [emptyButton addTarget:self action:@selector(didTouchAD) forControlEvents:UIControlEventTouchUpInside];
     [ADView addSubview:emptyButton];
     [self addSubview:ADView];
     
@@ -352,9 +358,8 @@ const static CGFloat AD_HEIGHT     =      45;
 
 - (void) onClickADButton
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"test"
-                                                                                     delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
-                                      [alert show];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"test" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 - (void) onClickClose
@@ -403,6 +408,44 @@ const static CGFloat AD_HEIGHT     =      45;
     }];
 
 }
+
+#pragma mark - Selectors
+- (void)didTouchMenuItem:(NSInteger)menuType
+{
+    if ([self.delegate respondsToSelector:@selector(didTouchMenuItem:)]) {
+        [self.delegate didTouchMenuItem:menuType];
+    }
+
+}
+- (void)didTouchCloseBtn
+{
+    if ([self.delegate respondsToSelector:@selector(didTouchCloseBtn)]) {
+        [self.delegate didTouchCloseBtn];
+    }
+    
+}
+- (void)didTouchLogOutBtn
+{
+    if ([self.delegate respondsToSelector:@selector(didTouchLogOutBtn)]) {
+        [self.delegate didTouchLogOutBtn];
+    }
+    
+}
+- (void)didTouchLogInBtn
+{
+    if ([self.delegate respondsToSelector:@selector(didTouchLogInBtn)]) {
+        [self.delegate didTouchLogInBtn];
+    }
+    
+}
+- (void)didTouchAD
+{
+    if ([self.delegate respondsToSelector:@selector(didTouchAD)]) {
+        [self.delegate didTouchAD];
+    }
+    
+}
+
 
 @end
 

@@ -67,6 +67,7 @@
 //    leftMenuView* menuView = [[leftMenuView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth-150.0, kScreenBoundsHeight)];
     
     leftMenuView* menuView = [[leftMenuView alloc] initWithFrame:self.view.frame];
+    [menuView setDelegate:self];
     [self.view addSubview:menuView];
     
 //    UIButton *menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -87,5 +88,48 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - total menu delegate
+
+- (void)didTouchMenuItem:(NSInteger)menuType
+{
+    //#1 Sunny Club
+    //#2 Sunny Bank
+    //#3 Event / 공지
+    //#4 설정
+    
+    NSString *strMenuType = [NSString stringWithFormat:@"didTouchMenuItem menuType %d", menuType];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:strMenuType delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+    [alert show];
+}
+
+- (void)didTouchCloseBtn
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchCloseBtn" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+    [alert show];
+    
+}
+
+- (void)didTouchLogOutBtn
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchLogOutBtn" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+    [alert show];
+    
+}
+
+- (void)didTouchLogInBtn
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchLogInBtn" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+    [alert show];
+    
+}
+
+- (void)didTouchAD
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchAD" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+    [alert show];
+    
+}
 
 @end

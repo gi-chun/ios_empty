@@ -252,6 +252,15 @@ const static CGFloat LABEL_WIDTH     =    100;
 
 - (void)onClickButton
 {
+    [self didTouchMenuItem:_viewType];
+}
+
+#pragma mark - Selectors
+- (void)didTouchMenuItem:(NSInteger)menuType
+{
+    if ([self.delegate respondsToSelector:@selector(didTouchMenuItem:)]) {
+        [self.delegate didTouchMenuItem:menuType];
+    }
     
 }
 

@@ -27,5 +27,10 @@
 @protocol leftMenuViewDelegate <NSObject>
 @optional
 - (void)didTouchButtonWithUrl:(NSString *)productUrl;
+- (void)didTouchMenuItem:(NSInteger)menuType;
+- (void)didTouchCloseBtn;
+- (void)didTouchLogOutBtn;
+- (void)didTouchLogInBtn;
+- (void)didTouchAD;
 @end
 

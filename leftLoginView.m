@@ -20,6 +20,7 @@
     UIImageView *cardImageView;
     UIImageView *idImageView;
     UIButton* loginButton;
+    UIButton* logoutButton;
 }
 @end
 
@@ -101,7 +102,7 @@
     [loginButton setBackgroundImage:[UIImage imageNamed:@"total_menu_login_btn_press.png"] forState:UIControlStateHighlighted];
     [loginButton setBackgroundImage:[UIImage imageNamed:@"total_menu_login_btn.png"] forState:UIControlStateNormal];
     //[emptyButton setImage:[UIImage imageNamed:@"icon_main_login.png"] forState:UIControlStateNormal];
-    [loginButton addTarget:self action:@selector(onClickButton) forControlEvents:UIControlEventTouchUpInside];
+    [loginButton addTarget:self action:@selector(didTouchLogInBtn) forControlEvents:UIControlEventTouchUpInside];
     [loginButton setTitle:@"로그인" forState:UIControlStateNormal];
     [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17]];
     [loginButton setTitleColor:UIColorFromRGB(0xf05921) forState:UIControlStateNormal];
@@ -120,7 +121,7 @@
     [self addSubview:idImageView];
     
     //id label
-    labelId = [[UILabel alloc] initWithFrame:CGRectMake(35, 2, meWidth-55, 20) ];
+    labelId = [[UILabel alloc] initWithFrame:CGRectMake(35, 2, meWidth-100, 20) ];
     [labelId setBackgroundColor:[UIColor clearColor]];
     [labelId setTextColor:UIColorFromRGB(0xffffff)];
     [labelId setFont:[UIFont systemFontOfSize:15]];
@@ -131,7 +132,7 @@
     [self addSubview:labelId];
     
     //mail id label
-    labelMailId = [[UILabel alloc] initWithFrame:CGRectMake(35, 16, meWidth-55, 20) ];
+    labelMailId = [[UILabel alloc] initWithFrame:CGRectMake(35, 16, meWidth-100, 20) ];
     [labelMailId setBackgroundColor:[UIColor clearColor]];
     [labelMailId setTextColor:UIColorFromRGB(0xffffff)];
     [labelMailId setFont:[UIFont systemFontOfSize:13]];
@@ -140,6 +141,15 @@
     _mailId = @"springgclee@gmail.com";
     [labelMailId setText:_mailId];
     [self addSubview:labelMailId];
+    
+    //logout button
+    logoutButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [logoutButton setFrame:CGRectMake(kScreenBoundsWidth - (80), 5, 30, 30)];
+    [logoutButton setBackgroundColor:[UIColor clearColor]]; //icon_main_login, btn_login_save.png
+    [logoutButton setBackgroundImage:[UIImage imageNamed:@"total_menu_logout_btn.png"] forState:UIControlStateHighlighted];
+    [logoutButton setBackgroundImage:[UIImage imageNamed:@"total_menu_logout_btn.png"] forState:UIControlStateNormal];
+    [logoutButton addTarget:self action:@selector(didTouchLogOutBtn) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:logoutButton];
     
     // card image
     cardImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0-marginX, 36, meWidth-40, 135)];
@@ -192,27 +202,53 @@
     
 }
 
+- (void)onLogOut
+{
+    
+}
+
 - (void)setVisableItem
 {
     _loginStatus = 0;
     if(_loginStatus){ //log off
 
         [idImageView setHidden:true];
+        [labelId setHidden:true];
         [labelMailId setHidden:true];
+        [logoutButton setHidden:true];
         [cardImageView setHidden:true];
         
         [labelMenu setHidden:false];
         [loginButton setHidden:false];
         
+        
     }else{            //log on
         [idImageView setHidden:false];
+        [labelId setHidden:false];
         [labelMailId setHidden:false];
         [cardImageView setHidden:false];
+        [logoutButton setHidden:false];
         
         [labelMenu setHidden:true];
         [loginButton setHidden:true];
 
     }
+}
+
+#pragma mark - Selectors
+- (void)didTouchLogOutBtn
+{
+    if ([self.delegate respondsToSelector:@selector(didTouchLogOutBtn)]) {
+        [self.delegate didTouchLogOutBtn];
+    }
+    
+}
+- (void)didTouchLogInBtn
+{
+    if ([self.delegate respondsToSelector:@selector(didTouchLogInBtn)]) {
+        [self.delegate didTouchLogInBtn];
+    }
+    
 }
 
 /*

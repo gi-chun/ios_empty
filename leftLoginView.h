@@ -11,6 +11,9 @@
 @protocol leftLoginViewDelegate;
 
 @interface leftLoginView : UIView
+
+@property (nonatomic, weak) id <leftLoginViewDelegate> delegate;
+
 @property (nonatomic) NSInteger loginStatus;
 @property (nonatomic) NSString*  mailId;
 @property (nonatomic) NSString*  stringId;
@@ -23,4 +26,6 @@
 @protocol leftLoginViewDelegate <NSObject>
 @optional
 - (void)didTouchButtonWithUrl:(NSString *)productUrl;
+- (void)didTouchLogInBtn;
+- (void)didTouchLogOutBtn;
 @end
