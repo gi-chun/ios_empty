@@ -11,8 +11,12 @@
 @protocol leftLoginViewDelegate;
 
 @interface leftLoginView : UIView
+@property (nonatomic) NSInteger loginStatus;
+@property (nonatomic) NSString*  mailId;
+@property (nonatomic) NSString*  cardNumber;
 
 - (id)initWithFrame:(CGRect)frame title:(NSString *)title;
+- (void)setVisableItem;
 @end
 
 @protocol leftLoginViewDelegate <NSObject>

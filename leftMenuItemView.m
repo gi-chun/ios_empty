@@ -17,6 +17,7 @@ const static CGFloat LABEL_WIDTH     =    100;
     //NSDictionary *_item;
     //NSMutableDictionary *_AreaItem;
     NSString * _title;
+    NSInteger _viewType;
 }
 @end
 
@@ -35,7 +36,7 @@ const static CGFloat LABEL_WIDTH     =    100;
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame title:(NSString *)title
+- (id)initWithFrame:(CGRect)frame title:(NSString *)title viewType:(NSInteger)viewType
 {
     if (self = [super initWithFrame:frame])
     {
@@ -43,6 +44,7 @@ const static CGFloat LABEL_WIDTH     =    100;
         [self setBackgroundColor:[UIColor clearColor]];
         
         _title = title;
+        _viewType = viewType;
         
         [self showContents];
         
@@ -57,26 +59,38 @@ const static CGFloat LABEL_WIDTH     =    100;
 {
     [self removeContents];
     
-    CGFloat meWidth = self.frame.size.width;
-    CGFloat meHeight = self.frame.size.height;
-    CGFloat meY = self.bounds.origin.y;
+//    CGFloat meWidth = self.frame.size.width;
+//    CGFloat meHeight = self.frame.size.height;
+//    CGFloat meY = self.bounds.origin.y;
     
-    // 320 * 40
-    /*
-     const static CGFloat ICON_HEIGHT     =     50;
-     const static CGFloat ICON_WIDTH      =    50;
-     const static CGFloat LABEL_WIDTH     =    100;
-     */
-    
-    //icon
-//    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ICON_WIDTH, [self bounds].size.height)];
+//    NSString* highLightFile;
+//    NSString* nomalFile;
+//    if(_viewType == 1){
+//        highLightFile = @"total_menu_first.png";
+//        nomalFile = @"total_menu_first_press.png";
+//    }
+//    if(_viewType == 2){
+//        highLightFile = @"total_menu_second.png";
+//        nomalFile = @"total_menu_second_press.png";
+//    }
+//    if(_viewType == 3){
+//        highLightFile = @"total_menu_third.png";
+//        nomalFile = @"total_menu_third_press.png";
+//    }
+//    if(_viewType == 4){
+//        highLightFile = @"total_menu_firth.png";
+//        nomalFile = @"total_menu_firth_press.png";
+//    }
+//
+//    //icon
+//    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, [self bounds].size.height)];
 //    iconImageView.contentMode = UIViewContentModeScaleAspectFit;
-//    [iconImageView setImage:[UIImage imageNamed:@"icon_navi_home.png"]];
+//    [iconImageView setImage:[UIImage imageNamed:@"test@x1.png"]]; // total_menu_ex01
 //    [self addSubview:iconImageView];
 //    
 //    //label
 //    // 100, 26
-//    UILabel* labelMenu = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame)+10, 8, 100, 26)];
+//    UILabel* labelMenu = [[UILabel alloc] initWithFrame:CGRectMake(60, 8, 100, 26)];
 //    [labelMenu setBackgroundColor:[UIColor clearColor]];
 //    [labelMenu setTextColor:UIColorFromRGB(0x8c6239)];
 //    [labelMenu setFont:[UIFont systemFontOfSize:13]];
@@ -93,34 +107,81 @@ const static CGFloat LABEL_WIDTH     =    100;
 //    //button
 //    UIButton* emptyButton = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [emptyButton setFrame:[self bounds]];
-//    [emptyButton setBackgroundColor:[UIColor clearColor]];
-//    //emptyButton.backgroundColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:0.5];
-//    [emptyButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
+//    //[emptyButton setBackgroundColor:[UIColor clearColor]];
+//    //UIColorFromRGB(0xf68a1e)
+////    emptyButton.backgroundColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:0.5];
+//    //emptyButton.backgroundColor = UIColorFromRGB(0xf68a1e);
+//    
+////    [emptyButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
 //    [emptyButton addTarget:self action:@selector(onClickButton) forControlEvents:UIControlEventTouchUpInside];
 //    [self addSubview:emptyButton];
     
     //////////////////////////////////
     //button
     UIButton* emptyButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [emptyButton setFrame:[self bounds]];
-    [emptyButton setBackgroundColor:[UIColor clearColor]];
-    //emptyButton.backgroundColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:0.5];
-    //[emptyButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
-    [emptyButton setImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateNormal];
-    [emptyButton setImage:[UIImage imageNamed:@"btn_setting_menu.png"] forState:UIControlStateHighlighted];
-    [emptyButton setBackgroundImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateHighlighted];
-    [emptyButton setBackgroundImage:[UIImage imageNamed:@"icon_main_login.png"] forState:UIControlStateNormal];
+        [emptyButton setFrame:[self bounds]];
+        [emptyButton setBackgroundColor:[UIColor clearColor]];
+    
+    //[emptyButton setBackgroundColor:[UIColor clearColor]];
+//    [emptyButton setImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateNormal];
+//    [emptyButton setImage:[UIImage imageNamed:@"btn_setting_menu.png"] forState:UIControlStateHighlighted];
+    
+    
+    NSString* highLightFile;
+    NSString* nomalFile;
+    if(_viewType == 1){
+        highLightFile = @"total_menu_01.png";
+        nomalFile = @"total_menu_01_press.png";
+    }
+    if(_viewType == 2){
+        highLightFile = @"total_menu_02.png";
+        nomalFile = @"total_menu_02_press.png";
+    }
+    if(_viewType == 3){
+        highLightFile = @"total_menu_03.png";
+        nomalFile = @"total_menu_03_press.png";
+    }
+    if(_viewType == 4){
+        highLightFile = @"total_menu_04.png";
+        nomalFile = @"total_menu_04_press.png";
+    }
+
+    UIImage *scaledImg = [self getScaledImage:[UIImage imageNamed:highLightFile] insideButton:emptyButton];
+    [emptyButton setBackgroundImage:scaledImg forState:UIControlStateHighlighted];
+    UIImage *scaledImg_ = [self getScaledImage:[UIImage imageNamed:nomalFile] insideButton:emptyButton];
+    [emptyButton setBackgroundImage:scaledImg_ forState:UIControlStateNormal];
+    
     [emptyButton addTarget:self action:@selector(onClickButton) forControlEvents:UIControlEventTouchUpInside];
     [emptyButton setTitle:_title forState:UIControlStateNormal];
     [emptyButton setTitle:_title forState:UIControlStateHighlighted];
     [emptyButton.titleLabel setFont:[UIFont boldSystemFontOfSize:15]];
+    [emptyButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [emptyButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     [emptyButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+    
+    //[emptyButton setImage:[UIImage imageNamed:@"total_menu_first.png"] forState:UIControlStateNormal];
+   
     [self addSubview:emptyButton];
     
-    UIImage *buttonImage = emptyButton.imageView.image;
-    [emptyButton setImageEdgeInsets:UIEdgeInsetsMake(0,10,0,0)];
-    [emptyButton setTitleEdgeInsets:UIEdgeInsetsMake(0, buttonImage.size.width + 10, 0, 0)];
+    //UIImage *buttonImage = emptyButton.imageView.image;
+    //[emptyButton setImageEdgeInsets:UIEdgeInsetsMake(0,10,0,0)];
+    [emptyButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 70, 0, 0)];
     
+}
+
+- (UIImage *) getScaledImage:(UIImage *)img insideButton:(UIButton *)btn {
+    
+    // Check which dimension (width or height) to pay respect to and
+    // calculate the scale factor
+    CGFloat imgRatio = img.size.width / img.size.height,
+    btnRatio = btn.frame.size.width / btn.frame.size.height,
+    scaleFactor = (imgRatio > btnRatio)?img.size.width/btn.frame.size.width:img.size.height/btn.frame.size.height;
+    
+    // Create image using scale factor
+    UIImage *scaledImg = [UIImage imageWithCGImage:[img CGImage]
+                                             scale:scaleFactor
+                                       orientation:UIImageOrientationUp];
+    return scaledImg;
 }
 
 - (void)removeContents

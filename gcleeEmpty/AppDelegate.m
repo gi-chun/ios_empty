@@ -195,6 +195,7 @@
 {
     NSLog(@"finish intro ");
     
+//    UIViewController * leftSideDrawerViewController = [[LeftTotalViewController alloc] initWithNibName:@"leftTotalViewController" bundle:nil];
     UIViewController * leftSideDrawerViewController = [[leftViewController alloc] init];
 //    _homeWebViewController = [[WebViewController alloc] init];
 //    [_homeWebViewController setUrl:SUNNY_CLUB_URL];

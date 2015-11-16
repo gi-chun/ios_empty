@@ -12,7 +12,7 @@
 
 @interface leftMenuItemView : UIView
 
-- (id)initWithFrame:(CGRect)frame title:(NSString *)title;
+- (id)initWithFrame:(CGRect)frame title:(NSString *)title viewType:(NSInteger)viewType;
 
 @end
 

@@ -13,6 +13,12 @@
     //NSDictionary *_item;
     //NSMutableDictionary *_AreaItem;
     NSString * _title;
+    UILabel* labelMenu;
+    UILabel* labelMailId;
+    UILabel* labelCardNumber;
+    UIImageView *cardImageView;
+    UIImageView *idImageView;
+    UIButton* loginButton;
 }
 @end
 
@@ -22,8 +28,8 @@
 {
     if (self = [super initWithFrame:frame])
     {
-        //[self setBackgroundColor:UIColorFromRGB(0xe3e3e8)];
-        [self setBackgroundColor:[UIColor clearColor]];
+        [self setBackgroundColor:UIColorFromRGB(0xf68a1e)];
+        //[self setBackgroundColor:[UIColor clearColor]];
         
         [self showContents];
         
@@ -35,8 +41,8 @@
 {
     if (self = [super initWithFrame:frame])
     {
-        //[self setBackgroundColor:UIColorFromRGB(0xa9a9a9)];
-        [self setBackgroundColor:[UIColor clearColor]];
+        [self setBackgroundColor:UIColorFromRGB(0xf68a1e)];
+        //[self setBackgroundColor:[UIColor clearColor]];
         
         _title = title;
         
@@ -53,11 +59,14 @@
 {
     [self removeContents];
     
+    _loginStatus = 1;
+    
     //150
     CGFloat meWidth = self.frame.size.width;
     CGFloat meHeight = self.frame.size.height;
     CGFloat meY = self.bounds.origin.y;
     
+    //360
     // 320 * 40
     /*
      const static CGFloat ICON_HEIGHT     =     50;
@@ -65,17 +74,11 @@
      const static CGFloat LABEL_WIDTH     =    100;
      */
     
-    //icon
-//    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ICON_WIDTH, [self bounds].size.height)];
-//    iconImageView.contentMode = UIViewContentModeScaleAspectFit;
-//    [iconImageView setImage:[UIImage imageNamed:@"icon_navi_home.png"]];
-//    [self addSubview:iconImageView];
-    
     //label
     // 100, 26
-    UILabel* labelMenu = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, meWidth-10, 26*2)];
+    labelMenu = [[UILabel alloc] initWithFrame:CGRectMake(10, 24, meWidth-(35+30), 60)]; //94/2
     [labelMenu setBackgroundColor:[UIColor clearColor]];
-    [labelMenu setTextColor:UIColorFromRGB(0x8c6239)];
+    [labelMenu setTextColor:UIColorFromRGB(0xffffff)];
     [labelMenu setFont:[UIFont systemFontOfSize:15]];
     //[labelMenu setFont:[UIFont fontWithName:@"Helvetica-Bold" size:13]];
     //setFont:[UIFont systemFontOfSize:15]];
@@ -87,39 +90,114 @@
     [labelMenu setText:_title];
     [self addSubview:labelMenu];
     
-    //button
-    UIButton* emptyButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [emptyButton setFrame:CGRectMake(20, CGRectGetMaxY(labelMenu.frame)+10, meWidth-40, 26*2)];
-    [emptyButton setBackgroundColor:[UIColor clearColor]]; //icon_main_login, btn_login_save.png
-    [emptyButton setBackgroundImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateHighlighted];
-    [emptyButton setBackgroundImage:[UIImage imageNamed:@"icon_main_login.png"] forState:UIControlStateNormal];
+    //login button
+    loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [loginButton setFrame:CGRectMake(20, CGRectGetMaxY(labelMenu.frame)+20, meWidth-(45+40), 50)];
+    [loginButton setBackgroundColor:[UIColor clearColor]]; //icon_main_login, btn_login_save.png
+    [loginButton setBackgroundImage:[UIImage imageNamed:@"total_menu_login_btn_press.png"] forState:UIControlStateHighlighted];
+    [loginButton setBackgroundImage:[UIImage imageNamed:@"total_menu_login_btn.png"] forState:UIControlStateNormal];
     //[emptyButton setImage:[UIImage imageNamed:@"icon_main_login.png"] forState:UIControlStateNormal];
-    [emptyButton addTarget:self action:@selector(onClickButton) forControlEvents:UIControlEventTouchUpInside];
-    [emptyButton setTitle:@"로그인" forState:UIControlStateNormal];
-    [emptyButton.titleLabel setFont:[UIFont boldSystemFontOfSize:15]];
+    [loginButton addTarget:self action:@selector(onClickButton) forControlEvents:UIControlEventTouchUpInside];
+    [loginButton setTitle:@"로그인" forState:UIControlStateNormal];
+    [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17]];
+    [loginButton setTitleColor:UIColorFromRGB(0xf05921) forState:UIControlStateNormal];
+    [loginButton setTitleColor:UIColorFromRGB(0xf05921) forState:UIControlStateHighlighted];
     
-    emptyButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-//    
-//    CGFloat spacing = 20; // the amount of spacing to appear between image and title
-//    emptyButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, spacing);
-//    emptyButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-//    [emptyButton setContentEdgeInsets:UIEdgeInsetsMake(26, 0, 0, 0)];
+    loginButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     
-    [self addSubview:emptyButton];
+    [self addSubview:loginButton];
     
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // id image
+    idImageView = [[UIImageView alloc] initWithFrame:CGRectMake(14, 15, 12, 13)];
+    //[idImageView setBackgroundColor:UIColorFromRGB(0x105921)];
+    idImageView.contentMode = UIViewContentModeScaleAspectFit;
+    [idImageView setImage:[UIImage imageNamed:@"total_menu_email_icon.png"]];
+    [self addSubview:idImageView];
+    
+    //mail id label
+    labelMailId = [[UILabel alloc] initWithFrame:CGRectMake(35, 0, meWidth-65, 40) ];
+    [labelMailId setBackgroundColor:[UIColor clearColor]];
+    [labelMailId setTextColor:UIColorFromRGB(0xffffff)];
+    [labelMailId setFont:[UIFont systemFontOfSize:15]];
+    [labelMailId setTextAlignment:NSTextAlignmentLeft];
+    [labelMailId setNumberOfLines:0];
+    _mailId = @"springgclee@gmail.com";
+    [labelMailId setText:_mailId];
+    [self addSubview:labelMailId];
+    
+    // card image
+    cardImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 36, meWidth-50, 135)];
+    //[cardImageView setBackgroundColor:UIColorFromRGB(0x105921)];
+    cardImageView.contentMode = UIViewContentModeScaleAspectFit;
+    [cardImageView setImage:[UIImage imageNamed:@"total_menu_card_img.png"]];
+    [self addSubview:cardImageView];
+    
+    //card number label
+    labelCardNumber = [[UILabel alloc] initWithFrame:CGRectMake(15, 30, meWidth-65, 40) ];
+    [labelCardNumber setBackgroundColor:[UIColor clearColor]];
+    [labelCardNumber setTextColor:UIColorFromRGB(0xffffff)];
+    [labelCardNumber setFont:[UIFont systemFontOfSize:15]];
+    [labelCardNumber setTextAlignment:NSTextAlignmentLeft];
+    [labelCardNumber setNumberOfLines:0];
+    _cardNumber = @"S20150001";
+    [labelCardNumber setText:_cardNumber];
+    [self addSubview:labelCardNumber];
+    
+    [self setVisableItem];
 }
 
 - (void)removeContents
 {
-    //    if (_topScrollButton) {
-    //        if (!_topScrollButton.hidden)	[_topScrollButton removeFromSuperview];
-    //        _topScrollButton = nil;
-    //    }
+    if(labelMenu){
+        [labelMenu removeFromSuperview];
+        labelMenu = nil;
+    }
+    
+    if(labelMailId){
+        [labelMailId removeFromSuperview];
+        labelMailId = nil;
+    }
+    if(cardImageView){
+        [cardImageView removeFromSuperview];
+        cardImageView = nil;
+    }
+    if(idImageView){
+        [idImageView removeFromSuperview];
+        idImageView = nil;
+    }
+    if(loginButton){
+        [loginButton removeFromSuperview];
+        loginButton = nil;
+    }
 }
 
 - (void)onClickButton
 {
     
+}
+
+- (void)setVisableItem
+{
+    _loginStatus = 0;
+    if(_loginStatus){ //log off
+
+        [idImageView setHidden:true];
+        [labelMailId setHidden:true];
+        [cardImageView setHidden:true];
+        
+        [labelMenu setHidden:false];
+        [loginButton setHidden:false];
+        
+    }else{            //log on
+        [idImageView setHidden:false];
+        [labelMailId setHidden:false];
+        [cardImageView setHidden:false];
+        
+        [labelMenu setHidden:true];
+        [loginButton setHidden:true];
+
+    }
 }
 
 /*

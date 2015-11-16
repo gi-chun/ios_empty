@@ -12,10 +12,10 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "SBJson.h"
 
-const static CGFloat LOGO_HEIGHT   =      40+10;
-const static CGFloat LOGIN_HEIGHT  =      120+10;
-const static CGFloat MENU_HEIGHT   =      40+10;
-const static CGFloat AD_HEIGHT     =      40+10;
+const static CGFloat LOGO_HEIGHT   =      43;
+const static CGFloat LOGIN_HEIGHT  =      180; //360/2
+const static CGFloat MENU_HEIGHT   =      45;
+const static CGFloat AD_HEIGHT     =      45;
 
 @interface leftMenuView ()
 {
@@ -43,7 +43,9 @@ const static CGFloat AD_HEIGHT     =      40+10;
 {
     if (self = [super initWithFrame:frame])
     {
-        [self setBackgroundColor:[UIColor colorWithRed:90.0f/255.0f green:175.0f/255.0f blue:113.0f/255.0f alpha:0.65]];
+//        [self setBackgroundColor:[UIColor colorWithRed:90.0f/255.0f green:175.0f/255.0f blue:113.0f/255.0f alpha:0.65]];
+        [self setBackgroundColor:[UIColor whiteColor]];
+        
         //self.menuItemScrollView.delegate = self;
 
         [self showContents];
@@ -97,15 +99,7 @@ const static CGFloat AD_HEIGHT     =      40+10;
     [self removeErrorView];
     [self removeContents];
     
-    /*
-    UIView *logoView;
-    UIView *loginView;
-    UIView *loginResultView;
-    UIView *aDView;
-     */
-    //logoView
-    logoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, LOGO_HEIGHT)];
-
+    
     /*
      lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, 1)];
      [lineView setBackgroundColor:UIColorFromRGB(0xdbdbe1)];
@@ -119,106 +113,78 @@ const static CGFloat AD_HEIGHT     =      40+10;
     NSLog(@"left width %f", meWidth);
     NSLog(@"left heigth %f", meHeight);
     
-    NSInteger isLowHeigth = 0;
-    if( meWidth == 320 && meHeight == 480){
-        isLowHeigth = 1;
-    }
+    CGFloat marginX = (kScreenBoundsWidth > 320)?0:10;
     
-    if( meWidth > 320){
-        meWidth = meWidth - 115;
-    }else{
-        meWidth = meWidth - 60;
-    }
+    //logoView
+    logoView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, kScreenBoundsWidth, LOGO_HEIGHT)];
+    [logoView setBackgroundColor:UIColorFromRGB(0xf05921)];
     
-     NSLog(@"after left size %f", meWidth);
-    
-    //logo
-    UIImageView *logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, meWidth, LOGO_HEIGHT)];
-    [logoImageView setBackgroundColor:UIColorFromRGB(0xa9a9a9)];
+    UIImageView *logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, 98, 25)];
+    //[logoImageView setBackgroundColor:UIColorFromRGB(0xf05921)];
     logoImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [logoImageView setImage:[UIImage imageNamed:@"icon_navi_home.png"]];
+    [logoImageView setImage:[UIImage imageNamed:@"total_menu_logo_img.png"]];
     [logoView addSubview:logoImageView];
+    
     [self addSubview:logoView];
     
     //login view
-    loginView = [[leftLoginView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(logoView.frame)+10, meWidth, LOGIN_HEIGHT) title:@"로그인을 하시면 Sunny Club의 다양한 서비스를 이용하실 수 있습니다."];
-//    [loginView setBackgroundColor:UIColorFromRGB(0xa9a9a9)];
-//    UITextField* loginDesc = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(logoView.frame), kScreenBoundsWidth-10, 20)];
-//    [loginDesc setBackgroundColor:[UIColor clearColor]];
-//    [loginDesc setTextColor:UIColorFromRGB(0x8c6239)];
-//    [loginDesc setFont:[UIFont systemFontOfSize:13]];
-//    [loginDesc setText:@"로그인을 하시면 Sunny Club의 다양한 서비스를 이용하실 수 있습니다."];
-//    loginDesc.textAlignment = NSTextAlignmentLeft;
-//    loginDesc.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
-//    loginDesc.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-//    loginDesc.userInteractionEnabled = NO; // Don't allow interaction
-//    //[loginDesc sizeToFit];
-//    [loginView addSubview:loginDesc];
-//    
-//    UIButton* loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [loginButton setFrame:CGRectMake(10, CGRectGetMaxY(loginDesc.frame), meWidth-50, 50)];
-//    [loginButton setBackgroundColor:[UIColor clearColor]];
-//    [loginButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
-//    [loginButton setImage:[UIImage imageNamed:@"bg_notice_bar.png"] forState:UIControlStateNormal];
-//    [loginButton addTarget:self action:@selector(onLoginButton) forControlEvents:UIControlEventTouchUpInside];
-//    [loginView addSubview:loginButton];
+    loginView = [[leftLoginView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(logoView.frame), meWidth, LOGIN_HEIGHT) title:@"로그인을 하시면 Sunny Club의 다양한 서비스를 이용하실 수 있습니다."];
     [self addSubview:loginView];
     
-    if(isLowHeigth == 1){
-        //menuItem Scroll View
-        self.menuItemScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(loginView.frame)+10, meWidth, (MENU_HEIGHT+10)*4)];
-        self.menuItemScrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        self.menuItemScrollView.pagingEnabled = YES;
-        self.menuItemScrollView.delegate = self;
-        self.menuItemScrollView.showsHorizontalScrollIndicator = NO;
-        self.menuItemScrollView.showsVerticalScrollIndicator = YES;
-        [self addSubview:self.menuItemScrollView];
-        
-        leftMenuItemView *menuItemView1 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(loginView.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY CLUB"];
-        [self.menuItemScrollView addSubview:menuItemView1];
-        
-        leftMenuItemView *menuItemView2 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView1.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY BANK"];
-        [self.menuItemScrollView addSubview:menuItemView2];
-        
-        leftMenuItemView *menuItemView3 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView2.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY EVENT"];
-        [self.menuItemScrollView addSubview:menuItemView3];
-        
-        leftMenuItemView *menuItemView4 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView3.frame)+10, meWidth, MENU_HEIGHT) title:@"SETTING"];
-        [self.menuItemScrollView addSubview:menuItemView4];
-        
-        //[self.menuItemScrollView setContentSize:CGSizeMake(meWidth, (MENU_HEIGHT+10)*4)];
-        [self.menuItemScrollView setContentSize:CGSizeMake(meWidth, ((MENU_HEIGHT+10)*4)+50)];
-        [self.menuItemScrollView setContentOffset:CGPointMake(0,((MENU_HEIGHT+10)*4)+50)];
-    }else{
-        leftMenuItemView *menuItemView1 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(loginView.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY CLUB"];
-        [self addSubview:menuItemView1];
-        
-        leftMenuItemView *menuItemView2 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView1.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY BANK"];
-        [self addSubview:menuItemView2];
-        
-        leftMenuItemView *menuItemView3 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView2.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY EVENT"];
-        [self addSubview:menuItemView3];
-        
-        leftMenuItemView *menuItemView4 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView3.frame)+10, meWidth, MENU_HEIGHT) title:@"SETTING"];
-        [self addSubview:menuItemView4];
-        
-    }
+//    if(isLowHeigth == 1){
+//        //menuItem Scroll View
+//        self.menuItemScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(loginView.frame)+10, meWidth, (MENU_HEIGHT+10)*4)];
+//        self.menuItemScrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+//        self.menuItemScrollView.pagingEnabled = YES;
+//        self.menuItemScrollView.delegate = self;
+//        self.menuItemScrollView.showsHorizontalScrollIndicator = NO;
+//        self.menuItemScrollView.showsVerticalScrollIndicator = YES;
+//        [self addSubview:self.menuItemScrollView];
+//        
+//        leftMenuItemView *menuItemView1 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(loginView.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY CLUB"];
+//        [self.menuItemScrollView addSubview:menuItemView1];
+//        
+//        leftMenuItemView *menuItemView2 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView1.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY BANK"];
+//        [self.menuItemScrollView addSubview:menuItemView2];
+//        
+//        leftMenuItemView *menuItemView3 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView2.frame)+10, meWidth, MENU_HEIGHT) title:@"SUNNY EVENT"];
+//        [self.menuItemScrollView addSubview:menuItemView3];
+//        
+//        leftMenuItemView *menuItemView4 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(menuItemView3.frame)+10, meWidth, MENU_HEIGHT) title:@"SETTING"];
+//        [self.menuItemScrollView addSubview:menuItemView4];
+//        
+//        //[self.menuItemScrollView setContentSize:CGSizeMake(meWidth, (MENU_HEIGHT+10)*4)];
+//        [self.menuItemScrollView setContentSize:CGSizeMake(meWidth, ((MENU_HEIGHT+10)*4)+50)];
+//        [self.menuItemScrollView setContentOffset:CGPointMake(0,((MENU_HEIGHT+10)*4)+50)];
+//    }else{
+    
+    leftMenuItemView *menuItemView1 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(loginView.frame)+5, meWidth, MENU_HEIGHT) title:@"Sunny CLUB" viewType:1];
+    [self addSubview:menuItemView1];
+    
+    leftMenuItemView *menuItemView2 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(menuItemView1.frame), meWidth, MENU_HEIGHT) title:@"Sunny BANK" viewType:2];
+    [self addSubview:menuItemView2];
+    
+    leftMenuItemView *menuItemView3 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(menuItemView2.frame), meWidth, MENU_HEIGHT) title:@"Event / 공지" viewType:3];
+    [self addSubview:menuItemView3];
+    
+    leftMenuItemView *menuItemView4 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(menuItemView3.frame), meWidth, MENU_HEIGHT) title:@"설정" viewType:4];
+    [self addSubview:menuItemView4];
     
     //ADView
-    UIImageView *adImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, meHeight-AD_HEIGHT, meWidth, AD_HEIGHT)];
-    adImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [adImageView setImage:[UIImage imageNamed:@"icon_navi_home.png"]];
-    [logoView addSubview:adImageView];
-    [self addSubview:logoView];
-    
-    //AD emptybutton
-    UIButton* emptyButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [emptyButton setFrame:CGRectMake(0, meHeight-AD_HEIGHT, meWidth, AD_HEIGHT)];
-    [emptyButton setBackgroundColor:[UIColor clearColor]];
-    //emptyButton.backgroundColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:0.5];
-    [emptyButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
-    [emptyButton addTarget:self action:@selector(onClickADButton) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:emptyButton];
+//    UIImageView *adImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, meHeight-AD_HEIGHT, meWidth, AD_HEIGHT)];
+//    adImageView.contentMode = UIViewContentModeScaleAspectFit;
+//    [adImageView setImage:[UIImage imageNamed:@"icon_navi_home.png"]];
+//    [logoView addSubview:adImageView];
+//    [self addSubview:logoView];
+//    
+//    //AD emptybutton
+//    UIButton* emptyButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [emptyButton setFrame:CGRectMake(0, meHeight-AD_HEIGHT, meWidth, AD_HEIGHT)];
+//    [emptyButton setBackgroundColor:[UIColor clearColor]];
+//    //emptyButton.backgroundColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:0.5];
+//    [emptyButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
+//    [emptyButton addTarget:self action:@selector(onClickADButton) forControlEvents:UIControlEventTouchUpInside];
+//    [self addSubview:emptyButton];
     
     //[self loginProcess];
 
