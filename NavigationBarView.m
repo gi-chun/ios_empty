@@ -27,7 +27,7 @@
         CGFloat screenWidth  = [[UIScreen mainScreen] bounds].size.width;
         CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
         
-        CGFloat marginX = (screenWidth > 320)?0:10;
+        CGFloat marginX = (screenWidth > 320)?0:30;
         
         if(type == 1){
             
@@ -45,7 +45,7 @@
             [self addSubview:prevButton];
             
             //label
-            UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, -5, 200, 70) ];
+            UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(150-marginX, -5, 200, 70) ];
             [titleLabel setBackgroundColor:[UIColor clearColor]];
             [titleLabel setTextColor:UIColorFromRGB(0xffffff)];
             [titleLabel setFont:[UIFont boldSystemFontOfSize:30]];
