@@ -386,6 +386,8 @@
 		28F7C0511BDE18BF00C53B86 /* btn_setting_menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28F7C04F1BDE18BF00C53B86 /* btn_setting_menu@2x.png */; };
 		28F7C0541BDE18FE00C53B86 /* btn_login_save.png in Resources */ = {isa = PBXBuildFile; fileRef = 28F7C0521BDE18FE00C53B86 /* btn_login_save.png */; };
 		28F7C0551BDE18FE00C53B86 /* btn_login_save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28F7C0531BDE18FE00C53B86 /* btn_login_save@2x.png */; };
+		28FF61371BFB2F060044D9AB /* setInforViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FF61351BFB2F060044D9AB /* setInforViewController.m */; };
+		28FF61381BFB2F060044D9AB /* setInforViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FF61361BFB2F060044D9AB /* setInforViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -841,6 +843,9 @@
 		28F7C04F1BDE18BF00C53B86 /* btn_setting_menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_setting_menu@2x.png"; sourceTree = "<group>"; };
 		28F7C0521BDE18FE00C53B86 /* btn_login_save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_login_save.png; sourceTree = "<group>"; };
 		28F7C0531BDE18FE00C53B86 /* btn_login_save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_login_save@2x.png"; sourceTree = "<group>"; };
+		28FF61341BFB2F060044D9AB /* setInforViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setInforViewController.h; sourceTree = "<group>"; };
+		28FF61351BFB2F060044D9AB /* setInforViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = setInforViewController.m; sourceTree = "<group>"; };
+		28FF61361BFB2F060044D9AB /* setInforViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = setInforViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1282,6 +1287,9 @@
 			isa = PBXGroup;
 			children = (
 				28EDAC1C1BDF694100024EF9 /* WebView.h */,
+				28FF61341BFB2F060044D9AB /* setInforViewController.h */,
+				28FF61351BFB2F060044D9AB /* setInforViewController.m */,
+				28FF61361BFB2F060044D9AB /* setInforViewController.xib */,
 				28EDAC221BDF6ED800024EF9 /* HttpError.h */,
 				28EDAC231BDF6ED800024EF9 /* HttpError.m */,
 				28EDAC241BDF6ED800024EF9 /* HttpRequest.h */,
@@ -1574,6 +1582,7 @@
 				283148C91BFB0E6A0083DA3F /* menu02_back@2x.png in Resources */,
 				283148DF1BFB0E6A0083DA3F /* personaldata_menu02_back@3x.png in Resources */,
 				28351D871BF47F6B009145E6 /* bottom_banner@2x.png in Resources */,
+				28FF61381BFB2F060044D9AB /* setInforViewController.xib in Resources */,
 				283148D91BFB0E6A0083DA3F /* menu05_back@3x.png in Resources */,
 				28F7C04C1BDE18B000C53B86 /* btn_setting_back.png in Resources */,
 				283148F01BFB0E6A0083DA3F /* pw_change_btn_press@2x.png in Resources */,
@@ -1878,6 +1887,7 @@
 				2886A8E21BE0B8DF001B7657 /* CPThumbnailView.m in Sources */,
 				287F92E31BE748EF007E82AD /* MMDrawerBarButtonItem.m in Sources */,
 				2886A8EE1BE0BBDC001B7657 /* UIImage_Extensions.m in Sources */,
+				28FF61371BFB2F060044D9AB /* setInforViewController.m in Sources */,
 				28D8EA431BF310B0002E98C0 /* AFHTTPRequestOperationManager.m in Sources */,
 				288E45C01BD719640041AE50 /* main.m in Sources */,
 				28351D281BF43096009145E6 /* SBJsonStreamParser.m in Sources */,

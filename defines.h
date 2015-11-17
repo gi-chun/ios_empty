@@ -19,5 +19,6 @@ static NSString *NEW_NEWS_URL       = @"https://vntst.shinhanglobal.com/sunny/fa
 static NSString *SETTING_URL        = @"https://vntst.shinhanglobal.com/sunny/faq_test.jsp";
 
 static NSString *LOGIN_TITLE_KO     = @"로그인";
+static NSString *SETINFO_TITLE_KO     = @"정보입력";
 
 #endif /* defines_h */

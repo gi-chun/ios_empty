@@ -1,25 +1,37 @@
 //
-//  LoginViewController.m
+//  setInforViewController.m
 //  gcleeEmpty
 //
 //  Created by gclee on 2015. 11. 17..
 //  Copyright © 2015년 gclee. All rights reserved.
 //
 
-#import "LoginViewController.h"
-#import "NavigationBarView.h"
+
 #import "setInforViewController.h"
+#import "NavigationBarView.h"
 
 
-@interface LoginViewController () <NavigationBarViewDelegate>
+@interface setInforViewController () <NavigationBarViewDelegate>
 {
     NavigationBarView *navigationBarView;
-    __weak IBOutlet UIButton *loginBtn;
 }
 @end
 
-@implementation LoginViewController
 
+@implementation setInforViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    [self resetNavigationBarView:1];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/////
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -27,27 +39,6 @@
     // Navigation : viewDidLoad에서 한번, viewDidAppear에서 한번 더 한다.
     //[self.navigationItem setHidesBackButton:YES];
     [self resetNavigationBarView:1];
-    
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
-    [self resetNavigationBarView:1];
-    
-}
-- (IBAction)setInforClick:(id)sender {
-    
-    setInforViewController *setInforCtl = [[setInforViewController alloc] init];
-    //[setInforCtl setDelegate:self];
-    [self.navigationController pushViewController:setInforCtl animated:YES];
-    [self.navigationController setNavigationBarHidden:NO];
-}
-
-- (IBAction)loginBtnClick:(id)sender {
-    
-    
     
 }
 
@@ -69,31 +60,27 @@
 
 - (NavigationBarView *)navigationBarView:(NSInteger)navigationType
 {
-    navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:LOGIN_TITLE_KO];
+    navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:SETINFO_TITLE_KO];
     [navigationBarView setDelegate:self];
     
-   
+    
     
     return navigationBarView;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - CPNavigationBarViewDelegate
 
 - (void)didTouchBackButton
 {
-    //[self resetNavigationBarView:0];
-
-    //[self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
     
-    if ([self.delegate respondsToSelector:@selector(didTouchBackButton)]) {
-        [self.delegate didTouchBackButton];
-    }
+//    if ([self.delegate respondsToSelector:@selector(didTouchBackButton)]) {
+//        [self.delegate didTouchBackButton];
+//    }
 }
+
+
+
 
 /*
 #pragma mark - Navigation
