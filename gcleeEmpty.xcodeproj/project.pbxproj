@@ -11,6 +11,8 @@
 		282CB3171BDA2600000FF5C0 /* icon_navi_home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 282CB3151BDA2600000FF5C0 /* icon_navi_home@2x.png */; };
 		282CB31A1BDA2626000FF5C0 /* icon_main_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 282CB3181BDA2626000FF5C0 /* icon_main_login.png */; };
 		282CB31B1BDA2626000FF5C0 /* icon_main_login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 282CB3191BDA2626000FF5C0 /* icon_main_login@2x.png */; };
+		283147D61BFAB1B60083DA3F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 283147D41BFAB1B60083DA3F /* LoginViewController.m */; };
+		283147D71BFAB1B60083DA3F /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283147D51BFAB1B60083DA3F /* LoginViewController.xib */; };
 		28351D261BF43096009145E6 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 28351D0E1BF43095009145E6 /* NSObject+SBJson.m */; };
 		28351D271BF43096009145E6 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 28351D111BF43095009145E6 /* SBJsonParser.m */; };
 		28351D281BF43096009145E6 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 28351D131BF43095009145E6 /* SBJsonStreamParser.m */; };
@@ -248,6 +250,9 @@
 		282CB3151BDA2600000FF5C0 /* icon_navi_home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_navi_home@2x.png"; sourceTree = "<group>"; };
 		282CB3181BDA2626000FF5C0 /* icon_main_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_main_login.png; sourceTree = "<group>"; };
 		282CB3191BDA2626000FF5C0 /* icon_main_login@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_main_login@2x.png"; sourceTree = "<group>"; };
+		283147D31BFAB1B60083DA3F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = gcleeEmpty/png/LoginViewController.h; sourceTree = "<group>"; };
+		283147D41BFAB1B60083DA3F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = gcleeEmpty/png/LoginViewController.m; sourceTree = "<group>"; };
+		283147D51BFAB1B60083DA3F /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		28351D0D1BF43095009145E6 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
 		28351D0E1BF43095009145E6 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
 		28351D0F1BF43095009145E6 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
@@ -728,6 +733,7 @@
 				28351D761BF47F6B009145E6 /* total_menu_btn@3x.png */,
 				28351D771BF47F6B009145E6 /* total_menu_btn_press@1x.png */,
 				2869060E1BF5A0A200166C9F /* testView.xib */,
+				283147D51BFAB1B60083DA3F /* LoginViewController.xib */,
 				28351D781BF47F6B009145E6 /* total_menu_btn_press@2x.png */,
 				28351D791BF47F6B009145E6 /* total_menu_btn_press@3x.png */,
 				28351D7A1BF47F6B009145E6 /* tuto_test01@1x.png */,
@@ -850,6 +856,8 @@
 				28C56A531BEC627A001BBCE1 /* leftMenuItemView.h */,
 				28C56A541BEC627A001BBCE1 /* leftMenuItemView.m */,
 				2853A1DF1BF1779800B8F70E /* leftLoginView.h */,
+				283147D31BFAB1B60083DA3F /* LoginViewController.h */,
+				283147D41BFAB1B60083DA3F /* LoginViewController.m */,
 				2853A1E01BF1779800B8F70E /* leftLoginView.m */,
 				286052A21BEB22A900F838E6 /* leftMenuView.m */,
 				288E45E41BD776D60041AE50 /* mainViewController.m */,
@@ -1045,6 +1053,7 @@
 				28351DA21BF47F6B009145E6 /* top_list_btn_press@2x.png in Resources */,
 				2852D0EE1BF9E72700C1B1B5 /* ad_press_test@3x.png in Resources */,
 				28351D9E1BF47F6B009145E6 /* top_back_btn_press@1x.png in Resources */,
+				283147D71BFAB1B60083DA3F /* LoginViewController.xib in Resources */,
 				28D5372D1BF970E5004257DA /* total_menu_close_btn@2x.png in Resources */,
 				2869060F1BF5A0A300166C9F /* testView.xib in Resources */,
 				28D537281BF970E5004257DA /* total_menu_04@3x.png in Resources */,
@@ -1214,6 +1223,7 @@
 				28D11E991BE86B3A005B3024 /* MYIntroductionPanel.m in Sources */,
 				28D8EA4A1BF310B0002E98C0 /* AFURLSessionManager.m in Sources */,
 				28351D2C1BF43096009145E6 /* SBJsonStreamWriter.m in Sources */,
+				283147D61BFAB1B60083DA3F /* LoginViewController.m in Sources */,
 				28351D401BF45555009145E6 /* leftViewController.m in Sources */,
 				28D8EA481BF310B0002E98C0 /* AFURLRequestSerialization.m in Sources */,
 				2886A8D91BE09E8C001B7657 /* CPLoadingView.m in Sources */,

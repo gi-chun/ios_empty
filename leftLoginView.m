@@ -78,6 +78,7 @@
     
     CGFloat marginX = (kScreenBoundsWidth > 320)?30:0;
     CGFloat labelMarginX = (kScreenBoundsWidth > 320)?2:0;
+    CGFloat logoutMarginX = (kScreenBoundsWidth > 320)?60:0;
     
     //label
     // 100, 26
@@ -144,7 +145,7 @@
     
     //logout button
     logoutButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [logoutButton setFrame:CGRectMake(kScreenBoundsWidth - (80), 5, 30, 30)];
+    [logoutButton setFrame:CGRectMake(kScreenBoundsWidth - (80+logoutMarginX), 5, 30, 30)];
     [logoutButton setBackgroundColor:[UIColor clearColor]]; //icon_main_login, btn_login_save.png
     [logoutButton setBackgroundImage:[UIImage imageNamed:@"total_menu_logout_btn.png"] forState:UIControlStateHighlighted];
     [logoutButton setBackgroundImage:[UIImage imageNamed:@"total_menu_logout_btn.png"] forState:UIControlStateNormal];

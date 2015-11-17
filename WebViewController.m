@@ -28,6 +28,7 @@
 //#import "CPCommonInfo.h"
 #import "NavigationBarView.h"
 #import "UIViewController+MMDrawerController.h"
+#import "LoginViewController.h"
 //#import "CPMartSearchViewController.h"
 //#import "CPMenuViewController.h"
 //#import "CPDeveloperInfo.h"
@@ -139,9 +140,15 @@
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
     }
     
-    // Navigation : viewDidLoad에서 한번, viewDidAppear에서 한번 더 한다.
-    [self.navigationItem setHidesBackButton:YES];
-    [self.navigationController.navigationBar addSubview:[self navigationBarView:1]];
+//    for (UIView *subView in self.navigationController.navigationBar.subviews) {
+//        if ([subView isKindOfClass:[NavigationBarView class]]) {
+//            [subView removeFromSuperview];
+//        }
+//    }
+//    
+//    // Navigation : viewDidLoad에서 한번, viewDidAppear에서 한번 더 한다.
+//    [self.navigationItem setHidesBackButton:YES];
+//    [self.navigationController.navigationBar addSubview:[self navigationBarView:0]]; //defaut gnb
 
     // Layout
     [self initLayout];
@@ -168,7 +175,7 @@
     
     // Navigation : viewDidLoad에서 한번, viewDidAppear에서 한번 더 한다.
     [self.navigationItem setHidesBackButton:YES];
-    [self.navigationController.navigationBar addSubview:[self navigationBarView:1]];
+    [self.navigationController.navigationBar addSubview:[self navigationBarView:0]];
 
     //Exception URL은 풀스크린으로 보여줌 (저장된 상태값으로 보여줌. PC보기에서 URL을 체킹하지 못하는 오류가 있음.)
 //    if (fullScreenMode != CPWebviewControllerFullScreenModeNone) {
@@ -313,12 +320,28 @@
 
 - (void)didTouchBackButton
 {
-    //[self.navigationController popViewControllerAnimated:YES];
-    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    for (UIView *subView in self.navigationController.navigationBar.subviews) {
+        if ([subView isKindOfClass:[NavigationBarView class]]) {
+            [subView removeFromSuperview];
+        }
+    }
+    
+    // Navigation : viewDidLoad에서 한번, viewDidAppear에서 한번 더 한다.
+    [self.navigationItem setHidesBackButton:YES];
+    [self.navigationController.navigationBar addSubview:[self navigationBarView:0]]; //defaut gnb
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+- (void)didTouchBankButton
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didTouchMenuButton
 {
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 //    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 //    
 //    if ([[CPCommonInfo sharedInfo] currentNavigationType] == CPNavigationTypeMart) {
@@ -610,17 +633,17 @@
         }
     }
     
-    switch (navigationType) {
-        case 2:
-            [self.navigationController.navigationBar addSubview:[self navigationBarView:2]];
-            [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-            break;
-        case 1:
-        default:
-            [self.navigationController.navigationBar addSubview:[self navigationBarView:1]];
-            [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-            break;
-    }
+//    switch (navigationType) {
+//        case 2:
+//            [self.navigationController.navigationBar addSubview:[self navigationBarView:2]];
+//            [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+//            break;
+//        case 1:
+//        default:
+//            [self.navigationController.navigationBar addSubview:[self navigationBarView:0]];
+//            [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+//            break;
+//    }
     
 }
 
@@ -1316,5 +1339,58 @@
     
     [alert performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:YES];
 }
+
+#pragma mark - total menu delegate
+
+- (void)didTouchMenuItem:(NSInteger)menuType
+{
+    //#1 Sunny Club
+    //#2 Sunny Bank
+    //#3 Event / 공지
+    //#4 설정
+    
+    NSString *strMenuType = [NSString stringWithFormat:@"webView didTouchMenuItem menuType %d", menuType];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:strMenuType delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+    [alert show];
+    
+    //setting
+    if(menuType == 4){
+        LoginViewController *loginController = [[LoginViewController alloc] init];
+        [loginController setDelegate:self];
+        [self.navigationController pushViewController:loginController animated:YES];
+        [self.navigationController setNavigationBarHidden:NO];
+        
+    }
+}
+
+- (void)didTouchCloseBtn
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchCloseBtn" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+    [alert show];
+    
+}
+
+- (void)didTouchLogOutBtn
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchLogOutBtn" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+    [alert show];
+    
+}
+
+- (void)didTouchLogInBtn
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchLogInBtn" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+    [alert show];
+    
+}
+
+- (void)didTouchAD
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchAD" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+    [alert show];
+    
+}
+
 
 @end

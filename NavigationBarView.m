@@ -17,15 +17,155 @@
 
 @implementation NavigationBarView
 
-- (id)initWithFrame:(CGRect)frame type:(NSInteger)type
+- (id)initWithFrame:(CGRect)frame type:(NSInteger)type title:(NSString*) title
 {
     self = [super initWithFrame:frame];
+    
+    
     if (self) {
         
         CGFloat screenWidth  = [[UIScreen mainScreen] bounds].size.width;
         CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
         
         CGFloat marginX = (screenWidth > 320)?0:10;
+        
+        if(type == 1){
+            
+            [self setBackgroundColor:UIColorFromRGB(0xf05921)];
+            
+            // prev button
+            UIButton *prevButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            [prevButton setFrame:CGRectMake(13, 13, 31, 31)];
+            [prevButton setBackgroundImage:[UIImage imageNamed:@"top_back_btn.png"] forState:UIControlStateNormal];
+            [prevButton setBackgroundImage:[UIImage imageNamed:@"top_back_btn_press.png"] forState:UIControlStateHighlighted];
+            [prevButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
+            [prevButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
+            [prevButton addTarget:self action:@selector(touchBackButton) forControlEvents:UIControlEventTouchUpInside];
+            //[menuButton setAccessibilityLabel:@"백버튼" Hint:@"뒤로 이동합니다"];
+            [self addSubview:prevButton];
+            
+            //label
+            UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, -5, 200, 70) ];
+            [titleLabel setBackgroundColor:[UIColor clearColor]];
+            [titleLabel setTextColor:UIColorFromRGB(0xffffff)];
+            [titleLabel setFont:[UIFont boldSystemFontOfSize:30]];
+            [titleLabel setTextAlignment:NSTextAlignmentLeft];
+            [titleLabel setNumberOfLines:0];
+            [titleLabel setText:title];
+            [self addSubview:titleLabel];
+            
+            return self;
+        }
+        
+        
+        
+        UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 60)];
+        [backgroundImageView setImage:[UIImage imageNamed:@"gnb_back.png"]];
+        [backgroundImageView setFrame:CGRectMake(0, 0, screenWidth, 60)];
+        backgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self addSubview:backgroundImageView];
+        
+        // left button
+        UIButton *menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [menuButton setFrame:CGRectMake(13, 13, 31, 31)];
+        [menuButton setBackgroundImage:[UIImage imageNamed:@"total_menu_btn.png"] forState:UIControlStateNormal];
+        [menuButton setBackgroundImage:[UIImage imageNamed:@"total_menu_btn_press.png"] forState:UIControlStateHighlighted];
+        [menuButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
+        [menuButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
+        [menuButton addTarget:self action:@selector(touchMenuButton) forControlEvents:UIControlEventTouchUpInside];
+        //[menuButton setAccessibilityLabel:@"백버튼" Hint:@"뒤로 이동합니다"];
+        [self addSubview:menuButton];
+        
+        //        UIButton *logoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        //        [logoButton setFrame:CGRectMake(CGRectGetMaxX(menuButton.frame)+margin, 4, 54, 36)];
+        //        [logoButton setBackgroundImage:[UIImage imageNamed:@"icon_main_login.png"] forState:UIControlStateNormal];
+        //        [logoButton setBackgroundImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
+        //        [logoButton addTarget:self action:@selector(touchLogoButton) forControlEvents:UIControlEventTouchUpInside];
+        //        //[logoButton setAccessibilityLabel:@"로고" Hint:@"홈으로 이동합니다"];
+        //        [self addSubview:logoButton];
+        
+        //        UIButton *titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        //        [titleButton setFrame:CGRectMake(CGRectGetMaxX(logoButton.frame)+margin, 4, 120, 36)];
+        //        [titleButton setImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateNormal];
+        //        [titleButton setImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
+        //        [titleButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+        //        [titleButton addTarget:self action:@selector(touchMartButton) forControlEvents:UIControlEventTouchUpInside];
+        //        [self addSubview:titleButton];
+        
+        // sunny bank
+        UIButton *myInfoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [myInfoButton setFrame:CGRectMake(screenWidth-72+marginX, 13, 46, 20)];
+        [myInfoButton setBackgroundImage:[UIImage imageNamed:@"top_tap_logo.png"] forState:UIControlStateNormal];
+        [myInfoButton setBackgroundImage:[UIImage imageNamed:@"top_tap_logo_press.png"] forState:UIControlStateHighlighted];
+        [myInfoButton addTarget:self action:@selector(touchBankButton) forControlEvents:UIControlEventTouchUpInside];
+        //[myInfoButton setAccessibilityLabel:@"내정보" Hint:@"내정보로 이동합니다"];
+        [self addSubview:myInfoButton];
+        
+        //search
+        UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [searchButton setFrame:CGRectMake(screenWidth-(72+31+31)+marginX, 13, 31, 28)];
+        [searchButton setBackgroundImage:[UIImage imageNamed:@"Search_icon.png"] forState:UIControlStateNormal];
+        [searchButton setBackgroundImage:[UIImage imageNamed:@"Search_icon_press.png"] forState:UIControlStateHighlighted];
+        [searchButton addTarget:self action:@selector(touchSearchButton) forControlEvents:UIControlEventTouchUpInside];
+        //[basketButton setAccessibilityLabel:@"장바구니" Hint:@"장바구니로 이동합니다"];
+        [self addSubview:searchButton];
+        
+        //        UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        //        [searchButton setFrame:CGRectMake(screenWidth-(112+margin+margin), 4, 36, 36)];
+        //        [searchButton setImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateNormal];
+        //        [searchButton setImage:[UIImage imageNamed:@"btn_login_save.png"] forState:UIControlStateHighlighted];
+        //        [searchButton addTarget:self action:@selector(touchMartSearchButton) forControlEvents:UIControlEventTouchUpInside];
+        //        //[searchButton setAccessibilityLabel:@"검색" Hint:@"검색을 시작합니다"];
+        //        [self addSubview:searchButton];
+        
+    }
+    
+    return self;
+    
+}
+
+
+- (id)initWithFrame:(CGRect)frame type:(NSInteger)type
+{
+    self = [super initWithFrame:frame];
+    
+   
+    if (self) {
+        
+        CGFloat screenWidth  = [[UIScreen mainScreen] bounds].size.width;
+        CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
+        
+        CGFloat marginX = (screenWidth > 320)?0:10;
+        
+        if(type == 1){
+            
+            [self setBackgroundColor:UIColorFromRGB(0xf05921)];
+            
+            // prev button
+            UIButton *prevButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            [prevButton setFrame:CGRectMake(13, 13, 31, 31)];
+            [prevButton setBackgroundImage:[UIImage imageNamed:@"top_back_btn.png"] forState:UIControlStateNormal];
+            [prevButton setBackgroundImage:[UIImage imageNamed:@"top_back_btn_press.png"] forState:UIControlStateHighlighted];
+            [prevButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
+            [prevButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
+            [prevButton addTarget:self action:@selector(touchBackButton) forControlEvents:UIControlEventTouchUpInside];
+            //[menuButton setAccessibilityLabel:@"백버튼" Hint:@"뒤로 이동합니다"];
+            [self addSubview:prevButton];
+            
+            //label
+            UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 10, 200, 70) ];
+            [titleLabel setBackgroundColor:[UIColor clearColor]];
+            [titleLabel setTextColor:UIColorFromRGB(0xffffff)];
+            [titleLabel setFont:[UIFont boldSystemFontOfSize:30]];
+            [titleLabel setTextAlignment:NSTextAlignmentLeft];
+            [titleLabel setNumberOfLines:0];
+            [titleLabel setText:_title];
+            [self addSubview:titleLabel];
+            
+            return self;
+        }
+        
+       
         
         UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 60)];
         [backgroundImageView setImage:[UIImage imageNamed:@"gnb_back.png"]];
@@ -40,7 +180,7 @@
         [menuButton setBackgroundImage:[UIImage imageNamed:@"total_menu_btn_press.png"] forState:UIControlStateHighlighted];
         [menuButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
         [menuButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
-        [menuButton addTarget:self action:@selector(touchBackButton) forControlEvents:UIControlEventTouchUpInside];
+        [menuButton addTarget:self action:@selector(touchMenuButton) forControlEvents:UIControlEventTouchUpInside];
         //[menuButton setAccessibilityLabel:@"백버튼" Hint:@"뒤로 이동합니다"];
         [self addSubview:menuButton];
         
@@ -65,18 +205,18 @@
         [myInfoButton setFrame:CGRectMake(screenWidth-72+marginX, 13, 46, 20)];
         [myInfoButton setBackgroundImage:[UIImage imageNamed:@"top_tap_logo.png"] forState:UIControlStateNormal];
         [myInfoButton setBackgroundImage:[UIImage imageNamed:@"top_tap_logo_press.png"] forState:UIControlStateHighlighted];
-        [myInfoButton addTarget:self action:@selector(touchMyInfoButton) forControlEvents:UIControlEventTouchUpInside];
+        [myInfoButton addTarget:self action:@selector(touchBankButton) forControlEvents:UIControlEventTouchUpInside];
         //[myInfoButton setAccessibilityLabel:@"내정보" Hint:@"내정보로 이동합니다"];
         [self addSubview:myInfoButton];
         
         //search
-        UIButton *basketButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [basketButton setFrame:CGRectMake(screenWidth-(72+31+31)+marginX, 13, 31, 28)];
-        [basketButton setBackgroundImage:[UIImage imageNamed:@"Search_icon.png"] forState:UIControlStateNormal];
-        [basketButton setBackgroundImage:[UIImage imageNamed:@"Search_icon_press.png"] forState:UIControlStateHighlighted];
-        [basketButton addTarget:self action:@selector(touchBasketButton) forControlEvents:UIControlEventTouchUpInside];
+        UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [searchButton setFrame:CGRectMake(screenWidth-(72+31+31)+marginX, 13, 31, 28)];
+        [searchButton setBackgroundImage:[UIImage imageNamed:@"Search_icon.png"] forState:UIControlStateNormal];
+        [searchButton setBackgroundImage:[UIImage imageNamed:@"Search_icon_press.png"] forState:UIControlStateHighlighted];
+        [searchButton addTarget:self action:@selector(touchSearchButton) forControlEvents:UIControlEventTouchUpInside];
         //[basketButton setAccessibilityLabel:@"장바구니" Hint:@"장바구니로 이동합니다"];
-        [self addSubview:basketButton];
+        [self addSubview:searchButton];
         
 //        UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
 //        [searchButton setFrame:CGRectMake(screenWidth-(112+margin+margin), 4, 36, 36)];
@@ -118,60 +258,11 @@
     //    }
 }
 
-- (void)touchBasketButton
+- (void)touchBankButton
 {
-    if ([self.delegate respondsToSelector:@selector(didTouchBasketButton)]) {
-        [self.delegate didTouchBasketButton];
+    if ([self.delegate respondsToSelector:@selector(didTouchBankButton)]) {
+        [self.delegate didTouchBankButton];
     }
-    
-//    if ([[CPCommonInfo sharedInfo] currentNavigationType] == CPNavigationTypeMart) {
-//        //AccessLog - 장바구니 in 마트
-//        [[AccessLog sharedInstance] sendAccessLogWithCode:@"MAMART0005"];
-//    }
-//    else {
-//        //AccessLog - 장바구니
-//        [[AccessLog sharedInstance] sendAccessLogWithCode:@"AGD0100"];
-//    }
-}
-
-- (void)touchLogoButton
-{
-    if ([self.delegate respondsToSelector:@selector(didTouchLogoButton)]) {
-        [self.delegate didTouchLogoButton];
-    }
-    
-//    if ([[CPCommonInfo sharedInfo] currentNavigationType] == CPNavigationTypeMart) {
-//        //AccessLog - 로고 in 마트
-//        [[AccessLog sharedInstance] sendAccessLogWithCode:@"MAMART0002"];
-//    }
-//    else {
-//        //AccessLog - 로고
-//        [[AccessLog sharedInstance] sendAccessLogWithCode:@"AGA0100"];
-//    }
-}
-
-- (void)touchMartButton
-{
-    if ([self.delegate respondsToSelector:@selector(didTouchMartButton)]) {
-        [self.delegate didTouchMartButton];
-    }
-    
-//    if ([[CPCommonInfo sharedInfo] currentNavigationType] == CPNavigationTypeMart) {
-//        //AccessLog - 마트
-//        [[AccessLog sharedInstance] sendAccessLogWithCode:@"MAMART0003"];
-//    }
-}
-
-- (void)touchMyInfoButton
-{
-    if ([self.delegate respondsToSelector:@selector(didTouchMyInfoButton)]) {
-        [self.delegate didTouchMyInfoButton];
-    }
-    
-//    if ([[CPCommonInfo sharedInfo] currentNavigationType] == CPNavigationTypeMart) {
-//        //AccessLog - 나의11번가 in 마트
-//        [[AccessLog sharedInstance] sendAccessLogWithCode:@"MAMART0006"];
-//    }
 }
 
 - (void)touchSearchButton
@@ -203,29 +294,6 @@
 //    }
 }
 
-- (void)touchDetailSearchButton
-{
-    if ([self.delegate respondsToSelector:@selector(didTouchSearchButton:)]) {
-        [self.delegate didTouchSearchButton:nil];
-    }
-}
-
-- (void)touchMartSearchButton
-{
-    if ([self.delegate respondsToSelector:@selector(didTouchMartSearchButton)]) {
-        [self.delegate didTouchMartSearchButton];
-    }
-    
-    //    CPMartSearchViewController *viewController = [[CPMartSearchViewController alloc] init];
-    //    [viewController setDelegate:self];
-    //    [self.navigationController pushViewController:viewController animated:NO];
-    //    [self.navigationController setNavigationBarHidden:YES];
-    
-//    if ([[CPCommonInfo sharedInfo] currentNavigationType] == CPNavigationTypeMart) {
-//        //AccessLog - 마트 검색
-//        [[AccessLog sharedInstance] sendAccessLogWithCode:@"MAMART0004"];
-//    }
-}
 
 #pragma mark - UITextFieldDelegate
 

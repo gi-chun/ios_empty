@@ -113,7 +113,7 @@ const static CGFloat AD_HEIGHT     =      50;
     NSLog(@"left width %f", meWidth);
     NSLog(@"left heigth %f", meHeight);
     
-    CGFloat marginX = (kScreenBoundsWidth > 320)?0:10;
+    CGFloat marginX = (kScreenBoundsWidth > 320)?60:0;
     
     //logoView
     logoView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, kScreenBoundsWidth, LOGO_HEIGHT)];
@@ -127,7 +127,7 @@ const static CGFloat AD_HEIGHT     =      50;
     
     //close button
     UIButton* closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [closeBtn setFrame:CGRectMake(kScreenBoundsWidth - (35+35), 10, 15, 15)];
+    [closeBtn setFrame:CGRectMake(kScreenBoundsWidth - (70+marginX), 10, 15, 15)];
     [closeBtn setBackgroundColor:[UIColor clearColor]]; //icon_main_login, btn_login_save.png
     [closeBtn setBackgroundImage:[UIImage imageNamed:@"total_menu_close_btn.png"] forState:UIControlStateHighlighted];
     [closeBtn setBackgroundImage:[UIImage imageNamed:@"total_menu_close_btn.png"] forState:UIControlStateNormal];
@@ -186,7 +186,7 @@ const static CGFloat AD_HEIGHT     =      50;
     [menuItemView4 setDelegate:self];
     
     //ADView
-    UIView* ADView = [[UIView alloc] initWithFrame:CGRectMake(-40,kScreenBoundsHeight-AD_HEIGHT, kScreenBoundsWidth+40, AD_HEIGHT)];
+    UIView* ADView = [[UIView alloc] initWithFrame:CGRectMake(-40-marginX/2,kScreenBoundsHeight-AD_HEIGHT, kScreenBoundsWidth+40-marginX/2, AD_HEIGHT)];
     [ADView setBackgroundColor:UIColorFromRGB(0x3B98DE)];
     
     UIImageView *adImageView = [[UIImageView alloc] initWithFrame:ADView.bounds];

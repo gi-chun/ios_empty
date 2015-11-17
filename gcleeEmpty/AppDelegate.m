@@ -197,10 +197,13 @@
     
 //    UIViewController * leftSideDrawerViewController = [[LeftTotalViewController alloc] initWithNibName:@"leftTotalViewController" bundle:nil];
     UIViewController * leftSideDrawerViewController = [[leftViewController alloc] init];
+    _gLeftViewController = (leftViewController*)leftSideDrawerViewController;
 //    _homeWebViewController = [[WebViewController alloc] init];
 //    [_homeWebViewController setUrl:SUNNY_CLUB_URL];
     UIViewController * centerViewController = [[WebViewController alloc] init];
     _homeWebViewController = (WebViewController*)centerViewController;
+    [_homeWebViewController setDelegate:_gLeftViewController];
+    [_gLeftViewController setDelegate:_homeWebViewController];
     [_homeWebViewController setUrl:SUNNY_CLUB_URL];
     
     //    UIViewController * rightSideDrawerViewController = [[MMExampleRightSideDrawerViewController alloc] init];

@@ -13,8 +13,11 @@
 @interface NavigationBarView : UIView
 
 @property (nonatomic, weak) id<NavigationBarViewDelegate> delegate;
+@property (nonatomic) NSString*  title;
+
 
 - (id)initWithFrame:(CGRect)frame type:(NSInteger)type;
+- (id)initWithFrame:(CGRect)frame type:(NSInteger)type title:(NSString*)title;
 - (void)setSearchTextField:(NSString *)keyword;
 - (NSString *)getSearchTextField;
 
@@ -24,13 +27,8 @@
 @optional
 - (void)didTouchMenuButton;
 - (void)didTouchBackButton;
-- (void)didTouchBasketButton;
-- (void)didTouchLogoButton;
-- (void)didTouchMartButton;
-- (void)didTouchMyInfoButton;
+- (void)didTouchBankButton;
 - (void)didTouchSearchButton:(NSString *)keywordUrl;
-- (void)didTouchSearchButtonWithKeyword:(NSString *)keyword;
-- (void)didTouchMartSearchButton;
 - (void)searchTextFieldShouldBeginEditing:(NSString *)keyword keywordUrl:(NSString *)keywordUrl;
 
 @end

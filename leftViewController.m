@@ -6,9 +6,11 @@
 //  Copyright © 2015년 gclee. All rights reserved.
 //
 
+#import "UIViewController+MMDrawerController.h"
 #import "leftViewController.h"
 #import "secondViewController.h"
 #import "leftMenuView.h"
+#import "LoginViewController.h"
 
 @interface leftViewController ()
 
@@ -98,10 +100,26 @@
     //#3 Event / 공지
     //#4 설정
     
-    NSString *strMenuType = [NSString stringWithFormat:@"didTouchMenuItem menuType %d", menuType];
+    //[self.mm_drawerController toggleDrawerSide:MMDrawerSideNone animated:YES completion:nil];
+    [self.mm_drawerController closeDrawerAnimated:true completion:nil];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:strMenuType delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
-    [alert show];
+    if ([self.delegate respondsToSelector:@selector(didTouchMenuItem:)]) {
+        [self.delegate didTouchMenuItem:menuType];
+    }
+    
+//    NSString *strMenuType = [NSString stringWithFormat:@"didTouchMenuItem menuType %d", menuType];
+//    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:strMenuType delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+//    [alert show];
+//    
+//    //setting
+//    if(menuType == 4){
+//        LoginViewController *loginController = [[LoginViewController alloc] init];
+//        //[loginController setDelegate:self];
+//        [self.navigationController pushViewController:loginController animated:YES];
+//        [self.navigationController setNavigationBarHidden:NO];
+//        
+//    }
 }
 
 - (void)didTouchCloseBtn
@@ -120,8 +138,12 @@
 
 - (void)didTouchLogInBtn
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchLogInBtn" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
-    [alert show];
+    if ([self.delegate respondsToSelector:@selector(didTouchLogOutBtn)]) {
+        [self.delegate didTouchLogOutBtn];
+    }
+    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchLogInBtn" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+//    [alert show];
     
 }
 

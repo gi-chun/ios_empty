@@ -18,4 +18,6 @@ static NSString *SUNNY_BANK_URL     = @"https://vntst.shinhanglobal.com/sunny/fa
 static NSString *NEW_NEWS_URL       = @"https://vntst.shinhanglobal.com/sunny/faq_test.jsp";
 static NSString *SETTING_URL        = @"https://vntst.shinhanglobal.com/sunny/faq_test.jsp";
 
+static NSString *LOGIN_TITLE_KO     = @"로그인";
+
 #endif /* defines_h */

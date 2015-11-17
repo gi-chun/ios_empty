@@ -20,6 +20,7 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic,strong) MMDrawerController * drawerController;
 @property (strong, nonatomic) WebViewController *homeWebViewController;
+@property (strong, nonatomic) leftViewController *gLeftViewController;
 @property (nonatomic, strong) MYViewController *introductionView;
 
 @end

@@ -94,7 +94,7 @@
     //                                                 name:ReloadHomeNotification
     //                                               object:nil];
     
-    [self initNavigation:1];
+    //[self initNavigation:1];
     
 }
 

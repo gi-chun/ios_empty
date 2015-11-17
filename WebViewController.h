@@ -15,9 +15,12 @@ typedef enum {
     CPWebviewControllerFullScreenModeOff
 } CPWebviewControllerFullScreenMode;
 
+@protocol WebViewControllerDelegate;
+
 @interface WebViewController : UIViewController
 
 @property (nonatomic, strong) WebView *webView;
+@property (nonatomic, weak) id <WebViewControllerDelegate> delegate;
 
 - (id)initWithUrl:(NSString *)url;
 - (id)initWithUrl:(NSString *)url isPop:(BOOL)isPop;
@@ -26,4 +29,14 @@ typedef enum {
 - (id)initWithRequest:(NSURLRequest *)request;
 - (void)setUrl:(NSString *)url;
 
+@end
+
+@protocol WebViewControllerDelegate <NSObject>
+@optional
+- (void)didTouchMenuItem:(NSInteger)menuType;
+- (void)didTouchCloseBtn;
+- (void)didTouchLogOutBtn;
+- (void)didTouchLogInBtn;
+- (void)didTouchAD;
+- (void)didTouchBackButton;
 @end

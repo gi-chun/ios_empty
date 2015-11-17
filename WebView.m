@@ -334,10 +334,10 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
     
     if ([self isMatchedUrl:url]) {
         //네비게이션 바 세팅
-        if ([self.delegate respondsToSelector:@selector(initNavigation:)] && [self isNeedLoadingUrl:url]) {
-            //[self.delegate initNavigation:[Modules isMatchedGNBUrl:url]];
-            [self.delegate initNavigation:1];
-        }
+//        if ([self.delegate respondsToSelector:@selector(initNavigation:)] && [self isNeedLoadingUrl:url]) {
+//            //[self.delegate initNavigation:[Modules isMatchedGNBUrl:url]];
+//            //[self.delegate initNavigation:0];
+//        }
         
         if ([self.delegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:)]) {
             
@@ -370,8 +370,7 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
     //#s_filter 검색
     //#complete 주문완료후 뒤로가기 버튼
     //#sec 이벤트
-    //이벤트탭 혜택존 http://m.11st.co.kr/MW/PerInfor/benefitMemberShop.tmall#type=0
-    //정규표현식으로 변경
+    //이벤트탭 혜택존     //정규표현식으로 변경
     
 //    if ([url.lowercaseString isMatchedByRegex:@"#[a-z]+"]) {
 //        return NO;
@@ -390,7 +389,7 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 //        return NO;
 //    }
 //    
-//    if ([url isMatchedByRegex:@"http://11st.kr/html/common/googleAd/ifrm_ga.html"]) {
+//    if ([url isMatchedByRegex:@""]) {
 //        return NO;
 //    }
 //    
@@ -677,7 +676,7 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 {
     [self.webView.scrollView setContentOffset:CGPointZero animated:YES];
     
-//    if ([self.webView.request.URL.absoluteString hasPrefix:@"http://m.11st.co.kr/MW/Search/searchProduct.tmall"]) {
+//    if ([self.webView.request.URL.absoluteString hasPrefix:@""]) {
 //        //AccessLog - 검색창 탑 버튼
 //        [[AccessLog sharedInstance] sendAccessLogWithCode:@"ASRPF01"];
 //    }
