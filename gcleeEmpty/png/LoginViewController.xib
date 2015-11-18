@@ -7,7 +7,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
+                <outlet property="btnIDSearch" destination="oPs-Te-hTW" id="kQ8-EQ-QGj"/>
+                <outlet property="btnPwdSearch" destination="7RZ-IW-wUM" id="OYy-76-lCB"/>
+                <outlet property="btnSummit" destination="SAx-Ha-tw7" id="bnM-cv-dHm"/>
+                <outlet property="labelAuto" destination="iLC-Co-dcG" id="2yF-0j-Yse"/>
+                <outlet property="labelNoti" destination="2xP-G4-KaD" id="SWR-3S-KnG"/>
                 <outlet property="loginBtn" destination="ccE-KX-kOQ" id="dmP-1j-ZNB"/>
+                <outlet property="switchAuto" destination="Qc6-zf-8HG" id="e0J-Fz-Jen"/>
+                <outlet property="txtID" destination="hlG-DQ-Nhd" id="N9j-mA-bRT"/>
+                <outlet property="txtPwd" destination="trA-Qp-JX2" id="qlv-Xf-77p"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,10 +30,10 @@
                 <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="loginView" translatesAutoresizingMaskIntoConstraints="NO" id="9F5-te-jpP">
                     <rect key="frame" x="14" y="111" width="293" height="259"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="trA-Qp-JX2">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="trA-Qp-JX2">
                             <rect key="frame" x="108" y="52" width="177" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="비밀번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hde-tt-WSD">
                             <rect key="frame" x="32" y="56" width="68" height="21"/>
@@ -39,7 +47,7 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hlG-DQ-Nhd">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="hlG-DQ-Nhd">
                             <rect key="frame" x="108" y="14" width="177" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>

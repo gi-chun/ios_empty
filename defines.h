@@ -20,5 +20,6 @@ static NSString *SETTING_URL        = @"https://vntst.shinhanglobal.com/sunny/fa
 
 static NSString *LOGIN_TITLE_KO     = @"로그인";
 static NSString *SETINFO_TITLE_KO     = @"정보입력";
+static NSString *COMPLETE_TITLE_KO     = @"회원가입 완료";
 
 #endif /* defines_h */

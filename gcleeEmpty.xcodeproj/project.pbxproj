@@ -166,6 +166,9 @@
 		283149071BFB0E6A0083DA3F /* update_btn@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 283148B61BFB0E6A0083DA3F /* update_btn@1x.png */; };
 		283149081BFB0E6A0083DA3F /* update_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 283148B71BFB0E6A0083DA3F /* update_btn@2x.png */; };
 		283149091BFB0E6A0083DA3F /* update_btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 283148B81BFB0E6A0083DA3F /* update_btn@3x.png */; };
+		2834C1F51BFC3B5D002379E6 /* dataPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2834C1F41BFC3B5C002379E6 /* dataPickerViewController.m */; };
+		2834C1F91BFC5C6A002379E6 /* completeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2834C1F71BFC5C69002379E6 /* completeViewController.m */; };
+		2834C1FA1BFC5C6A002379E6 /* completeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2834C1F81BFC5C6A002379E6 /* completeViewController.xib */; };
 		28351D261BF43096009145E6 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 28351D0E1BF43095009145E6 /* NSObject+SBJson.m */; };
 		28351D271BF43096009145E6 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 28351D111BF43095009145E6 /* SBJsonParser.m */; };
 		28351D281BF43096009145E6 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 28351D131BF43095009145E6 /* SBJsonStreamParser.m */; };
@@ -561,6 +564,11 @@
 		283148B61BFB0E6A0083DA3F /* update_btn@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "update_btn@1x.png"; sourceTree = "<group>"; };
 		283148B71BFB0E6A0083DA3F /* update_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "update_btn@2x.png"; sourceTree = "<group>"; };
 		283148B81BFB0E6A0083DA3F /* update_btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "update_btn@3x.png"; sourceTree = "<group>"; };
+		2834C1F31BFC3B5C002379E6 /* dataPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dataPickerViewController.h; sourceTree = "<group>"; };
+		2834C1F41BFC3B5C002379E6 /* dataPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dataPickerViewController.m; sourceTree = "<group>"; };
+		2834C1F61BFC5C69002379E6 /* completeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = completeViewController.h; sourceTree = "<group>"; };
+		2834C1F71BFC5C69002379E6 /* completeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = completeViewController.m; sourceTree = "<group>"; };
+		2834C1F81BFC5C6A002379E6 /* completeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = completeViewController.xib; sourceTree = "<group>"; };
 		28351D0D1BF43095009145E6 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
 		28351D0E1BF43095009145E6 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
 		28351D0F1BF43095009145E6 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
@@ -1286,9 +1294,14 @@
 		287F92D91BE747F4007E82AD /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2834C1F41BFC3B5C002379E6 /* dataPickerViewController.m */,
+				2834C1F31BFC3B5C002379E6 /* dataPickerViewController.h */,
 				28EDAC1C1BDF694100024EF9 /* WebView.h */,
 				28FF61341BFB2F060044D9AB /* setInforViewController.h */,
 				28FF61351BFB2F060044D9AB /* setInforViewController.m */,
+				2834C1F61BFC5C69002379E6 /* completeViewController.h */,
+				2834C1F71BFC5C69002379E6 /* completeViewController.m */,
+				2834C1F81BFC5C6A002379E6 /* completeViewController.xib */,
 				28FF61361BFB2F060044D9AB /* setInforViewController.xib */,
 				28EDAC221BDF6ED800024EF9 /* HttpError.h */,
 				28EDAC231BDF6ED800024EF9 /* HttpError.m */,
@@ -1594,6 +1607,7 @@
 				283149071BFB0E6A0083DA3F /* update_btn@1x.png in Resources */,
 				283148DE1BFB0E6A0083DA3F /* personaldata_menu02_back@2x.png in Resources */,
 				2852D0EC1BF9E72700C1B1B5 /* ad_press_test@1x.png in Resources */,
+				2834C1FA1BFC5C6A002379E6 /* completeViewController.xib in Resources */,
 				283148D41BFB0E6A0083DA3F /* menu04_back@1x.png in Resources */,
 				283148FD1BFB0E6A0083DA3F /* service_alarm_back@3x.png in Resources */,
 				283148E81BFB0E6A0083DA3F /* personaldata_menu04_back_incard@3x.png in Resources */,
@@ -1837,6 +1851,7 @@
 			files = (
 				28EDAC281BDF6ED800024EF9 /* HttpError.m in Sources */,
 				2886A8D41BE082C8001B7657 /* Config.m in Sources */,
+				2834C1F51BFC3B5D002379E6 /* dataPickerViewController.m in Sources */,
 				28D11E931BE86B04005B3024 /* MYViewController.m in Sources */,
 				28351D2D1BF43096009145E6 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				287F92E51BE748EF007E82AD /* MMDrawerVisualState.m in Sources */,
@@ -1873,6 +1888,7 @@
 				28351D2A1BF43096009145E6 /* SBJsonStreamParserAdapter.m in Sources */,
 				28F7C0451BDE0FB000C53B86 /* NavigationBarView.m in Sources */,
 				288E45E51BD776D60041AE50 /* mainViewController.m in Sources */,
+				2834C1F91BFC5C6A002379E6 /* completeViewController.m in Sources */,
 				28EDAC201BDF694100024EF9 /* WebView.m in Sources */,
 				28D8EA421BF310B0002E98C0 /* AFHTTPRequestOperation.m in Sources */,
 				2886A8EF1BE0BBDC001B7657 /* UIImage+ImageRenderToColor.m in Sources */,

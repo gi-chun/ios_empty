@@ -14,7 +14,17 @@
 @interface LoginViewController () <NavigationBarViewDelegate>
 {
     NavigationBarView *navigationBarView;
+    UITextField* currentEditingTextField;
     __weak IBOutlet UIButton *loginBtn;
+    __weak IBOutlet UITextField *txtID;
+    __weak IBOutlet UITextField *txtPwd;
+    __weak IBOutlet UISwitch *switchAuto;
+    __weak IBOutlet UILabel *labelAuto;
+    __weak IBOutlet UIButton *btnIDSearch;
+    __weak IBOutlet UIButton *btnPwdSearch;
+    __weak IBOutlet UILabel *labelNoti;
+    __weak IBOutlet UIButton *btnSummit;
+    
 }
 @end
 
@@ -35,6 +45,7 @@
     // Do any additional setup after loading the view from its nib.
     
     [self resetNavigationBarView:1];
+    [self setDelegateText];
     
 }
 - (IBAction)setInforClick:(id)sender {
@@ -94,6 +105,61 @@
         [self.delegate didTouchBackButton];
     }
 }
+
+#pragma mark - text delegate
+// Automatically register fields
+
+-(void)setDelegateText
+{
+    [txtID setDelegate:self];
+    [txtPwd setDelegate:self];
+}
+
+// UITextField Protocol
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    currentEditingTextField = textField;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    currentEditingTextField = NULL;
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self endEdit];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if ([self textFieldValueIsValid:textField]) {
+        [self endEdit];
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+// Own functions
+
+-(void)endEdit
+{
+    if (currentEditingTextField) {
+        [currentEditingTextField endEditing:YES];
+        currentEditingTextField = NULL;
+    }
+}
+
+
+// Override this in your subclass to handle eventual values that may prevent validation.
+
+-(BOOL)textFieldValueIsValid:(UITextField*)textField
+{
+    return YES;
+}
+
 
 /*
 #pragma mark - Navigation

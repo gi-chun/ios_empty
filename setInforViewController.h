@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface setInforViewController : UIViewController
+@interface setInforViewController : UIViewController <UITextFieldDelegate>
+
+//@property (nonatomic,retain) UIPopoverController *popoverController;
+@property (nonatomic,retain) UIDatePicker *datepicker;
+
+-(BOOL)textFieldValueIsValid:(UITextField*)textField;
+-(void)endEdit;
 
 @end
