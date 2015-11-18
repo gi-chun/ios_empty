@@ -12,6 +12,7 @@
 @interface completeViewController () <NavigationBarViewDelegate>
 {
      NavigationBarView *navigationBarView;
+    __weak IBOutlet UIButton *goBtn;
 }
 
 @end
@@ -37,6 +38,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)goBtnClick:(id)sender {
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+}
 #pragma mark - CPNavigationBarViewDelegate
 
 - (void)resetNavigationBarView:(NSInteger) type

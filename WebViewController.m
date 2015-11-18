@@ -25,6 +25,7 @@
 //#import "CPVideoInfo.h"
 //#import "CPSchemeManager.h"
 #import "WebView.h"
+#import "configViewController.h"
 //#import "CPCommonInfo.h"
 #import "NavigationBarView.h"
 #import "UIViewController+MMDrawerController.h"
@@ -1356,10 +1357,16 @@
     
     //setting
     if(menuType == 4){
-        LoginViewController *loginController = [[LoginViewController alloc] init];
-        [loginController setDelegate:self];
-        [self.navigationController pushViewController:loginController animated:YES];
+        
+        configViewController *configController = [[configViewController alloc] init];
+        //[configController setDelegate:self];
+        [self.navigationController pushViewController:configController animated:YES];
         [self.navigationController setNavigationBarHidden:NO];
+        
+//        LoginViewController *loginController = [[LoginViewController alloc] init];
+//        [loginController setDelegate:self];
+//        [self.navigationController pushViewController:loginController animated:YES];
+//        [self.navigationController setNavigationBarHidden:NO];
         
     }
 }

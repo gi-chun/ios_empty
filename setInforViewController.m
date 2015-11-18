@@ -10,6 +10,7 @@
 #import "setInforViewController.h"
 #import "NavigationBarView.h"
 #import "dataPickerViewController.h"
+#import "completeViewController.h"
 
 
 @interface setInforViewController () <NavigationBarViewDelegate>
@@ -42,6 +43,12 @@
 @implementation setInforViewController
 
 - (IBAction)btnSummitClick:(id)sender {
+    
+    completeViewController *completeCtl = [[completeViewController alloc] init];
+    //[setInforCtl setDelegate:self];
+    [self.navigationController pushViewController:completeCtl animated:YES];
+    [self.navigationController setNavigationBarHidden:NO];
+
     
 }
 - (IBAction)confirmID:(id)sender {

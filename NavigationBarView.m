@@ -166,7 +166,7 @@
         }
         
        
-        
+        [self setBackgroundColor:UIColorFromRGB(0xffffff)];
         UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 60)];
         [backgroundImageView setImage:[UIImage imageNamed:@"gnb_back.png"]];
         [backgroundImageView setFrame:CGRectMake(0, 0, screenWidth, 60)];

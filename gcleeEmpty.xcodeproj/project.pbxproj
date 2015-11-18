@@ -379,6 +379,8 @@
 		28EDAC291BDF6ED800024EF9 /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EDAC251BDF6ED800024EF9 /* HttpRequest.m */; };
 		28EDAC2A1BDF6ED800024EF9 /* HttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EDAC271BDF6ED800024EF9 /* HttpResponse.m */; };
 		28EDAC301BDF709400024EF9 /* ToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EDAC2F1BDF709400024EF9 /* ToolBarView.m */; };
+		28EDFB701BFC960600B3B647 /* configViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EDFB6E1BFC960600B3B647 /* configViewController.m */; };
+		28EDFB711BFC960600B3B647 /* configViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28EDFB6F1BFC960600B3B647 /* configViewController.xib */; };
 		28F7C0421BDDFB7000C53B86 /* secondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F7C0411BDDFB7000C53B86 /* secondViewController.m */; };
 		28F7C0451BDE0FB000C53B86 /* NavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F7C0441BDE0FB000C53B86 /* NavigationBarView.m */; };
 		28F7C0481BDE189900C53B86 /* bg_notice_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 28F7C0461BDE189900C53B86 /* bg_notice_bar.png */; };
@@ -839,6 +841,9 @@
 		28EDAC271BDF6ED800024EF9 /* HttpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpResponse.m; sourceTree = "<group>"; };
 		28EDAC2E1BDF709400024EF9 /* ToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolBarView.h; sourceTree = "<group>"; };
 		28EDAC2F1BDF709400024EF9 /* ToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolBarView.m; sourceTree = "<group>"; };
+		28EDFB6D1BFC960600B3B647 /* configViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = configViewController.h; sourceTree = "<group>"; };
+		28EDFB6E1BFC960600B3B647 /* configViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = configViewController.m; sourceTree = "<group>"; };
+		28EDFB6F1BFC960600B3B647 /* configViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = configViewController.xib; sourceTree = "<group>"; };
 		28F7C0401BDDFB7000C53B86 /* secondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = secondViewController.h; sourceTree = "<group>"; };
 		28F7C0411BDDFB7000C53B86 /* secondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = secondViewController.m; sourceTree = "<group>"; };
 		28F7C0431BDE0FB000C53B86 /* NavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarView.h; sourceTree = "<group>"; };
@@ -918,6 +923,7 @@
 		28351D461BF47F6B009145E6 /* png */ = {
 			isa = PBXGroup;
 			children = (
+				28D31BEC1BFC7573009BD803 /* config */,
 				28351D471BF47F6B009145E6 /* bottom_back_btn@1x.png */,
 				28351D481BF47F6B009145E6 /* bottom_back_btn@2x.png */,
 				28351D491BF47F6B009145E6 /* bottom_back_btn@3x.png */,
@@ -1366,6 +1372,9 @@
 		288E45B21BD719640041AE50 = {
 			isa = PBXGroup;
 			children = (
+				28EDFB6D1BFC960600B3B647 /* configViewController.h */,
+				28EDFB6E1BFC960600B3B647 /* configViewController.m */,
+				28EDFB6F1BFC960600B3B647 /* configViewController.xib */,
 				28D11E901BE86AE6005B3024 /* GuideIntro */,
 				287F92E71BE7491C007E82AD /* Main */,
 				287F92D91BE747F4007E82AD /* Classes */,
@@ -1428,6 +1437,13 @@
 				28D11E921BE86B04005B3024 /* MYViewController.m */,
 			);
 			name = GuideIntro;
+			sourceTree = "<group>";
+		};
+		28D31BEC1BFC7573009BD803 /* config */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1813,6 +1829,7 @@
 				283148491BFB0AE70083DA3F /* join_btn_press@3x.png in Resources */,
 				2852D0ED1BF9E72700C1B1B5 /* ad_press_test@2x.png in Resources */,
 				283148611BFB0AE70083DA3F /* search_btn_press@3x.png in Resources */,
+				28EDFB711BFC960600B3B647 /* configViewController.xib in Resources */,
 				28D537161BF970E5004257DA /* total_menu_03_press_new@3x.png in Resources */,
 				28D537231BF970E5004257DA /* total_menu_04_press@1x.png in Resources */,
 				283148F91BFB0E6A0083DA3F /* pw_change_menu03_back@2x.png in Resources */,
@@ -1877,6 +1894,7 @@
 				28D8EA441BF310B0002E98C0 /* AFHTTPSessionManager.m in Sources */,
 				28351D291BF43096009145E6 /* SBJsonStreamParserAccumulator.m in Sources */,
 				28EDAC2A1BDF6ED800024EF9 /* HttpResponse.m in Sources */,
+				28EDFB701BFC960600B3B647 /* configViewController.m in Sources */,
 				287F92EA1BE74A39007E82AD /* MMNavigationController.m in Sources */,
 				28C56A551BEC627A001BBCE1 /* leftMenuItemView.m in Sources */,
 				28F7C0421BDDFB7000C53B86 /* secondViewController.m in Sources */,
