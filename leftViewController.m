@@ -139,7 +139,7 @@
 - (void)didTouchLogInBtn
 {
     if ([self.delegate respondsToSelector:@selector(didTouchLogOutBtn)]) {
-        [self.delegate didTouchLogOutBtn];
+        [self.delegate didTouchLogInBtn];
     }
     
 //    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchLogInBtn" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];

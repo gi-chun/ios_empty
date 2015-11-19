@@ -48,6 +48,9 @@
         
         _title = title;
         
+        //
+        _loginStatus = 0;
+        
         [self showContents];
         
     }
@@ -61,7 +64,7 @@
 {
     [self removeContents];
     
-    _loginStatus = 1;
+    //_loginStatus = 1;
     
     //150
     CGFloat meWidth = self.frame.size.width;
@@ -210,29 +213,31 @@
 
 - (void)setVisableItem
 {
-    _loginStatus = 0;
-    if(_loginStatus){ //log off
-
-        [idImageView setHidden:true];
-        [labelId setHidden:true];
-        [labelMailId setHidden:true];
-        [logoutButton setHidden:true];
-        [cardImageView setHidden:true];
+    //_loginStatus = 0;
+    if(_loginStatus){ //log on
         
-        [labelMenu setHidden:false];
-        [loginButton setHidden:false];
-        
-        
-    }else{            //log on
         [idImageView setHidden:false];
         [labelId setHidden:false];
         [labelMailId setHidden:false];
         [cardImageView setHidden:false];
         [logoutButton setHidden:false];
+        [labelCardNumber setHidden:false];
         
         [labelMenu setHidden:true];
         [loginButton setHidden:true];
-
+        
+        
+    }else{            //log off
+        
+        [idImageView setHidden:true];
+        [labelId setHidden:true];
+        [labelMailId setHidden:true];
+        [logoutButton setHidden:true];
+        [cardImageView setHidden:true];
+        [labelCardNumber setHidden:true];
+        
+        [labelMenu setHidden:false];
+        [loginButton setHidden:false];
     }
 }
 

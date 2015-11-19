@@ -99,7 +99,7 @@
 {
     //[self resetNavigationBarView:0];
 
-    //[self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
     
     if ([self.delegate respondsToSelector:@selector(didTouchBackButton)]) {
         [self.delegate didTouchBackButton];

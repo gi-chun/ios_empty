@@ -11,6 +11,8 @@
 #import "NavigationBarView.h"
 #import "dataPickerViewController.h"
 #import "completeViewController.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "SBJson.h"
 
 
 @interface setInforViewController () <NavigationBarViewDelegate>
@@ -52,6 +54,47 @@
     
 }
 - (IBAction)confirmID:(id)sender {
+    
+    //gclee
+    //idText
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    //manager.securityPolicy.allowInvalidCertificates = YES;
+    //NSDictionary *parameters = @{@"foo": @"bar"};
+    NSDictionary *parameters = @{@"plainJSON": @"{test}"};
+    
+    [manager POST:@"http://httpbin.org/post" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        //    [manager POST:@"https://vntst.shinhanglobal.com/sunny/jsp/callSunnyJsonTaskService.jsp" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //
+        NSLog(@"JSON: %@", responseObject);
+        
+        
+        NSString *responseData = (NSString*) responseObject;
+        NSArray *jsonArray = (NSArray *)responseData;
+        NSLog(@"Response ==> %@", responseData);
+        
+        //json
+        //        SBJsonParser *jsonParser = [SBJsonParser new];
+        //        NSDictionary *jsonData = (NSDictionary *) [jsonParser objectWithString:responseData error:nil];
+        //        NSLog(@"%@",jsonData);
+        //        NSInteger success = [(NSNumber *) [jsonData objectForKey:@"result"] integerValue];
+        //        NSLog(@"%d",success);
+        
+        //to json
+        SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+        
+        //NSString *jsonString = [jsonWriter stringWithObject:myDictionary];
+        NSString *jsonString = [jsonWriter stringWithObject:jsonArray];
+        NSLog(@"jsonString ==> %@", jsonString);
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+    }];
+
+    
 }
 
 #pragma mark - text delegate
@@ -71,6 +114,8 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     if(textField.tag == 3){
+        
+        [self.view endEditing:YES];
         
         if(yourDatePickerView){
             for (UIView *subView in yourDatePickerView.subviews) {
@@ -161,6 +206,8 @@
     NSDateFormatter *df = [[NSDateFormatter alloc]init];
     df.dateStyle = NSDateFormatterMediumStyle;
     NSLog(@"%@",[NSString stringWithFormat:@"%@",[df stringFromDate:_datepicker.date]]);
+   
+    [yearText setText: [df stringFromDate:_datepicker.date]];
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField

@@ -1387,8 +1387,15 @@
 
 - (void)didTouchLogInBtn
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchLogInBtn" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchLogInBtn" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+//    [alert show];
+    
+    [self.mm_drawerController closeDrawerAnimated:true completion:nil];
+    
+    LoginViewController *loginController = [[LoginViewController alloc] init];
+    //[loginController setDelegate:self];
+    [self.navigationController pushViewController:loginController animated:YES];
+    [self.navigationController setNavigationBarHidden:NO];
     
 }
 
