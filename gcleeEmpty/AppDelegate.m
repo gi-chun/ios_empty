@@ -85,6 +85,26 @@
 //    [self.window makeKeyAndVisible];
 
     //    self.window.rootViewController = self.mainViewController;
+    
+    //loginY init
+    [[NSUserDefaults standardUserDefaults] setBool:0 forKey:kLoginY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    // uuid
+    NSString* uniqueIdentifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    NSLog(@"UDID:: %@", uniqueIdentifier);
+    [[NSUserDefaults standardUserDefaults] setObject:uniqueIdentifier forKey:kUUID];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    //set language
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray* languages = [userDefaults objectForKey:@"AppleLanguages"];
+    [[NSUserDefaults standardUserDefaults] setObject:uniqueIdentifier forKey:klang];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    //ko  set language
+    //[languages insertObject:@"de" atIndex:0]; // ISO639-1
+    //[[NSUserDefaults standardUserDefaults] synchronize];
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     

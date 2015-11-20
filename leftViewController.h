@@ -14,6 +14,8 @@
 
 @property (nonatomic, weak) id <leftViewControllerDelegate> delegate;
 
+- (void)setViewLogin;
+
 @end
 
 @protocol leftViewControllerDelegate <NSObject>

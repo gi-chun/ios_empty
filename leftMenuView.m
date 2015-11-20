@@ -187,10 +187,10 @@ const static CGFloat AD_HEIGHT     =      50;
     
     //ADView
     UIView* ADView = [[UIView alloc] initWithFrame:CGRectMake(-40-marginX/2,kScreenBoundsHeight-AD_HEIGHT, kScreenBoundsWidth+40-marginX/2, AD_HEIGHT)];
-    [ADView setBackgroundColor:UIColorFromRGB(0x3B98DE)];
+    [ADView setBackgroundColor:UIColorFromRGB(0x2881C0)]; //[self setBackgroundColor:UIColorFromRGB(0xffffff)]; //0x2881C0
     
     UIImageView *adImageView = [[UIImageView alloc] initWithFrame:ADView.bounds];
-     [adImageView setImage:[UIImage imageNamed:@"ad_test.png"]];
+     [adImageView setImage:[UIImage imageNamed:@"total_menu_banner.png"]];
     adImageView.contentMode = UIViewContentModeScaleAspectFit;
     [ADView addSubview:adImageView];
     

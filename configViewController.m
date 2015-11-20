@@ -6,15 +6,15 @@
 //  Copyright © 2015년 gclee. All rights reserved.
 //
 
+
 #import "configViewController.h"
 
-@interface configViewController ()
+@interface configViewController () <NavigationBarViewDelegate>
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
 @property (strong, nonatomic) IBOutlet UIView *mainView;
 @property (strong, nonatomic) IBOutlet UIView *realMainView;
 @property (weak, nonatomic) IBOutlet UIScrollView *realScrollView;
-
 @end
 
 @implementation configViewController
@@ -27,6 +27,8 @@
     }
     
     [self.view setBackgroundColor:UIColorFromRGB(0xffffff)];
+    
+    [self resetNavigationBarView:1];
     // Do any additional setup after loading the view from its nib.
 //    self.
 //    for (UIView *subView in self.view) {
@@ -84,6 +86,8 @@
         //((UIScrollView *)self.view).contentSize = self.contentView.frame.size;
         
     }
+    
+    [self resetNavigationBarView:1];
 }
 
 
@@ -105,6 +109,44 @@
      
      */
 }
+
+- (void)resetNavigationBarView:(NSInteger) type
+{
+    [self.navigationItem setHidesBackButton:YES];
+    
+    for (UIView *subView in self.navigationController.navigationBar.subviews) {
+        if ([subView isKindOfClass:[NavigationBarView class]]) {
+            [subView removeFromSuperview];
+        }
+    }
+    
+    [self.navigationController.navigationBar addSubview:[self navigationBarView:1]];
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+    
+    
+}
+
+- (NavigationBarView *)navigationBarView:(NSInteger)navigationType
+{
+    _navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:CONFIG_KO];
+    [_navigationBarView setDelegate:self];
+    
+    
+    
+    return _navigationBarView;
+}
+
+#pragma mark - CPNavigationBarViewDelegate
+
+- (void)didTouchBackButton
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    if ([self.delegate respondsToSelector:@selector(didTouchBackButton)]) {
+        [self.delegate didTouchBackButton];
+    }
+}
+
 
 /*
 #pragma mark - Navigation

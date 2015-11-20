@@ -33,7 +33,7 @@
                     <rect key="frame" x="8" y="92" width="304" height="102"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRW-tp-84R">
-                            <rect key="frame" x="0.0" y="5" width="304" height="92"/>
+                            <rect key="frame" x="0.0" y="0.0" width="304" height="102"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <string key="text">써니뱅크는 신한은행 베트남의 특화된 모바일 마케팅 플랫폼 어플입니다. 써니뱅크는 간단한 회원가입 절차를 통해 가입이 가능합니다. 써니뱅크 회원이 되시면 써니클럽 영역을 통해 제공되는 유익하고 다양한 전문 컨텐츠를 이용하실 수 있으며 써니 뱅크영역을 통해 신한은행 베트남의 금융상품 신청 및 신한은행 베트남의 금융상품을 찾아보실 수 있습니다. </string>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>

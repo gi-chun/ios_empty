@@ -58,7 +58,6 @@
         }
         
         
-        
         UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 60)];
         [backgroundImageView setImage:[UIImage imageNamed:@"gnb_back.png"]];
         [backgroundImageView setFrame:CGRectMake(0, 0, screenWidth, 60)];
@@ -128,7 +127,6 @@
 - (id)initWithFrame:(CGRect)frame type:(NSInteger)type
 {
     self = [super initWithFrame:frame];
-    
    
     if (self) {
         
@@ -139,7 +137,7 @@
         
         if(type == 1){
             
-            [self setBackgroundColor:UIColorFromRGB(0xf05921)];
+            [self setBackgroundColor:UIColorFromRGB(0xf05921)]; //0xf05921
             
             // prev button
             UIButton *prevButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -166,10 +164,11 @@
         }
         
        
-        [self setBackgroundColor:UIColorFromRGB(0xffffff)];
+        [self setBackgroundColor:UIColorFromRGB(0xffffff)]; //0x2881C0
+        
         UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 60)];
         [backgroundImageView setImage:[UIImage imageNamed:@"gnb_back.png"]];
-        [backgroundImageView setFrame:CGRectMake(0, 0, screenWidth, 60)];
+        [backgroundImageView setFrame:CGRectMake(0, -5, screenWidth, 60)];
         backgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
                 [self addSubview:backgroundImageView];
         

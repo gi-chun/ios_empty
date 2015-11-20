@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NavigationBarView.h"
+
+@protocol configViewControllerDelegate;
 
 @interface configViewController : UIViewController
+@property (nonatomic) NavigationBarView *navigationBarView;
+@property (nonatomic, weak) id<configViewControllerDelegate> delegate;
 
 @end
+
+@protocol configViewControllerDelegate <NSObject>
+@optional
+- (void)didTouchBackButton;
+@end
+

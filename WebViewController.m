@@ -141,6 +141,8 @@
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
     }
     
+    [self setEdgesForExtendedLayout:UIRectEdgeNone];
+    
 //    for (UIView *subView in self.navigationController.navigationBar.subviews) {
 //        if ([subView isKindOfClass:[NavigationBarView class]]) {
 //            [subView removeFromSuperview];
@@ -168,6 +170,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    // Layout
+    [self initLayout];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -225,7 +230,34 @@
     }
     else {
         if (webViewUrl) {
-            [self.webView open:webViewUrl];
+            
+            NSString* gLocalLang = @"";
+            NSString *callUrl = @"";
+            
+            gLocalLang = @"ko";
+            callUrl = [NSString stringWithFormat:webViewUrl, gLocalLang];
+            
+            NSURL *Nurl = [NSURL URLWithString:callUrl];
+            NSMutableURLRequest *mutableRequest = [NSMutableURLRequest requestWithURL:Nurl];
+            
+            NSMutableString *cookieStringToSet = [[NSMutableString alloc] init];
+            NSHTTPCookie *cookie;
+            
+            for (cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
+                NSLog(@"%@=%@", cookie.name, cookie.value);
+                [cookieStringToSet appendFormat:@"%@=%@;",cookie.name, cookie.value];
+            }
+                                
+            if (cookieStringToSet.length) {
+                [mutableRequest setValue:cookieStringToSet forHTTPHeaderField:@"Cookie"];
+                NSLog(@"Cookie : %@", cookieStringToSet);
+            }
+            
+            [self openWebView:callUrl mutableRequest:mutableRequest];
+            
+            //[self.webView open:webViewUrl];
+            
+            //gclee
         }
     }
 }
@@ -387,7 +419,30 @@
 
 - (void)didTouchBankButton
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    NSString* gLocalLang = @"";
+    NSString *callUrl = @"";
+    
+    gLocalLang = @"ko";
+    callUrl = [NSString stringWithFormat:SUNNY_BANK_URL, gLocalLang];
+    
+    NSURL *Nurl = [NSURL URLWithString:callUrl];
+    NSMutableURLRequest *mutableRequest = [NSMutableURLRequest requestWithURL:Nurl];
+    
+    NSMutableString *cookieStringToSet = [[NSMutableString alloc] init];
+    NSHTTPCookie *cookie;
+    
+    for (cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
+        NSLog(@"%@=%@", cookie.name, cookie.value);
+        [cookieStringToSet appendFormat:@"%@=%@;",cookie.name, cookie.value];
+    }
+                        
+    if (cookieStringToSet.length) {
+        [mutableRequest setValue:cookieStringToSet forHTTPHeaderField:@"Cookie"];
+        NSLog(@"Cookie : %@", cookieStringToSet);
+    }
+    
+    [self openWebView:callUrl mutableRequest:mutableRequest];
+
 }
 
 - (void)didTouchMenuButton
@@ -1445,23 +1500,24 @@
     //setting
     if(menuType == 4){
         
+        [self.mm_drawerController closeDrawerAnimated:true completion:nil];
+        
         configViewController *configController = [[configViewController alloc] init];
         //[configController setDelegate:self];
         [self.navigationController pushViewController:configController animated:YES];
         [self.navigationController setNavigationBarHidden:NO];
-        
-//        LoginViewController *loginController = [[LoginViewController alloc] init];
-//        [loginController setDelegate:self];
-//        [self.navigationController pushViewController:loginController animated:YES];
-//        [self.navigationController setNavigationBarHidden:NO];
         
     }
 }
 
 - (void)didTouchCloseBtn
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchCloseBtn" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchCloseBtn" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+//    [alert show];
+    
+    [self.mm_drawerController closeDrawerAnimated:true completion:nil];
+    
+    
     
 }
 
@@ -1480,7 +1536,7 @@
     [self.mm_drawerController closeDrawerAnimated:true completion:nil];
     
     LoginViewController *loginController = [[LoginViewController alloc] init];
-    //[loginController setDelegate:self];
+    [loginController setDelegate:self];
     [self.navigationController pushViewController:loginController animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
     
@@ -1488,9 +1544,32 @@
 
 - (void)didTouchAD
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchAD" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchAD in web" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+//    [alert show];
     
+    NSString* gLocalLang = @"";
+    NSString *callUrl = @"";
+    
+    gLocalLang = @"ko";
+    callUrl = [NSString stringWithFormat:SHINHAN_ZONE_URL, gLocalLang];
+    
+    NSURL *Nurl = [NSURL URLWithString:callUrl];
+    NSMutableURLRequest *mutableRequest = [NSMutableURLRequest requestWithURL:Nurl];
+    
+    NSMutableString *cookieStringToSet = [[NSMutableString alloc] init];
+    NSHTTPCookie *cookie;
+    
+    for (cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
+        NSLog(@"%@=%@", cookie.name, cookie.value);
+        [cookieStringToSet appendFormat:@"%@=%@;",cookie.name, cookie.value];
+    }
+                        
+    if (cookieStringToSet.length) {
+        [mutableRequest setValue:cookieStringToSet forHTTPHeaderField:@"Cookie"];
+        NSLog(@"Cookie : %@", cookieStringToSet);
+    }
+    
+    [self openWebView:callUrl mutableRequest:mutableRequest];
 }
 
 

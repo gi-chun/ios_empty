@@ -127,7 +127,7 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
         
         [_topButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight(frame)-(buttonHeight*2-30), buttonWidth, buttonHeight)];
         
-        [_topButton setImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateNormal];
+        [_topButton setImage:[UIImage imageNamed:@"bottom_top_btn.png"] forState:UIControlStateNormal];
         [_topButton addTarget:self action:@selector(touchTopButton) forControlEvents:UIControlEventTouchUpInside];
         [_topButton setHidden:YES];
         //[_topButton setAccessibilityLabel:@"위로" Hint:@"화면을 위로 이동합니다"];

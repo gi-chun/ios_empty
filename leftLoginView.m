@@ -49,7 +49,7 @@
         _title = title;
         
         //
-        _loginStatus = 0;
+        //_loginStatus = 0;
         
         [self showContents];
         
@@ -64,7 +64,12 @@
 {
     [self removeContents];
     
-    //_loginStatus = 1;
+    if([[NSUserDefaults standardUserDefaults] boolForKey:kLoginY])
+    {
+        _loginStatus = 1;
+    }else{
+        _loginStatus = 0;
+    }
     
     //150
     CGFloat meWidth = self.frame.size.width;

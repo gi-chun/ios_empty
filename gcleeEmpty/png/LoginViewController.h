@@ -13,6 +13,7 @@
 @interface LoginViewController : UIViewController <UITextFieldDelegate>
 
 @property (nonatomic, weak) id<LoginViewControllerDelegate> delegate;
+- (id)appDelegate;
 
 @end
 

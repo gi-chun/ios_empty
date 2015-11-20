@@ -52,6 +52,11 @@
     [self.navigationController pushViewController:seconViewCtl animated:YES];
 }
 
+- (void)setViewLogin
+{
+    [self loadContentsView];
+}
+
 - (void)loadContentsView
 {
     for (UIView *subView in [self.view subviews]) {
@@ -124,8 +129,12 @@
 
 - (void)didTouchCloseBtn
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchCloseBtn" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchCloseBtn" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+//    [alert show];
+    
+    if ([self.delegate respondsToSelector:@selector(didTouchCloseBtn)]) {
+        [self.delegate didTouchCloseBtn];
+    }
     
 }
 
@@ -149,8 +158,14 @@
 
 - (void)didTouchAD
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchAD" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchAD" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+//    [alert show];
+    
+    [self.mm_drawerController closeDrawerAnimated:true completion:nil];
+    
+    if ([self.delegate respondsToSelector:@selector(didTouchAD)]) {
+        [self.delegate didTouchAD];
+    }
     
 }
 

@@ -5,12 +5,13 @@
 //  Created by gclee on 2015. 11. 17..
 //  Copyright © 2015년 gclee. All rights reserved.
 //
-
+#import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "NavigationBarView.h"
 #import "setInforViewController.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "SBJson.h"
+#import "leftViewController.h"
 
 @interface LoginViewController () <NavigationBarViewDelegate>
 {
@@ -59,7 +60,9 @@
 
 - (IBAction)loginBtnClick:(id)sender {
     
-   
+    //set auto login
+    [[NSUserDefaults standardUserDefaults] setBool:switchAuto.isOn forKey:kAutoLogin];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     //manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -76,8 +79,10 @@
     [rootDic setObject:@"S_SNYM2010" forKey:@"requestMessage"];
     [rootDic setObject:@"R_SNYM2010" forKey:@"responseMessage"];
     
-    [indiv_infoDic setObject:@"springgclee@gmail.com" forKey:@"email_id"];
-    [indiv_infoDic setObject:@"1111" forKey:@"pinno"];
+//    [indiv_infoDic setObject:@"springgclee@gmail.com" forKey:@"email_id"];
+//    [indiv_infoDic setObject:@"1111" forKey:@"pinno"];
+    [indiv_infoDic setObject:txtID.text forKey:@"email_id"];
+    [indiv_infoDic setObject:txtPwd.text forKey:@"pinno"];
     
     [sendDic setObject:rootDic forKey:@"root_info"];
     [sendDic setObject:indiv_infoDic forKey:@"indiv_info"];//////
@@ -94,18 +99,30 @@
         
         NSString *responseData = (NSString*) responseObject;
         NSArray *jsonArray = (NSArray *)responseData;
+        NSDictionary * dicResponse = (NSArray *)responseData;
         NSLog(@"Response ==> %@", responseData);
         
+        //indiv_info
+        //NSArray *groups = [response objectForKey:@"groups"];
+        //NSArray *groups = [responseData objectForKey:@"indiv_info"];
+        
+        for (int i=0; i<jsonArray.count; i++)
+        {
+            NSString *value = jsonArray[i][@"use_seq"];
+            //NSString *value = jsonArray[i];
+            NSLog(@"value value  ==> %@", value);
+            
+            //if (groupId && groupId.length > 0 && [groupId isEqualToString:@"02"]) {
+        }
+        
+                
         //to json
         SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
-        
         NSString *jsonString = [jsonWriter stringWithObject:jsonArray];
         NSLog(@"jsonString ==> %@", jsonString);
         
         [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
-        
         NSHTTPCookie *cookie;
-        
         NSMutableDictionary *cookieProperties = [NSMutableDictionary dictionary];
         [cookieProperties setObject:@"locale_" forKey:NSHTTPCookieName];
 //        [cookieProperties setObject:[NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970]] forKey:NSHTTPCookieValue];
@@ -115,17 +132,40 @@
         [cookieProperties setObject:@"vntst.shinhanglobal.com" forKey:NSHTTPCookieOriginURL];
         [cookieProperties setObject:@"/" forKey:NSHTTPCookiePath];
         [cookieProperties setObject:@"0" forKey:NSHTTPCookieVersion];
-        
         // set expiration to one month from now
         [cookieProperties setObject:[[NSDate date] dateByAddingTimeInterval:2629743] forKey:NSHTTPCookieExpires];
-        
         cookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
         [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
         
         for (cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
             NSLog(@"%@=%@", cookie.name, cookie.value);
         }
-//
+        
+//        //json
+//        SBJsonParser *jsonParser = [SBJsonParser new];
+//        NSDictionary *jsonData = (NSDictionary *) [jsonParser objectWithString:responseObject error:nil];
+//        NSLog(@"%@",jsonData);
+//        NSInteger success = [(NSNumber *) [jsonData objectForKey:@"result"] integerValue];
+//        NSLog(@"%d",success);
+        
+        //set kCardCode
+        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kCardCode];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Login Success" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:1 forKey:kLoginY];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        leftViewController *leftViewController = ((AppDelegate *)[UIApplication sharedApplication].delegate).gLeftViewController;
+        
+        [leftViewController setViewLogin];
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        
+        //
 //        [cookie setValue:@"KO" forKey:@"locale_"];
 //        
 //        //add cookie
@@ -147,9 +187,17 @@
         
         NSLog(@"getCookie end ==>" );
         
+        
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"Error: %@", error);
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Login Fail %@", error] delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:0 forKey:kLoginY];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         
     }];
     
