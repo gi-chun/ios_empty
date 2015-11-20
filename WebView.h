@@ -32,6 +32,7 @@
 - (void)open:(NSString *)url;
 - (NSString *)execute:(NSString *)script;
 - (void)loadRequest:(NSURLRequest *)request;
+- (void)loadMutableRequest:(NSMutableURLRequest *)request;
 
 //- (BOOL)toggleButtonHiddenStatus;
 - (void)setHiddenToolBarView:(BOOL)isHidden;

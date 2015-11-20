@@ -523,6 +523,21 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
     [self.webView loadRequest:request];
 }
 
+- (void)loadMutableRequest:(NSMutableURLRequest *)request
+{
+    //호출된 이전 리퀘스트의 캐쉬를 지우고 새로운 리퀘스트를 만듬
+    if ([SYSTEM_VERSION intValue] > 6.5) {
+        //if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7")) {
+        if (request) {
+            [[NSURLCache sharedURLCache] removeCachedResponseForRequest:request];
+            [[NSURLCache sharedURLCache] removeAllCachedResponses];
+        }
+    }
+    
+    [self.webView loadRequest:request];
+
+}
+
 - (void)open:(NSString *)url
 {
 	if (url && ![url isEqualToString:@""]) {

@@ -46,6 +46,72 @@
 
 - (IBAction)btnSummitClick:(id)sender {
     
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    //manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    //manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+
+    NSMutableDictionary *sendDic = [NSMutableDictionary dictionary];
+    NSMutableDictionary *rootDic = [NSMutableDictionary dictionary];
+    NSMutableDictionary *indiv_infoDic = [NSMutableDictionary dictionary];
+    
+    //회원가입
+    [rootDic setObject:@"" forKey:@"task"];
+    [rootDic setObject:@"" forKey:@"action"];
+    [rootDic setObject:@"M2000N" forKey:@"serviceCode"];
+    [rootDic setObject:@"S_SNYM2000" forKey:@"requestMessage"];
+    [rootDic setObject:@"R_SNYM2000" forKey:@"responseMessage"];
+    
+    [indiv_infoDic setObject:@"Y" forKey:@"agree_yn"];
+    [indiv_infoDic setObject:@"springgclee@gmail.com" forKey:@"email_id"];
+    [indiv_infoDic setObject:@"1111" forKey:@"pinno"];
+    [indiv_infoDic setObject:@"springgclee@gmail.com" forKey:@"user_nm"];
+    [indiv_infoDic setObject:@"20150101" forKey:@"birth"];
+    [indiv_infoDic setObject:@"I" forKey:@"os_d"]; // ios -> I
+    [indiv_infoDic setObject:@"11111111111" forKey:@"tmn_unq_no"];
+    [indiv_infoDic setObject:@"KO" forKey:@"lang_c"];
+    [indiv_infoDic setObject:@"APNS" forKey:@"push_tmn_refno"];
+    [indiv_infoDic setObject:@"Y" forKey:@"push_rec_yn"];
+    
+    [sendDic setObject:rootDic forKey:@"root_info"];
+    [sendDic setObject:indiv_infoDic forKey:@"indiv_info"];//////
+    
+    SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+    NSString *jsonString = [jsonWriter stringWithObject:sendDic];
+    NSLog(@"request json: %@", jsonString);
+    
+    NSDictionary *parameters = @{@"plainJSON": jsonString};
+    
+    [manager POST:API_URL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"JSON: %@", responseObject);
+        
+        NSString *responseData = (NSString*) responseObject;
+        NSArray *jsonArray = (NSArray *)responseData;
+        NSLog(@"Response ==> %@", responseData);
+        
+        //to json
+        SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+        
+        NSString *jsonString = [jsonWriter stringWithObject:jsonArray];
+        NSLog(@"jsonString ==> %@", jsonString);
+        ///////////////////////////////
+        
+        for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies])
+        {
+            NSLog(@"name: '%@'\n",   [cookie name]);
+            NSLog(@"value: '%@'\n",  [cookie value]);
+            NSLog(@"domain: '%@'\n", [cookie domain]);
+            NSLog(@"path: '%@'\n",   [cookie path]);
+        }
+        
+        NSLog(@"getCookie end ==>" );
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+    }];
+    
     completeViewController *completeCtl = [[completeViewController alloc] init];
     //[setInforCtl setDelegate:self];
     [self.navigationController pushViewController:completeCtl animated:YES];
@@ -53,48 +119,63 @@
 
     
 }
+
 - (IBAction)confirmID:(id)sender {
     
-    //gclee
-    //idText
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    //manager.securityPolicy.allowInvalidCertificates = YES;
-    //NSDictionary *parameters = @{@"foo": @"bar"};
-    NSDictionary *parameters = @{@"plainJSON": @"{test}"};
     
-    [manager POST:@"http://httpbin.org/post" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        //    [manager POST:@"https://vntst.shinhanglobal.com/sunny/jsp/callSunnyJsonTaskService.jsp" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //
+    NSMutableDictionary *sendDic = [NSMutableDictionary dictionary];
+    NSMutableDictionary *rootDic = [NSMutableDictionary dictionary];
+    NSMutableDictionary *indiv_infoDic = [NSMutableDictionary dictionary];
+    
+    //가입여부 - 중복확인
+    [rootDic setObject:@"sfg.sunny.task.user.UserTask" forKey:@"task"];
+    [rootDic setObject:@"getUserYn" forKey:@"action"];
+    [rootDic setObject:@"" forKey:@"serviceCode"];
+    [rootDic setObject:@"" forKey:@"requestMessage"];
+    [rootDic setObject:@"" forKey:@"responseMessage"];
+    
+    [indiv_infoDic setObject:@"springgclee@gmail.com" forKey:@"email_id"];
+    
+    [sendDic setObject:rootDic forKey:@"root_info"];
+    [sendDic setObject:indiv_infoDic forKey:@"indiv_info"];//////
+    
+    SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+    NSString *jsonString = [jsonWriter stringWithObject:sendDic];
+    NSLog(@"request json: %@", jsonString);
+
+    NSDictionary *parameters = @{@"plainJSON": jsonString};
+    
+    [manager POST:API_URL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
         NSLog(@"JSON: %@", responseObject);
-        
         
         NSString *responseData = (NSString*) responseObject;
         NSArray *jsonArray = (NSArray *)responseData;
         NSLog(@"Response ==> %@", responseData);
         
-        //json
-        //        SBJsonParser *jsonParser = [SBJsonParser new];
-        //        NSDictionary *jsonData = (NSDictionary *) [jsonParser objectWithString:responseData error:nil];
-        //        NSLog(@"%@",jsonData);
-        //        NSInteger success = [(NSNumber *) [jsonData objectForKey:@"result"] integerValue];
-        //        NSLog(@"%d",success);
-        
         //to json
         SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
         
-        //NSString *jsonString = [jsonWriter stringWithObject:myDictionary];
         NSString *jsonString = [jsonWriter stringWithObject:jsonArray];
         NSLog(@"jsonString ==> %@", jsonString);
+        ///////////////////////////////
         
+        for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies])
+        {
+            NSLog(@"name: '%@'\n",   [cookie name]);
+            NSLog(@"value: '%@'\n",  [cookie value]);
+            NSLog(@"domain: '%@'\n", [cookie domain]);
+            NSLog(@"path: '%@'\n",   [cookie path]);
+        }
+        
+        NSLog(@"getCookie end ==>" );
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"Error: %@", error);
         
     }];
-
-    
 }
 
 #pragma mark - text delegate

@@ -287,6 +287,56 @@
     }
 }
 
+- (void)openWebView:(NSString *)url mutableRequest:(NSMutableURLRequest *)request
+{
+    //BOOL isException = [CPCommonInfo isExceptionalUrl:url];
+    BOOL isException = false;
+    CGRect webViewFrame;
+    
+    // Exception URL은 네비게이션바없는 풀화면으로 보여줌
+    if (isException) {
+        [self.navigationController setNavigationBarHidden:YES];
+        
+        if ([SYSTEM_VERSION intValue] > 6) {
+            webViewFrame = CGRectMake(0, 10, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight);
+        }
+        else {
+            webViewFrame = CGRectMake(0, 10, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight);
+        }
+    }
+    else {
+        [self.navigationController setNavigationBarHidden:NO];
+        webViewFrame = CGRectMake(0, 10, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight);
+    }
+    
+    if (self.webView) {
+        [self.webView setFrame:webViewFrame];
+        [self.webView updateFrame];
+        
+        if (request) {
+            [self.webView loadRequest:request];
+        }
+        else {
+            [self.webView open:url];
+        }
+    }
+    else {
+        self.webView = [[WebView alloc] initWithFrame:webViewFrame isSub:YES];
+        [self.webView setDelegate:self];
+        
+        if (request) {
+            [self.webView loadRequest:request];
+        }
+        else {
+            [self.webView open:url];
+        }
+        
+        [self.webView setHiddenToolBarView:NO];
+        [self.view addSubview:self.webView];
+    }
+}
+
+
 - (void)openSettingViewController
 {
 //    SetupController *viewController = [[SetupController alloc] init];
@@ -1350,10 +1400,47 @@
     //#3 Event / 공지
     //#4 설정
     
-    NSString *strMenuType = [NSString stringWithFormat:@"webView didTouchMenuItem menuType %d", menuType];
+//    NSString *strMenuType = [NSString stringWithFormat:@"webView didTouchMenuItem menuType %d", menuType];
+//    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:strMenuType delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+//    [alert show];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:strMenuType delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
-    [alert show];
+    NSString* gLocalLang = @"";
+    NSString *callUrl = @"";
+    
+    //Sunny Club
+    if(menuType == 1){
+        gLocalLang = @"ko";
+        callUrl = [NSString stringWithFormat:SUNNY_CLUB_URL, gLocalLang];
+    }
+    //Sunny Bank
+    if(menuType == 2){
+        gLocalLang = @"ko";
+        callUrl = [NSString stringWithFormat:SUNNY_BANK_URL, gLocalLang];
+    }
+    //news
+    if(menuType == 3){
+        gLocalLang = @"ko";
+        callUrl = [NSString stringWithFormat:NEW_NEWS_URL, gLocalLang];
+    }
+    
+    NSURL *Nurl = [NSURL URLWithString:callUrl];
+    NSMutableURLRequest *mutableRequest = [NSMutableURLRequest requestWithURL:Nurl];
+    
+    NSMutableString *cookieStringToSet = [[NSMutableString alloc] init];
+    NSHTTPCookie *cookie;
+    
+    for (cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
+        NSLog(@"%@=%@", cookie.name, cookie.value);
+        [cookieStringToSet appendFormat:@"%@=%@;",cookie.name, cookie.value];
+    }
+                        
+    if (cookieStringToSet.length) {
+        [mutableRequest setValue:cookieStringToSet forHTTPHeaderField:@"Cookie"];
+        NSLog(@"Cookie : %@", cookieStringToSet);
+    }
+    
+    [self openWebView:callUrl mutableRequest:mutableRequest];
     
     //setting
     if(menuType == 4){

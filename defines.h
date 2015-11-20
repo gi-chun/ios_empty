@@ -13,10 +13,11 @@
 //NSString *url = @"https://vntst.shinhanglobal.com/sunny/faq_test2.jsp";
 //NSString *url = @"https://vntst.shinhanglobal.com/sunny/faq_test.jsp";
 
-static NSString *SUNNY_CLUB_URL     = @"http://naver.com";
-static NSString *SUNNY_BANK_URL     = @"https://vntst.shinhanglobal.com/sunny/faq_test2.jsp";
-static NSString *NEW_NEWS_URL       = @"https://vntst.shinhanglobal.com/sunny/faq_test.jsp";
+static NSString *SUNNY_CLUB_URL     = @"https://vntst.shinhanglobal.com/sunny/sunnyclub/index.jsp?%@";  //클럽메인
+static NSString *SUNNY_BANK_URL     = @"https://vntst.shinhanglobal.com/sunny/bank/main.jsp?%@";        //뱅크메인
+static NSString *NEW_NEWS_URL       = @"https://vntst.shinhanglobal.com/sunny/set/newstory_list.jsp?%@";//새소식
 static NSString *SETTING_URL        = @"https://vntst.shinhanglobal.com/sunny/faq_test.jsp";
+static NSString *API_URL            = @"https://vntst.shinhanglobal.com/sunny/jsp/callSunnyJsonTaskService.jsp";
 
 static NSString *LOGIN_TITLE_KO     = @"로그인";
 static NSString *SETINFO_TITLE_KO     = @"정보입력";

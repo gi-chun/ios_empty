@@ -9,7 +9,8 @@
 #import "LoginViewController.h"
 #import "NavigationBarView.h"
 #import "setInforViewController.h"
-
+#import "AFHTTPRequestOperationManager.h"
+#import "SBJson.h"
 
 @interface LoginViewController () <NavigationBarViewDelegate>
 {
@@ -58,7 +59,99 @@
 
 - (IBAction)loginBtnClick:(id)sender {
     
+   
     
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    //manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    //manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    NSMutableDictionary *sendDic = [NSMutableDictionary dictionary];
+    NSMutableDictionary *rootDic = [NSMutableDictionary dictionary];
+    NSMutableDictionary *indiv_infoDic = [NSMutableDictionary dictionary];
+    
+    //회원가입
+    [rootDic setObject:@"" forKey:@"task"];
+    [rootDic setObject:@"" forKey:@"action"];
+    [rootDic setObject:@"M2010N" forKey:@"serviceCode"];
+    [rootDic setObject:@"S_SNYM2010" forKey:@"requestMessage"];
+    [rootDic setObject:@"R_SNYM2010" forKey:@"responseMessage"];
+    
+    [indiv_infoDic setObject:@"springgclee@gmail.com" forKey:@"email_id"];
+    [indiv_infoDic setObject:@"1111" forKey:@"pinno"];
+    
+    [sendDic setObject:rootDic forKey:@"root_info"];
+    [sendDic setObject:indiv_infoDic forKey:@"indiv_info"];//////
+    
+    SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+    NSString *jsonString = [jsonWriter stringWithObject:sendDic];
+    NSLog(@"request json: %@", jsonString);
+    
+    NSDictionary *parameters = @{@"plainJSON": jsonString};
+    
+    [manager POST:API_URL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"JSON: %@", responseObject);
+        
+        NSString *responseData = (NSString*) responseObject;
+        NSArray *jsonArray = (NSArray *)responseData;
+        NSLog(@"Response ==> %@", responseData);
+        
+        //to json
+        SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+        
+        NSString *jsonString = [jsonWriter stringWithObject:jsonArray];
+        NSLog(@"jsonString ==> %@", jsonString);
+        
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+        
+        NSHTTPCookie *cookie;
+        
+        NSMutableDictionary *cookieProperties = [NSMutableDictionary dictionary];
+        [cookieProperties setObject:@"locale_" forKey:NSHTTPCookieName];
+//        [cookieProperties setObject:[NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970]] forKey:NSHTTPCookieValue];
+        //////////////////////////////////////
+        [cookieProperties setObject:@"KO" forKey:NSHTTPCookieValue];
+        [cookieProperties setObject:@"vntst.shinhanglobal.com" forKey:NSHTTPCookieDomain];
+        [cookieProperties setObject:@"vntst.shinhanglobal.com" forKey:NSHTTPCookieOriginURL];
+        [cookieProperties setObject:@"/" forKey:NSHTTPCookiePath];
+        [cookieProperties setObject:@"0" forKey:NSHTTPCookieVersion];
+        
+        // set expiration to one month from now
+        [cookieProperties setObject:[[NSDate date] dateByAddingTimeInterval:2629743] forKey:NSHTTPCookieExpires];
+        
+        cookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+        
+        for (cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
+            NSLog(@"%@=%@", cookie.name, cookie.value);
+        }
+//
+//        [cookie setValue:@"KO" forKey:@"locale_"];
+//        
+//        //add cookie
+//        [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+//        
+//        //
+//        NSMutableArray* cookieDictionary = [[NSUserDefaults standardUserDefaults] valueForKey:@"cookieArray"];
+//        NSLog(@"cookie dictionary found is %@",cookieDictionary);
+//        
+//        for (int i=0; i < cookieDictionary.count; i++)
+//        {
+//            NSLog(@"cookie found is %@",[cookieDictionary objectAtIndex:i]);
+//            NSMutableDictionary* cookieDictionary1 = [[NSUserDefaults standardUserDefaults] valueForKey:[cookieDictionary objectAtIndex:i]];
+//            NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:cookieDictionary1];
+//            [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+//            
+//        }
+//        
+        
+        NSLog(@"getCookie end ==>" );
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+    }];
     
 }
 
