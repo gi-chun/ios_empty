@@ -7,6 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		280B23DE1C007EE8004F80FB /* personModifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280B23DC1C007EE8004F80FB /* personModifyViewController.m */; };
+		280B23DF1C007EE8004F80FB /* personModifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280B23DD1C007EE8004F80FB /* personModifyViewController.xib */; };
+		280B23E31C0080E5004F80FB /* personaldata_menu01_back@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 280B23E01C0080E5004F80FB /* personaldata_menu01_back@1x.png */; };
+		280B23E41C0080E5004F80FB /* personaldata_menu01_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 280B23E11C0080E5004F80FB /* personaldata_menu01_back@2x.png */; };
+		280B23E51C0080E5004F80FB /* personaldata_menu01_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 280B23E21C0080E5004F80FB /* personaldata_menu01_back@3x.png */; };
+		280B23E91C0080F6004F80FB /* personaldata_menu03_back_press@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 280B23E61C0080F6004F80FB /* personaldata_menu03_back_press@1x.png */; };
+		280B23EA1C0080F6004F80FB /* personaldata_menu03_back_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 280B23E71C0080F6004F80FB /* personaldata_menu03_back_press@2x.png */; };
+		280B23EB1C0080F6004F80FB /* personaldata_menu03_back_press@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 280B23E81C0080F6004F80FB /* personaldata_menu03_back_press@3x.png */; };
+		280B23EF1C008632004F80FB /* personaldata_menu04_back_incard@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 280B23EC1C008632004F80FB /* personaldata_menu04_back_incard@1x.png */; };
+		280B23F01C008632004F80FB /* personaldata_menu04_back_incard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 280B23ED1C008632004F80FB /* personaldata_menu04_back_incard@2x.png */; };
+		280B23F11C008632004F80FB /* personaldata_menu04_back_incard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 280B23EE1C008632004F80FB /* personaldata_menu04_back_incard@3x.png */; };
+		280B23F51C00A926004F80FB /* pwdChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280B23F31C00A926004F80FB /* pwdChangeViewController.m */; };
+		280B23F61C00A926004F80FB /* pwdChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280B23F41C00A926004F80FB /* pwdChangeViewController.xib */; };
+		280B23FA1C00AE49004F80FB /* memberOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280B23F81C00AE48004F80FB /* memberOutViewController.m */; };
+		280B23FB1C00AE49004F80FB /* memberOutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280B23F91C00AE48004F80FB /* memberOutViewController.xib */; };
+		280B23FF1C00B85F004F80FB /* idSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280B23FD1C00B85F004F80FB /* idSearchViewController.m */; };
+		280B24001C00B85F004F80FB /* idSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280B23FE1C00B85F004F80FB /* idSearchViewController.xib */; };
+		280B24041C00BFD5004F80FB /* pwdSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280B24021C00BFD5004F80FB /* pwdSearchViewController.m */; };
+		280B24051C00BFD5004F80FB /* pwdSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280B24031C00BFD5004F80FB /* pwdSearchViewController.xib */; };
+		280B24091C00CD99004F80FB /* datePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280B24071C00CD99004F80FB /* datePickerViewController.m */; };
+		280B240A1C00CD99004F80FB /* datePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280B24081C00CD99004F80FB /* datePickerViewController.xib */; };
+		280B240E1C00CFD0004F80FB /* myPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280B240C1C00CFD0004F80FB /* myPickerViewController.m */; };
+		280B240F1C00CFD0004F80FB /* myPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280B240D1C00CFD0004F80FB /* myPickerViewController.xib */; };
 		282CB3161BDA2600000FF5C0 /* icon_navi_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 282CB3141BDA2600000FF5C0 /* icon_navi_home.png */; };
 		282CB3171BDA2600000FF5C0 /* icon_navi_home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 282CB3151BDA2600000FF5C0 /* icon_navi_home@2x.png */; };
 		282CB31A1BDA2626000FF5C0 /* icon_main_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 282CB3181BDA2626000FF5C0 /* icon_main_login.png */; };
@@ -374,6 +397,36 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		280B23DB1C007EE8004F80FB /* personModifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = personModifyViewController.h; sourceTree = "<group>"; };
+		280B23DC1C007EE8004F80FB /* personModifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = personModifyViewController.m; sourceTree = "<group>"; };
+		280B23DD1C007EE8004F80FB /* personModifyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = personModifyViewController.xib; sourceTree = "<group>"; };
+		280B23E01C0080E5004F80FB /* personaldata_menu01_back@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personaldata_menu01_back@1x.png"; sourceTree = "<group>"; };
+		280B23E11C0080E5004F80FB /* personaldata_menu01_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personaldata_menu01_back@2x.png"; sourceTree = "<group>"; };
+		280B23E21C0080E5004F80FB /* personaldata_menu01_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personaldata_menu01_back@3x.png"; sourceTree = "<group>"; };
+		280B23E61C0080F6004F80FB /* personaldata_menu03_back_press@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personaldata_menu03_back_press@1x.png"; sourceTree = "<group>"; };
+		280B23E71C0080F6004F80FB /* personaldata_menu03_back_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personaldata_menu03_back_press@2x.png"; sourceTree = "<group>"; };
+		280B23E81C0080F6004F80FB /* personaldata_menu03_back_press@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personaldata_menu03_back_press@3x.png"; sourceTree = "<group>"; };
+		280B23EC1C008632004F80FB /* personaldata_menu04_back_incard@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personaldata_menu04_back_incard@1x.png"; sourceTree = "<group>"; };
+		280B23ED1C008632004F80FB /* personaldata_menu04_back_incard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personaldata_menu04_back_incard@2x.png"; sourceTree = "<group>"; };
+		280B23EE1C008632004F80FB /* personaldata_menu04_back_incard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personaldata_menu04_back_incard@3x.png"; sourceTree = "<group>"; };
+		280B23F21C00A926004F80FB /* pwdChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pwdChangeViewController.h; sourceTree = "<group>"; };
+		280B23F31C00A926004F80FB /* pwdChangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pwdChangeViewController.m; sourceTree = "<group>"; };
+		280B23F41C00A926004F80FB /* pwdChangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = pwdChangeViewController.xib; sourceTree = "<group>"; };
+		280B23F71C00AE48004F80FB /* memberOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memberOutViewController.h; sourceTree = "<group>"; };
+		280B23F81C00AE48004F80FB /* memberOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = memberOutViewController.m; sourceTree = "<group>"; };
+		280B23F91C00AE48004F80FB /* memberOutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = memberOutViewController.xib; sourceTree = "<group>"; };
+		280B23FC1C00B85F004F80FB /* idSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = idSearchViewController.h; sourceTree = "<group>"; };
+		280B23FD1C00B85F004F80FB /* idSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = idSearchViewController.m; sourceTree = "<group>"; };
+		280B23FE1C00B85F004F80FB /* idSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = idSearchViewController.xib; sourceTree = "<group>"; };
+		280B24011C00BFD5004F80FB /* pwdSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pwdSearchViewController.h; sourceTree = "<group>"; };
+		280B24021C00BFD5004F80FB /* pwdSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pwdSearchViewController.m; sourceTree = "<group>"; };
+		280B24031C00BFD5004F80FB /* pwdSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = pwdSearchViewController.xib; sourceTree = "<group>"; };
+		280B24061C00CD99004F80FB /* datePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = datePickerViewController.h; sourceTree = "<group>"; };
+		280B24071C00CD99004F80FB /* datePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = datePickerViewController.m; sourceTree = "<group>"; };
+		280B24081C00CD99004F80FB /* datePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = datePickerViewController.xib; sourceTree = "<group>"; };
+		280B240B1C00CFD0004F80FB /* myPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myPickerViewController.h; sourceTree = "<group>"; };
+		280B240C1C00CFD0004F80FB /* myPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myPickerViewController.m; sourceTree = "<group>"; };
+		280B240D1C00CFD0004F80FB /* myPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = myPickerViewController.xib; sourceTree = "<group>"; };
 		282CB3141BDA2600000FF5C0 /* icon_navi_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_navi_home.png; sourceTree = "<group>"; };
 		282CB3151BDA2600000FF5C0 /* icon_navi_home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_navi_home@2x.png"; sourceTree = "<group>"; };
 		282CB3181BDA2626000FF5C0 /* icon_main_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_main_login.png; sourceTree = "<group>"; };
@@ -862,10 +915,19 @@
 				28CF887B1BFD62060033B635 /* icon-60@2x.png */,
 				28CF887C1BFD62060033B635 /* icon-60@3x.png */,
 				28D25A641BFEF5AD0022E0CF /* intro_img@1x.png */,
+				280B23E61C0080F6004F80FB /* personaldata_menu03_back_press@1x.png */,
+				280B23E71C0080F6004F80FB /* personaldata_menu03_back_press@2x.png */,
+				280B23E81C0080F6004F80FB /* personaldata_menu03_back_press@3x.png */,
+				280B23E01C0080E5004F80FB /* personaldata_menu01_back@1x.png */,
+				280B23E11C0080E5004F80FB /* personaldata_menu01_back@2x.png */,
+				280B23E21C0080E5004F80FB /* personaldata_menu01_back@3x.png */,
 				28D25A651BFEF5AD0022E0CF /* intro_img@2x.png */,
 				28D25A661BFEF5AD0022E0CF /* intro_img@3x.png */,
 				28CF887D1BFD62060033B635 /* icon-76.png */,
 				28CF887E1BFD62060033B635 /* icon-76@2x.png */,
+				280B23EC1C008632004F80FB /* personaldata_menu04_back_incard@1x.png */,
+				280B23ED1C008632004F80FB /* personaldata_menu04_back_incard@2x.png */,
+				280B23EE1C008632004F80FB /* personaldata_menu04_back_incard@3x.png */,
 				28D25A6A1BFF08DC0022E0CF /* total_menu_banner@1x.png */,
 				28D25A6B1BFF08DC0022E0CF /* total_menu_banner@2x.png */,
 				28D25A6C1BFF08DC0022E0CF /* total_menu_banner@3x.png */,
@@ -1198,15 +1260,6 @@
 		287F92D91BE747F4007E82AD /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				2834C1F41BFC3B5C002379E6 /* dataPickerViewController.m */,
-				2834C1F31BFC3B5C002379E6 /* dataPickerViewController.h */,
-				28EDAC1C1BDF694100024EF9 /* WebView.h */,
-				28FF61341BFB2F060044D9AB /* setInforViewController.h */,
-				28FF61351BFB2F060044D9AB /* setInforViewController.m */,
-				2834C1F61BFC5C69002379E6 /* completeViewController.h */,
-				2834C1F71BFC5C69002379E6 /* completeViewController.m */,
-				2834C1F81BFC5C6A002379E6 /* completeViewController.xib */,
-				28FF61361BFB2F060044D9AB /* setInforViewController.xib */,
 				28EDAC221BDF6ED800024EF9 /* HttpError.h */,
 				28EDAC231BDF6ED800024EF9 /* HttpError.m */,
 				28EDAC241BDF6ED800024EF9 /* HttpRequest.h */,
@@ -1226,34 +1279,12 @@
 				2886A8DF1BE0B8DF001B7657 /* CPThumbnailView.m */,
 				2886A8D31BE082C8001B7657 /* Config.plist */,
 				28EDAC251BDF6ED800024EF9 /* HttpRequest.m */,
-				2886A8D71BE09E8B001B7657 /* CPLoadingView.h */,
-				2886A8D81BE09E8C001B7657 /* CPLoadingView.m */,
-				28EDAC2E1BDF709400024EF9 /* ToolBarView.h */,
-				28EDAC2F1BDF709400024EF9 /* ToolBarView.m */,
 				28EDAC261BDF6ED800024EF9 /* HttpResponse.h */,
 				28EDAC271BDF6ED800024EF9 /* HttpResponse.m */,
-				28EDAC1D1BDF694100024EF9 /* WebView.m */,
-				28EDAC1E1BDF694100024EF9 /* WebViewController.h */,
-				28EDAC1F1BDF694100024EF9 /* WebViewController.m */,
-				288E45E31BD776D60041AE50 /* mainViewController.h */,
-				286052A11BEB22A900F838E6 /* leftMenuView.h */,
-				28C56A531BEC627A001BBCE1 /* leftMenuItemView.h */,
-				28C56A541BEC627A001BBCE1 /* leftMenuItemView.m */,
-				2853A1DF1BF1779800B8F70E /* leftLoginView.h */,
-				283147D31BFAB1B60083DA3F /* LoginViewController.h */,
-				283147D41BFAB1B60083DA3F /* LoginViewController.m */,
-				2853A1E01BF1779800B8F70E /* leftLoginView.m */,
-				286052A21BEB22A900F838E6 /* leftMenuView.m */,
-				288E45E41BD776D60041AE50 /* mainViewController.m */,
-				28351D3E1BF45555009145E6 /* leftViewController.h */,
-				28351D3F1BF45555009145E6 /* leftViewController.m */,
 				28351D411BF455DF009145E6 /* homeViewController.h */,
 				28351D421BF455DF009145E6 /* homeViewController.m */,
-				28F7C0431BDE0FB000C53B86 /* NavigationBarView.h */,
-				28F7C0441BDE0FB000C53B86 /* NavigationBarView.m */,
 				28F7C0401BDDFB7000C53B86 /* secondViewController.h */,
 				28F7C0411BDDFB7000C53B86 /* secondViewController.m */,
-				28351D451BF46DF9009145E6 /* defines.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1270,9 +1301,28 @@
 		288E45B21BD719640041AE50 = {
 			isa = PBXGroup;
 			children = (
-				28EDFB6D1BFC960600B3B647 /* configViewController.h */,
-				28EDFB6E1BFC960600B3B647 /* configViewController.m */,
-				28EDFB6F1BFC960600B3B647 /* configViewController.xib */,
+				280B23DB1C007EE8004F80FB /* personModifyViewController.h */,
+				280B23DC1C007EE8004F80FB /* personModifyViewController.m */,
+				280B23DD1C007EE8004F80FB /* personModifyViewController.xib */,
+				280B24061C00CD99004F80FB /* datePickerViewController.h */,
+				280B24071C00CD99004F80FB /* datePickerViewController.m */,
+				280B24081C00CD99004F80FB /* datePickerViewController.xib */,
+				280B240B1C00CFD0004F80FB /* myPickerViewController.h */,
+				280B240C1C00CFD0004F80FB /* myPickerViewController.m */,
+				280B240D1C00CFD0004F80FB /* myPickerViewController.xib */,
+				280B23F21C00A926004F80FB /* pwdChangeViewController.h */,
+				280B23F31C00A926004F80FB /* pwdChangeViewController.m */,
+				280B23F71C00AE48004F80FB /* memberOutViewController.h */,
+				280B23F81C00AE48004F80FB /* memberOutViewController.m */,
+				280B23F91C00AE48004F80FB /* memberOutViewController.xib */,
+				280B23F41C00A926004F80FB /* pwdChangeViewController.xib */,
+				280B23FC1C00B85F004F80FB /* idSearchViewController.h */,
+				280B23FD1C00B85F004F80FB /* idSearchViewController.m */,
+				280B23FE1C00B85F004F80FB /* idSearchViewController.xib */,
+				280B24011C00BFD5004F80FB /* pwdSearchViewController.h */,
+				280B24021C00BFD5004F80FB /* pwdSearchViewController.m */,
+				280B24031C00BFD5004F80FB /* pwdSearchViewController.xib */,
+				28D1428F1BFFFF0300E3AE5B /* sunny */,
 				28D11E901BE86AE6005B3024 /* GuideIntro */,
 				287F92E71BE7491C007E82AD /* Main */,
 				287F92D91BE747F4007E82AD /* Classes */,
@@ -1343,6 +1393,47 @@
 				28D11E921BE86B04005B3024 /* MYViewController.m */,
 			);
 			name = GuideIntro;
+			sourceTree = "<group>";
+		};
+		28D1428F1BFFFF0300E3AE5B /* sunny */ = {
+			isa = PBXGroup;
+			children = (
+				2834C1F41BFC3B5C002379E6 /* dataPickerViewController.m */,
+				2834C1F31BFC3B5C002379E6 /* dataPickerViewController.h */,
+				28EDAC1C1BDF694100024EF9 /* WebView.h */,
+				28FF61341BFB2F060044D9AB /* setInforViewController.h */,
+				28FF61351BFB2F060044D9AB /* setInforViewController.m */,
+				2834C1F61BFC5C69002379E6 /* completeViewController.h */,
+				2834C1F71BFC5C69002379E6 /* completeViewController.m */,
+				2834C1F81BFC5C6A002379E6 /* completeViewController.xib */,
+				28FF61361BFB2F060044D9AB /* setInforViewController.xib */,
+				2886A8D71BE09E8B001B7657 /* CPLoadingView.h */,
+				2886A8D81BE09E8C001B7657 /* CPLoadingView.m */,
+				28EDAC2E1BDF709400024EF9 /* ToolBarView.h */,
+				28EDAC2F1BDF709400024EF9 /* ToolBarView.m */,
+				28EDAC1D1BDF694100024EF9 /* WebView.m */,
+				28EDAC1E1BDF694100024EF9 /* WebViewController.h */,
+				28EDAC1F1BDF694100024EF9 /* WebViewController.m */,
+				288E45E31BD776D60041AE50 /* mainViewController.h */,
+				286052A11BEB22A900F838E6 /* leftMenuView.h */,
+				28C56A531BEC627A001BBCE1 /* leftMenuItemView.h */,
+				28C56A541BEC627A001BBCE1 /* leftMenuItemView.m */,
+				2853A1DF1BF1779800B8F70E /* leftLoginView.h */,
+				283147D31BFAB1B60083DA3F /* LoginViewController.h */,
+				283147D41BFAB1B60083DA3F /* LoginViewController.m */,
+				2853A1E01BF1779800B8F70E /* leftLoginView.m */,
+				28EDFB6D1BFC960600B3B647 /* configViewController.h */,
+				28EDFB6E1BFC960600B3B647 /* configViewController.m */,
+				28EDFB6F1BFC960600B3B647 /* configViewController.xib */,
+				286052A21BEB22A900F838E6 /* leftMenuView.m */,
+				288E45E41BD776D60041AE50 /* mainViewController.m */,
+				28351D3E1BF45555009145E6 /* leftViewController.h */,
+				28351D3F1BF45555009145E6 /* leftViewController.m */,
+				28F7C0431BDE0FB000C53B86 /* NavigationBarView.h */,
+				28F7C0441BDE0FB000C53B86 /* NavigationBarView.m */,
+				28351D451BF46DF9009145E6 /* defines.h */,
+			);
+			name = sunny;
 			sourceTree = "<group>";
 		};
 		28D31BEC1BFC7573009BD803 /* config */ = {
@@ -1451,6 +1542,8 @@
 				28351DAD1BF47F6B009145E6 /* total_menu_btn@1x.png in Resources */,
 				2852D0DB1BF9DD3700C1B1B5 /* total_menu_card_img@2x.png in Resources */,
 				2831482A1BFB0AE70083DA3F /* email_same_btn_press@2x.png in Resources */,
+				280B23EB1C0080F6004F80FB /* personaldata_menu03_back_press@3x.png in Resources */,
+				280B23FB1C00AE49004F80FB /* memberOutViewController.xib in Resources */,
 				28CF88791BFD55CD0033B635 /* right_allow@3x.png in Resources */,
 				28351D961BF47F6B009145E6 /* Search_icon@2x.png in Resources */,
 				28D25A631BFEF16B0022E0CF /* Launch Screen.storyboard in Resources */,
@@ -1461,6 +1554,7 @@
 				28D5370F1BF970E5004257DA /* total_menu_02@2x.png in Resources */,
 				283148F41BFB0E6A0083DA3F /* pw_change_btn@3x.png in Resources */,
 				28CF888F1BFD62060033B635 /* icon-Small@2x.png in Resources */,
+				280B23F01C008632004F80FB /* personaldata_menu04_back_incard@2x.png in Resources */,
 				2852D0E01BF9DD4200C1B1B5 /* total_menu_back_test@1x.png in Resources */,
 				28D5370D1BF970E5004257DA /* total_menu_02_press@3x.png in Resources */,
 				28351D9C1BF47F6B009145E6 /* top_back_btn@2x.png in Resources */,
@@ -1469,9 +1563,11 @@
 				28351D8D1BF47F6B009145E6 /* bottom_top_btn_press@2x.png in Resources */,
 				28351D8C1BF47F6B009145E6 /* bottom_top_btn_press@1x.png in Resources */,
 				283148291BFB0AE70083DA3F /* email_same_btn_press@1x.png in Resources */,
+				280B23E51C0080E5004F80FB /* personaldata_menu01_back@3x.png in Resources */,
 				28351DA21BF47F6B009145E6 /* top_list_btn_press@2x.png in Resources */,
 				2852D0EE1BF9E72700C1B1B5 /* ad_press_test@3x.png in Resources */,
 				283148BD1BFB0E6A0083DA3F /* apply_btn@2x.png in Resources */,
+				280B23F61C00A926004F80FB /* pwdChangeViewController.xib in Resources */,
 				283148361BFB0AE70083DA3F /* find_pw_btn@2x.png in Resources */,
 				28351D9E1BF47F6B009145E6 /* top_back_btn_press@1x.png in Resources */,
 				283148431BFB0AE70083DA3F /* join_btn_long_press@3x.png in Resources */,
@@ -1528,6 +1624,7 @@
 				283148F01BFB0E6A0083DA3F /* pw_change_btn_press@2x.png in Resources */,
 				283148381BFB0AE70083DA3F /* find_pw_icon@1x.png in Resources */,
 				28D537131BF970E5004257DA /* total_menu_03_new@3x.png in Resources */,
+				280B240F1C00CFD0004F80FB /* myPickerViewController.xib in Resources */,
 				283148B91BFB0E6A0083DA3F /* apply_btn_press@1x.png in Resources */,
 				28351DA71BF47F6B009145E6 /* top_tap_logo@1x.png in Resources */,
 				283149071BFB0E6A0083DA3F /* update_btn@1x.png in Resources */,
@@ -1538,6 +1635,7 @@
 				2852D0E81BF9DF6B00C1B1B5 /* ad_test@3x.png in Resources */,
 				283148641BFB0AE70083DA3F /* search_btn@3x.png in Resources */,
 				2831483A1BFB0AE70083DA3F /* find_pw_icon@3x.png in Resources */,
+				280B23F11C008632004F80FB /* personaldata_menu04_back_incard@3x.png in Resources */,
 				283148411BFB0AE70083DA3F /* join_btn_long_press@1x.png in Resources */,
 				28351DB71BF47F6B009145E6 /* tuto_test02@2x.png in Resources */,
 				28D537241BF970E5004257DA /* total_menu_04_press@2x.png in Resources */,
@@ -1591,6 +1689,7 @@
 				2831482E1BFB0AE70083DA3F /* email_same_btn@3x.png in Resources */,
 				283148BE1BFB0E6A0083DA3F /* apply_btn@3x.png in Resources */,
 				28CF88711BFD55C00033B635 /* gray_back@1x.png in Resources */,
+				280B23DF1C007EE8004F80FB /* personModifyViewController.xib in Resources */,
 				28D5370E1BF970E5004257DA /* total_menu_02@1x.png in Resources */,
 				28351D831BF47F6B009145E6 /* bottom_back_btn_press@1x.png in Resources */,
 				28351D391BF44B4E009145E6 /* tuto_test01@2x.png in Resources */,
@@ -1615,6 +1714,7 @@
 				28D537331BF970E5004257DA /* total_menu_ex01@2x.png in Resources */,
 				2831483F1BFB0AE70083DA3F /* home_btn@2x.png in Resources */,
 				28351D941BF47F6B009145E6 /* Logo@3x.png in Resources */,
+				280B23E41C0080E5004F80FB /* personaldata_menu01_back@2x.png in Resources */,
 				283148421BFB0AE70083DA3F /* join_btn_long_press@2x.png in Resources */,
 				28351DB21BF47F6B009145E6 /* total_menu_btn_press@3x.png in Resources */,
 				283148F31BFB0E6A0083DA3F /* pw_change_btn@2x.png in Resources */,
@@ -1642,6 +1742,7 @@
 				283148471BFB0AE70083DA3F /* join_btn_press@1x.png in Resources */,
 				28351D9F1BF47F6B009145E6 /* top_back_btn_press@2x.png in Resources */,
 				28D5371A1BF970E5004257DA /* total_menu_03@1x.png in Resources */,
+				280B24001C00B85F004F80FB /* idSearchViewController.xib in Resources */,
 				28D536FA1BF970E5004257DA /* total_menu_01_new@2x.png in Resources */,
 				28D537301BF970E5004257DA /* total_menu_email_icon@2x.png in Resources */,
 				28D25A6E1BFF08DC0022E0CF /* total_menu_banner@2x.png in Resources */,
@@ -1655,6 +1756,7 @@
 				28351D861BF47F6B009145E6 /* bottom_banner@1x.png in Resources */,
 				28351DA01BF47F6B009145E6 /* top_back_btn_press@3x.png in Resources */,
 				28D5371D1BF970E5004257DA /* total_menu_04_new@1x.png in Resources */,
+				280B23EA1C0080F6004F80FB /* personaldata_menu03_back_press@2x.png in Resources */,
 				283148481BFB0AE70083DA3F /* join_btn_press@2x.png in Resources */,
 				283148441BFB0AE70083DA3F /* join_btn_long@1x.png in Resources */,
 				283148EC1BFB0E6A0083DA3F /* personaldata_menu04_card@1x.png in Resources */,
@@ -1692,10 +1794,12 @@
 				28D536FD1BF970E5004257DA /* total_menu_01_press_new@2x.png in Resources */,
 				28351DB01BF47F6B009145E6 /* total_menu_btn_press@1x.png in Resources */,
 				28D5372E1BF970E5004257DA /* total_menu_close_btn@3x.png in Resources */,
+				280B23E31C0080E5004F80FB /* personaldata_menu01_back@1x.png in Resources */,
 				28D5373B1BF970E5004257DA /* total_menu_logo_back@1x.png in Resources */,
 				283148661BFB0AE70083DA3F /* success_img@2x.png in Resources */,
 				28CF888A1BFD62060033B635 /* icon-76@2x.png in Resources */,
 				28D537311BF970E5004257DA /* total_menu_email_icon@3x.png in Resources */,
+				280B24051C00BFD5004F80FB /* pwdSearchViewController.xib in Resources */,
 				28351DA81BF47F6B009145E6 /* top_tap_logo@2x.png in Resources */,
 				283148301BFB0AE70083DA3F /* find_id_icon@2x.png in Resources */,
 				28351D951BF47F6B009145E6 /* Search_icon@1x.png in Resources */,
@@ -1711,6 +1815,7 @@
 				2852D0ED1BF9E72700C1B1B5 /* ad_press_test@2x.png in Resources */,
 				28CF88881BFD62060033B635 /* icon-60@3x.png in Resources */,
 				283148611BFB0AE70083DA3F /* search_btn_press@3x.png in Resources */,
+				280B240A1C00CD99004F80FB /* datePickerViewController.xib in Resources */,
 				28EDFB711BFC960600B3B647 /* configViewController.xib in Resources */,
 				28D537161BF970E5004257DA /* total_menu_03_press_new@3x.png in Resources */,
 				28D537231BF970E5004257DA /* total_menu_04_press@1x.png in Resources */,
@@ -1721,8 +1826,10 @@
 				28D537341BF970E5004257DA /* total_menu_ex01@3x.png in Resources */,
 				283149081BFB0E6A0083DA3F /* update_btn@2x.png in Resources */,
 				282CB31A1BDA2626000FF5C0 /* icon_main_login.png in Resources */,
+				280B23EF1C008632004F80FB /* personaldata_menu04_back_incard@1x.png in Resources */,
 				28F7C0541BDE18FE00C53B86 /* btn_login_save.png in Resources */,
 				283148EF1BFB0E6A0083DA3F /* pw_change_btn_press@1x.png in Resources */,
+				280B23E91C0080F6004F80FB /* personaldata_menu03_back_press@1x.png in Resources */,
 				283148F61BFB0E6A0083DA3F /* pw_change_menu01_02_back@2x.png in Resources */,
 				283148261BFB0AE70083DA3F /* check_box_btn@1x.png in Resources */,
 				28D537351BF970E5004257DA /* total_menu_login_btn_press@1x.png in Resources */,
@@ -1750,13 +1857,16 @@
 				2886A8D41BE082C8001B7657 /* Config.m in Sources */,
 				2834C1F51BFC3B5D002379E6 /* dataPickerViewController.m in Sources */,
 				28D11E931BE86B04005B3024 /* MYViewController.m in Sources */,
+				280B24091C00CD99004F80FB /* datePickerViewController.m in Sources */,
 				28351D2D1BF43096009145E6 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				280B23DE1C007EE8004F80FB /* personModifyViewController.m in Sources */,
 				287F92E51BE748EF007E82AD /* MMDrawerVisualState.m in Sources */,
 				28D8EA471BF310B0002E98C0 /* AFURLConnectionOperation.m in Sources */,
 				28D11E991BE86B3A005B3024 /* MYIntroductionPanel.m in Sources */,
 				28D8EA4A1BF310B0002E98C0 /* AFURLSessionManager.m in Sources */,
 				28351D2C1BF43096009145E6 /* SBJsonStreamWriter.m in Sources */,
 				283147D61BFAB1B60083DA3F /* LoginViewController.m in Sources */,
+				280B23F51C00A926004F80FB /* pwdChangeViewController.m in Sources */,
 				28351D401BF45555009145E6 /* leftViewController.m in Sources */,
 				28D8EA481BF310B0002E98C0 /* AFURLRequestSerialization.m in Sources */,
 				2886A8D91BE09E8C001B7657 /* CPLoadingView.m in Sources */,
@@ -1764,6 +1874,7 @@
 				28D8EA461BF310B0002E98C0 /* AFSecurityPolicy.m in Sources */,
 				28351D2B1BF43096009145E6 /* SBJsonStreamParserState.m in Sources */,
 				28EDAC301BDF709400024EF9 /* ToolBarView.m in Sources */,
+				280B24041C00BFD5004F80FB /* pwdSearchViewController.m in Sources */,
 				2853A1E11BF1779800B8F70E /* leftLoginView.m in Sources */,
 				28351D2F1BF43096009145E6 /* SBJsonTokeniser.m in Sources */,
 				28D8EA451BF310B0002E98C0 /* AFNetworkReachabilityManager.m in Sources */,
@@ -1782,12 +1893,14 @@
 				286052A31BEB22A900F838E6 /* leftMenuView.m in Sources */,
 				28EDAC211BDF694100024EF9 /* WebViewController.m in Sources */,
 				28351D431BF455DF009145E6 /* homeViewController.m in Sources */,
+				280B240E1C00CFD0004F80FB /* myPickerViewController.m in Sources */,
 				28351D301BF43096009145E6 /* SBJsonUTF8Stream.m in Sources */,
 				28351D2A1BF43096009145E6 /* SBJsonStreamParserAdapter.m in Sources */,
 				28F7C0451BDE0FB000C53B86 /* NavigationBarView.m in Sources */,
 				288E45E51BD776D60041AE50 /* mainViewController.m in Sources */,
 				2834C1F91BFC5C6A002379E6 /* completeViewController.m in Sources */,
 				28EDAC201BDF694100024EF9 /* WebView.m in Sources */,
+				280B23FF1C00B85F004F80FB /* idSearchViewController.m in Sources */,
 				28D8EA421BF310B0002E98C0 /* AFHTTPRequestOperation.m in Sources */,
 				2886A8EF1BE0BBDC001B7657 /* UIImage+ImageRenderToColor.m in Sources */,
 				288E45C31BD719640041AE50 /* AppDelegate.m in Sources */,
@@ -1801,6 +1914,7 @@
 				2886A8E21BE0B8DF001B7657 /* CPThumbnailView.m in Sources */,
 				287F92E31BE748EF007E82AD /* MMDrawerBarButtonItem.m in Sources */,
 				2886A8EE1BE0BBDC001B7657 /* UIImage_Extensions.m in Sources */,
+				280B23FA1C00AE49004F80FB /* memberOutViewController.m in Sources */,
 				28FF61371BFB2F060044D9AB /* setInforViewController.m in Sources */,
 				28D8EA431BF310B0002E98C0 /* AFHTTPRequestOperationManager.m in Sources */,
 				288E45C01BD719640041AE50 /* main.m in Sources */,
@@ -1914,8 +2028,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: SOOJIN CHOI (D3YCM8QVFH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: SOOJIN CHOI (D3YCM8QVFH)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/sts_old/external/ImageFramework",
@@ -1940,7 +2054,7 @@
 					"$(PROJECT_DIR)/sts_old/external/Netfunnel/Release-iphonesimulator",
 					"$(PROJECT_DIR)/sts_old/external/OtpSDK/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lee.kichoon.gcleeEmpty;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shinhan.global.vn.sclub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
@@ -1952,8 +2066,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: SOOJIN CHOI (D3YCM8QVFH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: SOOJIN CHOI (D3YCM8QVFH)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/sts_old/external/ImageFramework",
@@ -1978,7 +2092,7 @@
 					"$(PROJECT_DIR)/sts_old/external/Netfunnel/Release-iphonesimulator",
 					"$(PROJECT_DIR)/sts_old/external/OtpSDK/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lee.kichoon.gcleeEmpty;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shinhan.global.vn.sclub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;

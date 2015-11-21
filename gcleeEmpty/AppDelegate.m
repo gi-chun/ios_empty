@@ -87,7 +87,7 @@
     //    self.window.rootViewController = self.mainViewController;
     
     //loginY init
-    [[NSUserDefaults standardUserDefaults] setBool:0 forKey:kLoginY];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kLoginY];
     [[NSUserDefaults standardUserDefaults] synchronize];
     // uuid
     NSString* uniqueIdentifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
@@ -98,7 +98,8 @@
     //set language
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray* languages = [userDefaults objectForKey:@"AppleLanguages"];
-    [[NSUserDefaults standardUserDefaults] setObject:uniqueIdentifier forKey:klang];
+    NSString* localLang = languages[0];
+    [[NSUserDefaults standardUserDefaults] setObject:localLang forKey:klang];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
     //ko  set language

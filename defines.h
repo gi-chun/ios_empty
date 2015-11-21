@@ -16,9 +16,14 @@
 static NSString * const kUUID              = @"currentUUID";        // UUID
 static NSString * const kUserDeviceToken   = @"userDeviceToken";    // 디바이스 토큰
 static NSString * const klang       = @"currentLang";         // language
-static NSString * const kAutoLogin       = @"autoLogin";         //
+static NSString * const kAutoLogin       = @"autoLogin";
+static NSString * const kId       = @"kId";
+static NSString * const kPwd       = @"kPwd";//
+static NSString * const kUserNm       = @"kUserNm";//
 static NSString * const kLoginY       = @"loginY";         //로그인성공여부
 static NSString * const kCardCode       = @"cardCode";         //
+static NSString * const kAgreeOk       = @"agreeOk";
+static NSString * const kPushY       = @"pushY";         // language
 
 static NSString *SUNNY_CLUB_URL     = @"https://vntst.shinhanglobal.com/sunny/sunnyclub/index.jsp?%@";  //클럽메인
 static NSString *SUNNY_BANK_URL     = @"https://vntst.shinhanglobal.com/sunny/bank/main.jsp?%@";        //뱅크메인

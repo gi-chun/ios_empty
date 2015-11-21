@@ -14,6 +14,7 @@
 
 @property (nonatomic, weak) id<LoginViewControllerDelegate> delegate;
 - (id)appDelegate;
+- (void)autoLogin;
 
 @end
 

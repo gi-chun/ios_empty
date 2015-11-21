@@ -8,8 +8,11 @@
 
 
 #import "configViewController.h"
+#import "personModifyViewController.h"
 
 @interface configViewController () <NavigationBarViewDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *needLabel;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
 @property (strong, nonatomic) IBOutlet UIView *mainView;
@@ -18,6 +21,26 @@
 @end
 
 @implementation configViewController
+- (IBAction)personalChange:(id)sender {
+    
+    personModifyViewController *personModifyController = [[personModifyViewController alloc] init];
+    //[configController setDelegate:self];
+    [self.navigationController pushViewController:personModifyController animated:YES];
+    [self.navigationController setNavigationBarHidden:NO];
+    
+}
+- (IBAction)newsViewClick:(id)sender {
+    
+}
+
+- (IBAction)helpViewClick:(id)sender {
+    
+}
+
+- (IBAction)changeInfor:(id)sender {
+    
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

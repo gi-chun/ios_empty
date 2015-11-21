@@ -11,6 +11,8 @@
 #import "leftLoginView.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "SBJson.h"
+#import "leftViewController.h"
+#import "AppDelegate.h"
 
 const static CGFloat LOGO_HEIGHT   =      43;
 const static CGFloat LOGIN_HEIGHT  =      180; //360/2
@@ -105,6 +107,12 @@ const static CGFloat AD_HEIGHT     =      50;
      [lineView setBackgroundColor:UIColorFromRGB(0xdbdbe1)];
      [self addSubview:lineView];
      */
+    
+//    BOOL isAuto = [[NSUserDefaults standardUserDefaults] boolForKey:kAutoLogin];
+//    if(isAuto)
+//    {
+//        [self loginProcess];
+//    }
     
     ////150
     CGFloat meWidth = self.frame.size.width;
@@ -203,10 +211,8 @@ const static CGFloat AD_HEIGHT     =      50;
     [ADView addSubview:emptyButton];
     [self addSubview:ADView];
     
+  
     
-    //[self loginProcess];
-
-
 //    self.PanelDescriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(kLeftRightMargins, runningYOffset, frame.size.width - 2*kLeftRightMargins, panelDescriptionHeight)];
 //    self.PanelDescriptionLabel.numberOfLines = 0;
 //    self.PanelDescriptionLabel.text = self.PanelDescription;
@@ -371,39 +377,142 @@ const static CGFloat AD_HEIGHT     =      50;
 - (void) loginProcess
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    //manager.securityPolicy.allowInvalidCertificates = YES;
-    //NSDictionary *parameters = @{@"foo": @"bar"};
-    NSDictionary *parameters = @{@"plainJSON": @"{test}"};
     
-    [manager POST:@"http://httpbin.org/post" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSMutableDictionary *sendDic = [NSMutableDictionary dictionary];
+    NSMutableDictionary *rootDic = [NSMutableDictionary dictionary];
+    NSMutableDictionary *indiv_infoDic = [NSMutableDictionary dictionary];
     
-//    [manager POST:@"https://vntst.shinhanglobal.com/sunny/jsp/callSunnyJsonTaskService.jsp" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        
-        NSLog(@"JSON: %@", responseObject);
+    //회원가입
+    [rootDic setObject:@"" forKey:@"task"];
+    [rootDic setObject:@"" forKey:@"action"];
+    [rootDic setObject:@"M2010N" forKey:@"serviceCode"];
+    [rootDic setObject:@"S_SNYM2010" forKey:@"requestMessage"];
+    [rootDic setObject:@"R_SNYM2010" forKey:@"responseMessage"];
+    
+    NSString *strId = [[NSUserDefaults standardUserDefaults] stringForKey:kId];
+    NSString *strPwd = [[NSUserDefaults standardUserDefaults] stringForKey:kPwd];
+    if([[NSUserDefaults standardUserDefaults] stringForKey:kId] == nil){
+        return;
+    }
+   
+    [indiv_infoDic setObject:strId forKey:@"email_id"];
+    [indiv_infoDic setObject:strPwd forKey:@"pinno"];
+    
+    [sendDic setObject:rootDic forKey:@"root_info"];
+    [sendDic setObject:indiv_infoDic forKey:@"indiv_info"];//////
+    
+    SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+    NSString *jsonString = [jsonWriter stringWithObject:sendDic];
+    NSLog(@"request json: %@", jsonString);
+    
+    NSDictionary *parameters = @{@"plainJSON": jsonString};
+    
+    [manager POST:API_URL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
+        NSLog(@"JSON: %@", responseObject);
         
         NSString *responseData = (NSString*) responseObject;
         NSArray *jsonArray = (NSArray *)responseData;
-        NSLog(@"Response ==> %@", responseData);
+        NSDictionary * dicResponse = (NSDictionary *)responseData;
         
-        //json
-//        SBJsonParser *jsonParser = [SBJsonParser new];
-//        NSDictionary *jsonData = (NSDictionary *) [jsonParser objectWithString:responseData error:nil];
-//        NSLog(@"%@",jsonData);
-//        NSInteger success = [(NSNumber *) [jsonData objectForKey:@"result"] integerValue];
-//        NSLog(@"%d",success);
+        //warning
+        NSDictionary *dicItems = [dicResponse objectForKey:@"WARNING"];
         
-        //to json
-        SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+        if(dicItems){
+            NSString* sError = dicItems[@"msg"];
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kLoginY];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+        }else{
+            
+            dicItems = nil;
+            dicItems = [dicResponse objectForKey:@"indiv_info"];
+            NSString* sCardNm = dicItems[@"user_seq"];
+            
+            //set kCardCode
+            [[NSUserDefaults standardUserDefaults] setObject:sCardNm forKey:kCardCode];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            NSString* sUserNm = dicItems[@"user_nm"];
+            [[NSUserDefaults standardUserDefaults] setObject:sUserNm forKey:kUserNm];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            //set kCardCode
+            [[NSUserDefaults standardUserDefaults] setObject:sCardNm forKey:kCardCode];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+
+            
+            NSLog(@"Response ==> %@", responseData);
+            
+            //to json
+            SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+            NSString *jsonString = [jsonWriter stringWithObject:jsonArray];
+            NSLog(@"jsonString ==> %@", jsonString);
+            
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+            NSHTTPCookie *cookie;
+            NSMutableDictionary *cookieProperties = [NSMutableDictionary dictionary];
+            [cookieProperties setObject:@"locale_" forKey:NSHTTPCookieName];
+            //        [cookieProperties setObject:[NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970]] forKey:NSHTTPCookieValue];
+            //////////////////////////////////////
+            [cookieProperties setObject:@"KO" forKey:NSHTTPCookieValue];
+            [cookieProperties setObject:@"vntst.shinhanglobal.com" forKey:NSHTTPCookieDomain];
+            [cookieProperties setObject:@"vntst.shinhanglobal.com" forKey:NSHTTPCookieOriginURL];
+            [cookieProperties setObject:@"/" forKey:NSHTTPCookiePath];
+            [cookieProperties setObject:@"0" forKey:NSHTTPCookieVersion];
+            // set expiration to one month from now
+            [cookieProperties setObject:[[NSDate date] dateByAddingTimeInterval:2629743] forKey:NSHTTPCookieExpires];
+            cookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+            
+            for (cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
+                NSLog(@"%@=%@", cookie.name, cookie.value);
+            }
+            
+            //        //json
+            //        SBJsonParser *jsonParser = [SBJsonParser new];
+            //        NSDictionary *jsonData = (NSDictionary *) [jsonParser objectWithString:responseObject error:nil];
+            //        NSLog(@"%@",jsonData);
+            //        NSInteger success = [(NSNumber *) [jsonData objectForKey:@"result"] integerValue];
+            //        NSLog(@"%d",success);
+            
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kLoginY];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            //
+            //        [cookie setValue:@"KO" forKey:@"locale_"];
+            //
+            //        //add cookie
+            //        [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+            //
+            //        //
+            //        NSMutableArray* cookieDictionary = [[NSUserDefaults standardUserDefaults] valueForKey:@"cookieArray"];
+            //        NSLog(@"cookie dictionary found is %@",cookieDictionary);
+            //
+            //        for (int i=0; i < cookieDictionary.count; i++)
+            //        {
+            //            NSLog(@"cookie found is %@",[cookieDictionary objectAtIndex:i]);
+            //            NSMutableDictionary* cookieDictionary1 = [[NSUserDefaults standardUserDefaults] valueForKey:[cookieDictionary objectAtIndex:i]];
+            //            NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:cookieDictionary1];
+            //            [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+            //
+            //        }
+            //
+            
+            NSLog(@"getCookie end ==>" );
+        }
         
-        //NSString *jsonString = [jsonWriter stringWithObject:myDictionary];
-        NSString *jsonString = [jsonWriter stringWithObject:jsonArray];
-        NSLog(@"jsonString ==> %@", jsonString);
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"Error: %@", error);
+        
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Login Fail %@", error] delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+//        [alert show];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kLoginY];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         
     }];
 

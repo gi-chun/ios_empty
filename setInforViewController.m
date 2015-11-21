@@ -54,6 +54,23 @@
     NSMutableDictionary *rootDic = [NSMutableDictionary dictionary];
     NSMutableDictionary *indiv_infoDic = [NSMutableDictionary dictionary];
     
+    NSString *strAgree;
+    if ([okSwitch isOn]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kAgreeOk];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        strAgree = @"Y";
+    }else{
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kAgreeOk];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        strAgree = @"N";
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"동의 필요" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        return;
+    }
+    
     //회원가입
     [rootDic setObject:@"" forKey:@"task"];
     [rootDic setObject:@"" forKey:@"action"];
@@ -62,15 +79,23 @@
     [rootDic setObject:@"R_SNYM2000" forKey:@"responseMessage"];
     
     [indiv_infoDic setObject:@"Y" forKey:@"agree_yn"];
-    [indiv_infoDic setObject:@"springgclee@gmail.com" forKey:@"email_id"];
-    [indiv_infoDic setObject:@"1111" forKey:@"pinno"];
-    [indiv_infoDic setObject:@"springgclee@gmail.com" forKey:@"user_nm"];
-    [indiv_infoDic setObject:@"20150101" forKey:@"birth"];
+    [indiv_infoDic setObject:idText.text forKey:@"email_id"];
+    [indiv_infoDic setObject:pwdText.text forKey:@"pinno"];
+    [indiv_infoDic setObject:nameText.text forKey:@"user_nm"];
+    
+    NSString* strParma = [yearText.text stringByReplacingOccurrencesOfString:@"." withString:@""];
+    
+    [indiv_infoDic setObject:strParma forKey:@"birth"];
     [indiv_infoDic setObject:@"I" forKey:@"os_d"]; // ios -> I
+    
+
+    //생년월일, lang_c, push ..
     [indiv_infoDic setObject:@"11111111111" forKey:@"tmn_unq_no"];
-    [indiv_infoDic setObject:@"KO" forKey:@"lang_c"];
+    strParma = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
+    [indiv_infoDic setObject:strParma forKey:@"lang_c"];
     [indiv_infoDic setObject:@"APNS" forKey:@"push_tmn_refno"];
-    [indiv_infoDic setObject:@"Y" forKey:@"push_rec_yn"];
+    strParma = ([[NSUserDefaults standardUserDefaults] stringForKey:kPushY])?[[NSUserDefaults standardUserDefaults] stringForKey:kPushY]:@"N";
+    [indiv_infoDic setObject:strParma forKey:@"push_rec_yn"];
     
     [sendDic setObject:rootDic forKey:@"root_info"];
     [sendDic setObject:indiv_infoDic forKey:@"indiv_info"];//////
@@ -87,24 +112,44 @@
         
         NSString *responseData = (NSString*) responseObject;
         NSArray *jsonArray = (NSArray *)responseData;
+        NSDictionary * dicResponse = (NSDictionary *)responseData;
         NSLog(@"Response ==> %@", responseData);
         
-        //to json
-        SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+        //warning
+        NSDictionary *dicItems = [dicResponse objectForKey:@"WARNING"];
         
-        NSString *jsonString = [jsonWriter stringWithObject:jsonArray];
-        NSLog(@"jsonString ==> %@", jsonString);
-        ///////////////////////////////
-        
-        for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies])
-        {
-            NSLog(@"name: '%@'\n",   [cookie name]);
-            NSLog(@"value: '%@'\n",  [cookie value]);
-            NSLog(@"domain: '%@'\n", [cookie domain]);
-            NSLog(@"path: '%@'\n",   [cookie path]);
+        if(dicItems){
+            NSString* sError = dicItems[@"msg"];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:sError delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+            [alert show];
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kLoginY];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+        }else{
+            
+            
+            //to json
+            SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+            
+            NSString *jsonString = [jsonWriter stringWithObject:jsonArray];
+            NSLog(@"jsonString ==> %@", jsonString);
+            ///////////////////////////////
+            
+            for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies])
+            {
+                NSLog(@"name: '%@'\n",   [cookie name]);
+                NSLog(@"value: '%@'\n",  [cookie value]);
+                NSLog(@"domain: '%@'\n", [cookie domain]);
+                NSLog(@"path: '%@'\n",   [cookie path]);
+            }
+            
+            NSLog(@"getCookie end ==>" );
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"가입 완료" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+            
+            [alert show];
         }
-        
-        NSLog(@"getCookie end ==>" );
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -286,9 +331,16 @@
 {
     NSDateFormatter *df = [[NSDateFormatter alloc]init];
     df.dateStyle = NSDateFormatterMediumStyle;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyymmdd"];
+    NSString *date = [dateFormat stringFromDate:_datepicker.date];
+    NSLog(@"date is >>> , %@",date);
+    
     NSLog(@"%@",[NSString stringWithFormat:@"%@",[df stringFromDate:_datepicker.date]]);
    
-    [yearText setText: [df stringFromDate:_datepicker.date]];
+    //[yearText setText: [df stringFromDate:_datepicker.date]];
+    [yearText setText: date];
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
