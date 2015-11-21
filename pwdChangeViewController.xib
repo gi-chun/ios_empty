@@ -7,6 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="pwdChangeViewController">
             <connections>
+                <outlet property="confirmTxt" destination="J6u-BC-bHk" id="i9A-e9-hzx"/>
+                <outlet property="newPwdTxt" destination="8JN-F8-T5y" id="4hq-iH-Gxo"/>
+                <outlet property="oldPwdTxt" destination="MxF-Pi-KyX" id="q8Q-vQ-8pX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -79,7 +82,7 @@
                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="저장하기" backgroundImage="home_btn.png"/>
                                     <connections>
-                                        <action selector="saveClick:" destination="-1" eventType="touchUpInside" id="sHa-pF-Ume"/>
+                                        <action selector="saveClick:" destination="-1" eventType="touchUpInside" id="lBo-hX-RKh"/>
                                     </connections>
                                 </button>
                             </subviews>

@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol memberOutViewControllerDelegate;
+
 @interface memberOutViewController : UIViewController
 
+@property (nonatomic, weak) id<memberOutViewControllerDelegate> delegate;
+
+@end
+
+@protocol memberOutViewControllerDelegate <NSObject>
+@optional
+- (void)didTouchBackButton;
 @end

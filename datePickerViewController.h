@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NavigationBarView.h"
+
+@protocol datePickerViewControllerDelegate;
 
 @interface datePickerViewController : UIViewController
 
+@property (nonatomic, weak) id<datePickerViewControllerDelegate> delegate;
+
+@end
+
+@protocol datePickerViewControllerDelegate <NSObject>
+@optional
 @end

@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+
+
+@protocol pwdSearchViewControllerDelegate;
+
 @interface pwdSearchViewController : UIViewController
 
+@property (nonatomic, weak) id<pwdSearchViewControllerDelegate> delegate;
+
+@end
+
+@protocol pwdSearchViewControllerDelegate <NSObject>
+@optional
+- (void)didTouchBackButton;
 @end

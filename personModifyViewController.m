@@ -14,12 +14,12 @@
 #import "SBJson.h"
 #import "NavigationBarView.h"
 
-@interface personModifyViewController ()
+@interface personModifyViewController () <NavigationBarViewDelegate>
 {
-    
+    NavigationBarView *navigationBarView;
+    UITextField* currentEditingTextField;
     __weak IBOutlet UILabel *cardNmLabel;
     __weak IBOutlet UITextField *emailTxt;
-  
     __weak IBOutlet UILabel *idLabel;
 
 }
@@ -30,8 +30,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self resetNavigationBarView:1];
+    [self setDelegateText];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    // Navigation : viewDidLoad에서 한번, viewDidAppear에서 한번 더 한다.
+    //[self.navigationItem setHidesBackButton:YES];
+    [self resetNavigationBarView:1];
+}
 
 - (IBAction)emailSummit:(id)sender {
     
@@ -87,11 +97,8 @@
 // Automatically register fields
 -(void)setDelegateText
 {
-    [idText setDelegate:self];
-    [nameText setDelegate:self];
-    [pwdText setDelegate:self];
-    [pwdCnfirmText setDelegate:self];
-    [yearText setDelegate:self];
+    [emailTxt setDelegate:self];
+    
 }
 // UITextField Protocol
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -105,7 +112,6 @@
 -(void)dateSave:(id)sender
 {
     self.navigationItem.rightBarButtonItem=nil;
-    [_datepicker removeFromSuperview];
 }
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {

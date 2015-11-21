@@ -8,6 +8,7 @@
 
 #import "datePickerViewController.h"
 
+
 @interface datePickerViewController ()
 @property (weak, nonatomic) IBOutlet UIDatePicker *dataPickerMe;
 @property (weak, nonatomic) IBOutlet UILabel *dayLable;
@@ -19,6 +20,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    // Navigation : viewDidLoad에서 한번, viewDidAppear에서 한번 더 한다.
+    
 }
 
 - (void)didReceiveMemoryWarning {

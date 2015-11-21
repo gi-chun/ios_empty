@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="idSearchViewController">
             <connections>
+                <outlet property="idTxt" destination="CQ1-cj-AF7" id="Z34-rF-FD3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -44,6 +45,9 @@
                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="24"/>
                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="저장하기" backgroundImage="home_btn.png"/>
+                                    <connections>
+                                        <action selector="saveBtnClick:" destination="-1" eventType="touchUpInside" id="11i-hz-kN1"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -54,6 +58,9 @@
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DW0-Jm-X3t">
                                     <rect key="frame" x="0.0" y="16" width="320" height="38"/>
                                     <state key="normal" backgroundImage="personaldata_menu03_back_press.png"/>
+                                    <connections>
+                                        <action selector="dayButtonClick:" destination="-1" eventType="touchUpInside" id="ev1-jM-lb9"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="생년월일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oxv-9O-Asc">
                                     <rect key="frame" x="8" y="24" width="132" height="21"/>
