@@ -167,14 +167,15 @@
     [cardImageView setImage:[UIImage imageNamed:@"total_menu_card_img.png"]];
     [self addSubview:cardImageView];
     
+    
     //card number label
+    _cardNumber =  [[NSUserDefaults standardUserDefaults] stringForKey:kCardCode] ;
     labelCardNumber = [[UILabel alloc] initWithFrame:CGRectMake(100-labelMarginX, 100+10, meWidth-65, 40) ];
     [labelCardNumber setBackgroundColor:[UIColor clearColor]];
     [labelCardNumber setTextColor:UIColorFromRGB(0xffffff)];
     [labelCardNumber setFont:[UIFont systemFontOfSize:15]];
     [labelCardNumber setTextAlignment:NSTextAlignmentLeft];
     [labelCardNumber setNumberOfLines:0];
-    _cardNumber = @"S20150001";
     [labelCardNumber setText:_cardNumber];
     [self addSubview:labelCardNumber];
     

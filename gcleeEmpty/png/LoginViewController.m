@@ -99,23 +99,17 @@
         
         NSString *responseData = (NSString*) responseObject;
         NSArray *jsonArray = (NSArray *)responseData;
-        NSDictionary * dicResponse = (NSArray *)responseData;
+        NSDictionary * dicResponse = (NSDictionary *)responseData;
+        
+        NSDictionary *dicItems = [dicResponse objectForKey:@"indiv_info"];
+        NSString* sCardNm = dicItems[@"user_seq"];
+        
+        //set kCardCode
+        [[NSUserDefaults standardUserDefaults] setObject:sCardNm forKey:kCardCode];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
         NSLog(@"Response ==> %@", responseData);
         
-        //indiv_info
-        //NSArray *groups = [response objectForKey:@"groups"];
-        //NSArray *groups = [responseData objectForKey:@"indiv_info"];
-        
-        for (int i=0; i<jsonArray.count; i++)
-        {
-            NSString *value = jsonArray[i][@"use_seq"];
-            //NSString *value = jsonArray[i];
-            NSLog(@"value value  ==> %@", value);
-            
-            //if (groupId && groupId.length > 0 && [groupId isEqualToString:@"02"]) {
-        }
-        
-                
         //to json
         SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
         NSString *jsonString = [jsonWriter stringWithObject:jsonArray];
@@ -148,9 +142,7 @@
 //        NSInteger success = [(NSNumber *) [jsonData objectForKey:@"result"] integerValue];
 //        NSLog(@"%d",success);
         
-        //set kCardCode
-        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kCardCode];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        
 
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Login Success" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
