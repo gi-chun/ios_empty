@@ -19,4 +19,6 @@
 
 @protocol datePickerViewControllerDelegate <NSObject>
 @optional
+- (void)didTouchPicker;
 @end
+

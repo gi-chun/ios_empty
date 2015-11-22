@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol myPickerViewControllerDelegate;
+
 @interface myPickerViewController : UIViewController
 
+@property (nonatomic, weak) id<myPickerViewControllerDelegate> delegate;
+
+
+@end
+
+@protocol myPickerViewControllerDelegate <NSObject>
+@optional
+- (void)didTouchPicker;
 @end

@@ -9,6 +9,7 @@
 
 #import "configViewController.h"
 #import "personModifyViewController.h"
+#import "myPickerViewController.h"
 
 @interface configViewController () <NavigationBarViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
@@ -18,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UIView *mainView;
 @property (strong, nonatomic) IBOutlet UIView *realMainView;
 @property (weak, nonatomic) IBOutlet UIScrollView *realScrollView;
+@property (weak, nonatomic) IBOutlet UILabel *langLabel;
 @end
 
 @implementation configViewController
@@ -27,6 +29,15 @@
     //[configController setDelegate:self];
     [self.navigationController pushViewController:personModifyController animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
+    
+}
+- (IBAction)langBtnClick:(id)sender {
+    
+    myPickerViewController *myPickerController = [[myPickerViewController alloc] init];
+    [myPickerController setDelegate:self];
+    
+    [myPickerController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [self presentViewController:myPickerController animated:YES completion:nil];
     
 }
 - (IBAction)newsViewClick:(id)sender {
@@ -39,6 +50,7 @@
 
 - (IBAction)changeInfor:(id)sender {
     
+   
     
 }
 
@@ -52,6 +64,8 @@
     [self.view setBackgroundColor:UIColorFromRGB(0xffffff)];
     
     [self resetNavigationBarView:1];
+    
+    _emailLabel.text = [[NSUserDefaults standardUserDefaults] stringForKey:kEmail];
     // Do any additional setup after loading the view from its nib.
 //    self.
 //    for (UIView *subView in self.view) {
@@ -70,6 +84,8 @@
 //    self.myScrollView.contentSize = self.contentView.frame.size;
 //    self.myScrollView.contentSize = CGSizeMake(self.contentView.frame.size.width, self.contentView.frame.size.height+100);
 //    //((UIScrollView *)self.view).contentSize = self.contentView.frame.size;
+    
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -163,11 +179,17 @@
 
 - (void)didTouchBackButton
 {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
     
     if ([self.delegate respondsToSelector:@selector(didTouchBackButton)]) {
         [self.delegate didTouchBackButton];
     }
+}
+
+#pragma mark -picker
+- (void)didTouchPicker{
+    
+    [_langLabel setText:[[NSUserDefaults standardUserDefaults] stringForKey:klang]];
 }
 
 

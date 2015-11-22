@@ -25,7 +25,118 @@
 @implementation pwdChangeViewController
 
 - (IBAction)saveClick:(id)sender {
-     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    //manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    //manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    NSMutableDictionary *sendDic = [NSMutableDictionary dictionary];
+    NSMutableDictionary *rootDic = [NSMutableDictionary dictionary];
+    NSMutableDictionary *indiv_infoDic = [NSMutableDictionary dictionary];
+    
+    [rootDic setObject:@"" forKey:@"task"];
+    [rootDic setObject:@"" forKey:@"action"];
+    [rootDic setObject:@"M2020N" forKey:@"serviceCode"];
+    [rootDic setObject:@"S_SNYM2020" forKey:@"requestMessage"];
+    [rootDic setObject:@"S_SNYM2020" forKey:@"responseMessage"];
+    
+    //회원번호
+    //아이디
+    //단말기고유번고
+    //변경전 PIN
+    //변경후 PIN
+    
+    if([[NSUserDefaults standardUserDefaults] stringForKey:kCardCode]){
+        [indiv_infoDic setObject:[[NSUserDefaults standardUserDefaults] stringForKey:kCardCode] forKey:@"user_seq"];
+    }
+    if([[NSUserDefaults standardUserDefaults] stringForKey:kId]){
+        [indiv_infoDic setObject:[[NSUserDefaults standardUserDefaults] stringForKey:kEmail_id] forKey:@"email_id"];
+    }
+    if([[NSUserDefaults standardUserDefaults] stringForKey:kUUID]){
+        [indiv_infoDic setObject:[[NSUserDefaults standardUserDefaults] stringForKey:kUUID] forKey:@"tmn_unq_no"];
+    }
+    [indiv_infoDic setObject:oldPwdTxt.text forKey:@"bf_pinno"];
+    [indiv_infoDic setObject:newPwdTxt.text forKey:@"af_pinno"];
+    
+    [sendDic setObject:rootDic forKey:@"root_info"];
+    [sendDic setObject:indiv_infoDic forKey:@"indiv_info"];//////
+    
+    SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+    NSString *jsonString = [jsonWriter stringWithObject:sendDic];
+    NSLog(@"request json: %@", jsonString);
+    
+    NSDictionary *parameters = @{@"plainJSON": jsonString};
+    
+    [manager POST:API_URL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"JSON: %@", responseObject);
+        
+        NSString *responseData = (NSString*) responseObject;
+        NSArray *jsonArray = (NSArray *)responseData;
+        NSDictionary * dicResponse = (NSDictionary *)responseData;
+        
+        //warning
+        NSDictionary *dicItems = [dicResponse objectForKey:@"WARNING"];
+        
+        if(dicItems){
+            NSString* sError = dicItems[@"msg"];
+            
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:sError delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+            [alert show];
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }else{
+            
+            //to json
+            SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+            NSString *jsonString = [jsonWriter stringWithObject:jsonArray];
+            NSLog(@"jsonString ==> %@", jsonString);
+            
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+            NSHTTPCookie *cookie;
+            NSMutableDictionary *cookieProperties = [NSMutableDictionary dictionary];
+            [cookieProperties setObject:@"locale_" forKey:NSHTTPCookieName];
+            [cookieProperties setObject:@"KO" forKey:NSHTTPCookieValue];
+            [cookieProperties setObject:@"vntst.shinhanglobal.com" forKey:NSHTTPCookieDomain];
+            [cookieProperties setObject:@"vntst.shinhanglobal.com" forKey:NSHTTPCookieOriginURL];
+            [cookieProperties setObject:@"/" forKey:NSHTTPCookiePath];
+            [cookieProperties setObject:@"0" forKey:NSHTTPCookieVersion];
+            // set expiration to one month from now
+            [cookieProperties setObject:[[NSDate date] dateByAddingTimeInterval:2629743] forKey:NSHTTPCookieExpires];
+            cookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+            
+            for (cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
+                NSLog(@"%@=%@", cookie.name, cookie.value);
+            }
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"비밀번호변경 완료" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+            [alert show];
+            
+            //set kCardCode
+            [[NSUserDefaults standardUserDefaults] setObject:newPwdTxt.text forKey:kPwd];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            //emailTxt.text = strEmail;
+            
+        }
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Fail %@", error] delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kLoginY];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+    }];
+
+    
+     //[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewDidLoad {
@@ -33,6 +144,8 @@
     // Do any additional setup after loading the view from its nib.
     [self resetNavigationBarView:1];
     [self setDelegateText];
+    
+    [oldPwdTxt setText:[[NSUserDefaults standardUserDefaults] stringForKey:kPwd]];
 }
 /////
 - (void)viewDidAppear:(BOOL)animated
@@ -117,7 +230,7 @@
 
 - (NavigationBarView *)navigationBarView:(NSInteger)navigationType
 {
-    navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:SETINFO_TITLE_KO];
+    navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:@"비밀번호 변경"];
     [navigationBarView setDelegate:self];
     
     return navigationBarView;

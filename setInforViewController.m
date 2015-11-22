@@ -13,6 +13,7 @@
 #import "completeViewController.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "SBJson.h"
+#import "datePickerViewController.h"
 
 
 @interface setInforViewController () <NavigationBarViewDelegate>
@@ -243,45 +244,49 @@
         
         [self.view endEditing:YES];
         
-        if(yourDatePickerView){
-            for (UIView *subView in yourDatePickerView.subviews) {
-                [subView removeFromSuperview];
-            }
-            
-            [yourDatePickerView removeFromSuperview];
-        }
+//        if(yourDatePickerView){
+//            for (UIView *subView in yourDatePickerView.subviews) {
+//                [subView removeFromSuperview];
+//            }
+//            [yourDatePickerView removeFromSuperview];
+//        }
+//        yourDatePickerView = [[UIView alloc]initWithFrame:CGRectMake(0, kScreenBoundsHeight-250, kScreenBoundsWidth, 250)];
+//        [yourDatePickerView setBackgroundColor:UIColorFromRGB(0xffffff)];
+//        //date picker
+//        _datepicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, kScreenBoundsHeight-200*3, kScreenBoundsWidth, 200)];
+//        _datepicker.datePickerMode = UIDatePickerModeDate;
+//        _datepicker.hidden = NO;
+//        _datepicker.date = [NSDate date];
+//        [_datepicker addTarget:self action:@selector(LabelChange:) forControlEvents:UIControlEventValueChanged];
+//        [yourDatePickerView addSubview:_datepicker];
+//        //close button
+//        UIButton* closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [closeButton setFrame:CGRectMake(0, kScreenBoundsHeight-600, kScreenBoundsWidth, 50)];
+//        [closeButton setBackgroundColor:[UIColor clearColor]];
+//        [closeButton setBackgroundImage:[UIImage imageNamed:@"login_btn_press.png"] forState:UIControlStateHighlighted];
+//        [closeButton setBackgroundImage:[UIImage imageNamed:@"login_btn.png"] forState:UIControlStateNormal];
+//        [closeButton addTarget:self action:@selector(dateCloseBtn) forControlEvents:UIControlEventTouchUpInside];
+//        [closeButton setTitle:@"Close" forState:UIControlStateNormal];
+//        [closeButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17]];
+//        closeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+//        [yourDatePickerView addSubview:closeButton];
+//        [self showView];
+
+        datePickerViewController *myPickerController = [[datePickerViewController alloc] init];
+        [myPickerController setDelegate:self];
         
-        yourDatePickerView = [[UIView alloc]initWithFrame:CGRectMake(0, kScreenBoundsHeight-250, kScreenBoundsWidth, 250)];
+        [myPickerController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+        [self presentViewController:myPickerController animated:YES completion:nil];
         
-        [yourDatePickerView setBackgroundColor:UIColorFromRGB(0xffffff)];
-        
-        
-        //date picker
-        _datepicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, kScreenBoundsHeight-200*3, kScreenBoundsWidth, 200)];
-        _datepicker.datePickerMode = UIDatePickerModeDate;
-        _datepicker.hidden = NO;
-        _datepicker.date = [NSDate date];
-        [_datepicker addTarget:self action:@selector(LabelChange:) forControlEvents:UIControlEventValueChanged];
-        [yourDatePickerView addSubview:_datepicker];
-        
-        //close button
-        UIButton* closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [closeButton setFrame:CGRectMake(0, kScreenBoundsHeight-600, kScreenBoundsWidth, 50)];
-        [closeButton setBackgroundColor:[UIColor clearColor]];
-        [closeButton setBackgroundImage:[UIImage imageNamed:@"login_btn_press.png"] forState:UIControlStateHighlighted];
-        [closeButton setBackgroundImage:[UIImage imageNamed:@"login_btn.png"] forState:UIControlStateNormal];
-        [closeButton addTarget:self action:@selector(dateCloseBtn) forControlEvents:UIControlEventTouchUpInside];
-        [closeButton setTitle:@"Close" forState:UIControlStateNormal];
-        [closeButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17]];
-        
-        closeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-        [yourDatePickerView addSubview:closeButton];
-        
-        [self showView];
         return NO;
     }
     
     return YES;
+}
+
+- (void)didTouchPicker
+{
+    [yearText setText: [[NSUserDefaults standardUserDefaults] stringForKey:kYYYYMMDD]];
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField
@@ -387,7 +392,6 @@
 {
     return YES;
 }
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];

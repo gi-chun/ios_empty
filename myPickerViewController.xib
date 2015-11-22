@@ -7,8 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="myPickerViewController">
             <connections>
-                <outlet property="langLabel" destination="e3C-dt-OJB" id="KYk-F5-ihN"/>
-                <outlet property="myPicker" destination="V19-Cl-Xfz" id="fqN-hx-Zuc"/>
+                <outlet property="langLabel" destination="e3C-dt-OJB" id="CDr-7X-fuv"/>
+                <outlet property="myPicker" destination="eDc-HN-xbw" id="zQP-Ph-ZHn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,13 +20,7 @@
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iXr-L1-c3i">
                     <rect key="frame" x="0.0" y="131" width="320" height="403"/>
                     <subviews>
-                        <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="V19-Cl-Xfz">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
-                            <date key="date" timeIntervalSinceReferenceDate="469814862.13224399">
-                                <!--2015-11-21 16:07:42 +0000-->
-                            </date>
-                        </datePicker>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="yyyymmdd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3C-dt-OJB">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="VIETNAMESE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3C-dt-OJB">
                             <rect key="frame" x="117" y="246" width="134" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -46,6 +40,12 @@
                                 <action selector="okClick:" destination="-1" eventType="touchUpInside" id="h2g-LB-DzU"/>
                             </connections>
                         </button>
+                        <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eDc-HN-xbw">
+                            <rect key="frame" x="0.0" y="15" width="320" height="216"/>
+                            <accessibility key="accessibilityConfiguration">
+                                <bool key="isElement" value="YES"/>
+                            </accessibility>
+                        </pickerView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>

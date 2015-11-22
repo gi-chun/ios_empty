@@ -359,6 +359,12 @@
             [[NSUserDefaults standardUserDefaults] setObject:txtPwd.text forKey:kPwd];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
+            [[NSUserDefaults standardUserDefaults] setObject:dicItems[@"email"] forKey:kEmail];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            [[NSUserDefaults standardUserDefaults] setObject:dicItems[@"email_id"] forKey:kEmail_id];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
             NSString* sUserNm = dicItems[@"user_nm"];
             [[NSUserDefaults standardUserDefaults] setObject:sUserNm forKey:kUserNm];
             [[NSUserDefaults standardUserDefaults] synchronize];

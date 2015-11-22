@@ -20,6 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [_dataPickerMe addTarget:self
+               action:@selector(datePickerValueChanged:)
+     forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -35,6 +39,34 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)okClick:(id)sender {
+    
+    if ([self.delegate respondsToSelector:@selector(didTouchPicker)]) {
+        [self.delegate didTouchPicker];
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+- (void)datePickerValueChanged:(id)sender{
+    
+    UIDatePicker *picker = (UIDatePicker *)sender;
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc]init];
+    df.dateStyle = NSDateFormatterMediumStyle;
+    
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyyMMdd"];
+    NSString *date = [dateFormat stringFromDate:picker.date];
+    NSLog(@"date is >>> , %@",date);
+    
+    NSLog(@"%@",[NSString stringWithFormat:@"%@",[df stringFromDate:picker.date]]);
+    
+    [_dayLable setText:date];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:date forKey:kYYYYMMDD];
+    
     
 }
 

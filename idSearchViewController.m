@@ -11,6 +11,7 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "SBJson.h"
 #import "NavigationBarView.h"
+#import "datePickerViewController.h"
 
 @interface idSearchViewController () <NavigationBarViewDelegate>
 {
@@ -18,13 +19,132 @@
     __weak IBOutlet UITextField *idTxt;
     NavigationBarView *navigationBarView;
     UITextField* currentEditingTextField;
+    __weak IBOutlet UILabel *yyyyLabel;
 }
 @end
 
 @implementation idSearchViewController
-- (IBAction)dayButtonClick:(id)sender {
+
+- (void)didTouchPicker{
+    
+//    [[NSUserDefaults standardUserDefaults] setObject:dicItems[@"email"] forKey:kYYYYMMDD];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+    UITextField* currentEditingTextField;
+   
+    [yyyyLabel setText:[[NSUserDefaults standardUserDefaults] stringForKey:kYYYYMMDD]];
+
 }
+
+- (IBAction)dayButtonClick:(id)sender {
+    
+    datePickerViewController *myPickerController = [[datePickerViewController alloc] init];
+    [myPickerController setDelegate:self];
+    
+    [myPickerController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [self presentViewController:myPickerController animated:YES completion:nil];
+}
+
 - (IBAction)saveBtnClick:(id)sender {
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    NSMutableDictionary *sendDic = [NSMutableDictionary dictionary];
+    NSMutableDictionary *rootDic = [NSMutableDictionary dictionary];
+    NSMutableDictionary *indiv_infoDic = [NSMutableDictionary dictionary];
+    
+    [rootDic setObject:TASK_USR forKey:@"task"];
+    [rootDic setObject:@"searchEmail" forKey:@"action"];
+    [rootDic setObject:@"" forKey:@"serviceCode"];
+    [rootDic setObject:@"" forKey:@"requestMessage"];
+    [rootDic setObject:@"" forKey:@"responseMessage"];
+    
+    [indiv_infoDic setObject:yyyyLabel.text forKey:@"birth"];
+    [indiv_infoDic setObject:idTxt.text forKey:@"user_nm"];
+    
+    [sendDic setObject:rootDic forKey:@"root_info"];
+    [sendDic setObject:indiv_infoDic forKey:@"indiv_info"];//////
+    
+    SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+    NSString *jsonString = [jsonWriter stringWithObject:sendDic];
+    NSLog(@"request json: %@", jsonString);
+    
+    NSDictionary *parameters = @{@"plainJSON": jsonString};
+    
+    [manager POST:API_URL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"JSON: %@", responseObject);
+        
+        NSString *responseData = (NSString*) responseObject;
+        NSArray *jsonArray = (NSArray *)responseData;
+        NSDictionary * dicResponse = (NSDictionary *)responseData;
+        
+        //warning
+        NSDictionary *dicItems = [dicResponse objectForKey:@"WARNING"];
+        
+        if(dicItems){
+            NSString* sError = dicItems[@"msg"];
+            
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:sError delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+            [alert show];
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }else{
+            
+            dicItems = [dicResponse objectForKey:@"indiv_info"];
+            NSString* sEmail = dicItems[@"email_id"];
+            
+            
+            //to json
+            SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+            NSString *jsonString = [jsonWriter stringWithObject:jsonArray];
+            NSLog(@"jsonString ==> %@", jsonString);
+            
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+            NSHTTPCookie *cookie;
+            NSMutableDictionary *cookieProperties = [NSMutableDictionary dictionary];
+            [cookieProperties setObject:@"locale_" forKey:NSHTTPCookieName];
+            [cookieProperties setObject:@"KO" forKey:NSHTTPCookieValue];
+            [cookieProperties setObject:@"vntst.shinhanglobal.com" forKey:NSHTTPCookieDomain];
+            [cookieProperties setObject:@"vntst.shinhanglobal.com" forKey:NSHTTPCookieOriginURL];
+            [cookieProperties setObject:@"/" forKey:NSHTTPCookiePath];
+            [cookieProperties setObject:@"0" forKey:NSHTTPCookieVersion];
+            // set expiration to one month from now
+            [cookieProperties setObject:[[NSDate date] dateByAddingTimeInterval:2629743] forKey:NSHTTPCookieExpires];
+            cookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+            
+            for (cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
+                NSLog(@"%@=%@", cookie.name, cookie.value);
+            }
+            
+            NSString * stSearch = [NSString stringWithFormat:@"조회된 아이디는 [%@] 입니다. ", sEmail];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:stSearch delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+            [alert show];
+            
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kLoginY];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+            
+        }
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Fail %@", error] delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kLoginY];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+    }];
+
+    
 }
 
 - (void)viewDidLoad {
@@ -32,6 +152,9 @@
     // Do any additional setup after loading the view from its nib.
     [self resetNavigationBarView:1];
     [self setDelegateText];
+    
+    idTxt.text = [[NSUserDefaults standardUserDefaults] stringForKey:kUserNm] ;
+    
 }
 /////
 - (void)viewDidAppear:(BOOL)animated
@@ -130,7 +253,7 @@
 
 - (NavigationBarView *)navigationBarView:(NSInteger)navigationType
 {
-    navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:SETINFO_TITLE_KO];
+    navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:@"아이디 찾기"];
     [navigationBarView setDelegate:self];
     
     return navigationBarView;

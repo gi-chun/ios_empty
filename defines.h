@@ -20,10 +20,14 @@ static NSString * const kAutoLogin       = @"autoLogin";
 static NSString * const kId       = @"kId";
 static NSString * const kPwd       = @"kPwd";//
 static NSString * const kUserNm       = @"kUserNm";//
+static NSString * const kEmail       = @"kEmail";//
+static NSString * const kEmail_id       = @"kEmail_id";//
 static NSString * const kLoginY       = @"loginY";         //로그인성공여부
 static NSString * const kCardCode       = @"cardCode";         //
 static NSString * const kAgreeOk       = @"agreeOk";
 static NSString * const kPushY       = @"pushY";         // language
+static NSString * const kYYYYMMDD       = @"kYYYYMMDD";         // language
+
 
 static NSString *SUNNY_CLUB_URL     = @"https://vntst.shinhanglobal.com/sunny/sunnyclub/index.jsp?%@";  //클럽메인
 static NSString *SUNNY_BANK_URL     = @"https://vntst.shinhanglobal.com/sunny/bank/main.jsp?%@";        //뱅크메인
@@ -31,6 +35,9 @@ static NSString *NEW_NEWS_URL       = @"https://vntst.shinhanglobal.com/sunny/se
 static NSString *SHINHAN_ZONE_URL   = @"https://vntst.shinhanglobal.com/sunny/bank/shinhanzone.jsp";    //신한존
 static NSString *SETTING_URL        = @"https://vntst.shinhanglobal.com/sunny/faq_test.jsp";
 static NSString *API_URL            = @"https://vntst.shinhanglobal.com/sunny/jsp/callSunnyJsonTaskService.jsp";
+
+static NSString *TASK_USR           = @"sfg.sunny.task.user.UserTask";
+
 
 static NSString *LOGIN_TITLE_KO     = @"로그인";
 static NSString *SETINFO_TITLE_KO     = @"정보입력";

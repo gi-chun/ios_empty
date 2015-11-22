@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="contentView" destination="Frs-dA-WFF" id="OYI-tH-COJ"/>
                 <outlet property="emailLabel" destination="Vll-SG-E9i" id="dia-6w-SHg"/>
+                <outlet property="langLabel" destination="A4b-Mv-aTT" id="IMb-NK-lMS"/>
                 <outlet property="mainView" destination="i5M-Pr-FkT" id="cyf-i1-edj"/>
                 <outlet property="myScrollView" destination="ncq-MJ-OzJ" id="rsg-kE-3ve"/>
                 <outlet property="needLabel" destination="ZF5-e8-dTC" id="EBl-Ym-Kg3"/>
@@ -110,20 +111,6 @@
                                 <action selector="newsViewClick:" destination="-1" eventType="touchUpInside" id="ki4-dF-c7U"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0n-HX-tCo">
-                            <rect key="frame" x="51" y="15" width="253" height="30"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                            <state key="normal" title="&gt;">
-                                <color key="titleColor" red="0.82974273990000003" green="0.82974273990000003" blue="0.82974273990000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                <rect key="frame" x="99" y="8" width="205" height="49"/>
-                            </variation>
-                            <connections>
-                                <action selector="changeInfor:" destination="-1" eventType="touchUpInside" id="330-qT-eEW"/>
-                                <action selector="personalChange:" destination="-1" eventType="touchUpInside" id="DAz-hy-bc0"/>
-                            </connections>
-                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZQ-G3-fKO">
                             <rect key="frame" x="-7" y="144" width="316" height="1"/>
                             <color key="backgroundColor" red="0.82974273990000003" green="0.82974273990000003" blue="0.82974273990000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -154,6 +141,20 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0n-HX-tCo">
+                            <rect key="frame" x="51" y="15" width="253" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                            <state key="normal" title="&gt;">
+                                <color key="titleColor" red="0.82974273990000003" green="0.82974273990000003" blue="0.82974273990000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                <rect key="frame" x="99" y="8" width="205" height="49"/>
+                            </variation>
+                            <connections>
+                                <action selector="changeInfor:" destination="-1" eventType="touchUpInside" id="330-qT-eEW"/>
+                                <action selector="personalChange:" destination="-1" eventType="touchUpInside" id="DAz-hy-bc0"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
@@ -245,11 +246,31 @@
                             <state key="normal" title="⌵">
                                 <color key="titleColor" red="0.82974273990000003" green="0.82974273990000003" blue="0.82974273990000003" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="langBtnClick:" destination="-1" eventType="touchUpInside" id="0WA-jt-12q"/>
+                            </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VIETNAMESE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4b-Mv-aTT">
+                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                <rect key="frame" x="149" y="36" width="116" height="21"/>
+                            </variation>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <variation key="default">
+                        <mask key="subviews">
+                            <exclude reference="A4b-Mv-aTT"/>
+                        </mask>
+                    </variation>
                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="8" y="358" width="304" height="76"/>
+                        <mask key="subviews">
+                            <include reference="A4b-Mv-aTT"/>
+                        </mask>
                     </variation>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P8N-ke-2KB">
