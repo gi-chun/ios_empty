@@ -44,6 +44,7 @@ static NSString *SETINFO_TITLE_KO     = @"정보입력";
 static NSString *COMPLETE_TITLE_KO     = @"회원가입 완료";
 static NSString *CONFIG_KO     = @"설정";
 
+#define PWD_MAX_LENGTH             4
 
 
 #endif /* defines_h */

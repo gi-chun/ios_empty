@@ -47,6 +47,8 @@
     [spinner setCenter:CGPointMake(kScreenBoundsWidth/2.0, kScreenBoundsHeight/2.0)]; // I do this because I'm in landscape mode
     [self.view addSubview:spinner]; // spinner is not visible until started
     
+    //txtPwd set
+    
     [self resetNavigationBarView:1];
     
 }
@@ -54,6 +56,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [txtPwd setKeyboardType:UIKeyboardTypeNumberPad ];
     
     txtID.text = [[NSUserDefaults standardUserDefaults] stringForKey:kId] ;
     txtPwd.text = [[NSUserDefaults standardUserDefaults] stringForKey:kPwd] ;
@@ -529,6 +533,16 @@
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self endEdit];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (txtPwd.text.length >= PWD_MAX_LENGTH && range.length == 0)
+    {
+        return NO; // return NO to not change text
+    }
+    else
+    {return YES;}
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

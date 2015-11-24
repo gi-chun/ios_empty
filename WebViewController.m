@@ -6,52 +6,12 @@
 //
 
 #import "WebViewController.h"
-//#import "CPMartSearchViewController.h"
-//#import "CPSearchViewController.h"
-//#import "CPPopupViewController.h"
-//#import "CPContactViewController.h"
-//#import "CPShareViewController.h"
-//#import "CPSnapshotViewController.h"
-//#import "CPSnapshotListViewController.h"
-//#import "CPProductListViewController.h"
-//#import "PhotoReviewController.h"
-//#import "SetupController.h"
-//#import "SetupNotifyController.h"
-//#import "SetupOtpController.h"
-//#import "CPWebView.h"
-//#import "CPPopupBrowserView.h"
-//#import "CPNavigationBarView.h"
-//#import "CPVideoPopupView.h"
-//#import "CPVideoInfo.h"
-//#import "CPSchemeManager.h"
 #import "WebView.h"
 #import "configViewController.h"
-//#import "CPCommonInfo.h"
 #import "NavigationBarView.h"
 #import "UIViewController+MMDrawerController.h"
 #import "LoginViewController.h"
-//#import "CPMartSearchViewController.h"
-//#import "CPMenuViewController.h"
-//#import "CPDeveloperInfo.h"
-//#import "CPCategoryMainViewController.h"
-//#import "CPCategoryDetailViewController.h"
-//#import "CPProductListViewController.h"
-//#import "CPProductViewController.h"
-//#import "CPHomeViewController.h"
-//
-//#import "Modules.h"
-//#import "UIViewController+MMDrawerController.h"
-//#import "AccessLog.h"
-//#import "RegexKitLite.h"
-//#import "ShakeModule.h"
-//#import "ImageViewer.h"
-//#import "ActionSheet.h"
-//#import "ShakeModule.h"
-//#import "SBJSON.h"
-//#import "NSString+SBJSON.h"
-//#import "LocalNotification.h"
-//
-//#import <MediaPlayer/MediaPlayer.h>
+
 @interface WebViewController () <WebViewDelegate>
 {
     NSString *webViewUrl;
@@ -71,6 +31,8 @@
     BOOL isSkipParent;
     BOOL isIgnore;
     BOOL isProduct;
+    
+    NSInteger gShowNavigation;
 }
 
 //@property (nonatomic, strong) CPNavigationBarView *navigationBarView;
@@ -136,7 +98,7 @@
 {
     [super viewDidLoad];
 
-    // iOS7 Layout
+    // iOS7 Layout gclee
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
     }
@@ -220,7 +182,7 @@
 
 - (void)initLayout
 {
-    self.webView = [[WebView alloc] initWithFrame:CGRectMake(0, 10, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight-5) isSub:YES];
+    self.webView = [[WebView alloc] initWithFrame:CGRectMake(0, kNavigationHeight, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight) isSub:YES];
     [self.webView setDelegate:self];
     [self.webView setHiddenToolBarView:NO];
     [self.view addSubview:self.webView];
@@ -265,8 +227,9 @@
 - (NavigationBarView *)navigationBarView:(NSInteger)navigationType
 {
     navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType];
+    
     [navigationBarView setDelegate:self];
-
+    
     
     //    // 개발자모드 진입점
     //    [self initDeveloperInfo:logoButton];
@@ -288,15 +251,15 @@
         [self.navigationController setNavigationBarHidden:YES];
         
         if ([SYSTEM_VERSION intValue] > 6) {
-            webViewFrame = CGRectMake(0, 10, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight);
+            webViewFrame = CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight);
         }
         else {
-            webViewFrame = CGRectMake(0, 10, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight);
+            webViewFrame = CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight);
         }
     }
     else {
         [self.navigationController setNavigationBarHidden:NO];
-        webViewFrame = CGRectMake(0, 10, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight);
+        webViewFrame = CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight);
     }
     
     if (self.webView) {
@@ -319,10 +282,11 @@
     }
 }
 
+//gclee
 - (void)openWebView:(NSString *)url mutableRequest:(NSMutableURLRequest *)request
 {
     //BOOL isException = [CPCommonInfo isExceptionalUrl:url];
-    BOOL isException = false;
+    BOOL isException = false;//중요 중요
     CGRect webViewFrame;
     
     // Exception URL은 네비게이션바없는 풀화면으로 보여줌
@@ -330,15 +294,16 @@
         [self.navigationController setNavigationBarHidden:YES];
         
         if ([SYSTEM_VERSION intValue] > 6) {
-            webViewFrame = CGRectMake(0, 10, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight);
+            webViewFrame = CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-200);
         }
         else {
-            webViewFrame = CGRectMake(0, 10, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight);
+            webViewFrame = CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-200);
         }
+        [self.webView reCreateToolbar];
     }
     else {
         [self.navigationController setNavigationBarHidden:NO];
-        webViewFrame = CGRectMake(0, 10, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight);
+        webViewFrame = CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight);
     }
     
     if (self.webView) {
@@ -445,6 +410,35 @@
 
 }
 
+- (void)didTouchSunnyButton
+{
+    NSString* gLocalLang = @"";
+    NSString *callUrl = @"";
+    
+    gLocalLang = @"ko";
+    callUrl = [NSString stringWithFormat:SUNNY_CLUB_URL, gLocalLang];
+    
+    NSURL *Nurl = [NSURL URLWithString:callUrl];
+    NSMutableURLRequest *mutableRequest = [NSMutableURLRequest requestWithURL:Nurl];
+    
+    NSMutableString *cookieStringToSet = [[NSMutableString alloc] init];
+    NSHTTPCookie *cookie;
+    
+    for (cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
+        NSLog(@"%@=%@", cookie.name, cookie.value);
+        [cookieStringToSet appendFormat:@"%@=%@;",cookie.name, cookie.value];
+    }
+                        
+    if (cookieStringToSet.length) {
+        [mutableRequest setValue:cookieStringToSet forHTTPHeaderField:@"Cookie"];
+        NSLog(@"Cookie : %@", cookieStringToSet);
+    }
+    
+    [self openWebView:callUrl mutableRequest:mutableRequest];
+    
+}
+
+
 - (void)didTouchMenuButton
 {
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
@@ -549,6 +543,28 @@
     NSString *url = request ? request.URL.absoluteString : nil;
     
     NSLog(@"url:%@", url);
+    
+    //0: club 1:previous 2:   3:bank 4:hide
+    NSInteger showNavigation = 1; //1: show, 2: hidden
+    if(!([url rangeOfString:@"vntst.shinhanglobal.com/sunny/sunnyclub/index.jsp?"].location == NSNotFound)){
+        //TODO
+        NSLog(@"문자열이 포함됨");
+        showNavigation = 0;
+        gShowNavigation = 0;
+        [self initNavigation:0];
+        
+    }else if (!([url rangeOfString:@"vntst.shinhanglobal.com/sunny/bank/main.jsp?"].location == NSNotFound)){
+        //TODO
+        NSLog(@"문자열이 포함됨");
+        showNavigation = 3;
+        gShowNavigation = 3;
+        [self initNavigation:3];
+    }else{
+        showNavigation = 4;
+        gShowNavigation = 4;
+        [self initNavigation:4];
+    }
+
     
     //앱링크로 리다이렉트
 //    if ([url isMatchedByRegex:@"/MW/html/category/grp.html"]) {
@@ -689,7 +705,7 @@
     
     //외부 URL 체크
 //    [self isExternalUrl:url];
-    
+
     return YES;
 }
 
@@ -739,17 +755,29 @@
         }
     }
     
-//    switch (navigationType) {
-//        case 2:
-//            [self.navigationController.navigationBar addSubview:[self navigationBarView:2]];
-//            [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-//            break;
-//        case 1:
-//        default:
-//            [self.navigationController.navigationBar addSubview:[self navigationBarView:0]];
-//            [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-//            break;
-//    }
+    switch (navigationType) {
+        case 1:
+            [self.navigationController.navigationBar addSubview:[self navigationBarView:1]];
+            [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+            break;
+        case 2:
+            [self.navigationController.navigationBar addSubview:[self navigationBarView:2]];
+            [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+            break;
+        case 3:
+            [self.navigationController.navigationBar addSubview:[self navigationBarView:3]];
+            [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+            break;
+        case 4:
+            [self.navigationController.navigationBar addSubview:[self navigationBarView:4]];
+            [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+            break;
+
+        default:
+            [self.navigationController.navigationBar addSubview:[self navigationBarView:0]];
+            [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+            break;
+    }
     
 }
 
@@ -775,25 +803,30 @@
 
 - (void)didTouchToolBarButton:(UIButton *)button;
 {
-//    NSLog(@"currentWebView.tag:%li, currentNaviType:%li", (long)currentHomeTab, (long)[[CPCommonInfo sharedInfo] currentNavigationType]);
-    //홈이거나 백버튼(히스토리없을 경우)
-    if (button.tag == 5) {
-        [self.navigationController.navigationBar addSubview:[self navigationBarView:1]];
-        
-        [self.navigationController setNavigationBarHidden:NO];
-        [self.navigationController popToRootViewControllerAnimated:NO];
-//        [self reloadHomeTab];
-        
-//        [[NSNotificationCenter defaultCenter] postNotificationName:ReloadHomeNotification object:self];
-    }
-    else if (button.tag == 1) {
-        [self.navigationController setNavigationBarHidden:NO];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    else if (button.tag == 2) {
-//        [self.navigationController pushViewController:[[CPCommonInfo sharedInfo] lastViewController] animated:YES];
-//        [self.navigationController.navigationBar addSubview:[self navigationBarView:[Modules isMatchedGNBUrl:[self.webView url]]]];
-    }
+    //new
+    //광고 열기
+    [self didTouchAD];
+    
+    
+////    NSLog(@"currentWebView.tag:%li, currentNaviType:%li", (long)currentHomeTab, (long)[[CPCommonInfo sharedInfo] currentNavigationType]);
+//    //홈이거나 백버튼(히스토리없을 경우)
+//    if (button.tag == 5) {
+//        [self.navigationController.navigationBar addSubview:[self navigationBarView:1]];
+//        
+//        [self.navigationController setNavigationBarHidden:NO];
+//        [self.navigationController popToRootViewControllerAnimated:NO];
+////        [self reloadHomeTab];
+//        
+////        [[NSNotificationCenter defaultCenter] postNotificationName:ReloadHomeNotification object:self];
+//    }
+//    else if (button.tag == 1) {
+//        [self.navigationController setNavigationBarHidden:NO];
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }
+//    else if (button.tag == 2) {
+////        [self.navigationController pushViewController:[[CPCommonInfo sharedInfo] lastViewController] animated:YES];
+////        [self.navigationController.navigationBar addSubview:[self navigationBarView:[Modules isMatchedGNBUrl:[self.webView url]]]];
+//    }
 }
 
 - (void)didTouchSnapshotPopOverButton:(UIButton *)button buttonInfo:(NSDictionary *)buttonInfo
@@ -985,100 +1018,6 @@
     [navigationBarView setSearchTextField:keyword];
 }
 
-//- (void)openPopupViewController:(NSString *)linkUrl
-//{
-//    CPPopupViewController *popViewController = [[CPPopupViewController alloc] init];
-//    [popViewController setTitle:@""];
-//    [popViewController setIsLoginType:NO];
-//    [popViewController setRequestUrl:linkUrl];
-//    [popViewController setDelegate:self];
-//    [popViewController initLayout];
-//
-//    [self presentViewController:popViewController animated:YES completion:nil];
-//}
-//
-////photoReview
-//- (void)openPhotoReviewController:(NSDictionary *)reviewInfo
-//{
-//    PhotoReviewController *viewController = [[PhotoReviewController alloc] init];
-//    [viewController setProperties:reviewInfo];
-//    
-//    if ([SYSTEM_VERSION intValue] < 7) {
-//        [viewController setWantsFullScreenLayout:YES];
-//    }
-//    
-//    UINavigationController *naviController = [[UINavigationController alloc] initWithRootViewController:viewController];
-//    [self presentViewController:naviController animated:YES completion:nil];
-//}
-//
-////contact
-//- (void)openContactViewController:(NSDictionary *)contactInfo
-//{
-//    CPContactViewController *viewController = [[CPContactViewController alloc] initWithContact:contactInfo];
-//    [viewController setDelegate:self];
-//    
-//    [self presentViewController:viewController animated:YES completion:nil];
-//}
-//
-//- (void)closeContactViewController
-//{
-//    UIViewController *viewController = [self presentedViewController];
-//    [viewController dismissViewControllerAnimated:YES completion:nil];
-//}
-//
-////popupBrowser
-//- (void)openPopupBrowserView:(NSDictionary *)popupInfo
-//{
-//    //구매옵션이 열려있으면 닫아준다.
-//    if (self.webView) {
-//        [self.webView closeProductOption];
-//    }
-//
-//    CGFloat statusBarY = [SYSTEM_VERSION intValue] >= 7 ? 20.f : 0.f;
-//    CGFloat statusBarHeight = 20.f;
-//    
-//    popUpBrowserView = [[CPPopupBrowserView alloc] initWithFrame:CGRectMake(0,
-//                                                                            kScreenBoundsHeight,
-//                                                                            kScreenBoundsWidth,
-//                                                                            kScreenBoundsHeight-statusBarHeight)
-//                                                       popupInfo:popupInfo
-//                                                  executeWebView:self.webView];
-//    
-//    [popUpBrowserView setDelegate:self];
-//    [self.navigationController.view addSubview:popUpBrowserView];
-//    
-//    popUpBrowserView.backgroundColor = [UIColor clearColor];
-//    
-//    CGRect frame = popUpBrowserView.frame;
-//    frame.origin.y -= (kScreenBoundsHeight-statusBarY);
-//    
-//    [UIView animateWithDuration:0.3f animations:^{
-//        [popUpBrowserView setFrame:frame];
-//    }];
-//}
-//
-//- (void)closePopupBrowserView:(NSDictionary *)popupInfo
-//{
-//    if (popUpBrowserView) {
-//        [popUpBrowserView removePopupBrowserView];
-//        
-//        NSString *type = [popupInfo objectForKey:@"pType"];
-//        NSString *action = [popupInfo objectForKey:@"pAction"];
-//        
-//        if ([@"script" isEqualToString:type]) {
-//            if (action) {
-//                [self.webView execute:action];
-//            }
-//        }
-//        
-//        if ([@"url" isEqualToString:type]) {
-//            if (action) {
-//                [self openWebView:action request:nil];
-//            }
-//        }
-//    }
-//}
-
 //zoomViewer
 - (void)setZoomViewer:(NSArray *)options
 {
@@ -1131,24 +1070,6 @@
     }
 }
 
-//movie popup
-//- (void)openVideoPopupView:(NSDictionary *)productInfo
-//{
-//    NSDictionary *urlInfo = [[CPCommonInfo sharedInfo] urlInfo];
-//    CPVideoInfo *videoInfo = [CPVideoInfo initWithMovieInfo:productInfo[@"movie"]];
-//    
-//    CPVideoPopupView *videoPopupView = [[CPVideoPopupView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight)
-//                                                                   productInfo:productInfo
-//                                                                       urlInfo:urlInfo
-//                                                                     videoInfo:videoInfo];
-//    [videoPopupView setDelegate:self];
-//    [videoPopupView setUserInteractionEnabled:YES];
-//    [videoPopupView setMovieWithVideoInfo:videoInfo];
-//    [videoPopupView playWithVideoInfo:videoInfo];
-//    
-//    [self.navigationController.view addSubview:videoPopupView];
-//}
-
 //imageView
 //- (void)openImageView:(NSDictionary *)imageInfo
 //{
@@ -1181,16 +1102,7 @@
 //product
 - (void)setProductOption:(BOOL)isEnable
 {
-    //웹뷰에 붙어있는 서랍옵션은 제거
-//    //상품 상세 URL이 아니면 서랍옵션 비노출
-//    if (!isEnable || ![Modules isMatchedProductUrl:[self.webView url]]) {
-//        //서랍제거
-//        [self.webView destoryProductOption];
-//        return;
-//    }
-//    
-//    // 서랍활성화
-//    [self.webView makeProductOption];
+    
 }
 
 //setting
@@ -1222,42 +1134,6 @@
 //    }
 }
 
-//otp
-- (void)setOtp:(NSString *)otpStr
-{
-    //등록된 OTP 단말인지 확인
-//    NSString *otpID = [[NSUserDefaults standardUserDefaults] stringForKey:@"otpRegisterID"];
-//    
-//    if (!otpID || [otpID length] == 0) {
-//        return [Modules alert:NSLocalizedString(@"AlertTitle", nil) message:NSLocalizedString(@"SetupOtpNoRegisterID", nil)];
-//    }
-//    
-//    SetupOtpController *otpController = [[SetupOtpController alloc] init];
-//    
-//    SBJSON *json = [[SBJSON alloc] init];
-//    NSDictionary *otpDic = nil;
-//    
-//    otpStr = [otpStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    otpDic = [json objectWithString:otpStr];
-//    
-//    //외부 스킴으로 호출시 인코딩이 한번 더 되기때문에(UTF-8 이중 인코딩) 두번 풀어야한다.
-//    if (!otpDic) {
-//        otpStr = [otpStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//        otpDic = [json objectWithString:otpStr];
-//    }
-//    
-//    if (!otpDic || !otpDic[@"url"]) {
-//        return [Modules alert:NSLocalizedString(@"AlertTitle", nil) message:NSLocalizedString(@"OtpGeneratorOpenFailed", nil)];
-//    }
-//    
-//    [otpController setPopupMode:YES];
-//    [otpController setActivationCodeInput:NO];
-//    [otpController setUserID:otpID];
-//    [otpController setOtpLayoutUrl:otpDic[@"url"]];
-//    
-//    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:otpController];
-//    [self performSelector:@selector(presentOtpGeneratorController:) withObject:navigationController afterDelay:1.0f];
-}
 
 - (void)presentOtpGeneratorController:(UIViewController *)otpController
 {
@@ -1461,6 +1337,9 @@
 //    [alert show];
     
     NSString* gLocalLang = @"";
+    if([[NSUserDefaults standardUserDefaults] stringForKey:klang]){
+        gLocalLang = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
+    }
     NSString *callUrl = @"";
     
     //Sunny Club
@@ -1550,7 +1429,10 @@
     NSString* gLocalLang = @"";
     NSString *callUrl = @"";
     
-    gLocalLang = @"ko";
+    if([[NSUserDefaults standardUserDefaults] stringForKey:klang]){
+        gLocalLang = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
+    }
+    
     callUrl = [NSString stringWithFormat:SHINHAN_ZONE_URL, gLocalLang];
     
     NSURL *Nurl = [NSURL URLWithString:callUrl];

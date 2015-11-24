@@ -60,6 +60,8 @@
 
 - (void)setHiddenPopover:(BOOL)hidden;
 
+- (void)reCreateToolbar;
+
 @end
 
 @protocol WebViewDelegate <NSObject>

@@ -28,6 +28,7 @@
 - (void)didTouchMenuButton;
 - (void)didTouchBackButton;
 - (void)didTouchBankButton;
+- (void)didTouchSunnyButton;
 - (void)didTouchSearchButton:(NSString *)keywordUrl;
 - (void)searchTextFieldShouldBeginEditing:(NSString *)keyword keywordUrl:(NSString *)keywordUrl;
 

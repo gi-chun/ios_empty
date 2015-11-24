@@ -437,10 +437,15 @@ const static CGFloat AD_HEIGHT     =      50;
             [[NSUserDefaults standardUserDefaults] setObject:sUserNm forKey:kUserNm];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
-            //set kCardCode
-            [[NSUserDefaults standardUserDefaults] setObject:sCardNm forKey:kCardCode];
+            //mail
+            NSString* sEmail = dicItems[@"email"];
+            [[NSUserDefaults standardUserDefaults] setObject:sEmail forKey:kEmail];
             [[NSUserDefaults standardUserDefaults] synchronize];
-
+            
+            //mail id
+            NSString* sEmail_id = dicItems[@"email_id"];
+            [[NSUserDefaults standardUserDefaults] setObject:sEmail_id forKey:kEmail_id];
+            [[NSUserDefaults standardUserDefaults] synchronize];
             
             NSLog(@"Response ==> %@", responseData);
             

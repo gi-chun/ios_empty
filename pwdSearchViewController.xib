@@ -12,6 +12,7 @@
                 <outlet property="searchBtnClick" destination="vnZ-Mu-5p2" id="bqN-hj-u3F"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="yearBtn" destination="KpE-DO-bP5" id="gu2-ky-AL1"/>
+                <outlet property="yyyymmddLabel" destination="Uch-Jt-ZdI" id="oXN-wQ-1Pk"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -61,6 +62,9 @@
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KpE-DO-bP5">
                                     <rect key="frame" x="0.0" y="3" width="320" height="38"/>
                                     <state key="normal" backgroundImage="personaldata_menu03_back_press.png"/>
+                                    <connections>
+                                        <action selector="dayButtonClick:" destination="-1" eventType="touchUpInside" id="nG9-et-1gs"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="생년월일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hkc-gK-K5A">
                                     <rect key="frame" x="8" y="11" width="132" height="21"/>

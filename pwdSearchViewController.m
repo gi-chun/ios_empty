@@ -11,6 +11,7 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "SBJson.h"
 #import "NavigationBarView.h"
+#import "datePickerViewController.h"
 
 @interface pwdSearchViewController () <NavigationBarViewDelegate>
 {
@@ -20,12 +21,134 @@
     __weak IBOutlet UITextField *nameTxt;
     __weak IBOutlet UIButton *yearBtn;
     __weak IBOutlet UIButton *searchBtnClick;
+    __weak IBOutlet UILabel *yyyymmddLabel;
 }
 
 @end
 
 @implementation pwdSearchViewController
+
 - (IBAction)SearchClick:(id)sender {
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    NSMutableDictionary *sendDic = [NSMutableDictionary dictionary];
+    NSMutableDictionary *rootDic = [NSMutableDictionary dictionary];
+    NSMutableDictionary *indiv_infoDic = [NSMutableDictionary dictionary];
+    
+    [rootDic setObject:@"" forKey:@"task"];
+    [rootDic setObject:@"" forKey:@"action"];
+    [rootDic setObject:@"M2030N" forKey:@"serviceCode"];
+    [rootDic setObject:@"S_SNYM2030" forKey:@"requestMessage"];
+    [rootDic setObject:@"R_SNYM2030" forKey:@"responseMessage"];
+    
+    [indiv_infoDic setObject:yyyymmddLabel.text forKey:@"birth"];
+    [indiv_infoDic setObject:nameTxt.text forKey:@"user_nm"];
+    [indiv_infoDic setObject:mailTxt.text forKey:@"email_id"];
+    
+    [sendDic setObject:rootDic forKey:@"root_info"];
+    [sendDic setObject:indiv_infoDic forKey:@"indiv_info"];//////
+    
+    SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+    NSString *jsonString = [jsonWriter stringWithObject:sendDic];
+    NSLog(@"request json: %@", jsonString);
+    
+    NSDictionary *parameters = @{@"plainJSON": jsonString};
+    
+    [manager POST:API_URL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"JSON: %@", responseObject);
+        
+        NSString *responseData = (NSString*) responseObject;
+        NSArray *jsonArray = (NSArray *)responseData;
+        NSDictionary * dicResponse = (NSDictionary *)responseData;
+        
+        //warning
+        NSDictionary *dicItems = [dicResponse objectForKey:@"WARNING"];
+        
+        if(dicItems){
+            NSString* sError = dicItems[@"msg"];
+            
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:sError delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+            [alert show];
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }else{
+            
+            dicItems = [dicResponse objectForKey:@"indiv_info"];
+            NSString* sEmail = dicItems[@"email_id"];
+            
+            
+            //to json
+            SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+            NSString *jsonString = [jsonWriter stringWithObject:jsonArray];
+            NSLog(@"jsonString ==> %@", jsonString);
+            
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+            NSHTTPCookie *cookie;
+            NSMutableDictionary *cookieProperties = [NSMutableDictionary dictionary];
+            [cookieProperties setObject:@"locale_" forKey:NSHTTPCookieName];
+            [cookieProperties setObject:@"KO" forKey:NSHTTPCookieValue];
+            [cookieProperties setObject:@"vntst.shinhanglobal.com" forKey:NSHTTPCookieDomain];
+            [cookieProperties setObject:@"vntst.shinhanglobal.com" forKey:NSHTTPCookieOriginURL];
+            [cookieProperties setObject:@"/" forKey:NSHTTPCookiePath];
+            [cookieProperties setObject:@"0" forKey:NSHTTPCookieVersion];
+            // set expiration to one month from now
+            [cookieProperties setObject:[[NSDate date] dateByAddingTimeInterval:2629743] forKey:NSHTTPCookieExpires];
+            cookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+            
+            for (cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
+                NSLog(@"%@=%@", cookie.name, cookie.value);
+            }
+            
+            NSString * stSearch = [NSString stringWithFormat:@"조회된 비밀번호가 메일로 전송되었습니다. "];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:stSearch delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+            [alert show];
+            
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kLoginY];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+            
+        }
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Fail %@", error] delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kLoginY];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+    }];
+
+    
+}
+
+- (void)didTouchPicker{
+    
+    //    [[NSUserDefaults standardUserDefaults] setObject:dicItems[@"email"] forKey:kYYYYMMDD];
+    //    [[NSUserDefaults standardUserDefaults] synchronize];
+    UITextField* currentEditingTextField;
+    
+    [yyyymmddLabel setText:[[NSUserDefaults standardUserDefaults] stringForKey:kYYYYMMDD]];
+    
+}
+
+- (IBAction)dayButtonClick:(id)sender {
+    
+    datePickerViewController *myPickerController = [[datePickerViewController alloc] init];
+    [myPickerController setDelegate:self];
+    
+    [myPickerController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [self presentViewController:myPickerController animated:YES completion:nil];
 }
 
 - (void)viewDidLoad {
@@ -33,6 +156,10 @@
     // Do any additional setup after loading the view from its nib.
     [self resetNavigationBarView:1];
     [self setDelegateText];
+    
+    if([[NSUserDefaults standardUserDefaults] stringForKey:kEmail]){
+        mailTxt.text = [[NSUserDefaults standardUserDefaults] stringForKey:kEmail];
+    }
 }
 /////
 - (void)viewDidAppear:(BOOL)animated

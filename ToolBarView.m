@@ -30,41 +30,41 @@
     if (self) {
         // Initialization code
         
-        CGFloat marginY = (kScreenBoundsWidth > 320)?0:5;
-        CGFloat marginBY = (kScreenBoundsWidth > 320)?0:5;
+        CGFloat marginY = (kScreenBoundsWidth > 320)?0:0;
+        CGFloat marginBY = (kScreenBoundsWidth > 320)?0:0;
         
-        //[self setBackgroundColor:[UIColor clearColor]];
-        [self setBackgroundColor:UIColorFromRGB(0xffffff)];
+        [self setBackgroundColor:[UIColor clearColor]];
+        //[self setBackgroundColor:UIColorFromRGB(0xffffff)];
         
         
-        UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, -marginY, kScreenBoundsWidth, kToolBarHeight)];
+        UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, -36, kScreenBoundsWidth, kToolBarHeight-36)];
         [backgroundImageView setImage:[UIImage imageNamed:@"bottom_banner.png"]];
         
-        backgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
+        backgroundImageView.contentMode = UIViewContentModeScaleAspectFill; //UIViewContentModeScaleAspectFit
         [self addSubview:backgroundImageView];
         
-        UIButton *prevButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [prevButton setFrame:CGRectMake(13, 20-marginBY, 41, 41)];
-        [prevButton setImage:[UIImage imageNamed:@"bottom_back_btn.png"] forState:UIControlStateNormal];
-        [prevButton setImage:[UIImage imageNamed:@"bottom_back_btn_press.png"] forState:UIControlStateHighlighted];
-        [prevButton addTarget:self action:@selector(touchToolbar:) forControlEvents:UIControlEventTouchUpInside];
-        [prevButton setTag:1];
-        [self addSubview:prevButton];
+//        UIButton *prevButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [prevButton setFrame:CGRectMake(13, 20-marginBY, 41, 41)];
+//        [prevButton setImage:[UIImage imageNamed:@"bottom_back_btn.png"] forState:UIControlStateNormal];
+//        [prevButton setImage:[UIImage imageNamed:@"bottom_back_btn_press.png"] forState:UIControlStateHighlighted];
+//        [prevButton addTarget:self action:@selector(touchToolbar:) forControlEvents:UIControlEventTouchUpInside];
+//        [prevButton setTag:1];
+//        [self addSubview:prevButton];
         
         UIButton *adButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [adButton setFrame:CGRectMake(13+31+10, 5, 320, 50)];
+        [adButton setFrame:CGRectMake(0, -36, kScreenBoundsWidth, kToolBarHeight-36)];
         [adButton setBackgroundColor:[UIColor clearColor]];
         [adButton addTarget:self action:@selector(touchToolbar:) forControlEvents:UIControlEventTouchUpInside];
         [adButton setTag:2];
         [self addSubview:adButton];
         
-        UIButton *topButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [topButton setFrame:CGRectMake(kScreenBoundsWidth-31-13, 20-marginBY, 41, 41)];
-        [topButton setImage:[UIImage imageNamed:@"bottom_top_btn.png"] forState:UIControlStateNormal];
-        [topButton setImage:[UIImage imageNamed:@"bottom_top_btn_press.png"] forState:UIControlStateHighlighted];
-        [topButton addTarget:self action:@selector(touchToolbar:) forControlEvents:UIControlEventTouchUpInside];
-        [topButton setTag:3];
-        [self addSubview:topButton];
+//        UIButton *topButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [topButton setFrame:CGRectMake(kScreenBoundsWidth-31-13, 20-marginBY, 41, 41)];
+//        [topButton setImage:[UIImage imageNamed:@"bottom_top_btn.png"] forState:UIControlStateNormal];
+//        [topButton setImage:[UIImage imageNamed:@"bottom_top_btn_press.png"] forState:UIControlStateHighlighted];
+//        [topButton addTarget:self action:@selector(touchToolbar:) forControlEvents:UIControlEventTouchUpInside];
+//        [topButton setTag:3];
+//        [self addSubview:topButton];
         
         
         
@@ -174,29 +174,29 @@
 
 - (void)touchToolbar:(id)sender
 {
-//    UIButton *button = (UIButton *)sender;
-//    NSDictionary *buttonInfo = toolbarItems[button.tag];
-//    
-////    if (![popOverView isHidden] && button.tag != CPToolBarButtonTypeMore) {
-////        [popOverView setHidden:YES];
-////    }
-////    
-////    if (![snapshotPopOverView isHidden] && button.tag != CPToolBarButtonTypeSnapshot) {
-////        [snapshotPopOverView setHidden:YES];
-////    }
-//    
-//    switch (button.tag) {
-//        case 1:
-//        case 2:
-//        case 3:
-//        case 4:
-//        case 5:
-//        default:
-//            if ([self.delegate respondsToSelector:@selector(didTouchToolBarButton:buttonInfo:)]) {
-//                [self.delegate didTouchToolBarButton:button buttonInfo:buttonInfo];
-//            }
-//            break;
+    UIButton *button = (UIButton *)sender;
+    NSDictionary *buttonInfo = toolbarItems[button.tag];
+    
+//    if (![popOverView isHidden] && button.tag != CPToolBarButtonTypeMore) {
+//        [popOverView setHidden:YES];
 //    }
+//    
+//    if (![snapshotPopOverView isHidden] && button.tag != CPToolBarButtonTypeSnapshot) {
+//        [snapshotPopOverView setHidden:YES];
+//    }
+    
+    switch (button.tag) {
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        default:
+            if ([self.delegate respondsToSelector:@selector(didTouchToolBarButton:buttonInfo:)]) {
+                [self.delegate didTouchToolBarButton:button buttonInfo:buttonInfo];
+            }
+            break;
+    }
     
 }
 

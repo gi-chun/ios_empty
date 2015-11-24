@@ -38,6 +38,8 @@
     __weak IBOutlet UILabel *labelPwdCheck;
     __weak IBOutlet UIButton *btnSummit;
     
+    NSInteger isTwoChk;
+    
 }
 
 @end
@@ -67,6 +69,13 @@
         
         strAgree = @"N";
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"동의 필요" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        return;
+    }
+    
+    if( isTwoChk == 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"아이디 중복 확인필요" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
         [alert show];
         
         return;
@@ -150,6 +159,9 @@
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"가입 완료" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
             
             [alert show];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController setNavigationBarHidden:NO];
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -158,10 +170,10 @@
         
     }];
     
-    completeViewController *completeCtl = [[completeViewController alloc] init];
-    //[setInforCtl setDelegate:self];
-    [self.navigationController pushViewController:completeCtl animated:YES];
-    [self.navigationController setNavigationBarHidden:NO];
+//    completeViewController *completeCtl = [[completeViewController alloc] init];
+//    //[setInforCtl setDelegate:self];
+//    [self.navigationController pushViewController:completeCtl animated:YES];
+//    [self.navigationController setNavigationBarHidden:NO];
 
     
 }
@@ -189,33 +201,52 @@
     SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
     NSString *jsonString = [jsonWriter stringWithObject:sendDic];
     NSLog(@"request json: %@", jsonString);
-
+    
     NSDictionary *parameters = @{@"plainJSON": jsonString};
     
     [manager POST:API_URL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-    
+        
         NSLog(@"JSON: %@", responseObject);
         
         NSString *responseData = (NSString*) responseObject;
         NSArray *jsonArray = (NSArray *)responseData;
+        NSDictionary * dicResponse = (NSDictionary *)responseData;
         NSLog(@"Response ==> %@", responseData);
         
-        //to json
-        SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+        //warning
+        NSDictionary *dicItems = [dicResponse objectForKey:@"WARNING"];
         
-        NSString *jsonString = [jsonWriter stringWithObject:jsonArray];
-        NSLog(@"jsonString ==> %@", jsonString);
-        ///////////////////////////////
-        
-        for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies])
-        {
-            NSLog(@"name: '%@'\n",   [cookie name]);
-            NSLog(@"value: '%@'\n",  [cookie value]);
-            NSLog(@"domain: '%@'\n", [cookie domain]);
-            NSLog(@"path: '%@'\n",   [cookie path]);
+        if(dicItems){
+            NSString* sError = dicItems[@"msg"];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:sError delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+            [alert show];
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kLoginY];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+        }else{
+            
+            //to json
+            SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+            
+            NSString *jsonString = [jsonWriter stringWithObject:jsonArray];
+            NSLog(@"jsonString ==> %@", jsonString);
+            ///////////////////////////////
+            
+            for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies])
+            {
+                NSLog(@"name: '%@'\n",   [cookie name]);
+                NSLog(@"value: '%@'\n",  [cookie value]);
+                NSLog(@"domain: '%@'\n", [cookie domain]);
+                NSLog(@"path: '%@'\n",   [cookie path]);
+            }
+            
+            NSLog(@"getCookie end ==>" );
+            isTwoChk = 1;
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"ID 등록가능" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+            [alert show];
         }
-        
-        NSLog(@"getCookie end ==>" );
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -388,6 +419,23 @@
 
 // Override this in your subclass to handle eventual values that may prevent validation.
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    
+    if(textField.tag == 4 || textField.tag == 5){
+        if (textField.text.length >= PWD_MAX_LENGTH && range.length == 0)
+        {
+            return NO; // return NO to not change text
+        }
+        else if(textField.text.length >= PWD_MAX_LENGTH && range.length == 0){
+            
+            return NO; // return NO to not change text
+        }
+    }
+    
+    return YES;
+}
+
 -(BOOL)textFieldValueIsValid:(UITextField*)textField
 {
     return YES;
@@ -396,6 +444,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    isTwoChk = 0;
+    [pwdText setKeyboardType:UIKeyboardTypeNumberPad ];
+    [pwdCnfirmText setKeyboardType:UIKeyboardTypeNumberPad ];
+    
+    //set auto login
+    if([[NSUserDefaults standardUserDefaults] boolForKey:kAgreeOk] == YES)
+    {
+        [okSwitch setOn:true];
+    }else{
+        [okSwitch setOn:false];
+    }
+    
+    
     [self resetNavigationBarView:1];
     [self initSetItem];
     [self setDelegateText];

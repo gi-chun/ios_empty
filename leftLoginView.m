@@ -36,7 +36,7 @@
         [self setBackgroundColor:UIColorFromRGB(0xf68a1e)];
         //[self setBackgroundColor:[UIColor clearColor]];
         
-        [self showContents];
+        //[self showContents];
         
     }
     return self;
@@ -51,13 +51,14 @@
         
         _title = title;
         
-        //
-        //_loginStatus = 0;
+        BOOL isAuto = [[NSUserDefaults standardUserDefaults] boolForKey:kAutoLogin];
+        if(isAuto == YES)
+        {
+            [self loginProcess];
+        }
         
         [self showContents];
-        
     }
-    
     
     return self;
 }
@@ -121,6 +122,21 @@
             [[NSUserDefaults standardUserDefaults] setObject:sCardNm forKey:kCardCode];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
+            NSString* sUserNm = dicItems[@"user_nm"];
+            [[NSUserDefaults standardUserDefaults] setObject:sUserNm forKey:kUserNm];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            //mail
+            NSString* sEmail = dicItems[@"email"];
+            [[NSUserDefaults standardUserDefaults] setObject:sEmail forKey:kEmail];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            //mail id
+            NSString* sEmail_id = dicItems[@"email_id"];
+            [[NSUserDefaults standardUserDefaults] setObject:sEmail_id forKey:kEmail_id];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+
+            
             NSLog(@"Response ==> %@", responseData);
             
             //to json
@@ -179,8 +195,10 @@
             //
             
             NSLog(@"getCookie end ==>" );
-            
+        
                     }
+        
+        [self showContents];
         
         
         
@@ -195,10 +213,37 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
         
     }];
-    
-    [self setVisableItem];
+}
 
+- (void) setDataAfterlogout
+{
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kAutoLogin];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kId];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kPwd];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kUserNm];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kEmail];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kEmail_id];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey: kPushY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kCardCode];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
 }
 
 - (void) logoutProcess
@@ -319,7 +364,9 @@
             
             NSLog(@"getCookie end ==>" );
             
-            [self showContentsLogout];
+            [self setVisableItem];
+            
+            [self setDataAfterlogout];
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Logout Success" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
             [alert show];
@@ -336,7 +383,9 @@
         //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Login Fail %@", error] delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
         //        [alert show];
         
-        [self showContentsLogout];
+        //[self showContentsLogout];
+        [self showContents];
+
         
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kLoginY];
         [[NSUserDefaults standardUserDefaults] synchronize];
@@ -379,7 +428,7 @@
     
     CGFloat marginX = (kScreenBoundsWidth > 320)?30:0;
     CGFloat labelMarginX = (kScreenBoundsWidth > 320)?2:0;
-    CGFloat logoutMarginX = (kScreenBoundsWidth > 320)?60:0;
+    CGFloat logoutMarginX = (kScreenBoundsWidth > 320)?0:0;
     
     //label
     // 100, 26
@@ -440,7 +489,7 @@
     [labelMailId setFont:[UIFont systemFontOfSize:13]];
     [labelMailId setTextAlignment:NSTextAlignmentLeft];
     [labelMailId setNumberOfLines:0];
-    _mailId = (_loginStatus == 1)?[[NSUserDefaults standardUserDefaults] stringForKey:kId]:@"";
+    _mailId = (_loginStatus == 1)?[[NSUserDefaults standardUserDefaults] stringForKey:kEmail_id]:@"";
     [labelMailId setText:_mailId];
     [self addSubview:labelMailId];
     
@@ -473,11 +522,7 @@
     
     [self setVisableItem];
     
-    BOOL isAuto = [[NSUserDefaults standardUserDefaults] boolForKey:kAutoLogin];
-    if(isAuto == YES)
-    {
-        [self loginProcess];
-    }
+    
 }
 
 - (void)showContentsLogout
