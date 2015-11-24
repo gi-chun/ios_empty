@@ -28,6 +28,7 @@
 - (void)didReceiveMemoryWarning;
 
 - (void)updateFrame;
+- (void)updateFrameSunny;
 - (void)setForwardButton:(BOOL)enable;
 - (void)open:(NSString *)url;
 - (NSString *)execute:(NSString *)script;

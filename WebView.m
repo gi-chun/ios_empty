@@ -72,6 +72,7 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
         
         CGFloat marginY = (kScreenBoundsWidth > 320)?0:10;
         
+        //6
         _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 6, CGRectGetWidth(frame), CGRectGetHeight(frame)-(kToolBarHeight-marginY))];
         //_webView = [[UIWebView alloc] initWithFrame:frame];
         [_webView setDelegate:self];
@@ -281,18 +282,20 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 
 - (void)updateFrame
 {
-	//상단 네비바가 없을 경우 위치 오류가 있어서 재정렬 해준다.
-//	if (popOverView) {
-//		[popOverView setCenter:CGPointMake(popOverView.center.x, CGRectGetHeight(self.frame)-(buttonHeight+80))];
-//	}
-//    
-//    if (snapshotPopOverView) {
-////        [snapshotPopOverView setCenter:CGPointMake(snapshotPopOverView.center.x, CGRectGetHeight(self.frame)-(buttonHeight+35))];
-//    }
-	
-//	if (toggleButton) {
-//		[toggleButton setFrame:CGRectMake(toggleButton.frame.origin.x, CGRectGetHeight(self.frame)-buttonHeight, buttonWidth, buttonHeight)];
-//	}
+   // _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 6, CGRectGetWidth(frame),
+    
+//    CGRect webViewFrame;
+//    webViewFrame = CGRectMake(0, 30, kScreenBoundsWidth, kScreenBoundsHeight);
+//    [self.webView setFrame:webViewFrame];
+}
+
+- (void)updateFrameSunny
+{
+    // _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 6, CGRectGetWidth(frame),
+    
+    CGRect webViewFrame;
+    webViewFrame = CGRectMake(0, 30, kScreenBoundsWidth, kScreenBoundsHeight);
+    [self.webView setFrame:webViewFrame];
 }
 
 - (void)setForwardButton:(BOOL)enable

@@ -27,6 +27,7 @@ static NSString * const kCardCode       = @"cardCode";         //
 static NSString * const kAgreeOk       = @"agreeOk";
 static NSString * const kPushY       = @"pushY";         // language
 static NSString * const kYYYYMMDD       = @"kYYYYMMDD";         // language
+static NSString * const kGNBHide       = @"kGNBHide";
 
 
 static NSString *SUNNY_CLUB_URL     = @"https://vntst.shinhanglobal.com/sunny/sunnyclub/index.jsp?%@";  //클럽메인

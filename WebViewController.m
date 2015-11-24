@@ -182,7 +182,13 @@
 
 - (void)initLayout
 {
-    self.webView = [[WebView alloc] initWithFrame:CGRectMake(0, kNavigationHeight, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight) isSub:YES];
+    //gclee
+//    self.webView = [[WebView alloc] initWithFrame:CGRectMake(0, kNavigationHeight, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight) isSub:YES];
+//    [self.webView setDelegate:self];
+//    [self.webView setHiddenToolBarView:NO];
+//    [self.view addSubview:self.webView];
+    
+    self.webView = [[WebView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight) isSub:YES];
     [self.webView setDelegate:self];
     [self.webView setHiddenToolBarView:NO];
     [self.view addSubview:self.webView];
@@ -226,6 +232,7 @@
 
 - (NavigationBarView *)navigationBarView:(NSInteger)navigationType
 {
+    //gclee
     navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType];
     
     [navigationBarView setDelegate:self];
@@ -289,15 +296,36 @@
     BOOL isException = false;//중요 중요
     CGRect webViewFrame;
     
+    
+    NSInteger showNavigation = 1; //1: show, 2: hidden
+    if(!([url rangeOfString:@"vntst.shinhanglobal.com/sunny/sunnyclub/index.jsp?"].location == NSNotFound)){
+        //TODO
+        NSLog(@"문자열이 포함됨");
+        gShowNavigation = 0;
+        [self initNavigation:0];
+        
+    }else if (!([url rangeOfString:@"vntst.shinhanglobal.com/sunny/bank/main.jsp?"].location == NSNotFound)){
+        //TODO
+        NSLog(@"문자열이 포함됨");
+        gShowNavigation = 3;
+        [self initNavigation:3];
+    }else{
+        isException = true;
+        gShowNavigation = 4;
+        [self initNavigation:4];
+    }
+
+    
     // Exception URL은 네비게이션바없는 풀화면으로 보여줌
     if (isException) {
         [self.navigationController setNavigationBarHidden:YES];
         
+        //16
         if ([SYSTEM_VERSION intValue] > 6) {
-            webViewFrame = CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-200);
+            webViewFrame = CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-250);
         }
         else {
-            webViewFrame = CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-200);
+            webViewFrame = CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-250);
         }
         [self.webView reCreateToolbar];
     }
@@ -537,7 +565,7 @@
 }
 
 #pragma mark - WebViewDelegate - WebView
-
+//gclee
 - (BOOL)webView:(WebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request
 {
     NSString *url = request ? request.URL.absoluteString : nil;
@@ -549,6 +577,7 @@
     if(!([url rangeOfString:@"vntst.shinhanglobal.com/sunny/sunnyclub/index.jsp?"].location == NSNotFound)){
         //TODO
         NSLog(@"문자열이 포함됨");
+        [self.navigationController setNavigationBarHidden:NO];
         showNavigation = 0;
         gShowNavigation = 0;
         [self initNavigation:0];
@@ -556,105 +585,16 @@
     }else if (!([url rangeOfString:@"vntst.shinhanglobal.com/sunny/bank/main.jsp?"].location == NSNotFound)){
         //TODO
         NSLog(@"문자열이 포함됨");
+        [self.navigationController setNavigationBarHidden:NO];
         showNavigation = 3;
         gShowNavigation = 3;
         [self initNavigation:3];
     }else{
+        [self.navigationController setNavigationBarHidden:YES];
         showNavigation = 4;
         gShowNavigation = 4;
         [self initNavigation:4];
     }
-
-    
-    //앱링크로 리다이렉트
-//    if ([url isMatchedByRegex:@"/MW/html/category/grp.html"]) {
-//        CPCategoryMainViewController *viewController = [[CPCategoryMainViewController alloc] init];
-//        [self.navigationController pushViewController:viewController animated:NO];
-//        return NO;
-//    }
-//    else if ([url isMatchedByRegex:@"/MW/Category/displayCategory1Depth.tmall"]) {
-//        NSString *categoryUrl = APP_CATEGORY_URL;
-//        NSString *dispCtgrNo = [Modules extractingParameterWithUrl:url key:@"dispCtgrNo"];
-//        categoryUrl = [categoryUrl stringByReplacingOccurrencesOfString:@"{{dispCtgrNo}}" withString:dispCtgrNo];
-//        
-//        CPCategoryDetailViewController *viewController = [[CPCategoryDetailViewController alloc] initWithUrl:categoryUrl];
-//        [self.navigationController pushViewController:viewController animated:NO];
-//        return NO;
-//    }
-//    else if ([url isMatchedByRegex:@"/MW/Category/displayCategory2Depth.tmall"]) {
-//        NSString *listUrl = APP_CATEGORY_LIST_URL;
-//        NSString *dispCtgrNo = [Modules extractingParameterWithUrl:url key:@"dispCtgrNo"];
-//        listUrl = [listUrl stringByReplacingOccurrencesOfString:@"{{dispCtgrNo}}" withString:dispCtgrNo];
-//        
-//        CPProductListViewController *viewController = [[CPProductListViewController alloc] initWithUrl:listUrl keyword:nil referrer:webViewUrl];
-//        [self.navigationController pushViewController:viewController animated:NO];
-//        return NO;
-//    }
-//    else if ([url isMatchedByRegex:@"/MW/Category/displayCategory3Depth.tmall"]) {
-//        NSString *listUrl = APP_CATEGORY_LIST_URL;
-//        NSString *dispCtgrNo = [Modules extractingParameterWithUrl:url key:@"dispCtgrNo"];
-//        listUrl = [listUrl stringByReplacingOccurrencesOfString:@"{{dispCtgrNo}}" withString:dispCtgrNo];
-//        
-//        CPProductListViewController *viewController = [[CPProductListViewController alloc] initWithUrl:listUrl keyword:nil referrer:webViewUrl];
-//        [self.navigationController pushViewController:viewController animated:NO];
-//        return NO;
-//    }
-//    else if ([url isMatchedByRegex:@"/MW/Search/searchProduct.tmall"]) {
-//        NSString *searchUrl = APP_SEARCH_NATIVE_URL;
-//
-//        NSString *keyword = [Modules extractingParameterWithUrl:url key:@"searchKeyword"];
-//        
-//        searchUrl = [searchUrl stringByReplacingOccurrencesOfString:@"{{keyword}}" withString:keyword];
-//        
-//        if (keyword) {
-//            keyword = [keyword stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//            keyword = [keyword stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//        }
-//        
-//        CPProductListViewController *viewController = [[CPProductListViewController alloc] initWithUrl:searchUrl keyword:keyword referrer:webViewUrl];
-//        [self.navigationController pushViewController:viewController animated:NO];
-//        return NO;
-//    }
-//    else if ([url isMatchedByRegex:@"/MW/Product/productBasicInfo.tmall"] && !isIgnore) {
-//        //상품상세 native에서 들어왔을 경우 웹뷰내에 상품상세url이 호출되면 navigation pop (ex. 주문에서 history back)
-//
-//        NSString *productNum = @"";
-//        if (self.navigationController.viewControllers.count >= 2) {
-//            UIViewController *controller = (UIViewController *)[self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
-//            
-//            if ([controller isKindOfClass:[CPProductViewController class]]) {
-//                productNum = [(CPProductViewController *)controller productNumber];
-//            }
-//        }
-//        
-//        //현재 뷰컨트롤러 이전 뷰컨트롤러가 상품상세일 경우 이동하려는 상품과 같은지 확인 후 같을 경우 navigation Pop을 한다.
-//        NSString *prdNo = [Modules extractingParameterWithUrl:url key:@"prdNo"];
-//        if ([productNum isEqualToString:prdNo]) {
-//            [self.navigationController popViewControllerAnimated:YES];
-//        }
-//        else {
-//            //현재 페이지가 빈 페이지인지 확인한다.
-//            NSString *documentStr = [webView.webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('html')[0].innerHTML"];
-//            documentStr = [documentStr stringByReplacingOccurrencesOfString:@"<head></head><body></body>" withString:@""];
-//            BOOL isEmpty = (documentStr == nil || [documentStr length] == 0);
-//            if (!isEmpty) isEmpty = ([documentStr length] <= 20 ? YES : NO);
-//            
-//            //상품정보
-//            NSString *mallType = [Modules extractingParameterWithUrl:url key:@"mallType"];
-//            NSString *ctlgStockNo = [Modules extractingParameterWithUrl:url key:@"ctlgStockNo"];
-//            
-//            NSDictionary *parameters = @{@"mallType" : mallType, @"ctlgStockNo" : ctlgStockNo};
-//            
-//            //Unbalanced calls to begin/end appearance transitions for <UIViewController> 에러 적용
-//            double delayInSeconds = 0.5f;
-//            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-//            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//                [self openProductViewController:prdNo isPop:isEmpty parameters:parameters];
-//            });
-//        }
-//        
-//        return NO;
-//    }
     
     //BOOL isHidden = [CPCommonInfo isHomeMenuUrl:url];
     BOOL isHidden = false;
@@ -663,16 +603,6 @@
     if (!self.webView) {
         //메인탭의 웹뷰일 경우 툴바 안보이도록 고정
         [webView setHiddenToolBarView:NO];
-    }
-    //서브웹뷰일 경우
-    else {
-        //a.st / app.st 는 단순 로그생성을 위한 URL이다. 따라서 로그를 찍을 때는 웹페이지 설정을 변경하지않는다.
-//        if (![url isMatchedByRegex:@"/a.st?"] && ![url isMatchedByRegex:@"/app.st?"]) {
-//            [webView destoryProductOption];
-////            if (webView.toggleButtonHiddenStatus == YES) {
-////                [webView setHiddenToolBarView:isHidden];
-////            }
-//        }
     }
     
     NSLog(@"WebView url:%@, hidden:%@, tag:%li", url, isHidden?@"Y":@"N", (long)webView.tag);
@@ -686,25 +616,6 @@
         
         return NO;
     }
-    
-    //Exception URL은 풀스크린으로 보여줌
-//    BOOL isException = [CPCommonInfo isExceptionalUrl:url];
-//    [self setExceptionFrame:isException];
-//    
-//    // 검색결과페이지에서 검색창 터치시 검색어 자동완성 노출
-//    NSString *searchUrl = [[CPCommonInfo sharedInfo] urlInfo][@"search"];
-//    NSArray *searchUrls = [searchUrl componentsSeparatedByString:@"?"];
-//    NSString *searchPrefixUrl = searchUrls[0];
-    
-//    if ([url hasPrefix:searchPrefixUrl]) {
-//        isSearchText = YES;
-//    }
-//    else {
-//        isSearchText = NO;
-//    }
-    
-    //외부 URL 체크
-//    [self isExternalUrl:url];
 
     return YES;
 }
