@@ -75,7 +75,6 @@
 //        }
 //    }
 
-    
 //    CGFloat marginY = (kScreenBoundsWidth > 320)?100:0;
 //    [self.mainView setFrame:CGRectMake(0+marginY, 0+marginY, kScreenBoundsWidth, kScreenBoundsHeight-marginY)];
 ////    [self.myScrollView setFrame:CGRectMake(0,0+marginY,kScreenBoundsWidth, kScreenBoundsHeight-marginY)];

@@ -29,6 +29,7 @@
 
 - (void)updateFrame;
 - (void)updateFrameSunny;
+- (void)updateFrameSunnyForStatusHide;
 - (void)setForwardButton:(BOOL)enable;
 - (void)open:(NSString *)url;
 - (NSString *)execute:(NSString *)script;

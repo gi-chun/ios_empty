@@ -11,8 +11,9 @@
 #import "NavigationBarView.h"
 #import "UIViewController+MMDrawerController.h"
 #import "LoginViewController.h"
+#import "ToolBarView.h"
 
-@interface WebViewController () <WebViewDelegate>
+@interface WebViewController () <WebViewDelegate, ToolBarViewDelegate>
 {
     NSString *webViewUrl;
     NSURLRequest *webViewRequest;
@@ -26,7 +27,10 @@
     //ShakeModule *shakeModule;
     
     NavigationBarView *navigationBarView;
+    ToolBarView *toolBarView;
     //CPWebviewControllerFullScreenMode fullScreenMode;
+    
+    UIView *statusBarView;
     
     BOOL isSkipParent;
     BOOL isIgnore;
@@ -97,6 +101,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.view setBackgroundColor:UIColorFromRGB(0xffffff)];
 
     // iOS7 Layout gclee
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
@@ -142,24 +148,24 @@
     [super viewDidAppear:animated];
     
     // Navigation : viewDidLoad에서 한번, viewDidAppear에서 한번 더 한다.
-    [self.navigationItem setHidesBackButton:YES];
-    [self.navigationController.navigationBar addSubview:[self navigationBarView:0]];
+//    [self.navigationItem setHidesBackButton:YES];
+//    [self.navigationController.navigationBar addSubview:[self navigationBarView:0]];
 
     //Exception URL은 풀스크린으로 보여줌 (저장된 상태값으로 보여줌. PC보기에서 URL을 체킹하지 못하는 오류가 있음.)
 //    if (fullScreenMode != CPWebviewControllerFullScreenModeNone) {
 //        [self setExceptionFrame:(fullScreenMode == CPWebviewControllerFullScreenModeOn)];
 //    }
     
-    if (isSkipParent) {
-        NSMutableArray *viewControllers = [self.navigationController.viewControllers mutableCopy];
-        
-        if (viewControllers.count >= 2) {
-            [viewControllers removeObjectAtIndex:viewControllers.count-2];
-            self.navigationController.viewControllers = viewControllers;
-        }
-        
-        isSkipParent = NO;
-    }
+//    if (isSkipParent) {
+//        NSMutableArray *viewControllers = [self.navigationController.viewControllers mutableCopy];
+//        
+//        if (viewControllers.count >= 2) {
+//            [viewControllers removeObjectAtIndex:viewControllers.count-2];
+//            self.navigationController.viewControllers = viewControllers;
+//        }
+//        
+//        isSkipParent = NO;
+//    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -169,7 +175,7 @@
     // setCurrentWebViewController
     //[[CPCommonInfo sharedInfo] setCurrentWebViewController:nil];
     
-    [self.webView setHiddenPopover:YES];
+    //[self.webView setHiddenPopover:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -182,16 +188,16 @@
 
 - (void)initLayout
 {
-    //gclee
-//    self.webView = [[WebView alloc] initWithFrame:CGRectMake(0, kNavigationHeight, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight) isSub:YES];
-//    [self.webView setDelegate:self];
-//    [self.webView setHiddenToolBarView:NO];
-//    [self.view addSubview:self.webView];
-    
-    self.webView = [[WebView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight) isSub:YES];
+//    self.webView = [[WebView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-kToolBarHeight-kNavigationHeight-kWebViewMarginY*2) isSub:YES];
+    self.webView = [[WebView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight-kStatusBarY) isSub:YES];
     [self.webView setDelegate:self];
     [self.webView setHiddenToolBarView:NO];
     [self.view addSubview:self.webView];
+    
+//    toolBarView = [[ToolBarView alloc] initWithFrame:CGRectMake(0, kScreenBoundsHeight-kToolBarHeight*2, kScreenBoundsWidth, kToolBarHeight*2) toolbarType:1];
+//    [toolBarView setDelegate:self];
+//    [toolBarView setHidden:NO];
+//    [self.view addSubview:toolBarView];
     
     if (webViewRequest) {
         [self.webView loadRequest:webViewRequest];
@@ -232,8 +238,11 @@
 
 - (NavigationBarView *)navigationBarView:(NSInteger)navigationType
 {
-    //gclee
-    navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType];
+    if( navigationType == 4){
+        navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeightHide) type:navigationType];
+    }else{
+        navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType];
+    }
     
     [navigationBarView setDelegate:self];
     
@@ -289,7 +298,7 @@
     }
 }
 
-//gclee
+//
 - (void)openWebView:(NSString *)url mutableRequest:(NSMutableURLRequest *)request
 {
     //BOOL isException = [CPCommonInfo isExceptionalUrl:url];
@@ -322,10 +331,10 @@
         
         //16
         if ([SYSTEM_VERSION intValue] > 6) {
-            webViewFrame = CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-250);
+            webViewFrame = CGRectMake(0, 15, kScreenBoundsWidth, kScreenBoundsHeight-250);
         }
         else {
-            webViewFrame = CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-250);
+            webViewFrame = CGRectMake(0, 15, kScreenBoundsWidth, kScreenBoundsHeight-250);
         }
         [self.webView reCreateToolbar];
     }
@@ -565,7 +574,7 @@
 }
 
 #pragma mark - WebViewDelegate - WebView
-//gclee
+
 - (BOOL)webView:(WebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request
 {
     NSString *url = request ? request.URL.absoluteString : nil;
@@ -596,13 +605,72 @@
         [self initNavigation:4];
     }
     
+    [self.view setBackgroundColor:UIColorFromRGB(0xffffff)];
+    
+    CGRect naviViewFrame;
+    CGRect webViewFrame;
+    CGRect toolViewFrame;
+    
+    if (showNavigation == 4) {
+        
+//        if ([SYSTEM_VERSION intValue] > 6) {
+//            webViewFrame = CGRectMake(0, -(kNavigationHeight-kNavigationHeightHide+kWebViewTopMarginY), kScreenBoundsWidth, kScreenBoundsHeight-(kToolBarHeight+kNavigationHeight)/2);
+//        }
+//        else {
+//            webViewFrame = CGRectMake(0, -(kNavigationHeight-kNavigationHeightHide+kWebViewTopMarginY), kScreenBoundsWidth, kScreenBoundsHeight-(kToolBarHeight+kNavigationHeight)/2);
+//        }
+        //[self.webView reCreateToolbar];
+        naviViewFrame = CGRectMake(0, kStatusBarY, kScreenBoundsWidth, kNavigationHeightHide-kStatusBarY);
+        webViewFrame = CGRectMake(0, kStatusBarY, kScreenBoundsWidth, kScreenBoundsHeight-(kStatusBarY));
+        toolViewFrame = CGRectMake(0, kScreenBoundsHeight-(kToolBarHeight+kWebViewMarginY-13), kScreenBoundsWidth, kToolBarHeight);
+        
+        if (navigationBarView) {
+            [self.navigationController.navigationBar setFrame:naviViewFrame];
+        }
+        if (self.webView) {
+            [self.webView setFrame:webViewFrame];
+            [self.webView updateFrameSunnyForStatusHide];
+        }
+        
+        [statusBarView removeFromSuperview];
+        statusBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kStatusBarY)];
+        [self.view addSubview:statusBarView];
+        [statusBarView setBackgroundColor:UIColorFromRGB(0xe0e0e0)];
+        
+    }
+    else {
+        [statusBarView removeFromSuperview];
+        
+        naviViewFrame = CGRectMake(0, kStatusBarY, kScreenBoundsWidth, kNavigationHeight);
+        webViewFrame = CGRectMake(0, kWebViewTopMarginY, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight-kToolBarHeight-kWebViewTopMarginY*2);
+//        webViewFrame = CGRectMake(0, kWebViewTopMarginY, kScreenBoundsWidth, kScreenBoundsHeight-(kToolBarHeight+kNavigationHeight+kWebViewMarginY*2));
+        
+        //toolViewFrame = CGRectMake(0, kScreenBoundsHeight-kToolBarHeight-kWebViewMarginY, kScreenBoundsWidth, kToolBarHeight);
+        toolViewFrame = CGRectMake(0, kScreenBoundsHeight-(kToolBarHeight+kWebViewMarginY)*2, kScreenBoundsWidth, kToolBarHeight);
+        
+        if (navigationBarView) {
+            [self.navigationController.navigationBar setFrame:naviViewFrame];
+        }
+        
+        if (self.webView) {
+            [self.webView setFrame:webViewFrame];
+            [self.webView updateFrameSunny];
+        }
+    }
+    
+    
+//    if (toolBarView) {
+//        [toolBarView setFrame:toolViewFrame];
+//        [self.view bringSubviewToFront:toolBarView];
+//    }
+    
     //BOOL isHidden = [CPCommonInfo isHomeMenuUrl:url];
     BOOL isHidden = false;
     
     //각 상황별 히든처리를 하면 안되는 경우가 있어서 조정한다.
     if (!self.webView) {
         //메인탭의 웹뷰일 경우 툴바 안보이도록 고정
-        [webView setHiddenToolBarView:NO];
+        //[webView setHiddenToolBarView:NO];
     }
     
     NSLog(@"WebView url:%@, hidden:%@, tag:%li", url, isHidden?@"Y":@"N", (long)webView.tag);
@@ -712,32 +780,14 @@
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)didTouchToolBarButton:(UIButton *)button;
+
+- (void)didTouchToolBarButton:(UIButton *)button buttonInfo:(NSDictionary *)buttonInfo
 {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchAD in web" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+    [alert show];
     //new
     //광고 열기
     [self didTouchAD];
-    
-    
-////    NSLog(@"currentWebView.tag:%li, currentNaviType:%li", (long)currentHomeTab, (long)[[CPCommonInfo sharedInfo] currentNavigationType]);
-//    //홈이거나 백버튼(히스토리없을 경우)
-//    if (button.tag == 5) {
-//        [self.navigationController.navigationBar addSubview:[self navigationBarView:1]];
-//        
-//        [self.navigationController setNavigationBarHidden:NO];
-//        [self.navigationController popToRootViewControllerAnimated:NO];
-////        [self reloadHomeTab];
-//        
-////        [[NSNotificationCenter defaultCenter] postNotificationName:ReloadHomeNotification object:self];
-//    }
-//    else if (button.tag == 1) {
-//        [self.navigationController setNavigationBarHidden:NO];
-//        [self.navigationController popViewControllerAnimated:YES];
-//    }
-//    else if (button.tag == 2) {
-////        [self.navigationController pushViewController:[[CPCommonInfo sharedInfo] lastViewController] animated:YES];
-////        [self.navigationController.navigationBar addSubview:[self navigationBarView:[Modules isMatchedGNBUrl:[self.webView url]]]];
-//    }
 }
 
 - (void)didTouchSnapshotPopOverButton:(UIButton *)button buttonInfo:(NSDictionary *)buttonInfo
@@ -1334,8 +1384,8 @@
 
 - (void)didTouchAD
 {
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchAD in web" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
-//    [alert show];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"didTouchAD in web" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+    [alert show];
     
     NSString* gLocalLang = @"";
     NSString *callUrl = @"";

@@ -39,5 +39,7 @@ typedef enum {
 - (void)didTouchLogInBtn;
 - (void)didTouchAD;
 - (void)didTouchBackButton;
+//ToolBar
+- (void)didTouchToolBarButton:(UIButton *)button;
 @end
 

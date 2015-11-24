@@ -37,7 +37,7 @@
         //[self setBackgroundColor:UIColorFromRGB(0xffffff)];
         
         
-        UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, -36, kScreenBoundsWidth, kToolBarHeight-36)];
+        UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kToolBarHeight)];
         [backgroundImageView setImage:[UIImage imageNamed:@"bottom_banner.png"]];
         
         backgroundImageView.contentMode = UIViewContentModeScaleAspectFill; //UIViewContentModeScaleAspectFit
@@ -52,7 +52,7 @@
 //        [self addSubview:prevButton];
         
         UIButton *adButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [adButton setFrame:CGRectMake(0, -36, kScreenBoundsWidth, kToolBarHeight-36)];
+        [adButton setFrame:CGRectMake(0, 0, kScreenBoundsWidth, kToolBarHeight)];
         [adButton setBackgroundColor:[UIColor clearColor]];
         [adButton addTarget:self action:@selector(touchToolbar:) forControlEvents:UIControlEventTouchUpInside];
         [adButton setTag:2];
