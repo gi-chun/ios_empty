@@ -9,6 +9,7 @@
 #import "leftLoginView.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "SBJson.h"
+#import "CPLoadingView.h"
 
 
 @interface leftLoginView ()
@@ -24,6 +25,7 @@
     UIImageView *idImageView;
     UIButton* loginButton;
     UIButton* logoutButton;
+    CPLoadingView *loadingView;
 }
 @end
 
@@ -49,6 +51,12 @@
         [self setBackgroundColor:UIColorFromRGB(0xf68a1e)];
         //[self setBackgroundColor:[UIColor clearColor]];
         
+        //LoadingView
+        loadingView = [[CPLoadingView alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.frame)/2-40,
+                                                                      CGRectGetHeight(self.frame)/2-40,
+                                                                      80,
+                                                                      80)];
+        
         _title = title;
         
         BOOL isAuto = [[NSUserDefaults standardUserDefaults] boolForKey:kAutoLogin];
@@ -63,8 +71,25 @@
     return self;
 }
 
+#pragma mark - CPLoadingView
+
+- (void)startLoadingAnimation
+{
+    [self addSubview:loadingView];
+    [loadingView startAnimation];
+}
+
+- (void)stopLoadingAnimation
+{
+    [loadingView stopAnimation];
+    [loadingView removeFromSuperview];
+}
+
 - (void) loginProcess
 {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [self startLoadingAnimation];
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     NSMutableDictionary *sendDic = [NSMutableDictionary dictionary];
@@ -201,6 +226,10 @@
         [self showContents];
         
         
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [self stopLoadingAnimation];
+        
+        
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -211,6 +240,10 @@
         
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kLoginY];
         [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [self stopLoadingAnimation];
         
     }];
 }

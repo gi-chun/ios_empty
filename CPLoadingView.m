@@ -25,12 +25,12 @@
         [bgImageView setImage:[UIImage imageNamed:@"bg_loading.png"]];
         [self addSubview:bgImageView];
         
-        UIImage *iconImage1 = [UIImage imageNamed:@"ic_pageloading01.png"];
-        UIImage *iconImage2 = [UIImage imageNamed:@"ic_pageloading02.png"];
-        UIImage *iconImage3 = [UIImage imageNamed:@"ic_pageloading03.png"];
-        UIImage *iconImage4 = [UIImage imageNamed:@"ic_pageloading04.png"];
-        UIImage *iconImage5 = [UIImage imageNamed:@"ic_pageloading05.png"];
-        UIImage *iconImage6 = [UIImage imageNamed:@"ic_pageloading06.png"];
+        UIImage *iconImage1 = [UIImage imageNamed:@"intro_img.png"];
+        UIImage *iconImage2 = [UIImage imageNamed:@"icon-76.png"];
+        UIImage *iconImage3 = [UIImage imageNamed:@"intro_img.png"];
+        UIImage *iconImage4 = [UIImage imageNamed:@"icon-76.png"];
+        UIImage *iconImage5 = [UIImage imageNamed:@"intro_img.png"];
+        UIImage *iconImage6 = [UIImage imageNamed:@"icon-76.png"];
         
         loadingView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 60, 60)];
         [self addSubview:loadingView];

@@ -14,6 +14,7 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "SBJson.h"
 #import "datePickerViewController.h"
+#import "CPLoadingView.h"
 
 
 @interface setInforViewController () <NavigationBarViewDelegate>
@@ -40,6 +41,8 @@
     
     NSInteger isTwoChk;
     
+    CPLoadingView *loadingView;
+    
 }
 
 @end
@@ -47,7 +50,25 @@
 
 @implementation setInforViewController
 
+#pragma mark - CPLoadingView
+
+- (void)startLoadingAnimation
+{
+    [self.view addSubview:loadingView];
+    [loadingView startAnimation];
+}
+
+- (void)stopLoadingAnimation
+{
+    [loadingView stopAnimation];
+    [loadingView removeFromSuperview];
+}
+
 - (IBAction)btnSummitClick:(id)sender {
+   
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [self startLoadingAnimation];
+
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     //manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -156,6 +177,9 @@
             
             NSLog(@"getCookie end ==>" );
             
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            [self stopLoadingAnimation];
+            
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"가입 완료" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
             
             [alert show];
@@ -168,6 +192,9 @@
         
         NSLog(@"Error: %@", error);
         
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [self stopLoadingAnimation];
+        
     }];
     
 //    completeViewController *completeCtl = [[completeViewController alloc] init];
@@ -179,6 +206,22 @@
 }
 
 - (IBAction)confirmID:(id)sender {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [self startLoadingAnimation];
+    
+    NSTimeInterval delayInSeconds = 10.00;
+    
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [self stopLoadingAnimation];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"ID 등록가능" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        
+    });
+
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -246,12 +289,12 @@
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"ID 등록가능" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
             [alert show];
+            
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"Error: %@", error);
-        
     }];
 }
 

@@ -126,10 +126,12 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
         // 탑버튼
         _topButton = [UIButton buttonWithType:UIButtonTypeCustom];
         
-        [_topButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight(frame)-(buttonHeight*3-30), buttonWidth, buttonHeight)];
-        [_topButton setImage:[UIImage imageNamed:@"bottom_top_banner.png"] forState:UIControlStateNormal];
+        
+        
+        [_topButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight([self frame])-(kToolBarHeight-kWebViewTopMarginY*2)-(buttonHeight), buttonWidth, buttonHeight)];
+        [_topButton setImage:[UIImage imageNamed:@"bottom_top_btn.png"] forState:UIControlStateNormal];
         [_topButton addTarget:self action:@selector(touchTopButton) forControlEvents:UIControlEventTouchUpInside];
-        [_topButton setHidden:NO];
+        [_topButton setHidden:YES];
         //[_topButton setAccessibilityLabel:@"위로" Hint:@"화면을 위로 이동합니다"];
         [self addSubview:_topButton];
         
@@ -144,14 +146,13 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 //        [self addSubview:_zoomViewerButton];
         
         // pre버튼
-//        _preButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [_preButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight(frame)-(buttonHeight*2), buttonWidth, buttonHeight)];
-//        [_preButton setImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateNormal];
-//        [_preButton setImage:[UIImage imageNamed:@"icon_navi_home.png"] forState:UIControlStateHighlighted];
-//        [_preButton addTarget:self action:@selector(touchpreButton) forControlEvents:UIControlEventTouchUpInside];
-//        [_preButton setHidden:YES];
-//        //[_preButton setAccessibilityLabel:@"바로마트" Hint:@"바로마트로 이동합니다"];
-//        [self addSubview:_preButton];
+        _preButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_preButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight([self frame])-(kToolBarHeight-kWebViewTopMarginY*2)-((buttonHeight+10)*2), buttonWidth, buttonHeight)];
+        [_preButton setImage:[UIImage imageNamed:@"bottom_back_btn.png"] forState:UIControlStateNormal];
+        [_preButton setImage:[UIImage imageNamed:@"bottom_back_btn.png"] forState:UIControlStateHighlighted];
+        [_preButton addTarget:self action:@selector(touchpreButton) forControlEvents:UIControlEventTouchUpInside];
+        [_preButton setHidden:YES];
+        [self addSubview:_preButton];
         
 //        // 토글버튼
 //        toggleButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -300,6 +301,10 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
     CGRect toolViewFrame;
     toolViewFrame = CGRectMake(0, CGRectGetHeight([self frame])-(kToolBarHeight-kWebViewTopMarginY*2), CGRectGetWidth([self frame]), kToolBarHeight);
     [toolBarView setFrame:toolViewFrame];
+    
+    [_topButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight([self frame])-(kToolBarHeight-kWebViewTopMarginY*2) - (buttonHeight*2+10) , buttonWidth, buttonHeight)];
+    
+    [_preButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight([self frame])-(kToolBarHeight-kWebViewTopMarginY*2) - (buttonHeight*2+10) - (buttonHeight+10) , buttonWidth, buttonHeight)];
 }
 
 - (void)updateFrameSunnyForStatusHide
@@ -313,6 +318,13 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
     CGRect toolViewFrame;
     toolViewFrame = CGRectMake(0, CGRectGetHeight([self frame])-(kToolBarHeight+kNavigationHeight)+kStatusBarY*2, CGRectGetWidth([self frame]), kToolBarHeight);
     [toolBarView setFrame:toolViewFrame];
+    
+    
+    [_topButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight([self frame])-(kToolBarHeight+kNavigationHeight)+kStatusBarY*2 - (buttonHeight*2+10) , buttonWidth, buttonHeight)];
+    
+    [_preButton setFrame:CGRectMake(kScreenBoundsWidth-buttonWidth, CGRectGetHeight([self frame])-(kToolBarHeight+kNavigationHeight)+kStatusBarY*2 - (buttonHeight*2+10)- (buttonHeight+10) , buttonWidth, buttonHeight)];
+    
+//    [self bringSubviewToFront:_topButton];
 }
 
 
@@ -367,10 +379,12 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
                 //BOOL isHomeMenu = [CPCommonInfo isHomeMenuUrl:url];
                 BOOL isHomeMenu = true;
                 
-                if (!loadingView.isAnimating && !isHomeMenu && !isPullToRefresh && [self isNeedLoadingUrl:url]) {
-                    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-                    [self startLoadingAnimation];
-                }
+//                if (!loadingView.isAnimating && !isHomeMenu && !isPullToRefresh && [self isNeedLoadingUrl:url]) {
+//                    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+//                    [self startLoadingAnimation];
+//                }
+                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+                [self startLoadingAnimation];
                 
             }
             else {
@@ -475,6 +489,7 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
     
 //    UIButton *backButton = (UIButton *)[toolBarView viewWithTag:CPToolBarButtonTypeBack];
 //    [toolBarView setButtonProperties:backButton enable:[self.webView canGoBack]];
+    [_preButton setHidden:([self.webView canGoBack])?false:true];
     
     //
     //UIButton *forwardButton = (UIButton *)[toolBarView viewWithTag:1];
@@ -726,6 +741,9 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 
 - (void)touchpreButton
 {
+    if ([self.webView canGoBack]) {
+      [self.webView goBack];
+    }
 //    SBJSON *parser = [[SBJSON alloc] init];
 //    
 //    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -824,86 +842,84 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
 - (void)didTouchToolBarButton:(UIButton *)button buttonInfo:(NSDictionary *)buttonInfo
 {
     
-    //new
     if ([self.delegate respondsToSelector:@selector(didTouchToolBarButton:)]) {
         [self.delegate didTouchToolBarButton:button];
     }
     
-    switch (button.tag) {
-        case 1:
-            if ([button isEnabled]) {
-                //히스토리가 없을 경우 홈으로
-                if ([self.webView canGoBack]) {
-                    if (![self.zoomViewerButton isHidden]) {
-                        [self.zoomViewerButton setHidden:YES];
-                    }
-                    
-                    [self.webView goBack];
-                }
-                else {
-                    if ([self.delegate respondsToSelector:@selector(didTouchToolBarButton:)]) {
-                        [self.delegate didTouchToolBarButton:button];
-                    }
-                }
-            }
-            break;
-        case 2:
-            if ([button isEnabled]) {
-                if (self.currentSubWebViewIndx < self.maxSubWebViewIndx && ![self.webView canGoForward]) {
-                    if ([self.delegate respondsToSelector:@selector(didTouchToolBarButton:)]) {
-                        [self.delegate didTouchToolBarButton:button];
-                    }
-                }
-                else {
-                    if ([self.webView canGoForward]) {
-                        [self.webView goForward];
-                        
-                        //웹페이지 내부링크(#)가 포함된 URL은 canGoForward가 YES 인데 히스토리 스택에는 없기 때문에 이동이 안된다(iOS bug?)
-                        if (self.currentSubWebViewIndx == self.maxSubWebViewIndx) {
-                            //gclee
-//                            UIButton *forwardButton = (UIButton *)[toolBarView viewWithTag:2];
-//                            [toolBarView setButtonProperties:forwardButton enable:NO];
-                        }
-                    }
-                    else {
-                        if ([self.delegate respondsToSelector:@selector(didTouchToolBarButton:)]) {
-                            [self.delegate didTouchToolBarButton:button];
-                        }
-                    }
-                }
-            }
-            break;
-        case 3:
-        {
-            if ([self.webView isLoading]) {
-                [self.webView stopLoading];
-                [self.webView goBack];
-//                UIButton *reloadButton = (UIButton *)[toolBarView viewWithTag:CPToolBarButtonTypeReload];
-                [toolBarView setReloadButtonProperties:button isReload:NO];
-            }
-            else {
-//                if (!nilCheck([self url])) {
-////                    NSLog(@"%@", [self url]);
-//                    [self.webView reload];
+//    switch (button.tag) {
+//        case 1:
+//            if ([button isEnabled]) {
+//                //히스토리가 없을 경우 홈으로
+//                if ([self.webView canGoBack]) {
+//                    if (![self.zoomViewerButton isHidden]) {
+//                        [self.zoomViewerButton setHidden:YES];
+//                    }
+//                    
+//                    [self.webView goBack];
 //                }
 //                else {
-////                    NSLog(@"empty: %@", reloadUrl);
-//                    [self open:reloadUrl];
+//                    if ([self.delegate respondsToSelector:@selector(didTouchToolBarButton:)]) {
+//                        [self.delegate didTouchToolBarButton:button];
+//                    }
 //                }
-                [self open:reloadUrl];
-            }
-            break;
-        }
-        case 4:
-            [self touchTopButton];
-            break;
-		case 5:
-        default:
-            if ([self.delegate respondsToSelector:@selector(didTouchToolBarButton:)]) {
-                [self.delegate didTouchToolBarButton:button];
-            }
-            break;
-    }
+//            }
+//            break;
+//        case 2:
+//            if ([button isEnabled]) {
+//                if (self.currentSubWebViewIndx < self.maxSubWebViewIndx && ![self.webView canGoForward]) {
+//                    if ([self.delegate respondsToSelector:@selector(didTouchToolBarButton:)]) {
+//                        [self.delegate didTouchToolBarButton:button];
+//                    }
+//                }
+//                else {
+//                    if ([self.webView canGoForward]) {
+//                        [self.webView goForward];
+//                        
+//                        //웹페이지 내부링크(#)가 포함된 URL은 canGoForward가 YES 인데 히스토리 스택에는 없기 때문에 이동이 안된다(iOS bug?)
+//                        if (self.currentSubWebViewIndx == self.maxSubWebViewIndx) {
+//                            UIButton *forwardButton = (UIButton *)[toolBarView viewWithTag:2];
+//                            [toolBarView setButtonProperties:forwardButton enable:NO];
+//                        }
+//                    }
+//                    else {
+//                        if ([self.delegate respondsToSelector:@selector(didTouchToolBarButton:)]) {
+//                            [self.delegate didTouchToolBarButton:button];
+//                        }
+//                    }
+//                }
+//            }
+//            break;
+//        case 3:
+//        {
+//            if ([self.webView isLoading]) {
+//                [self.webView stopLoading];
+//                [self.webView goBack];
+////                UIButton *reloadButton = (UIButton *)[toolBarView viewWithTag:CPToolBarButtonTypeReload];
+//                [toolBarView setReloadButtonProperties:button isReload:NO];
+//            }
+//            else {
+////                if (!nilCheck([self url])) {
+//////                    NSLog(@"%@", [self url]);
+////                    [self.webView reload];
+////                }
+////                else {
+//////                    NSLog(@"empty: %@", reloadUrl);
+////                    [self open:reloadUrl];
+////                }
+//                [self open:reloadUrl];
+//            }
+//            break;
+//        }
+//        case 4:
+//            [self touchTopButton];
+//            break;
+//		case 5:
+//        default:
+//            if ([self.delegate respondsToSelector:@selector(didTouchToolBarButton:)]) {
+//                [self.delegate didTouchToolBarButton:button];
+//            }
+//            break;
+//    }
 }
 
 - (void)didTouchPopOverButton:(UIButton *)button buttonInfo:(NSDictionary *)buttonInfo
