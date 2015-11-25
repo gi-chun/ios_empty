@@ -111,9 +111,35 @@
 }
 
 - (void)autoLogin{
-    [spinner setHidden:false];
-    [spinner startAnimating];
+//    [spinner setHidden:false];
+//    [spinner startAnimating];
     
+    UIImageView *likeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
+    [likeImageView setCenter:CGPointMake(kScreenBoundsWidth/2, kScreenBoundsHeight/2)];
+    [likeImageView setImage:[UIImage imageNamed:@"intro_img.png"]];
+    [self.view addSubview:likeImageView];
+    [self.view bringSubviewToFront:likeImageView];
+    
+    if ([SYSTEM_VERSION intValue] > 7) {
+        likeImageView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+        [UIView animateWithDuration:3.0f
+                              delay:0
+             usingSpringWithDamping:0.2f
+              initialSpringVelocity:6.0f
+                            options:UIViewAnimationOptionAllowUserInteraction
+                         animations:^{
+                             likeImageView.transform = CGAffineTransformIdentity;
+                         }
+                         completion:^(BOOL finished) {
+                             [likeImageView removeFromSuperview];
+                         }];
+    }
+    else {
+        [UIView animateWithDuration:1.0f animations:^{
+            [likeImageView removeFromSuperview];
+        }];
+    }
+
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     //manager.requestSerializer = [AFJSONRequestSerializer serializer];
     //manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -158,8 +184,8 @@
         if(dicItems){
             NSString* sError = dicItems[@"msg"];
             
-            [spinner setHidden:true];
-            [spinner stopAnimating];
+//            [spinner setHidden:true];
+//            [spinner stopAnimating];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:sError delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
             [alert show];
             [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kLoginY];
@@ -218,8 +244,8 @@
             //        NSInteger success = [(NSNumber *) [jsonData objectForKey:@"result"] integerValue];
             //        NSLog(@"%d",success);
             
-            [spinner setHidden:true];
-            [spinner stopAnimating];
+//            [spinner setHidden:true];
+//            [spinner stopAnimating];
             
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Login Success" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
@@ -278,8 +304,8 @@
 }
 - (IBAction)loginBtnClick:(id)sender {
     
-    [spinner setHidden:false];
-    [spinner startAnimating];
+//    [spinner setHidden:false];
+//    [spinner startAnimating];
     
     //set auto login
     if ([switchAuto isOn]) {
@@ -289,6 +315,33 @@
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kAutoLogin];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
+    
+    UIImageView *likeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
+    [likeImageView setCenter:CGPointMake(kScreenBoundsWidth/2, kScreenBoundsHeight/2)];
+    [likeImageView setImage:[UIImage imageNamed:@"intro_img.png"]];
+    [self.view addSubview:likeImageView];
+    [self.view bringSubviewToFront:likeImageView];
+    
+    if ([SYSTEM_VERSION intValue] > 7) {
+        likeImageView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+        [UIView animateWithDuration:3.0f
+                              delay:0
+             usingSpringWithDamping:0.2f
+              initialSpringVelocity:6.0f
+                            options:UIViewAnimationOptionAllowUserInteraction
+                         animations:^{
+                             likeImageView.transform = CGAffineTransformIdentity;
+                         }
+                         completion:^(BOOL finished) {
+                             [likeImageView removeFromSuperview];
+                         }];
+    }
+    else {
+        [UIView animateWithDuration:1.0f animations:^{
+            [likeImageView removeFromSuperview];
+        }];
+    }
+
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     //manager.requestSerializer = [AFJSONRequestSerializer serializer];

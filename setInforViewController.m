@@ -54,7 +54,7 @@
 
 - (void)startLoadingAnimation
 {
-    [self.view addSubview:loadingView];
+    [self.view insertSubview:loadingView aboveSubview:self.view];
     [loadingView startAnimation];
 }
 
@@ -66,8 +66,34 @@
 
 - (IBAction)btnSummitClick:(id)sender {
    
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    [self startLoadingAnimation];
+//    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+//    [self startLoadingAnimation];
+
+    UIImageView *likeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
+    [likeImageView setCenter:CGPointMake(kScreenBoundsWidth/2, kScreenBoundsHeight/2)];
+    [likeImageView setImage:[UIImage imageNamed:@"intro_img.png"]];
+    [self.view addSubview:likeImageView];
+    [self.view bringSubviewToFront:likeImageView];
+    
+    if ([SYSTEM_VERSION intValue] > 7) {
+        likeImageView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+        [UIView animateWithDuration:3.0f
+                              delay:0
+             usingSpringWithDamping:0.2f
+              initialSpringVelocity:6.0f
+                            options:UIViewAnimationOptionAllowUserInteraction
+                         animations:^{
+                             likeImageView.transform = CGAffineTransformIdentity;
+                         }
+                         completion:^(BOOL finished) {
+                             [likeImageView removeFromSuperview];
+                         }];
+    }
+    else {
+        [UIView animateWithDuration:1.0f animations:^{
+            [likeImageView removeFromSuperview];
+        }];
+    }
 
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -177,8 +203,8 @@
             
             NSLog(@"getCookie end ==>" );
             
-            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-            [self stopLoadingAnimation];
+//            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//            [self stopLoadingAnimation];
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"가입 완료" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
             
@@ -191,9 +217,9 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"Error: %@", error);
-        
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        [self stopLoadingAnimation];
+//        
+//        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//        [self stopLoadingAnimation];
         
     }];
     
@@ -206,22 +232,35 @@
 }
 
 - (IBAction)confirmID:(id)sender {
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    [self startLoadingAnimation];
     
-    NSTimeInterval delayInSeconds = 10.00;
+    UIImageView *likeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
+    [likeImageView setCenter:CGPointMake(kScreenBoundsWidth/2, kScreenBoundsHeight/2)];
+    [likeImageView setImage:[UIImage imageNamed:@"intro_img.png"]];
+    [self.view addSubview:likeImageView];
+    [self.view bringSubviewToFront:likeImageView];
     
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        [self stopLoadingAnimation];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"ID 등록가능" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
-        [alert show];
-        
-    });
+    if ([SYSTEM_VERSION intValue] > 7) {
+        likeImageView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+        [UIView animateWithDuration:3.0f
+                              delay:0
+             usingSpringWithDamping:0.2f
+              initialSpringVelocity:6.0f
+                            options:UIViewAnimationOptionAllowUserInteraction
+                         animations:^{
+                             likeImageView.transform = CGAffineTransformIdentity;
+                         }
+                         completion:^(BOOL finished) {
+                             [likeImageView removeFromSuperview];
+                         }];
+    }
+    else {
+        [UIView animateWithDuration:1.0f animations:^{
+            [likeImageView removeFromSuperview];
+        }];
+    }
 
+
+    
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     

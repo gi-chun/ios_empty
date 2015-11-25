@@ -30,6 +30,33 @@
 
 - (IBAction)SearchClick:(id)sender {
     
+    UIImageView *likeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
+    [likeImageView setCenter:CGPointMake(kScreenBoundsWidth/2, kScreenBoundsHeight/2)];
+    [likeImageView setImage:[UIImage imageNamed:@"intro_img.png"]];
+    [self.view addSubview:likeImageView];
+    [self.view bringSubviewToFront:likeImageView];
+    
+    if ([SYSTEM_VERSION intValue] > 7) {
+        likeImageView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+        [UIView animateWithDuration:3.0f
+                              delay:0
+             usingSpringWithDamping:0.2f
+              initialSpringVelocity:6.0f
+                            options:UIViewAnimationOptionAllowUserInteraction
+                         animations:^{
+                             likeImageView.transform = CGAffineTransformIdentity;
+                         }
+                         completion:^(BOOL finished) {
+                             [likeImageView removeFromSuperview];
+                         }];
+    }
+    else {
+        [UIView animateWithDuration:1.0f animations:^{
+            [likeImageView removeFromSuperview];
+        }];
+    }
+
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     NSMutableDictionary *sendDic = [NSMutableDictionary dictionary];
