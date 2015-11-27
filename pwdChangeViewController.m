@@ -26,6 +26,37 @@
 
 - (IBAction)saveClick:(id)sender {
     
+    if([confirmTxt.text length] == 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Check Password please" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        [confirmTxt becomeFirstResponder];
+        
+        return;
+    }
+    if([newPwdTxt.text length] == 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Check Password please" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        [newPwdTxt becomeFirstResponder];
+        
+        return;
+    }
+    if([oldPwdTxt.text length] == 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Check Password please" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        [oldPwdTxt becomeFirstResponder];
+        
+        return;
+    }
+    
+    if( ![newPwdTxt.text isEqualToString:confirmTxt.text] ){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Check Password ! input value different" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        [newPwdTxt becomeFirstResponder];
+        
+        return;
+    }
+    
+    
     UIImageView *likeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
     [likeImageView setCenter:CGPointMake(kScreenBoundsWidth/2, kScreenBoundsHeight/2)];
     [likeImageView setImage:[UIImage imageNamed:@"intro_img.png"]];
@@ -172,6 +203,10 @@
     [self resetNavigationBarView:1];
     [self setDelegateText];
     
+    [confirmTxt setKeyboardType:UIKeyboardTypeNumberPad ];
+    [newPwdTxt setKeyboardType:UIKeyboardTypeNumberPad ];
+    [oldPwdTxt setKeyboardType:UIKeyboardTypeNumberPad ];
+    
     [oldPwdTxt setText:[[NSUserDefaults standardUserDefaults] stringForKey:kPwd]];
 }
 /////
@@ -215,6 +250,25 @@
 {
     [self endEdit];
 }
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    
+    if(textField.tag == 1 || textField.tag == 2 || textField.tag == 3){
+        if (textField.text.length >= PWD_MAX_LENGTH && range.length == 0)
+        {
+            return NO; // return NO to not change text
+        }
+        else if(textField.text.length >= PWD_MAX_LENGTH && range.length == 0){
+            
+            return NO; // return NO to not change text
+        }
+    }
+    
+    return YES;
+    
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if ([self textFieldValueIsValid:textField]) {
@@ -279,6 +333,35 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark -initScreenView
+-(void)initScreenView_ko{
+    
+//    [self resetNavigationBarView:1];
+//    [idLabel setText:LOGIN_ID_KO];
+//    [pwdLabel setText:LOGIN_PWD_KO];
+//    [labelAuto setText:LOGIN_AUTO_KO];
+//    [loginBtn setTitle:LOGIN_BTN_KO forState:UIControlStateNormal];
+//    [labelNoti setText:LOGIN_NOTI_KO];
+//    [btnSummit setTitle:LOGIN_SUMMIT_KO forState:UIControlStateNormal];
+//    [idSearchLabel setText:LOGIN_ID_FIND_KO];
+//    [pwdSearchLabel setText:LOGIN_PWD_FIND_KO];
+    
+}
+
+-(void)initScreenView_vi{
+    
+//    [self resetNavigationBarView:1];
+//    [idLabel setText:LOGIN_ID_VI];
+//    [pwdLabel setText:LOGIN_PWD_VI];
+//    [labelAuto setText:LOGIN_AUTO_VI];
+//    [loginBtn setTitle:LOGIN_BTN_VI forState:UIControlStateNormal];
+//    [labelNoti setText:LOGIN_NOTI_VI];
+//    [btnSummit setTitle:LOGIN_SUMMIT_VI forState:UIControlStateNormal];
+//    [idSearchLabel setText:LOGIN_ID_FIND_VI];
+//    [pwdSearchLabel setText:LOGIN_PWD_FIND_VI];
+}
+
 
 
 /*

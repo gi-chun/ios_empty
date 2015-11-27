@@ -11,6 +11,7 @@
 #import "secondViewController.h"
 #import "leftMenuView.h"
 #import "LoginViewController.h"
+#import "configViewController.h"
 
 @interface leftViewController ()
 
@@ -104,6 +105,12 @@
     //#2 Sunny Bank
     //#3 Event / 공지
     //#4 설정
+    
+//    configViewController* configController = [[configViewController alloc] init];
+//    //[loginController setDelegate:self];
+//    [self.navigationController pushViewController:configController animated:YES];
+//    [self.navigationController setNavigationBarHidden:NO];
+    
     
     //[self.mm_drawerController toggleDrawerSide:MMDrawerSideNone animated:YES completion:nil];
     [self.mm_drawerController closeDrawerAnimated:true completion:nil];

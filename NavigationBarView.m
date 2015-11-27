@@ -36,7 +36,7 @@
             
             // prev button
             UIButton *prevButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [prevButton setFrame:CGRectMake(13, 13, 31, 31)];
+            [prevButton setFrame:CGRectMake(13, 10, 31, 31)];
             [prevButton setBackgroundImage:[UIImage imageNamed:@"top_back_btn.png"] forState:UIControlStateNormal];
             [prevButton setBackgroundImage:[UIImage imageNamed:@"top_back_btn_press.png"] forState:UIControlStateHighlighted];
             [prevButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
@@ -46,11 +46,11 @@
             [self addSubview:prevButton];
             
             //label
-            UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(150-marginX, -5, 200, 70) ];
+            UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) ];
             [titleLabel setBackgroundColor:[UIColor clearColor]];
             [titleLabel setTextColor:UIColorFromRGB(0xffffff)];
-            [titleLabel setFont:[UIFont boldSystemFontOfSize:30]];
-            [titleLabel setTextAlignment:NSTextAlignmentLeft];
+            [titleLabel setFont:[UIFont boldSystemFontOfSize:25]];
+            [titleLabel setTextAlignment:NSTextAlignmentCenter];
             [titleLabel setNumberOfLines:0];
             [titleLabel setText:title];
             [self addSubview:titleLabel];
@@ -142,7 +142,7 @@
             
             // prev button
             UIButton *prevButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [prevButton setFrame:CGRectMake(13, 13, 31, 31)];
+            [prevButton setFrame:CGRectMake(13, 5, 31, 31)];
             [prevButton setBackgroundImage:[UIImage imageNamed:@"top_back_btn.png"] forState:UIControlStateNormal];
             [prevButton setBackgroundImage:[UIImage imageNamed:@"top_back_btn_press.png"] forState:UIControlStateHighlighted];
             [prevButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
@@ -152,11 +152,11 @@
             [self addSubview:prevButton];
             
             //label
-            UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 10, 200, 70) ];
+            UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) ];
             [titleLabel setBackgroundColor:[UIColor clearColor]];
-            [titleLabel setTextColor:UIColorFromRGB(0xffffff)];
-            [titleLabel setFont:[UIFont boldSystemFontOfSize:30]];
-            [titleLabel setTextAlignment:NSTextAlignmentLeft];
+            [titleLabel setTextColor:UIColorFromRGB(0xf05921)];
+            [titleLabel setFont:[UIFont boldSystemFontOfSize:10]];
+            [titleLabel setTextAlignment:NSTextAlignmentRight];
             [titleLabel setNumberOfLines:0];
             [titleLabel setText:_title];
             [self addSubview:titleLabel];

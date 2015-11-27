@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="pwdSearchViewController">
             <connections>
+                <outlet property="label_id" destination="bVF-R4-c8e" id="cSp-Og-bZS"/>
+                <outlet property="label_name" destination="hMZ-hP-Uyd" id="ueP-xl-o0D"/>
                 <outlet property="mailTxt" destination="kO5-ft-YPS" id="Cx8-Og-mls"/>
                 <outlet property="nameTxt" destination="s9T-GI-jRU" id="eTk-Ob-FRh"/>
                 <outlet property="searchBtnClick" destination="vnZ-Mu-5p2" id="bqN-hj-u3F"/>
@@ -90,7 +92,7 @@
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이메일 주소" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="kO5-ft-YPS">
+                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email address" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="kO5-ft-YPS">
                                     <rect key="frame" x="144" y="8" width="170" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>

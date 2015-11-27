@@ -10,9 +10,13 @@
                 <outlet property="btnIDSearch" destination="oPs-Te-hTW" id="kQ8-EQ-QGj"/>
                 <outlet property="btnPwdSearch" destination="7RZ-IW-wUM" id="OYy-76-lCB"/>
                 <outlet property="btnSummit" destination="SAx-Ha-tw7" id="bnM-cv-dHm"/>
+                <outlet property="idLabel" destination="nGm-Ab-jMq" id="cAa-aI-8zH"/>
+                <outlet property="idSearchLabel" destination="dXN-Ke-V8h" id="SfX-Ov-T1b"/>
                 <outlet property="labelAuto" destination="iLC-Co-dcG" id="2yF-0j-Yse"/>
                 <outlet property="labelNoti" destination="2xP-G4-KaD" id="SWR-3S-KnG"/>
                 <outlet property="loginBtn" destination="ccE-KX-kOQ" id="dmP-1j-ZNB"/>
+                <outlet property="pwdLabel" destination="Hde-tt-WSD" id="f8B-10-G9f"/>
+                <outlet property="pwdSearchLabel" destination="kBi-zG-6Au" id="CG1-1U-SUP"/>
                 <outlet property="switchAuto" destination="Qc6-zf-8HG" id="e0J-Fz-Jen"/>
                 <outlet property="txtID" destination="hlG-DQ-Nhd" id="N9j-mA-bRT"/>
                 <outlet property="txtPwd" destination="trA-Qp-JX2" id="qlv-Xf-77p"/>
@@ -47,7 +51,7 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이메일 주소" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="hlG-DQ-Nhd">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email address" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="hlG-DQ-Nhd">
                             <rect key="frame" x="108" y="14" width="177" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -64,12 +68,6 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bullet_point.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cmj-s9-SYJ">
                             <rect key="frame" x="0.0" y="54" width="24" height="23"/>
                         </imageView>
-                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qc6-zf-8HG">
-                            <rect key="frame" x="128" y="88" width="51" height="31"/>
-                            <connections>
-                                <action selector="autoLoginClick:" destination="-1" eventType="valueChanged" id="Za2-CT-tQX"/>
-                            </connections>
-                        </switch>
                         <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="search_btn_press.png" translatesAutoresizingMaskIntoConstraints="NO" id="4iy-bC-bIT">
                             <rect key="frame" x="0.0" y="127" width="293" height="2"/>
                         </imageView>
@@ -83,41 +81,47 @@
                                 <action selector="loginBtnClick:" destination="-1" eventType="touchUpInside" id="9Dc-xv-jRb"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7RZ-IW-wUM">
-                            <rect key="frame" x="139" y="147" width="125" height="34"/>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7RZ-IW-wUM">
+                            <rect key="frame" x="167" y="147" width="125" height="34"/>
                             <accessibility key="accessibilityConfiguration" label="아이디 찾기"/>
                             <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" image="find_pw_icon.png">
-                                <attributedString key="attributedTitle">
-                                    <fragment content="비밀번호 찾기">
-                                        <attributes>
-                                            <font key="NSFont" size="18" name="AppleSDGothicNeo-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <attributedString key="attributedTitle"/>
                             </state>
                             <connections>
                                 <action selector="pwdSearchClick:" destination="-1" eventType="touchUpInside" id="b22-xl-p7z"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPs-Te-hTW">
-                            <rect key="frame" x="16" y="147" width="115" height="34"/>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPs-Te-hTW">
+                            <rect key="frame" x="16" y="147" width="112" height="34"/>
                             <accessibility key="accessibilityConfiguration" label="아이디 찾기"/>
                             <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" image="find_id_icon.png">
-                                <attributedString key="attributedTitle">
-                                    <fragment content="아이디 찾기">
-                                        <attributes>
-                                            <font key="NSFont" size="18" name="HelveticaNeue"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <attributedString key="attributedTitle"/>
                             </state>
                             <connections>
                                 <action selector="idSearchClick:" destination="-1" eventType="touchUpInside" id="SEm-dj-j1Q"/>
                             </connections>
                         </button>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qc6-zf-8HG">
+                            <rect key="frame" x="128" y="88" width="51" height="31"/>
+                            <color key="onTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="autoLoginClick:" destination="-1" eventType="valueChanged" id="Za2-CT-tQX"/>
+                            </connections>
+                        </switch>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="비밀번호 찾기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBi-zG-6Au">
+                            <rect key="frame" x="185" y="153" width="94" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="아이디 찾기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXN-Ke-V8h">
+                            <rect key="frame" x="32" y="153" width="108" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>

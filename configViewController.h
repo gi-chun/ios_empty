@@ -14,11 +14,15 @@
 @interface configViewController : UIViewController
 @property (nonatomic) NavigationBarView *navigationBarView;
 @property (nonatomic, weak) id<configViewControllerDelegate> delegate;
+@property (nonatomic) NSString *preLang;
 
 @end
 
 @protocol configViewControllerDelegate <NSObject>
 @optional
 - (void)didTouchBackButton;
+- (void)didTouchHelpButton;
+- (void)didTouchNewButton;
+- (void)didLoginAfter;
 @end
 

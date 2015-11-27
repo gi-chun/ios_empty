@@ -144,6 +144,17 @@ const static CGFloat AD_HEIGHT     =      50;
     
     [self addSubview:logoView];
     
+    NSString* strLoginTitle;
+    
+    NSString* temp = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
+    if([temp isEqualToString:@"ko"]){
+        strLoginTitle = LEFT_DES_KO;
+        
+    }else if([temp isEqualToString:@"vi"]){
+        strLoginTitle = LEFT_DES_VI;
+    }
+
+    
     //login view
     loginView = [[leftLoginView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(logoView.frame), meWidth, LOGIN_HEIGHT) title:@"로그인을 하시면 Sunny Club의 다양한 서비스를 이용하실 수 있습니다."];
      [loginView setDelegate:self];
@@ -177,6 +188,21 @@ const static CGFloat AD_HEIGHT     =      50;
 //        [self.menuItemScrollView setContentOffset:CGPointMake(0,((MENU_HEIGHT+10)*4)+50)];
 //    }else{
     
+    NSString* strNotiTitle;
+    NSString* strConfigTitle;
+    
+    temp = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
+    if([temp isEqualToString:@"ko"]){
+        
+        strNotiTitle = LEFT_LOGIN_NOTI_KO;
+        strConfigTitle = LEFT_CONFIG_KO;
+        
+    }else if([temp isEqualToString:@"vi"]){
+        
+        strNotiTitle = LEFT_LOGIN_NOTI_VI;
+        strConfigTitle = LEFT_CONFIG_VI;
+    }
+    
     leftMenuItemView *menuItemView1 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(loginView.frame)+5, meWidth, MENU_HEIGHT) title:@"Sunny CLUB" viewType:1];
     [self addSubview:menuItemView1];
     [menuItemView1 setDelegate:self];
@@ -185,11 +211,11 @@ const static CGFloat AD_HEIGHT     =      50;
     [self addSubview:menuItemView2];
     [menuItemView2 setDelegate:self];
     
-    leftMenuItemView *menuItemView3 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(menuItemView2.frame), meWidth, MENU_HEIGHT) title:@"Event / 공지" viewType:3];
+    leftMenuItemView *menuItemView3 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(menuItemView2.frame), meWidth, MENU_HEIGHT) title:strNotiTitle viewType:3];
     [self addSubview:menuItemView3];
     [menuItemView3 setDelegate:self];
     
-    leftMenuItemView *menuItemView4 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(menuItemView3.frame), meWidth, MENU_HEIGHT) title:@"설정" viewType:4];
+    leftMenuItemView *menuItemView4 = [[leftMenuItemView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(menuItemView3.frame), meWidth, MENU_HEIGHT) title:strConfigTitle viewType:4];
     [self addSubview:menuItemView4];
     [menuItemView4 setDelegate:self];
     

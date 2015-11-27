@@ -16,10 +16,15 @@
 @interface idSearchViewController () <NavigationBarViewDelegate>
 {
     
-    __weak IBOutlet UITextField *idTxt;
+    
     NavigationBarView *navigationBarView;
+   
     UITextField* currentEditingTextField;
+     __weak IBOutlet UITextField *idTxt;
     __weak IBOutlet UILabel *yyyyLabel;
+    __weak IBOutlet UILabel *label_name;
+    __weak IBOutlet UILabel *label_yyyy;
+    __weak IBOutlet UIButton *btnSearh;
 }
 @end
 
@@ -45,6 +50,14 @@
 }
 
 - (IBAction)saveBtnClick:(id)sender {
+    
+    if([idTxt.text length] == 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Check ID please" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        [idTxt becomeFirstResponder];
+        
+        return;
+    }
     
     UIImageView *likeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
     [likeImageView setCenter:CGPointMake(kScreenBoundsWidth/2, kScreenBoundsHeight/2)];
@@ -180,7 +193,18 @@
     [self resetNavigationBarView:1];
     [self setDelegateText];
     
+    NSString* temp;
+    temp = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
+    if([temp isEqualToString:@"ko"]){
+        [self initScreenView_ko];
+    }else if([temp isEqualToString:@"vi"]){
+        [self initScreenView_vi];
+    }else{
+        temp = @"EN";
+    }
+    
     idTxt.text = [[NSUserDefaults standardUserDefaults] stringForKey:kUserNm] ;
+    [idTxt becomeFirstResponder];
     
 }
 /////
@@ -280,9 +304,17 @@
 
 - (NavigationBarView *)navigationBarView:(NSInteger)navigationType
 {
-    navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:@"아이디 찾기"];
-    [navigationBarView setDelegate:self];
-    
+    NSString* temp;
+    temp = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
+    if([temp isEqualToString:@"ko"]){
+        navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:IDSEARCH_TITLE_KO];
+        [navigationBarView setDelegate:self];
+    }else if([temp isEqualToString:@"vi"]){
+        navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:IDSEARCH_TITLE_VI];
+        [navigationBarView setDelegate:self];
+    }else{
+        temp = @"EN";
+    }
     return navigationBarView;
 }
 
@@ -294,6 +326,25 @@
     //        [self.delegate didTouchBackButton];
     //    }
 }
+
+#pragma mark -initScreenView
+-(void)initScreenView_ko{
+    
+    [self resetNavigationBarView:1];
+    [label_name setText:IDSEARCH_NAME_VI];
+    [label_yyyy setText:IDSEARCH_YYYY_VI];
+    [btnSearh setTitle:IDSEARCH_SEARCH_VI forState:UIControlStateNormal];
+    
+}
+
+-(void)initScreenView_vi{
+    
+    [self resetNavigationBarView:1];
+    [label_name setText:IDSEARCH_NAME_VI];
+    [label_yyyy setText:IDSEARCH_YYYY_VI];
+    [btnSearh setTitle:IDSEARCH_SEARCH_VI forState:UIControlStateNormal];
+}
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

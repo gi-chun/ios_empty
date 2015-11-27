@@ -95,12 +95,22 @@
     [[NSUserDefaults standardUserDefaults] setObject:uniqueIdentifier forKey:kUUID];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
+    NSString *versionString = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey];
+    [[NSUserDefaults standardUserDefaults] setObject:versionString forKey:kCurrentVersion];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     //set language
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray* languages = [userDefaults objectForKey:@"AppleLanguages"];
     NSString* localLang = languages[0];
-    [[NSUserDefaults standardUserDefaults] setObject:localLang forKey:klang];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    NSString* currentLang = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
+    
+    if([[NSUserDefaults standardUserDefaults] stringForKey:klang]){
+        NSLog(@"klang:: %@", currentLang);
+    }else{
+        [[NSUserDefaults standardUserDefaults] setObject:localLang forKey:klang];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 
     //ko  set language
     //[languages insertObject:@"de" atIndex:0]; // ISO639-1

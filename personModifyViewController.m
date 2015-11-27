@@ -21,7 +21,13 @@
     __weak IBOutlet UILabel *cardNmLabel;
     __weak IBOutlet UITextField *emailTxt;
     __weak IBOutlet UILabel *idLabel;
-
+    __weak IBOutlet UILabel *label_id;
+    __weak IBOutlet UILabel *label_mail;
+    __weak IBOutlet UIButton *btn_change;
+    __weak IBOutlet UILabel *label_pwd;
+    __weak IBOutlet UILabel *label_member;
+    __weak IBOutlet UILabel *label_membership;
+    __weak IBOutlet UILabel *label_nomal;
 }
 @end
 
@@ -46,6 +52,19 @@
         [cardNmLabel setText:[[NSUserDefaults standardUserDefaults] stringForKey:kCardCode]];
         
     }
+    
+    NSString* temp;
+    temp = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
+    if([temp isEqualToString:@"ko"]){
+        [self initScreenView_ko];
+    }else if([temp isEqualToString:@"vi"]){
+        [self initScreenView_vi];
+    }else{
+        temp = @"EN";
+    }
+    
+    [emailTxt becomeFirstResponder];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -58,6 +77,15 @@
 }
 
 - (IBAction)emailSummit:(id)sender {
+    
+    if([emailTxt.text length] == 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Check Mail please" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        [emailTxt becomeFirstResponder];
+        
+        return;
+    }
+   
     
     UIImageView *likeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
     [likeImageView setCenter:CGPointMake(kScreenBoundsWidth/2, kScreenBoundsHeight/2)];
@@ -310,9 +338,17 @@
 
 - (NavigationBarView *)navigationBarView:(NSInteger)navigationType
 {
-    navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:@"개인정보 변경"];
-    [navigationBarView setDelegate:self];
-    
+    NSString* temp;
+    temp = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
+    if([temp isEqualToString:@"ko"]){
+        navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:PERSON_TITLE_KO];
+        [navigationBarView setDelegate:self];
+    }else if([temp isEqualToString:@"vi"]){
+        navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:PERSON_TITLE_VI];
+        [navigationBarView setDelegate:self];
+    }else{
+        temp = @"EN";
+    }
     return navigationBarView;
 }
 
@@ -335,6 +371,32 @@
     // Pass the selected object to the new view controller.
 }
 */
+#pragma mark -initScreenView
+-(void)initScreenView_ko{
+    
+        [self resetNavigationBarView:1];
+        [label_id setText:PERSON_ID_KO];
+        [label_mail setText:PERSON_MAIL_KO];
+        [btn_change setTitle:PERSON_CHANGE_KO forState:UIControlStateNormal];
+        [label_pwd setText:PERSON_PWD_CHANGE_KO];
+        [label_member setText:PERSON_MEMBER_OUT_KO];
+        [label_membership setText:PERSON_MEMBER_LEVEL_KO];
+        [label_nomal setText:PERSON_NOMAL_KO];
+    
+}
+
+-(void)initScreenView_vi{
+    
+    [self resetNavigationBarView:1];
+    [label_id setText:PERSON_ID_VI];
+    [label_mail setText:PERSON_MAIL_VI];
+    [btn_change setTitle:PERSON_CHANGE_VI forState:UIControlStateNormal];
+    [label_pwd setText:PERSON_PWD_CHANGE_VI];
+    [label_member setText:PERSON_MEMBER_OUT_VI];
+    [label_membership setText:PERSON_MEMBER_LEVEL_VI];
+    [label_nomal setText:PERSON_NOMAL_VI];
+}
+
 
 
 

@@ -22,6 +22,8 @@
     __weak IBOutlet UIButton *yearBtn;
     __weak IBOutlet UIButton *searchBtnClick;
     __weak IBOutlet UILabel *yyyymmddLabel;
+    __weak IBOutlet UILabel *label_id;
+    __weak IBOutlet UILabel *label_name;
 }
 
 @end
@@ -186,7 +188,20 @@
     
     if([[NSUserDefaults standardUserDefaults] stringForKey:kEmail]){
         mailTxt.text = [[NSUserDefaults standardUserDefaults] stringForKey:kEmail];
+        
     }
+    
+    NSString* temp;
+    temp = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
+    if([temp isEqualToString:@"ko"]){
+        [self initScreenView_ko];
+    }else if([temp isEqualToString:@"vi"]){
+        [self initScreenView_vi];
+    }else{
+        temp = @"EN";
+    }
+    
+    [mailTxt becomeFirstResponder];
 }
 /////
 - (void)viewDidAppear:(BOOL)animated
@@ -276,19 +291,49 @@
 
 - (NavigationBarView *)navigationBarView:(NSInteger)navigationType
 {
-    navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:@"비밀번호 찾기"];
-    [navigationBarView setDelegate:self];
-    
+    NSString* temp;
+    temp = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
+    if([temp isEqualToString:@"ko"]){
+        navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:PW_SEARCH_TITLE_KO];
+        [navigationBarView setDelegate:self];
+    }else if([temp isEqualToString:@"vi"]){
+        navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:PW_SEARCH_TITLE_VI];
+        [navigationBarView setDelegate:self];
+    }else{
+        temp = @"EN";
+    }
     return navigationBarView;
+
 }
 
 - (void)didTouchBackButton
 {
     [self.navigationController popViewControllerAnimated:YES];
-    
     //    if ([self.delegate respondsToSelector:@selector(didTouchBackButton)]) {
     //        [self.delegate didTouchBackButton];
     //    }
+}
+
+#pragma mark -initScreenView
+-(void)initScreenView_ko{
+    
+    [self resetNavigationBarView:1];
+    
+    [label_id setText:PW_SEARCH_ID_KO];
+    [label_name setText:PW_SEARCH_NAME_KO];
+    [yyyymmddLabel setText:PW_SEARCH_YYYY_KO];
+    [searchBtnClick setTitle:PW_SEARCH_KO forState:UIControlStateNormal];
+    
+}
+
+-(void)initScreenView_vi{
+    
+    [self resetNavigationBarView:1];
+    
+    [label_id setText:PW_SEARCH_ID_VI];
+    [label_name setText:PW_SEARCH_NAME_VI];
+    [yyyymmddLabel setText:PW_SEARCH_YYYY_VI];
+    [searchBtnClick setTitle:PW_SEARCH_VI forState:UIControlStateNormal];
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////

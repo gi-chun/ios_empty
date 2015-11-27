@@ -29,6 +29,11 @@
     __weak IBOutlet UIButton *btnPwdSearch;
     __weak IBOutlet UILabel *labelNoti;
     __weak IBOutlet UIButton *btnSummit;
+    MYLoginType myLoginType;
+    __weak IBOutlet UILabel *idLabel;
+    __weak IBOutlet UILabel *pwdLabel;
+    __weak IBOutlet UILabel *idSearchLabel;
+    __weak IBOutlet UILabel *pwdSearchLabel;
     
 }
 
@@ -57,6 +62,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    //myLoginType = LoginTypeDefault;
+    
     [txtPwd setKeyboardType:UIKeyboardTypeNumberPad ];
     
     txtID.text = [[NSUserDefaults standardUserDefaults] stringForKey:kId] ;
@@ -73,7 +80,26 @@
     [self resetNavigationBarView:1];
     [self setDelegateText];
     
+    NSString* temp;
+    temp = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
+    if([temp isEqualToString:@"ko"]){
+        [self initScreenView_ko];
+    }else if([temp isEqualToString:@"vi"]){
+        [self initScreenView_vi];
+    }else{
+        temp = @"EN";
+    }
+
+    [txtID becomeFirstResponder];
+    
 }
+
+- (void)setLoginType{
+    
+    myLoginType = LoginTypeConfig;
+    
+}
+
 - (IBAction)pwdSearchClick:(id)sender {
     
     pwdSearchViewController *pwdSearchCtl = [[pwdSearchViewController alloc] init];
@@ -259,7 +285,6 @@
             [leftViewController setViewLogin];
             
             [self.navigationController popToRootViewControllerAnimated:YES];
-            
             //
             //        [cookie setValue:@"KO" forKey:@"locale_"];
             //
@@ -306,6 +331,22 @@
     
 //    [spinner setHidden:false];
 //    [spinner startAnimating];
+    
+    if([txtID.text length] == 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Check ID please" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        [txtID becomeFirstResponder];
+        
+        return;
+    }
+    if([txtPwd.text length] == 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Check PWD please" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        [txtPwd becomeFirstResponder];
+        
+        return;
+    }
+    
     
     //set auto login
     if ([switchAuto isOn]) {
@@ -474,7 +515,15 @@
             
             [leftViewController setViewLogin];
             
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            if(myLoginType == LoginTypeConfig){
+                [self.navigationController popViewControllerAnimated:YES];
+                if ([self.delegate respondsToSelector:@selector(didLoginAfter)]) {
+                    [self.delegate didLoginAfter];
+                }
+                
+            }else{
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }
             
             //
             //        [cookie setValue:@"KO" forKey:@"locale_"];
@@ -536,11 +585,17 @@
 
 - (NavigationBarView *)navigationBarView:(NSInteger)navigationType
 {
-    navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:LOGIN_TITLE_KO];
-    [navigationBarView setDelegate:self];
-    
-   
-    
+    NSString* temp;
+    temp = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
+    if([temp isEqualToString:@"ko"]){
+        navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:LOGIN_TITLE_KO];
+        [navigationBarView setDelegate:self];
+    }else if([temp isEqualToString:@"vi"]){
+        navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:LOGIN_TITLE_VI];
+        [navigationBarView setDelegate:self];
+    }else{
+        temp = @"EN";
+    }
     return navigationBarView;
 }
 
@@ -555,10 +610,15 @@
 {
     //[self resetNavigationBarView:0];
 
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    
-    if ([self.delegate respondsToSelector:@selector(didTouchBackButton)]) {
-        [self.delegate didTouchBackButton];
+    if(myLoginType == LoginTypeConfig){
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }else{
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        
+        if ([self.delegate respondsToSelector:@selector(didTouchBackButton)]) {
+            [self.delegate didTouchBackButton];
+        }
     }
 }
 
@@ -625,6 +685,35 @@
 {
     return YES;
 }
+
+#pragma mark -initScreenView
+-(void)initScreenView_ko{
+    
+    [self resetNavigationBarView:1];
+    [idLabel setText:LOGIN_ID_KO];
+    [pwdLabel setText:LOGIN_PWD_KO];
+    [labelAuto setText:LOGIN_AUTO_KO];
+    [loginBtn setTitle:LOGIN_BTN_KO forState:UIControlStateNormal];
+    [labelNoti setText:LOGIN_NOTI_KO];
+    [btnSummit setTitle:LOGIN_SUMMIT_KO forState:UIControlStateNormal];
+    [idSearchLabel setText:LOGIN_ID_FIND_KO];
+    [pwdSearchLabel setText:LOGIN_PWD_FIND_KO];
+    
+}
+
+-(void)initScreenView_vi{
+    
+    [self resetNavigationBarView:1];
+    [idLabel setText:LOGIN_ID_VI];
+    [pwdLabel setText:LOGIN_PWD_VI];
+    [labelAuto setText:LOGIN_AUTO_VI];
+    [loginBtn setTitle:LOGIN_BTN_VI forState:UIControlStateNormal];
+    [labelNoti setText:LOGIN_NOTI_VI];
+    [btnSummit setTitle:LOGIN_SUMMIT_VI forState:UIControlStateNormal];
+    [idSearchLabel setText:LOGIN_ID_FIND_VI];
+    [pwdSearchLabel setText:LOGIN_PWD_FIND_VI];
+}
+
 
 
 /*

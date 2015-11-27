@@ -7,7 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="idSearchViewController">
             <connections>
+                <outlet property="btnSearh" destination="nKs-lO-IsK" id="EMf-sm-2PA"/>
                 <outlet property="idTxt" destination="CQ1-cj-AF7" id="Z34-rF-FD3"/>
+                <outlet property="label_name" destination="uRq-Ao-Agq" id="k2O-XX-mzc"/>
+                <outlet property="label_yyyy" destination="Oxv-9O-Asc" id="EuA-vO-mUW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="yyyyLabel" destination="UQI-Q8-mOa" id="4tF-3q-9oM"/>
             </connections>
@@ -45,7 +48,7 @@
                                     <accessibility key="accessibilityConfiguration" label="아이디 찾기"/>
                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="24"/>
                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="저장하기" backgroundImage="home_btn.png"/>
+                                    <state key="normal" title="조회하기" backgroundImage="search_btn.png"/>
                                     <connections>
                                         <action selector="saveBtnClick:" destination="-1" eventType="touchUpInside" id="11i-hz-kN1"/>
                                     </connections>
@@ -86,7 +89,7 @@
         </view>
     </objects>
     <resources>
-        <image name="home_btn.png" width="225" height="40"/>
         <image name="personaldata_menu03_back_press.png" width="375" height="48"/>
+        <image name="search_btn.png" width="313" height="40"/>
     </resources>
 </document>

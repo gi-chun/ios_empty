@@ -141,6 +141,39 @@
     
     // Layout
     [self initLayout];
+    
+    if (webViewRequest) {
+        [self.webView loadRequest:webViewRequest];
+    }
+    else {
+        if (webViewUrl) {
+            
+            NSString* gLocalLang = @"";
+            NSString *callUrl = @"";
+            
+            gLocalLang = @"ko";
+            callUrl = [NSString stringWithFormat:webViewUrl, gLocalLang];
+            
+            NSURL *Nurl = [NSURL URLWithString:callUrl];
+            NSMutableURLRequest *mutableRequest = [NSMutableURLRequest requestWithURL:Nurl];
+            
+            NSMutableString *cookieStringToSet = [[NSMutableString alloc] init];
+            NSHTTPCookie *cookie;
+            
+            for (cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
+                NSLog(@"%@=%@", cookie.name, cookie.value);
+                [cookieStringToSet appendFormat:@"%@=%@;",cookie.name, cookie.value];
+            }
+                                
+            if (cookieStringToSet.length) {
+                [mutableRequest setValue:cookieStringToSet forHTTPHeaderField:@"Cookie"];
+                NSLog(@"Cookie : %@", cookieStringToSet);
+            }
+            
+            [self openWebView:callUrl mutableRequest:mutableRequest];
+        }
+    }
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -188,52 +221,19 @@
 
 - (void)initLayout
 {
-//    self.webView = [[WebView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-kToolBarHeight-kNavigationHeight-kWebViewMarginY*2) isSub:YES];
-    self.webView = [[WebView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight-kStatusBarY) isSub:YES];
-    [self.webView setDelegate:self];
-    [self.webView setHiddenToolBarView:NO];
-    [self.view addSubview:self.webView];
+    if(self.webView == nil){
+        //    self.webView = [[WebView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-kToolBarHeight-kNavigationHeight-kWebViewMarginY*2) isSub:YES];
+        self.webView = [[WebView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kScreenBoundsHeight-kNavigationHeight-kStatusBarY) isSub:YES];
+        [self.webView setDelegate:self];
+        [self.webView setHiddenToolBarView:NO];
+        [self.view addSubview:self.webView];
+    }
     
 //    toolBarView = [[ToolBarView alloc] initWithFrame:CGRectMake(0, kScreenBoundsHeight-kToolBarHeight*2, kScreenBoundsWidth, kToolBarHeight*2) toolbarType:1];
 //    [toolBarView setDelegate:self];
 //    [toolBarView setHidden:NO];
 //    [self.view addSubview:toolBarView];
     
-    if (webViewRequest) {
-        [self.webView loadRequest:webViewRequest];
-    }
-    else {
-        if (webViewUrl) {
-            
-            NSString* gLocalLang = @"";
-            NSString *callUrl = @"";
-            
-            gLocalLang = @"ko";
-            callUrl = [NSString stringWithFormat:webViewUrl, gLocalLang];
-            
-            NSURL *Nurl = [NSURL URLWithString:callUrl];
-            NSMutableURLRequest *mutableRequest = [NSMutableURLRequest requestWithURL:Nurl];
-            
-            NSMutableString *cookieStringToSet = [[NSMutableString alloc] init];
-            NSHTTPCookie *cookie;
-            
-            for (cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
-                NSLog(@"%@=%@", cookie.name, cookie.value);
-                [cookieStringToSet appendFormat:@"%@=%@;",cookie.name, cookie.value];
-            }
-                                
-            if (cookieStringToSet.length) {
-                [mutableRequest setValue:cookieStringToSet forHTTPHeaderField:@"Cookie"];
-                NSLog(@"Cookie : %@", cookieStringToSet);
-            }
-            
-            [self openWebView:callUrl mutableRequest:mutableRequest];
-            
-            //[self.webView open:webViewUrl];
-            
-            //gclee
-        }
-    }
 }
 
 - (NavigationBarView *)navigationBarView:(NSInteger)navigationType
@@ -301,6 +301,7 @@
 //
 - (void)openWebView:(NSString *)url mutableRequest:(NSMutableURLRequest *)request
 {
+    
     //BOOL isException = [CPCommonInfo isExceptionalUrl:url];
     BOOL isException = false;//중요 중요
     CGRect webViewFrame;
@@ -324,6 +325,8 @@
         [self initNavigation:4];
     }
 
+    
+    //[self.webView stop];
     
     // Exception URL은 네비게이션바없는 풀화면으로 보여줌
     if (isException) {
@@ -405,17 +408,17 @@
 
 - (void)didTouchBackButton
 {
-    for (UIView *subView in self.navigationController.navigationBar.subviews) {
-        if ([subView isKindOfClass:[NavigationBarView class]]) {
-            [subView removeFromSuperview];
-        }
-    }
-    
-    // Navigation : viewDidLoad에서 한번, viewDidAppear에서 한번 더 한다.
-    [self.navigationItem setHidesBackButton:YES];
-    [self.navigationController.navigationBar addSubview:[self navigationBarView:0]]; //defaut gnb
-    
-    [self.navigationController popViewControllerAnimated:YES];
+//    for (UIView *subView in self.navigationController.navigationBar.subviews) {
+//        if ([subView isKindOfClass:[NavigationBarView class]]) {
+//            [subView removeFromSuperview];
+//        }
+//    }
+//    
+//    // Navigation : viewDidLoad에서 한번, viewDidAppear에서 한번 더 한다.
+//    [self.navigationItem setHidesBackButton:YES];
+//    [self.navigationController.navigationBar addSubview:[self navigationBarView:0]]; //defaut gnb
+//    
+//    [self.navigationController popViewControllerAnimated:YES];
     
 }
 
@@ -1287,10 +1290,6 @@
 
 - (void)didTouchMenuItem:(NSInteger)menuType
 {
-    //#1 Sunny Club
-    //#2 Sunny Bank
-    //#3 Event / 공지
-    //#4 설정
     
 //    NSString *strMenuType = [NSString stringWithFormat:@"webView didTouchMenuItem menuType %d", menuType];
 //    
@@ -1305,17 +1304,17 @@
     
     //Sunny Club
     if(menuType == 1){
-        gLocalLang = @"ko";
+        //gLocalLang = @"ko";
         callUrl = [NSString stringWithFormat:SUNNY_CLUB_URL, gLocalLang];
     }
     //Sunny Bank
     if(menuType == 2){
-        gLocalLang = @"ko";
+        //gLocalLang = @"ko";
         callUrl = [NSString stringWithFormat:SUNNY_BANK_URL, gLocalLang];
     }
     //news
     if(menuType == 3){
-        gLocalLang = @"ko";
+        //gLocalLang = @"ko";
         callUrl = [NSString stringWithFormat:NEW_NEWS_URL, gLocalLang];
     }
     
@@ -1343,11 +1342,75 @@
         [self.mm_drawerController closeDrawerAnimated:true completion:nil];
         
         configViewController *configController = [[configViewController alloc] init];
-        //[configController setDelegate:self];
+        [configController setDelegate:self];
         [self.navigationController pushViewController:configController animated:YES];
         [self.navigationController setNavigationBarHidden:NO];
         
     }
+}
+
+- (void)didTouchNewButton
+{
+    [self setUrl:NEW_NEWS_URL];
+    
+//    NSString* gLocalLang = @"";
+//    if([[NSUserDefaults standardUserDefaults] stringForKey:klang]){
+//        gLocalLang = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
+//    }
+//    NSString *callUrl = @"";
+//    
+//    gLocalLang = @"kr";
+//    callUrl = [NSString stringWithFormat:NEW_NEWS_URL, gLocalLang];
+//    
+//    NSURL *Nurl = [NSURL URLWithString:callUrl];
+//    NSMutableURLRequest *mutableRequest = [NSMutableURLRequest requestWithURL:Nurl];
+//    
+//    NSMutableString *cookieStringToSet = [[NSMutableString alloc] init];
+//    NSHTTPCookie *cookie;
+//    
+//    for (cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
+//        NSLog(@"%@=%@", cookie.name, cookie.value);
+//        [cookieStringToSet appendFormat:@"%@=%@;",cookie.name, cookie.value];
+//    }
+//                        
+//    if (cookieStringToSet.length) {
+//        [mutableRequest setValue:cookieStringToSet forHTTPHeaderField:@"Cookie"];
+//        NSLog(@"Cookie : %@", cookieStringToSet);
+//    }
+//    
+//    [self openWebView:callUrl mutableRequest:mutableRequest];
+}
+
+- (void)didTouchHelpButton
+{
+    [self setUrl:HELP_LIST_URL];
+    
+//    NSString* gLocalLang = @"";
+//    if([[NSUserDefaults standardUserDefaults] stringForKey:klang]){
+//        gLocalLang = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
+//    }
+//    NSString *callUrl = @"";
+//    
+//    callUrl = [NSString stringWithFormat:HELP_LIST_URL, gLocalLang];
+//    
+//    NSURL *Nurl = [NSURL URLWithString:callUrl];
+//    NSMutableURLRequest *mutableRequest = [NSMutableURLRequest requestWithURL:Nurl];
+//    
+//    NSMutableString *cookieStringToSet = [[NSMutableString alloc] init];
+//    NSHTTPCookie *cookie;
+//    
+//    for (cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
+//        NSLog(@"%@=%@", cookie.name, cookie.value);
+//        [cookieStringToSet appendFormat:@"%@=%@;",cookie.name, cookie.value];
+//    }
+//                        
+//    if (cookieStringToSet.length) {
+//        [mutableRequest setValue:cookieStringToSet forHTTPHeaderField:@"Cookie"];
+//        NSLog(@"Cookie : %@", cookieStringToSet);
+//    }
+//    
+//    [self openWebView:callUrl mutableRequest:mutableRequest];
+    
 }
 
 - (void)didTouchCloseBtn

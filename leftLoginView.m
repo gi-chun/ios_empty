@@ -66,6 +66,17 @@
         }
         
         [self showContents];
+        
+        NSString* temp;
+        temp = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
+        if([temp isEqualToString:@"ko"]){
+            [self initScreenView_ko];
+        }else if([temp isEqualToString:@"vi"]){
+            [self initScreenView_vi];
+        }else{
+            temp = @"EN";
+        }
+
     }
     
     return self;
@@ -830,6 +841,22 @@
     }
     
 }
+
+#pragma mark -initScreenView
+-(void)initScreenView_ko{
+    
+    [labelMenu setText:LEFT_DES_KO];
+    [loginButton setTitle:LEFT_LOGIN_KO forState:UIControlStateNormal];
+    
+}
+
+-(void)initScreenView_vi{
+    
+    [labelMenu setText:LEFT_DES_VI];
+    [loginButton setTitle:LEFT_LOGIN_VI forState:UIControlStateNormal];
+    
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

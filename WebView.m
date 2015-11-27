@@ -530,7 +530,7 @@ typedef NS_ENUM(NSInteger, RequestNotifyType)
         [self.delegate webView:self didFailLoadWithError:error];
     }
     
-    [self stopLoadingAnimation];
+    //[self stopLoadingAnimation];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
 //    errorView = [[CPErrorView alloc] initWithFrame:self.frame];

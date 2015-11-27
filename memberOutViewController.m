@@ -23,6 +23,14 @@
 @implementation memberOutViewController
 - (IBAction)OutBtnClick:(id)sender {
     
+    if([pwdTxt.text length] == 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Check Password please" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        [pwdTxt becomeFirstResponder];
+        
+        return;
+    }
+
     UIImageView *likeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
     [likeImageView setCenter:CGPointMake(kScreenBoundsWidth/2, kScreenBoundsHeight/2)];
     [likeImageView setImage:[UIImage imageNamed:@"intro_img.png"]];
@@ -156,6 +164,7 @@
     // Do any additional setup after loading the view from its nib.
     [self resetNavigationBarView:1];
     [self setDelegateText];
+    [pwdTxt setKeyboardType:UIKeyboardTypeNumberPad ];
 }
 /////
 - (void)viewDidAppear:(BOOL)animated
@@ -225,6 +234,23 @@
 {
     return YES;
 }
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    
+        if (pwdTxt.text.length >= PWD_MAX_LENGTH && range.length == 0)
+        {
+            return NO; // return NO to not change text
+        }
+        else if(textField.text.length >= PWD_MAX_LENGTH && range.length == 0){
+            
+            return NO; // return NO to not change text
+        }
+    
+    return YES;
+    
+}
+
 
 /////////////////////////////////////////////////////////////////////
 //navigation

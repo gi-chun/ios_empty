@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NEk-TV-baL">
-                    <rect key="frame" x="8" y="80" width="304" height="236"/>
+                    <rect key="frame" x="8" y="116" width="304" height="236"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="login_window_back_noline.png" translatesAutoresizingMaskIntoConstraints="NO" id="0qF-ca-pom">
                             <rect key="frame" x="0.0" y="0.0" width="304" height="236"/>
@@ -48,7 +48,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Wd-WO-UXM">
-                    <rect key="frame" x="31" y="330" width="259" height="46"/>
+                    <rect key="frame" x="31" y="366" width="259" height="46"/>
                     <accessibility key="accessibilityConfiguration" label="아이디 찾기"/>
                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="24"/>
                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>

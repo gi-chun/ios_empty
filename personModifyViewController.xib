@@ -7,9 +7,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="personModifyViewController">
             <connections>
+                <outlet property="btn_change" destination="Lno-8y-Z3s" id="oc5-nE-MK8"/>
                 <outlet property="cardNmLabel" destination="eWD-P4-oR1" id="hJJ-Xw-TRO"/>
                 <outlet property="emailTxt" destination="g1A-7W-zOm" id="YGh-Pj-Lgb"/>
                 <outlet property="idLabel" destination="800-sY-J4g" id="nG8-pY-KcK"/>
+                <outlet property="label_id" destination="1IS-SL-7te" id="e3N-Ee-YCV"/>
+                <outlet property="label_mail" destination="jfO-Hc-vNP" id="zwG-Mg-Obu"/>
+                <outlet property="label_member" destination="3ho-nE-Aj9" id="Nlt-zh-reD"/>
+                <outlet property="label_membership" destination="nq6-13-Wpe" id="pQj-7X-qGB"/>
+                <outlet property="label_nomal" destination="ywG-ex-EeX" id="bog-ss-y23"/>
+                <outlet property="label_pwd" destination="D2F-or-r84" id="BHq-GW-A9D"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,20 +26,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7KU-o0-FoK">
-                    <rect key="frame" x="0.0" y="214" width="320" height="34"/>
+                    <rect key="frame" x="0.0" y="201" width="320" height="43"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="personaldata_menu01_back.png" highlightedImage="personaldata_menu01_back_press.png" translatesAutoresizingMaskIntoConstraints="NO" id="79N-RT-iVa">
-                            <rect key="frame" x="-6" y="-6" width="318" height="45"/>
-                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="noG-RP-Os8">
-                            <rect key="frame" x="-27" y="-8" width="375" height="48"/>
+                            <rect key="frame" x="-27" y="6" width="375" height="40"/>
                             <state key="normal" image="personaldata_menu01_back.png" backgroundImage="personaldata_menu01_back.png"/>
                             <connections>
                                 <action selector="pwdChange:" destination="-1" eventType="touchUpInside" id="8Bc-lZ-dC1"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="비밀번호 변경" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2F-or-r84">
-                            <rect key="frame" x="12" y="6" width="95" height="21"/>
+                            <rect key="frame" x="8" y="14" width="95" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -47,14 +51,14 @@
                             <rect key="frame" x="-6" y="0.0" width="318" height="37"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iOe-Rl-pML">
-                            <rect key="frame" x="0.0" y="-9" width="320" height="46"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
                             <state key="normal" backgroundImage="personaldata_menu01_back.png"/>
                             <connections>
                                 <action selector="memberOutClick:" destination="-1" eventType="touchUpInside" id="6k4-ue-XhE"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="회원탈퇴" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ho-nE-Aj9">
-                            <rect key="frame" x="8" y="8" width="95" height="21"/>
+                            <rect key="frame" x="5" y="8" width="95" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -63,22 +67,24 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LFB-Zl-M1J">
-                    <rect key="frame" x="0.0" y="152" width="320" height="69"/>
+                    <rect key="frame" x="0.0" y="118" width="320" height="61"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="g1A-7W-zOm">
-                            <rect key="frame" x="8" y="32" width="220" height="30"/>
+                            <rect key="frame" x="8" y="29" width="220" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lno-8y-Z3s">
-                            <rect key="frame" x="238" y="29" width="75" height="35"/>
-                            <state key="normal" image="apply_btn.png"/>
+                            <rect key="frame" x="238" y="26" width="75" height="35"/>
+                            <state key="normal" title="적용" backgroundImage="search_btn.png">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
                             <connections>
                                 <action selector="emailSummit:" destination="-1" eventType="touchUpInside" id="Gda-mK-5xg"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="메일변경" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfO-Hc-vNP">
-                            <rect key="frame" x="8" y="3" width="95" height="21"/>
+                            <rect key="frame" x="8" y="0.0" width="95" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -86,26 +92,38 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1IS-SL-7te">
+                    <rect key="frame" x="8" y="87" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="shinhan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="800-sY-J4g">
+                    <rect key="frame" x="58" y="89" width="246" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="061-6U-Mdd">
-                    <rect key="frame" x="0.0" y="284" width="320" height="214"/>
+                    <rect key="frame" x="0.0" y="300" width="320" height="192"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="personaldata_menu04_back_incard.png" translatesAutoresizingMaskIntoConstraints="NO" id="cT5-WF-mgy">
-                            <rect key="frame" x="0.0" y="30" width="320" height="150"/>
+                            <rect key="frame" x="0.0" y="22" width="320" height="150"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="S00000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWD-P4-oR1">
-                            <rect key="frame" x="127" y="117" width="90" height="21"/>
+                            <rect key="frame" x="127" y="109" width="90" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="멤버십 등급" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nq6-13-Wpe">
-                            <rect key="frame" x="14" y="8" width="81" height="21"/>
+                            <rect key="frame" x="14" y="0.0" width="81" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="일반" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywG-ex-EeX">
-                            <rect key="frame" x="270" y="8" width="36" height="21"/>
+                            <rect key="frame" x="270" y="0.0" width="36" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -113,18 +131,6 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1IS-SL-7te">
-                    <rect key="frame" x="8" y="117" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="shinhan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="800-sY-J4g">
-                    <rect key="frame" x="58" y="117" width="246" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -136,9 +142,9 @@
         </imageView>
     </objects>
     <resources>
-        <image name="apply_btn.png" width="75" height="35"/>
         <image name="personaldata_menu01_back.png" width="375" height="48"/>
         <image name="personaldata_menu01_back_press.png" width="345" height="263"/>
         <image name="personaldata_menu04_back_incard.png" width="375" height="241"/>
+        <image name="search_btn.png" width="313" height="40"/>
     </resources>
 </document>

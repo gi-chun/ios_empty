@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="setInforViewController">
             <connections>
                 <outlet property="btnSummit" destination="fWA-g0-tUO" id="REZ-Uz-ebb"/>
+                <outlet property="confirmBtn" destination="g1c-GC-Dgj" id="jZw-Xg-wZE"/>
                 <outlet property="idText" destination="4Aq-yO-7Ed" id="0tZ-zc-xqf"/>
                 <outlet property="inforText" destination="QRW-tp-84R" id="hbY-mp-O71"/>
                 <outlet property="labelID" destination="ahh-Gn-Xn3" id="iU1-kf-nJR"/>
@@ -50,6 +51,7 @@
                 </label>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VQO-y9-Rye">
                     <rect key="frame" x="75" y="197" width="51" height="31"/>
+                    <color key="onTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                 </switch>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="이용약관에 동의함" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2M-Mt-Oyk">
                     <rect key="frame" x="132" y="202" width="134" height="21"/>
@@ -60,9 +62,6 @@
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jv2-94-j17">
                     <rect key="frame" x="8" y="231" width="304" height="180"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="login_window_back_noline.png" translatesAutoresizingMaskIntoConstraints="NO" id="3tX-o9-W2G">
-                            <rect key="frame" x="0.0" y="0.0" width="304" height="180"/>
-                        </imageView>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17J-KT-kuE">
                             <rect key="frame" x="8" y="8" width="288" height="164"/>
                             <subviews>
@@ -128,7 +127,8 @@
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1c-GC-Dgj">
                                     <rect key="frame" x="227" y="1" width="57" height="27"/>
-                                    <state key="normal" title="Button" image="email_same_btn.png"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <state key="normal" title="중복확인" backgroundImage="search_btn.png"/>
                                     <connections>
                                         <action selector="confirmID:" destination="-1" eventType="touchUpInside" id="tKt-ZF-5iW"/>
                                     </connections>
@@ -147,7 +147,6 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWA-g0-tUO">
                     <rect key="frame" x="8" y="419" width="304" height="46"/>
@@ -166,8 +165,7 @@
     </objects>
     <resources>
         <image name="bullet_point.png" width="11" height="11"/>
-        <image name="email_same_btn.png" width="70" height="35"/>
         <image name="home_btn.png" width="225" height="40"/>
-        <image name="login_window_back_noline.png" width="345" height="263"/>
+        <image name="search_btn.png" width="313" height="40"/>
     </resources>
 </document>

@@ -39,6 +39,7 @@
     __weak IBOutlet UILabel *labelPwdCheck;
     __weak IBOutlet UIButton *btnSummit;
     
+    __weak IBOutlet UIButton *confirmBtn;
     NSInteger isTwoChk;
     
     CPLoadingView *loadingView;
@@ -65,6 +66,46 @@
 }
 
 - (IBAction)btnSummitClick:(id)sender {
+    
+    if([idText.text length] == 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Check ID please" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        [idText becomeFirstResponder];
+        
+        return;
+    }
+    
+    if([nameText.text length] == 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Check Name please" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        [idText becomeFirstResponder];
+        
+        return;
+    }
+    
+    if([yearText.text length] == 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Check input data please" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        [idText becomeFirstResponder];
+        
+        return;
+    }
+    
+    if([pwdText.text length] == 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Check password please" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        [idText becomeFirstResponder];
+        
+        return;
+    }
+    
+    if([pwdCnfirmText.text length] == 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Check password please" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        [idText becomeFirstResponder];
+        
+        return;
+    }
    
 //    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 //    [self startLoadingAnimation];
@@ -95,6 +136,7 @@
         }];
     }
 
+   
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     //manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -127,6 +169,8 @@
         
         return;
     }
+    
+     [btnSummit setEnabled:false];
     
     //회원가입
     [rootDic setObject:@"" forKey:@"task"];
@@ -210,6 +254,8 @@
             
             [alert show];
             
+             [btnSummit setEnabled:true];
+            
             [self.navigationController popViewControllerAnimated:YES];
             [self.navigationController setNavigationBarHidden:NO];
         }
@@ -217,6 +263,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"Error: %@", error);
+         [btnSummit setEnabled:true];
 //        
 //        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 //        [self stopLoadingAnimation];
@@ -232,6 +279,14 @@
 }
 
 - (IBAction)confirmID:(id)sender {
+    
+    if([idText.text length] == 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Check ID please" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        [idText becomeFirstResponder];
+        
+        return;
+    }
     
     UIImageView *likeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
     [likeImageView setCenter:CGPointMake(kScreenBoundsWidth/2, kScreenBoundsHeight/2)];
@@ -259,7 +314,7 @@
         }];
     }
 
-
+    [confirmBtn setEnabled:false];
     
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -329,11 +384,14 @@
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"ID 등록가능" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
             [alert show];
             
+            [confirmBtn setEnabled:true];
+            
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"Error: %@", error);
+        [confirmBtn setEnabled:true];
     }];
 }
 
@@ -523,6 +581,28 @@
     return YES;
 }
 
+-(void)initScreenView{
+    
+//    __weak IBOutlet UITextView *inforText;
+//    UITextField* currentEditingTextField;
+//    __weak IBOutlet UITextField *idText;
+//    __weak IBOutlet UITextField *nameText;
+//    __weak IBOutlet UITextField *pwdText;
+//    __weak IBOutlet UITextField *pwdCnfirmText;
+//    __weak IBOutlet UITextField *yearText;
+//    __weak IBOutlet UISwitch *okSwitch;
+//    __weak IBOutlet UILabel *labelInfor;
+//    __weak IBOutlet UILabel *labelID;
+//    __weak IBOutlet UILabel *labelName;
+//    
+//    __weak IBOutlet UILabel *labelYear;
+//    __weak IBOutlet UILabel *labelPwd;
+//    __weak IBOutlet UILabel *labelPwdCheck;
+//    __weak IBOutlet UIButton *btnSummit;
+    
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -531,18 +611,25 @@
     [pwdText setKeyboardType:UIKeyboardTypeNumberPad ];
     [pwdCnfirmText setKeyboardType:UIKeyboardTypeNumberPad ];
     
-    //set auto login
-    if([[NSUserDefaults standardUserDefaults] boolForKey:kAgreeOk] == YES)
-    {
-        [okSwitch setOn:true];
-    }else{
-        [okSwitch setOn:false];
-    }
-    
-    
     [self resetNavigationBarView:1];
     [self initSetItem];
     [self setDelegateText];
+    
+    idText.text = [[NSUserDefaults standardUserDefaults] stringForKey:kId] ;
+    nameText.text = [[NSUserDefaults standardUserDefaults] stringForKey:kUserNm] ;
+    
+    NSString* temp;
+    temp = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
+    if([temp isEqualToString:@"ko"]){
+        [self initScreenView_ko];
+    }else if([temp isEqualToString:@"vi"]){
+        [self initScreenView_vi];
+    }else{
+        temp = @"EN";
+    }
+    
+    [idText becomeFirstResponder];
+   
 }
 
 - (void)didReceiveMemoryWarning {
@@ -581,8 +668,18 @@
 
 - (NavigationBarView *)navigationBarView:(NSInteger)navigationType
 {
-    navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:SETINFO_TITLE_KO];
-    [navigationBarView setDelegate:self];
+    NSString* temp;
+    temp = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
+    if([temp isEqualToString:@"ko"]){
+        navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:SETINFO_TITLE_KO];
+        [navigationBarView setDelegate:self];
+    }else if([temp isEqualToString:@"vi"]){
+        navigationBarView = [[NavigationBarView alloc] initWithFrame:CGRectMake(0, 0, kScreenBoundsWidth, kNavigationHeight) type:navigationType title:SETINFO_TITLE_VI];
+        [navigationBarView setDelegate:self];
+    }else{
+        temp = @"EN";
+    }
+
     
     
     
@@ -608,6 +705,39 @@
 //        [self.delegate didTouchBackButton];
 //    }
 }
+
+#pragma mark -initScreenView
+-(void)initScreenView_ko{
+    
+    [self resetNavigationBarView:1];
+    [inforText setText:SETINFO_TEXT_KO];
+    [labelInfor setText:SETINFO_AGREE_KO];
+    [labelID setText:SETINFO_ID_KO];
+    [labelName setText:SETINFO_NAME_KO];
+    [labelYear setText:SETINFO_YEAR_KO];
+    [labelPwd setText:SETINFO_PWD_KO];
+    [labelPwdCheck setText:SETINFO_PWDCON_KO];
+    [btnSummit setTitle:SETINFO_CONFIRM_KO forState:UIControlStateNormal];
+    [confirmBtn setTitle:SETINFO_CONFIRM_KO forState:UIControlStateNormal];
+    [btnSummit setTitle:LOGIN_SUMMIT_KO forState:UIControlStateNormal];
+    
+}
+
+-(void)initScreenView_vi{
+    
+    [self resetNavigationBarView:1];
+    [inforText setText:SETINFO_TEXT_VI];
+    [labelInfor setText:SETINFO_AGREE_VI];
+    [labelID setText:SETINFO_ID_VI];
+    [labelName setText:SETINFO_NAME_VI];
+    [labelYear setText:SETINFO_YEAR_VI];
+    [labelPwd setText:SETINFO_PWD_VI];
+    [labelPwdCheck setText:SETINFO_PWDCON_VI];
+    [btnSummit setTitle:SETINFO_CONFIRM_VI forState:UIControlStateNormal];
+    [confirmBtn setTitle:SETINFO_CONFIRM_VI forState:UIControlStateNormal];
+    [btnSummit setTitle:LOGIN_SUMMIT_VI forState:UIControlStateNormal];
+}
+
 
 
 
