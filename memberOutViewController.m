@@ -10,6 +10,9 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "SBJson.h"
 #import "NavigationBarView.h"
+#import "leftViewController.h"
+#import "AppDelegate.h"
+
 
 @interface memberOutViewController () <NavigationBarViewDelegate>{
     
@@ -156,6 +159,19 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
         
     }];
+    
+    //
+//    if(myLoginType == LoginTypeConfig){
+//        [self.navigationController popViewControllerAnimated:YES];
+//        if ([self.delegate respondsToSelector:@selector(didLoginAfter)]) {
+//            [self.delegate didLoginAfter];
+//        }
+//        
+//    }else{
+//        [self.navigationController popToRootViewControllerAnimated:YES];
+//    }
+    leftViewController *leftViewController = ((AppDelegate *)[UIApplication sharedApplication].delegate).gLeftViewController;
+    [leftViewController setViewLogin];
 
 }
 

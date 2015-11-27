@@ -23,10 +23,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jtB-Pk-ohp">
-                    <rect key="frame" x="0.0" y="140" width="320" height="490"/>
+                    <rect key="frame" x="0.0" y="92" width="320" height="490"/>
                     <subviews>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lYy-DS-wzI">
-                            <rect key="frame" x="0.0" y="50" width="320" height="38"/>
+                            <rect key="frame" x="0.0" y="75" width="320" height="38"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMZ-hP-Uyd">
                                     <rect key="frame" x="8" y="12" width="132" height="21"/>
@@ -43,7 +43,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bjs-pR-Dd3">
-                            <rect key="frame" x="0.0" y="160" width="320" height="71"/>
+                            <rect key="frame" x="0.0" y="185" width="320" height="71"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vnZ-Mu-5p2">
                                     <rect key="frame" x="8" y="13" width="304" height="46"/>
@@ -59,7 +59,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vCp-GQ-YNL">
-                            <rect key="frame" x="0.0" y="103" width="320" height="57"/>
+                            <rect key="frame" x="0.0" y="128" width="320" height="57"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KpE-DO-bP5">
                                     <rect key="frame" x="0.0" y="3" width="320" height="38"/>
@@ -84,7 +84,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aq6-3L-n5g">
-                            <rect key="frame" x="0.0" y="4" width="320" height="38"/>
+                            <rect key="frame" x="0.0" y="29" width="320" height="38"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="아이디" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVF-R4-c8e">
                                     <rect key="frame" x="8" y="12" width="132" height="21"/>

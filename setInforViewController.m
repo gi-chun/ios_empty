@@ -191,12 +191,14 @@
     
 
     //생년월일, lang_c, push ..
-    [indiv_infoDic setObject:@"11111111111" forKey:@"tmn_unq_no"];
+    if([[NSUserDefaults standardUserDefaults] stringForKey:kUUID]){
+        [indiv_infoDic setObject:[[NSUserDefaults standardUserDefaults] stringForKey:kUUID] forKey:@"tmn_unq_no"];
+    }
     strParma = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
     [indiv_infoDic setObject:strParma forKey:@"lang_c"];
-    [indiv_infoDic setObject:@"APNS" forKey:@"push_tmn_refno"];
+    [indiv_infoDic setObject:@"" forKey:@"push_tmn_refno"]; //APNS
     strParma = ([[NSUserDefaults standardUserDefaults] stringForKey:kPushY])?[[NSUserDefaults standardUserDefaults] stringForKey:kPushY]:@"N";
-    [indiv_infoDic setObject:strParma forKey:@"push_rec_yn"];
+    [indiv_infoDic setObject:@"N" forKey:@"push_rec_yn"];
     
     [sendDic setObject:rootDic forKey:@"root_info"];
     [sendDic setObject:indiv_infoDic forKey:@"indiv_info"];//////
@@ -330,7 +332,7 @@
     [rootDic setObject:@"" forKey:@"requestMessage"];
     [rootDic setObject:@"" forKey:@"responseMessage"];
     
-    [indiv_infoDic setObject:@"springgclee@gmail.com" forKey:@"email_id"];
+    [indiv_infoDic setObject:idText.text forKey:@"email_id"];
     
     [sendDic setObject:rootDic forKey:@"root_info"];
     [sendDic setObject:indiv_infoDic forKey:@"indiv_info"];//////
