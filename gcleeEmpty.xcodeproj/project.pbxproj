@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		287AD5BC1C09E8C3003A9449 /* Safari.html in Resources */ = {isa = PBXBuildFile; fileRef = 287AD5BB1C09E8C2003A9449 /* Safari.html */; };
+		287AD5BE1C09E8FE003A9449 /* Safari 책갈피.html in Resources */ = {isa = PBXBuildFile; fileRef = 287AD5BD1C09E8FE003A9449 /* Safari 책갈피.html */; };
 		287F92EC1BE74E18007E82AD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287F92EB1BE74E18007E82AD /* QuartzCore.framework */; };
 		287F92EE1BE74E32007E82AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287F92ED1BE74E32007E82AD /* Foundation.framework */; };
 		287F92F01BE74E48007E82AD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287F92EF1BE74E48007E82AD /* CoreGraphics.framework */; };
@@ -482,6 +484,8 @@
 		28DC44F21C09B8BF00B1B40E /* update_btn@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28DC43711C09B8BE00B1B40E /* update_btn@1x.png */; };
 		28DC44F31C09B8BF00B1B40E /* update_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28DC43721C09B8BE00B1B40E /* update_btn@2x.png */; };
 		28DC44F41C09B8BF00B1B40E /* update_btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28DC43731C09B8BE00B1B40E /* update_btn@3x.png */; };
+		28DC44F71C09BCA200B1B40E /* libBTWCryptoLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DC44F51C09BCA200B1B40E /* libBTWCryptoLib.a */; };
+		28DC44F81C09BCA200B1B40E /* libCodeguard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DC44F61C09BCA200B1B40E /* libCodeguard.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -495,6 +499,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28319CD91C09D0850037B67D /* defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = defines.h; sourceTree = "<group>"; };
+		287AD5BB1C09E8C2003A9449 /* Safari.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Safari.html; sourceTree = "<group>"; };
+		287AD5BD1C09E8FE003A9449 /* Safari 책갈피.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "Safari 책갈피.html"; sourceTree = "<group>"; };
 		287F92EB1BE74E18007E82AD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		287F92ED1BE74E32007E82AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		287F92EF1BE74E48007E82AD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -543,7 +550,6 @@
 		28DC3B381C09A2F600B1B40E /* dataPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = dataPickerViewController.m; path = source/dataPickerViewController.m; sourceTree = "<group>"; };
 		28DC3B391C09A2F600B1B40E /* datePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = datePickerViewController.h; path = source/datePickerViewController.h; sourceTree = "<group>"; };
 		28DC3B3A1C09A2F600B1B40E /* datePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = datePickerViewController.m; path = source/datePickerViewController.m; sourceTree = "<group>"; };
-		28DC3B3B1C09A2F600B1B40E /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = defines.h; path = source/defines.h; sourceTree = "<group>"; };
 		28DC3B3C1C09A2F600B1B40E /* homeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = homeViewController.h; path = source/homeViewController.h; sourceTree = "<group>"; };
 		28DC3B3D1C09A2F600B1B40E /* homeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = homeViewController.m; path = source/homeViewController.m; sourceTree = "<group>"; };
 		28DC3B3E1C09A2F600B1B40E /* HttpError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HttpError.h; path = source/HttpError.h; sourceTree = "<group>"; };
@@ -642,7 +648,6 @@
 		28DC3B9B1C09A2F700B1B40E /* WebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebView.m; path = source/WebView.m; sourceTree = "<group>"; };
 		28DC3B9C1C09A2F700B1B40E /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebViewController.h; path = source/WebViewController.h; sourceTree = "<group>"; };
 		28DC3B9D1C09A2F700B1B40E /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewController.m; path = source/WebViewController.m; sourceTree = "<group>"; };
-		28DC3BE01C09A33A00B1B40E /* defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = defines.h; path = source/defines.h; sourceTree = "<group>"; };
 		28DC3BE21C09A3CF00B1B40E /* libamsLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libamsLibrary.a; path = externalLibrary/libamsLibrary.a; sourceTree = "<group>"; };
 		28DC3C8E1C09A59C00B1B40E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		28DC3C8F1C09A60D00B1B40E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = source/LoginViewController.h; sourceTree = "<group>"; };
@@ -1049,6 +1054,9 @@
 		28DC43711C09B8BE00B1B40E /* update_btn@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "update_btn@1x.png"; sourceTree = "<group>"; };
 		28DC43721C09B8BE00B1B40E /* update_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "update_btn@2x.png"; sourceTree = "<group>"; };
 		28DC43731C09B8BE00B1B40E /* update_btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "update_btn@3x.png"; sourceTree = "<group>"; };
+		28DC44F51C09BCA200B1B40E /* libBTWCryptoLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBTWCryptoLib.a; sourceTree = "<group>"; };
+		28DC44F61C09BCA200B1B40E /* libCodeguard.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCodeguard.a; sourceTree = "<group>"; };
+		28DC44F91C09BCB600B1B40E /* BTWCodeguard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTWCodeguard.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1056,10 +1064,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28DC44F71C09BCA200B1B40E /* libBTWCryptoLib.a in Frameworks */,
 				287F92F01BE74E48007E82AD /* CoreGraphics.framework in Frameworks */,
 				287F92EE1BE74E32007E82AD /* Foundation.framework in Frameworks */,
 				287F92EC1BE74E18007E82AD /* QuartzCore.framework in Frameworks */,
 				28DC3BE31C09A3CF00B1B40E /* libamsLibrary.a in Frameworks */,
+				28DC44F81C09BCA200B1B40E /* libCodeguard.a in Frameworks */,
 				28B9443E1BE1BBDB00EE1572 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1525,17 +1535,20 @@
 				28DC3B151C09A2F600B1B40E /* AFHTTPRequestOperation.h */,
 				28DC3B161C09A2F600B1B40E /* AFHTTPRequestOperation.m */,
 				28DC3B171C09A2F600B1B40E /* AFHTTPRequestOperationManager.h */,
+				28DC44F91C09BCB600B1B40E /* BTWCodeguard.h */,
+				287AD5BD1C09E8FE003A9449 /* Safari 책갈피.html */,
 				28DC3B181C09A2F600B1B40E /* AFHTTPRequestOperationManager.m */,
 				28DC3B191C09A2F600B1B40E /* AFHTTPSessionManager.h */,
+				287AD5BB1C09E8C2003A9449 /* Safari.html */,
 				28DC3B1A1C09A2F600B1B40E /* AFHTTPSessionManager.m */,
 				28DC3B1B1C09A2F600B1B40E /* AFNetworking.h */,
+				28319CD91C09D0850037B67D /* defines.h */,
 				28DC3B1C1C09A2F600B1B40E /* AFNetworkReachabilityManager.h */,
 				28DC3C8F1C09A60D00B1B40E /* LoginViewController.h */,
 				28DC3C901C09A60D00B1B40E /* LoginViewController.m */,
 				28DC3B1D1C09A2F600B1B40E /* AFNetworkReachabilityManager.m */,
 				28DC3B1E1C09A2F600B1B40E /* AFSecurityPolicy.h */,
 				28DC3B1F1C09A2F600B1B40E /* AFSecurityPolicy.m */,
-				28DC3BE01C09A33A00B1B40E /* defines.h */,
 				28DC3B201C09A2F600B1B40E /* AFURLConnectionOperation.h */,
 				28DC3C921C09A67100B1B40E /* AppDelegate.h */,
 				28DC3C951C09A67A00B1B40E /* main.m */,
@@ -1566,7 +1579,6 @@
 				28DC3B381C09A2F600B1B40E /* dataPickerViewController.m */,
 				28DC3B391C09A2F600B1B40E /* datePickerViewController.h */,
 				28DC3B3A1C09A2F600B1B40E /* datePickerViewController.m */,
-				28DC3B3B1C09A2F600B1B40E /* defines.h */,
 				28DC3B3C1C09A2F600B1B40E /* homeViewController.h */,
 				28DC3B3D1C09A2F600B1B40E /* homeViewController.m */,
 				28DC3B3E1C09A2F600B1B40E /* HttpError.h */,
@@ -1672,6 +1684,8 @@
 		28DC3BE11C09A3A700B1B40E /* externaLib */ = {
 			isa = PBXGroup;
 			children = (
+				28DC44F51C09BCA200B1B40E /* libBTWCryptoLib.a */,
+				28DC44F61C09BCA200B1B40E /* libCodeguard.a */,
 				28DC3BE21C09A3CF00B1B40E /* libamsLibrary.a */,
 			);
 			name = externaLib;
@@ -1817,6 +1831,7 @@
 				28DC44591C09B8BF00B1B40E /* snb_back@2x.png in Resources */,
 				28DC43D81C09B8BE00B1B40E /* iTunesArtwork.png in Resources */,
 				28DC44311C09B8BF00B1B40E /* personaldata_menu04_back_incard@1x.png in Resources */,
+				287AD5BE1C09E8FE003A9449 /* Safari 책갈피.html in Resources */,
 				28DC43E21C09B8BE00B1B40E /* join_btn_press@3x.png in Resources */,
 				28DC44821C09B8BF00B1B40E /* total_menu_02_new@1x.png in Resources */,
 				28DC43B61C09B8BE00B1B40E /* find_pw_btn@1x.png in Resources */,
@@ -2097,6 +2112,7 @@
 				28DC43CC1C09B8BE00B1B40E /* icon-small-40.png in Resources */,
 				28DC44031C09B8BE00B1B40E /* mail_success_img@3x.png in Resources */,
 				28DC44DE1C09B8BF00B1B40E /* tuto_03_viet@2x.png in Resources */,
+				287AD5BC1C09E8C3003A9449 /* Safari.html in Resources */,
 				28DC43C61C09B8BE00B1B40E /* home_btn@2x.png in Resources */,
 				28DC43A71C09B8BE00B1B40E /* check_box_btn@1x.png in Resources */,
 				28DC44571C09B8BF00B1B40E /* service_alarm_back@3x.png in Resources */,

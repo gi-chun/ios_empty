@@ -10,6 +10,8 @@
 #import "MMExampleDrawerVisualStateManager.h"
 #import "defines.h"
 #import "amsLibrary.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "BTWCodeguard.h"
 
 
 @interface AppDelegate ()
@@ -22,27 +24,7 @@
 
 -(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     
-    ///////////////////////////////////////////////////////////////////////////////////////////
-    
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.backgroundColor = [UIColor whiteColor];
-    [_window makeKeyAndVisible];
-    
-    //MYViewController *introductionView = [[MYViewController alloc] init];
-    self.introductionView = [[MYViewController alloc] init];
-    self.introductionView.delegate = self;
-    
-//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    UIColor * tintColor = [UIColor colorWithRed:29.0/255.0
-//                                          green:173.0/255.0
-//                                           blue:234.0/255.0
-//                                          alpha:1.0];
-//    [self.window setTintColor:tintColor];
-    
-    //[self.window addSubview:_introductionView.view];
-    
-    [self.window setRootViewController:self.introductionView];
-    ///////////////////////////////////////////////////////////////////////////////////////////
+   
     
     
     
@@ -70,6 +52,186 @@
     
     
      //////////////////////////////////////////////////////////////////////////////
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [_window makeKeyAndVisible];
+    
+    //MYViewController *introductionView = [[MYViewController alloc] init];
+    self.introductionView = [[MYViewController alloc] init];
+    self.introductionView.delegate = self;
+    
+    //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    //    UIColor * tintColor = [UIColor colorWithRed:29.0/255.0
+    //                                          green:173.0/255.0
+    //                                           blue:234.0/255.0
+    //                                          alpha:1.0];
+    //    [self.window setTintColor:tintColor];
+    
+    //[self.window addSubview:_introductionView.view];
+    
+    [self.window setRootViewController:self.introductionView];
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    
+     ///////////////////////////////////////////////////////////////////////////////////////////
+    
+    NSString* strVerion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    
+    [[Codeguard sharedInstance]setAppName:[[NSBundle mainBundle]bundleIdentifier]];
+    [[Codeguard sharedInstance]setAppVer:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    
+    NSString *serverURL=nil;
+    
+    serverURL = REAL_SERVER_URL;
+    serverURL = DEV_SERVER_URL;
+    
+    [[Codeguard sharedInstance]setChallengeRequestUrl:[NSString stringWithFormat:@"%@/CodeGuard/check.jsp", serverURL]];
+    [[Codeguard sharedInstance]setEtcData:@"버전업데이트및공지"];
+    [[Codeguard sharedInstance]setTimeOut:60.0f];
+    NSString* token=[[Codeguard sharedInstance]requestAndGetToken];
+    
+    token = [token stringByAddingPercentEscapesUsingEncoding:-2147482590];
+    token = [token stringByReplacingOccurrencesOfString:@"=" withString:@"%3D"];
+    token = [token stringByReplacingOccurrencesOfString:@"&" withString:@"%26"];
+    token = [token stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
+    
+    NSString *param = [[NSString alloc] initWithFormat:@"CODE_RESPONSE_TOKEN=%@", token];
+    
+    NSMutableString *XMLString = [[NSMutableString alloc] init];
+    [XMLString appendString:API_VERSION_INOF_URL];
+    [XMLString appendString:@"plainXML="];
+    [XMLString appendString:@"<REQEUSTtask=\"sfg.sphone.task.sbank.Sbank_info\" action=\"doStart\">"];
+    [XMLString appendString:@"<서비스구분 value=\"SCLUB\" />"];
+    [XMLString appendString:@"<채널구분코드 value=\"02\" />\""];
+    [XMLString appendString:@"<QORTLS value=\"V3\" />"];
+    [XMLString appendString:@"<Client버전 value=\""];
+    [XMLString appendString:strVerion];
+    [XMLString appendString:@"\" />"];
+    [XMLString appendString:@"<배경구분 value=\"\" />"];
+    [XMLString appendString:@"<codeGuardName value=\"버전업데이트및공지\" />"];
+    [XMLString appendString:@"<COM_SUBCHN_KBN value=\"02\" />"];
+    [XMLString appendString:@"<VERSION value=\""];
+    [XMLString appendString:strVerion];
+    [XMLString appendString:@"\" />"];
+    [XMLString appendString:@"</REQUEST>"];
+    [XMLString appendString:@"&CODE_RESPONSE_TOKEN={\""];
+    [XMLString appendString:token];
+    [XMLString appendString:@"\"}"];
+    
+    ////////////////
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[XMLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    
+    //[request set]
+    //[request setValuesForKeysWithDictionary:[filter filteringDictionary]];
+    AFHTTPRequestOperation *operation =
+    [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    //operation.responseSerializer = [AFXMLParserResponseSerializer serializer];
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject) {
+         NSLog(@"responseObject %@", responseObject);
+         
+         NSData *xmlData = [responseObject dataUsingEncoding:NSASCIIStringEncoding];
+         
+         NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:xmlData];
+
+         
+         NSString *responseData = (NSString*) responseObject;
+         NSString *str2 = [responseData stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+         
+         NSArray *jsonArray = (NSArray *)responseData;
+         NSDictionary * dicResponse = (NSDictionary *)responseData;
+         
+         //warning
+         NSDictionary *dicItems = [dicResponse objectForKey:@"WARNING"];
+         
+        
+         
+     } failure:
+     ^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"Error: %@", [error localizedDescription]);
+         [[[UIAlertView alloc]
+           initWithTitle:@"Error fetching players!"
+           message:@"Please try again later"
+           delegate:nil
+           cancelButtonTitle:@"OK"
+           otherButtonTitles:nil] show];
+     }];
+    
+    [operation start];
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////
+    
+//     //get version infor
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    //manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    //manager.requestSerializer = [AFXMLParserResponseSerializer serializer];
+//    //manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+//    
+//    NSDictionary *parameters = @{@"plainXML": XMLString};
+//    
+//     NSLog(@"parameters: %@", parameters);
+//    
+// 
+//    [manager GET:API_VERSION_INOF_URL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        
+//        NSLog(@"JSON: %@", responseObject);
+//        
+//        NSString *responseData = (NSString*) responseObject;
+//        NSArray *jsonArray = (NSArray *)responseData;
+//        NSDictionary * dicResponse = (NSDictionary *)responseData;
+//        
+//        //warning
+//        NSDictionary *dicItems = [dicResponse objectForKey:@"WARNING"];
+//        
+//        if(dicItems){
+//            NSString* sError = dicItems[@"msg"];
+//            
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:sError delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+//            [alert show];
+//            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kLoginY];
+//            [[NSUserDefaults standardUserDefaults] synchronize];
+//            
+//        }else{
+//            
+//            dicItems = nil;
+//            dicItems = [dicResponse objectForKey:@"indiv_info"];
+//            NSString* sCardNm = dicItems[@"user_seq"];
+//            
+//            //set kCardCode
+////            [[NSUserDefaults standardUserDefaults] setObject:sCardNm forKey:kCardCode];
+////            [[NSUserDefaults standardUserDefaults] synchronize];
+//            
+//            
+//            NSLog(@"Response ==> %@", responseData);
+//            
+//            //to json
+////            SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+////            NSString *jsonString = [jsonWriter stringWithObject:jsonArray];
+////            NSLog(@"jsonString ==> %@", jsonString);
+//            
+//        }
+//        
+//        
+//        
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        
+//       NSLog(@"error ==> %@", error);
+//        NSLog(@"error ==> %@", error);
+//        
+//    }];
+    
+
+    
+    
+    
+     ///////////////////////////////////////////////////////////////////////////////////////////
+    
+    
     
     
 //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
