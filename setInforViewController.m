@@ -272,6 +272,8 @@
         
     }];
     
+    [btnSummit setEnabled:true];
+    
 //    completeViewController *completeCtl = [[completeViewController alloc] init];
 //    //[setInforCtl setDelegate:self];
 //    [self.navigationController pushViewController:completeCtl animated:YES];

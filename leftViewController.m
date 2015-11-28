@@ -12,6 +12,7 @@
 #import "leftMenuView.h"
 #import "LoginViewController.h"
 #import "configViewController.h"
+#import "amsLibrary.h"
 
 @interface leftViewController ()
 
@@ -22,6 +23,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+//    amsLibrary *ams = [[amsLibrary alloc] init];
+//    NSInteger result = [ams a3142:@"AHN_3379024345_TK"]; //AHN_3379024345_TK, 201 크면 안되면
+//    NSTimeInterval interval = [[NSDate date] timeIntervalSince1970];
+//    NSInteger roundedValue = round(interval);
+//    
+//    NSLog(@"Jailbreak Result : %ld" , (long)result);
+//    NSLog(@"time interval  : %ld" , (long)roundedValue);
+//    NSLog(@"checking Result : %ld" , (long)(result - roundedValue));
+//    NSInteger lastResult = (result - roundedValue);
+//    
+//    if(lastResult > 200)
+//    {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"This App Jailbreak phone NO Service. App Stop" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+//        [alert show];
+//        
+//        UIApplication *app = [UIApplication sharedApplication];
+//        [app performSelector:@selector(suspend)];
+//        
+//        //wait 2 seconds while app is going background
+//        [NSThread sleepForTimeInterval:2.0];
+//        //exit app when app is in background
+//        
+//        exit(0);
+//    }
+
     
     [self loadContentsView];
     
@@ -55,8 +83,72 @@
 
 - (void)setViewLogin
 {
+    
     [self loadContentsView];
 }
+
+- (void)setViewLogout
+{
+    [self setDataAfterlogout];
+    [self loadContentsView];
+}
+
+
+- (void) setDataAfterlogout
+{
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kUUID];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kUserDeviceToken];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+//    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:klang];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey: kAutoLogin];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kId];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kPwd];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+   
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kUserNm];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kEmail];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kEmail_id];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey: kLoginY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kCardCode];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey: kAgreeOk];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey: kPushY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kYYYYMMDD];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kCurrentVersion];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kUpdateVersion];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey: kTutoY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
 
 - (void)loadContentsView
 {

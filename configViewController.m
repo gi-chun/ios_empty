@@ -11,6 +11,8 @@
 #import "personModifyViewController.h"
 #import "myPickerViewController.h"
 #import "LoginViewController.h"
+#import "leftViewController.h"
+#import "AppDelegate.h"
 
 @interface configViewController () <NavigationBarViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
@@ -479,6 +481,10 @@
         }
     }
     _preLang = temp;
+    
+    
+    leftViewController *leftViewController = ((AppDelegate *)[UIApplication sharedApplication].delegate).gLeftViewController;
+    [leftViewController setViewLogin];
     
     
     

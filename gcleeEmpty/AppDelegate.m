@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "MMExampleDrawerVisualStateManager.h"
 #import "defines.h"
+#import "amsLibrary.h"
+
 
 @interface AppDelegate ()
 {
@@ -86,6 +88,61 @@
 
     //    self.window.rootViewController = self.mainViewController;
     
+    amsLibrary *ams = [[amsLibrary alloc] init];
+    NSInteger result = [ams a3142:@"AHN_3379024345_TK"]; //AHN_3379024345_TK, 201 크면 안되면
+    NSTimeInterval interval = [[NSDate date] timeIntervalSince1970];
+    NSInteger roundedValue = round(interval);
+    
+    NSLog(@"Jailbreak Result : %ld" , (long)result);
+    NSLog(@"time interval  : %ld" , (long)roundedValue);
+    NSLog(@"checking Result : %ld" , (long)(result - roundedValue));
+    NSInteger lastResult = (result - roundedValue);
+    
+    if(lastResult > 200)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"This App Jailbreak phone NO Service. App Stop" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        UIApplication *app = [UIApplication sharedApplication];
+        [app performSelector:@selector(suspend)];
+        
+        //wait 2 seconds while app is going background
+        [NSThread sleepForTimeInterval:2.0];
+        //exit app when app is in background
+        exit(0);
+    }
+    
+    //////////////////////////////
+//    -(IBAction)doExit
+//    {
+//        //show confirmation message to user
+//        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Confirmation"
+//                                                        message:@"Do you want to exit?"
+//                                                       delegate:self
+//                                              cancelButtonTitle:@"Cancel"
+//                                              otherButtonTitles:@"OK", nil];
+//        [alert show];
+//    }
+//    
+//    -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+//    {
+//        if (buttonIndex != 0)  // 0 == the cancel button
+//        {
+//            //home button press programmatically
+//            UIApplication *app = [UIApplication sharedApplication];
+//            [app performSelector:@selector(suspend)];
+//            
+//            //wait 2 seconds while app is going background
+//            [NSThread sleepForTimeInterval:2.0];
+//            
+//            //exit app when app is in background
+//            exit(0);
+//        }
+//    }
+    
+    
+    //////////////////////////////
+    
     //loginY init
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kLoginY];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -106,6 +163,12 @@
     NSString* currentLang = [[NSUserDefaults standardUserDefaults] stringForKey:klang];
     
     if([[NSUserDefaults standardUserDefaults] stringForKey:klang]){
+        if([currentLang length] > 0){
+            
+        }else{
+            [[NSUserDefaults standardUserDefaults] setObject:localLang forKey:klang];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
         NSLog(@"klang:: %@", currentLang);
     }else{
         [[NSUserDefaults standardUserDefaults] setObject:localLang forKey:klang];
@@ -145,10 +208,38 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    amsLibrary *ams = [[amsLibrary alloc] init];
+    NSInteger result = [ams a3142:@"AHN_3379024345_TK"]; //AHN_3379024345_TK, 201 크면 안되면
+    NSTimeInterval interval = [[NSDate date] timeIntervalSince1970];
+    NSInteger roundedValue = round(interval);
+    
+    NSLog(@"Jailbreak Result : %ld" , (long)result);
+    NSLog(@"time interval  : %ld" , (long)roundedValue);
+    NSLog(@"checking Result : %ld" , (long)(result - roundedValue));
+    NSInteger lastResult = (result - roundedValue);
+    
+    if(lastResult > 200)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"This App Jailbreak phone NO Service. App Stop" delegate:self cancelButtonTitle:@"close" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        UIApplication *app = [UIApplication sharedApplication];
+        [app performSelector:@selector(suspend)];
+        
+        //wait 2 seconds while app is going background
+        [NSThread sleepForTimeInterval:2.0];
+        //exit app when app is in background
+        exit(0);
+    }
+
+    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

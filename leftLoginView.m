@@ -289,16 +289,23 @@
 
 - (void) setDataAfterlogout
 {
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kAutoLogin];
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kUUID];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kUserDeviceToken];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+//    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:klang];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey: kAutoLogin];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kId];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    
     [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kPwd];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
     
     [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kUserNm];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -306,14 +313,31 @@
     [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kEmail];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    
     [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kEmail_id];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey: kLoginY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kCardCode];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey: kAgreeOk];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey: kPushY];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kCardCode];
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kYYYYMMDD];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kCurrentVersion];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kUpdateVersion];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey: kTutoY];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
 }

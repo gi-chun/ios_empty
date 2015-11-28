@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="pwdSearchViewController">
             <connections>
+                <outlet property="labelView_yyyymmdd" destination="hkc-gK-K5A" id="ywN-lD-hyC"/>
                 <outlet property="label_id" destination="bVF-R4-c8e" id="cSp-Og-bZS"/>
                 <outlet property="label_name" destination="hMZ-hP-Uyd" id="ueP-xl-o0D"/>
                 <outlet property="mailTxt" destination="kO5-ft-YPS" id="Cx8-Og-mls"/>

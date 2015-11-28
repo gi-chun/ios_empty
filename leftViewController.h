@@ -15,6 +15,7 @@
 @property (nonatomic, weak) id <leftViewControllerDelegate> delegate;
 
 - (void)setViewLogin;
+- (void)setViewLogout;
 
 @end
 

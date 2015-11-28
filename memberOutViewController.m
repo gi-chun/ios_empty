@@ -142,6 +142,9 @@
             [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kLoginY];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
+            leftViewController *leftViewController = ((AppDelegate *)[UIApplication sharedApplication].delegate).gLeftViewController;
+            [leftViewController setViewLogout];
+
             [self.navigationController popToRootViewControllerAnimated:YES];
             
             
@@ -170,9 +173,7 @@
 //    }else{
 //        [self.navigationController popToRootViewControllerAnimated:YES];
 //    }
-    leftViewController *leftViewController = ((AppDelegate *)[UIApplication sharedApplication].delegate).gLeftViewController;
-    [leftViewController setViewLogin];
-
+    
 }
 
 - (void)viewDidLoad {
