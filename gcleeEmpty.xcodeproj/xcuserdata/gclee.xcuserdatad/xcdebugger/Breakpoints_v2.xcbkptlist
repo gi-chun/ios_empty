@@ -561,38 +561,6 @@
             endingLineNumber = "41"
             landmarkName = "pushBtn"
             landmarkType = "19">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[configViewController pushBtn]"
-                  moduleName = "gcleeEmpty"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/gclee/Documents/localRepository/emptyPrj/configViewController.m"
-                  timestampString = "470310155.069956"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "10">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[configViewController setPushBtn:]"
-                  moduleName = "gcleeEmpty"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/gclee/Documents/localRepository/emptyPrj/configViewController.m"
-                  timestampString = "470310155.070793"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "22">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

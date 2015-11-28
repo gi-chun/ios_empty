@@ -1,0 +1,36 @@
+//
+//  PrefixHeader.pch
+//  gcleeEmpty
+//
+//  Created by gclee on 2015. 10. 28..
+//  Copyright © 2015년 gclee. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import <UIKit/UIKit.h>
+#import "defines.h"
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#define    SCREEN_HEIGHT   [UIScreen mainScreen].bounds.size.height
+#define    SYSTEM_VERSION  [[UIDevice currentDevice]systemVersion]
+
+#define    kScreenBoundsHeight   [UIScreen mainScreen].bounds.size.height
+#define    kScreenBoundsWidth   [UIScreen mainScreen].bounds.size.width
+#define    kToolBarHeight 30.0f
+#define    kNavigationHeight 50.0f
+#define    kNavigationHeightHide 20.0f
+#define    STATUSBAR_HEIGHT 0.0f
+#define    kWebViewMarginY 20.0f
+#define    kWebViewTopMarginY 6.0f
+#define    kStatusBarY 20.0f
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define RGB(r, g, b) [UIColor colorWithRed:(float)r / 255.0 green:(float)g / 255.0 blue:(float)b / 255.0 alpha:1.0]
+#define RGBA(r, g, b, a) [UIColor colorWithRed:(float)r / 255.0 green:(float)g / 255.0 blue:(float)b / 255.0 alpha:a]
+
+//#define NSString *url = @"https://vntst.shinhanglobal.com/sunny/faq_test2.jsp";
+
+
+#endif /* PrefixHeader_pch */
