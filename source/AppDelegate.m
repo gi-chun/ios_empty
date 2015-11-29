@@ -121,8 +121,13 @@
     [XMLString appendString:@"\"}"];
     
     ////////////////
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[XMLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+//    NSUInteger encoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingEUC_KR);
+//    const char* eucKRString = [XMLString cStringUsingEncoding:encoding];
+//    NSData *data = [NSData dataWithBytes: eucKRString   length:strlen(eucKRString)];
+//    NSString* aStr= [[NSString alloc] initWithData:data encoding:encoding];
+//    //XMLString = [[NSString alloc] initWithData:data encoding:encoding];
+//    NSURL *url=[NSURL URLWithString:aStr];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[XMLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] ];
     
     //[request set]
     //[request setValuesForKeysWithDictionary:[filter filteringDictionary]];
@@ -133,19 +138,30 @@
      ^(AFHTTPRequestOperation *operation, id responseObject) {
          NSLog(@"responseObject %@", responseObject);
          
-         NSData *xmlData = [responseObject dataUsingEncoding:NSASCIIStringEncoding];
-         
-         NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:xmlData];
+         NSString *responseData = (NSString*) responseObject;
+//             NSUInteger encoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingEUC_KR);
+//             const char* eucKRString = [responseData cStringUsingEncoding:encoding];
+//             NSData *data = [NSData dataWithBytes: eucKRString   length:strlen(eucKRString)];
+             //NSString* aStr= [[NSString alloc] initWithData:data encoding:encoding];
+          NSString* aStr= [responseData stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+         NSLog(@"response data: %@", aStr);
+         NSLog(@"response data: %@", aStr);
 
          
-         NSString *responseData = (NSString*) responseObject;
-         NSString *str2 = [responseData stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-         
-         NSArray *jsonArray = (NSArray *)responseData;
-         NSDictionary * dicResponse = (NSDictionary *)responseData;
-         
-         //warning
-         NSDictionary *dicItems = [dicResponse objectForKey:@"WARNING"];
+//         NSData *xmlData = [responseObject dataUsingEncoding:NSASCIIStringEncoding];
+//         
+//         NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:xmlData];
+//
+//         
+//         
+//         NSString *str2 = [responseData stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//         
+//         NSArray *jsonArray = (NSArray *)responseData;
+//         NSDictionary * dicResponse = (NSDictionary *)responseData;
+//         
+//         //warning
+//         NSDictionary *dicItems = [dicResponse objectForKey:@"WARNING"];
          
         
          

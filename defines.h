@@ -37,6 +37,10 @@ static NSString * const kCurrentVersion       = @"kCurrentVersion";
 static NSString * const kUpdateVersion       = @"kUpdateVersion";
 static NSString * const kTutoY       = @"kTutoY";
 
+static NSString * const kForceUpdateY       = @"kForceUpdateY"; //강제업데이트 여부
+static NSString * const kUpdateY       = @"kForceUpdateY"; //업데이트 여부
+
+
 
 static NSString *SUNNY_CLUB_URL     = @"https://vntst.shinhanglobal.com/sunny/sunnyclub/index.jsp?%@";  //클럽메인
 static NSString *SUNNY_BANK_URL     = @"https://vntst.shinhanglobal.com/sunny/bank/main.jsp?%@";        //뱅크메인
